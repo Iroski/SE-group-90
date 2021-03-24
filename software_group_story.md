@@ -36,5 +36,3 @@
 GUI设计
 信息存储读取
 
-- [ ] product backlog
-  - [ ] 
