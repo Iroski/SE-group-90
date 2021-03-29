@@ -1,7 +1,10 @@
 package com.se90.java.entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 /**
  * @author ：YanBo Zhang
@@ -11,6 +14,16 @@ import lombok.Data;
  * @version:
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
+    @NonNull private String email;
+    @NonNull private String name;
+    @NonNull private String password;
+    private String phone;
+    private String gender;
+    private double weight;
+    private int height;
+    private int age;
 
 }
