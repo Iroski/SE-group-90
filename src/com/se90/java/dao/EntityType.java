@@ -1,5 +1,9 @@
 package com.se90.java.dao;
 
+import com.se90.java.entity.User;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 /**
  * @author :YanBo Zhang
  * @version :
@@ -7,5 +11,24 @@ package com.se90.java.dao;
  * @description:
  * @modified By:
  */
+@AllArgsConstructor
 public enum EntityType {
+    USER("user","./data/user.json", User.class);
+    String name;
+    String filePath;
+    Class<?> type;
+
+
+    public Class<?> getType() {
+        return type;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 }
