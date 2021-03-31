@@ -1,5 +1,4 @@
 package com.se90.java;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
