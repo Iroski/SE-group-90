@@ -1,0 +1,30 @@
+    public void PageChange() throws IOException { //页面内跳转与传参
+        Stage primaryStage = (Stage) jumpButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/RootLayout.fxml")); //主页面
+        BorderPane rootLayout = (BorderPane) loader.load();
+        Scene scene = new Scene(rootLayout);
+        primaryStage.setScene(scene);
+        FXMLLoader loader2 = new FXMLLoader();
+        loader2.setLocation(getClass().getResource("../view/testsView.fxml")); //分页面
+        AnchorPane testView = (AnchorPane) loader2.load();
+        TestsViewController testsViewController = loader2.getController();
+        testsViewController.userNameLabel.setUserData("id");  //要传的参数
+        testsViewController.returnedButton.setText((String) testsViewController.userNameLabel.getUserData());
+        rootLayout.setCenter(testView);
+    }
+
+    public void PageChange2() throws IOException { //页面跳转与传参
+        Stage primaryStage = (Stage) jumpButton.getScene().getWindow();
+        primaryStage.close();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/testsView.fxml")); //要去的页面
+        Parent TestViewParent = loader.load();
+        TestsViewController testsViewController = loader2.getController();
+        testsViewController.userNameLabel.setUserData("id");  //要传的参数
+        testsViewController.returnedButton.setText((String) testsViewController.userNameLabel.getUserData());
+        Scene newScene = new Scene(TestViewParent);
+        stage.setScene(newScene);
+        stage.show();
+    }
