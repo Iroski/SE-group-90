@@ -13,13 +13,23 @@
         <maven.compiler.target>13</maven.compiler.target>
     </properties>
 
+    <profiles>
+    </profiles>
+
     <build>
         <resources>
             <resource>
-                <directory>${project.basedir}/src/main/java</directory>
                 <filtering>true</filtering>
+                <directory>${project.basedir}/src/main/resources</directory>
                 <includes>
                     <include>**/*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/*.fxml</include>
                 </includes>
             </resource>
         </resources>
