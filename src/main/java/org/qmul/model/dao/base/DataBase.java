@@ -57,8 +57,11 @@ public class DataBase {
         return instance;
     }
 
-    public void addTable(Class<?> itemClass) throws NotInit, TableHaveExists {
+    public void addTable(Class<?> itemClass) throws NotInit, TableHaveExists, InvalidDataItem {
         checkInit();
+        if (!DataItem.class.isAssignableFrom(itemClass)) {
+            throw new InvalidDataItem(String.format("Class %s is not inherited from %s!", itemClass.getClass(), DataItem.class.getClass()));
+        }
         String tableName = itemClass.getName();
         if (tables.containsKey(tableName))
             throw new TableHaveExists(String.format("Table %s has exist!", tableName));
