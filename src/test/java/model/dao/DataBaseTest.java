@@ -11,6 +11,7 @@ import model.dao.entity.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author ：Yubo Wang
@@ -41,7 +42,7 @@ public class DataBaseTest {
         HashMap<String, String> args = new HashMap<>();
         for (long i = 0; i < 200; ++i) {
             args.put("id", String.valueOf(i));
-            ArrayList<DataItem> results = db.query(tableName, args);
+            List<?> results = db.query(tableName, args);
             if (results.size() > 0)
                 continue;
             User user = new User(i,"927986413@qq.com",String.valueOf(i % 20),"1","1","1",1.0,1,1);
@@ -55,7 +56,7 @@ public class DataBaseTest {
         db.delete(tableName, 5);
         HashMap<String, String> args = new HashMap<>();
         args.put("id", "5");
-        ArrayList<DataItem> results = db.query(tableName, args);
+        List<?> results = db.query(tableName, args);
         assertEquals(results.size(), 0);
     }
 
@@ -65,8 +66,8 @@ public class DataBaseTest {
         db.update(tableName, 50, new_user);
         HashMap<String, String> args = new HashMap<>();
         args.put("id", "50");
-        ArrayList<DataItem> results = db.query(tableName, args);
-        for (DataItem result: results)
+        List<?> results = db.query(tableName, args);
+        for (Object result: results)
             assertEquals(result, new_user);
     }
 
@@ -75,7 +76,7 @@ public class DataBaseTest {
         db.delete(tableName, 25);
         HashMap<String, String> args = new HashMap<>();
         args.put("id", "25");
-        ArrayList<DataItem> results = db.query(tableName, args);
+        List<?> results = db.query(tableName, args);
         assertEquals(results.size(), 0);
     }
 }
