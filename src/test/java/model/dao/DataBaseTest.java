@@ -1,4 +1,4 @@
-package org.qmul.dao;
+package model.dao;
 
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
