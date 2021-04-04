@@ -1,6 +1,8 @@
-package org.qmul.model.exception;
+package org.qmul.model.exception.database;
 
-public class InvalidArgument extends BaseException{
+import org.qmul.model.exception.BaseException;
+
+public class InvalidArgument extends BaseException {
 
     public InvalidArgument() {
         super();

@@ -1,6 +1,8 @@
-package org.qmul.model.exception;
+package org.qmul.model.exception.database;
 
-public class InvalidDataItem extends BaseException{
+import org.qmul.model.exception.BaseException;
+
+public class InvalidDataItem extends BaseException {
     public InvalidDataItem() {
         super();
     }
