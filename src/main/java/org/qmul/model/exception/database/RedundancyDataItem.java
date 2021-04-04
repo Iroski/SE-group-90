@@ -1,4 +1,6 @@
-package org.qmul.model.exception;
+package org.qmul.model.exception.database;
+
+import org.qmul.model.exception.BaseException;
 
 public class RedundancyDataItem extends BaseException {
     public RedundancyDataItem() {

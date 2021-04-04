@@ -19,9 +19,9 @@ public class User extends DataItem {
     private String password;
     private String phone;
     private String gender;
-    private double weight;
-    private int height;
-    private int age;
+    private Double weight;
+    private Integer height;
+    private Integer age;
 
     public User(long id, String email, String name, String password, String phone, String gender, double weight, int height, int age) {
         super(id);
