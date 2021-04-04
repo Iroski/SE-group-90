@@ -1,12 +1,10 @@
 package org.qmul.dao;
 
-import com.alibaba.fastjson.JSONArray;
 import org.junit.Test;
-import org.qmul.dao.base.DataItem;
-import org.qmul.dao.base.DataTable;
-import org.qmul.dao.entity.User;
+import org.qmul.model.dao.base.DataItem;
+import org.qmul.model.dao.base.DataTable;
+import org.qmul.model.dao.entity.User;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

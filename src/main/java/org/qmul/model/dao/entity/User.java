@@ -1,7 +1,7 @@
-package org.qmul.dao.entity;
+package org.qmul.model.dao.entity;
 
 import lombok.*;
-import org.qmul.dao.base.DataItem;
+import org.qmul.model.dao.base.DataItem;
 
 /**
  * @author ：Yubo Wang

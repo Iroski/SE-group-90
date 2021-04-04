@@ -1,4 +1,4 @@
-package org.qmul.utils;
+package org.qmul.model.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
