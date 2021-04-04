@@ -1,4 +1,4 @@
-package org.qmul.model.utils;
+package model.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;

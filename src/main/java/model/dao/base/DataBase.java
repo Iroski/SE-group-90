@@ -1,7 +1,6 @@
-package org.qmul.model.dao.base;
+package model.dao.base;
 
-import org.jetbrains.annotations.NotNull;
-import org.qmul.model.exception.database.*;
+import model.exception.database.*;
 
 import java.io.File;
 import java.nio.file.Path;

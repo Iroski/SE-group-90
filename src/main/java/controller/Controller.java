@@ -1,4 +1,4 @@
-package org.qmul.controller;
+package controller;
 
 /**
  * @author ：Yubo Wang

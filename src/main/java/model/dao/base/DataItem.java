@@ -1,4 +1,4 @@
-package org.qmul.model.dao.base;
+package model.dao.base;
 
 import lombok.*;
 

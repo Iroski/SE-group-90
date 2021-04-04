@@ -5,9 +5,9 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.qmul.model.dao.base.DataBase;
-import org.qmul.model.dao.base.DataItem;
-import org.qmul.model.dao.entity.User;
+import model.dao.base.DataBase;
+import model.dao.base.DataItem;
+import model.dao.entity.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

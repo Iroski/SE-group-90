@@ -39,7 +39,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.5</version>
                 <configuration>
-                    <mainClass>org.qmul.main.Main</mainClass>
+                    <mainClass>main.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>

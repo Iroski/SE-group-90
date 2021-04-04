@@ -1,13 +1,12 @@
-package org.qmul.model.dao.base;
+package model.dao.base;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import lombok.Getter;
 import lombok.Setter;
-import org.qmul.model.exception.database.DataItemNotExists;
-import org.qmul.model.exception.database.InvalidArgument;
-import org.qmul.model.exception.database.InvalidDataItem;
-import org.qmul.model.exception.database.RedundancyDataItem;
+import model.exception.database.DataItemNotExists;
+import model.exception.database.InvalidArgument;
+import model.exception.database.InvalidDataItem;
+import model.exception.database.RedundancyDataItem;
 
 import java.io.*;
 import java.lang.reflect.Field;
