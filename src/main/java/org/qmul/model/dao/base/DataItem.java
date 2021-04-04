@@ -13,5 +13,5 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DataItem {
-    @NonNull private long id;
+    @NonNull private Long id;
 }

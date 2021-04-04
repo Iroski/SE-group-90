@@ -14,10 +14,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author ：Yubo Wang
@@ -33,14 +30,27 @@ public class DataTable {
     private String path;
     private Class itemClass;
     private HashMap<Long, DataItem> items;
+    private Map<String, Field> itemClassFieldMap;
+    private Map<String, Method> itemClassMethodMap;
 
     private void queryArgsCheck(HashMap<String, String> arguments) throws InvalidArgument {
         for (Map.Entry<String, String> argument: arguments.entrySet()) {
-            try {
-                Field f = itemClass.getDeclaredField(argument.getKey());
-            } catch (NoSuchFieldException e) {
-                throw new InvalidArgument(String.format("DataItem do not have %s field.", argument.getKey()));
+            if (itemClassFieldMap.containsKey(argument.getKey()))
+                continue;
+            throw new InvalidArgument(String.format("DataItem do not have %s field.", argument.getKey()));
+        }
+    }
+
+    private void getItemClassInfos() {
+        Class tmpClass = itemClass;
+        while (tmpClass != null && !tmpClass.getName().equalsIgnoreCase("java.lang.object")) {
+            for(Field f : tmpClass.getDeclaredFields()) {
+                itemClassFieldMap.put(f.getName(), f);
             }
+            for (Method m : tmpClass.getDeclaredMethods()) {
+                itemClassMethodMap.put(m.getName(), m);
+            }
+            tmpClass = tmpClass.getSuperclass();
         }
     }
 
@@ -49,6 +59,9 @@ public class DataTable {
         setItemClass(itemClass);
         setPath(path);
         items = new HashMap<>();
+        itemClassMethodMap = new HashMap<>();
+        itemClassFieldMap = new HashMap<>();
+        getItemClassInfos();
     }
 
     public void insert(@NotNull DataItem item) throws InvalidDataItem {
@@ -70,10 +83,11 @@ public class DataTable {
         ArrayList<DataItem> results = new ArrayList<>();
         if (arguments.containsKey("id") && items.containsKey(arguments.get("id"))) {
             results.add(items.get(arguments.get("id")));
-        } else {
-            for (Map.Entry<Long, DataItem> entry: items.entrySet()) {
-                results.add(entry.getValue());
-            }
+            return results;
+        }
+
+        for (Map.Entry<Long, DataItem> entry: items.entrySet()) {
+            results.add(entry.getValue());
         }
         String get = "get";
         for (Map.Entry<String, String> argument : arguments.entrySet()) {
@@ -81,13 +95,13 @@ public class DataTable {
             try {
                 String argName = argument.getKey();
                 String getMethodName = get + argName.substring(0,1).toUpperCase() + argName.substring(1);
-                Method getArgMethod = itemClass.getMethod(getMethodName);
+                Method getArgMethod = itemClassMethodMap.get(getMethodName);
                 for (DataItem result : results) {
-                    String argValue = (String) getArgMethod.invoke(result);
+                    String argValue = String.valueOf(getArgMethod.invoke(result));
                     if (argValue.equals(argument.getValue()))
                         tmpResults.add(result);
                 }
-            } catch (NoSuchMethodException |  IllegalAccessException | InvocationTargetException e) {
+            } catch (IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
             results = tmpResults;
