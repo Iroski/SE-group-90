@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Getter;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
 import org.qmul.model.exception.database.DataItemNotExists;
 import org.qmul.model.exception.database.InvalidArgument;
 import org.qmul.model.exception.database.InvalidDataItem;
@@ -14,6 +13,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -23,12 +23,11 @@ import java.util.*;
  * @modified By：
  * @version:
  */
-@Getter
+
 @Setter
-public class DataTable {
-    private String name;
-    private String path;
-    private Class itemClass;
+class DataTable {
+    private Path path;
+    private Class<?> itemClass;
     private HashMap<Long, DataItem> items;
     private Map<String, Field> itemClassFieldMap;
     private Map<String, Method> itemClassMethodMap;
@@ -41,8 +40,8 @@ public class DataTable {
         }
     }
 
-    private void getItemClassInfos() {
-        Class tmpClass = itemClass;
+    private void getItemClassInfo() {
+        Class<?> tmpClass = itemClass;
         while (tmpClass != null && !tmpClass.getName().equalsIgnoreCase("java.lang.object")) {
             for(Field f : tmpClass.getDeclaredFields()) {
                 itemClassFieldMap.put(f.getName(), f);
@@ -54,35 +53,73 @@ public class DataTable {
         }
     }
 
-    public DataTable(String name, String path, Class itemClass) {
-        setName(name);
+    private void readItemClass() {
+        try{
+            File file = path.toFile();
+            if (!file.exists())
+                file.createNewFile();
+            BufferedReader br= new BufferedReader(new FileReader(file));
+            br.readLine();
+            String line;
+            items.clear();
+            while ((line = br.readLine()) != null) {
+                List<?> res = JSONObject.parseArray(line, itemClass);
+                res.forEach(item->items.put(((DataItem)item).getId(), (DataItem) item));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected DataTable(Path path) {
+        setPath(path);
+        items = new HashMap<>();
+        itemClassMethodMap = new HashMap<>();
+        itemClassFieldMap = new HashMap<>();
+        readFromFile();
+        getItemClassInfo();
+    }
+
+    protected DataTable(Path path, Class<?> itemClass) {
         setItemClass(itemClass);
         setPath(path);
         items = new HashMap<>();
         itemClassMethodMap = new HashMap<>();
         itemClassFieldMap = new HashMap<>();
-        getItemClassInfos();
+        readFromFile();
+        getItemClassInfo();
     }
 
-    public void insert(@NotNull DataItem item) throws InvalidDataItem {
-        if (item.getClass() != this.itemClass)
+    protected boolean deleteFile() {
+        File file = path.toFile();
+        return file.delete();
+    }
+
+    protected void flush() {
+        writeToFile();
+    }
+
+    protected void insert(DataItem item) throws InvalidDataItem {
+        if (item == null || item.getClass() != this.itemClass)
             throw new InvalidDataItem("Wrong data item type is inserted!");
         if (items.getOrDefault(item.getId(), null) != null)
             throw new RedundancyDataItem("Data item has exists!");
         items.put(item.getId(), item);
+        flush();
     }
 
-    public void delete(long itemId) {
+    protected void delete(long itemId) {
         if (!items.containsKey(itemId))
             return;
         items.remove(itemId);
+        flush();
     }
 
-    public ArrayList<DataItem> query(HashMap<String, String> arguments) throws InvalidArgument{
+    protected ArrayList<DataItem> query(HashMap<String, String> arguments) throws InvalidArgument{
         queryArgsCheck(arguments);
         ArrayList<DataItem> results = new ArrayList<>();
-        if (arguments.containsKey("id") && items.containsKey(arguments.get("id"))) {
-            results.add(items.get(arguments.get("id")));
+        if (arguments.containsKey("id") && items.containsKey(Long.valueOf(arguments.get("id")))) {
+            results.add(items.get(Long.valueOf(arguments.get("id"))));
             return results;
         }
 
@@ -109,20 +146,23 @@ public class DataTable {
         return results;
     }
 
-    public void update(long itemId, DataItem item) throws DataItemNotExists, InvalidDataItem {
+    protected void update(long itemId, DataItem item) throws DataItemNotExists, InvalidDataItem {
         if (item.getClass() != this.itemClass)
             throw new InvalidDataItem("Wrong data item type is inserted!");
         if (!items.containsKey(itemId))
             throw new DataItemNotExists("Data item not exists!");
         items.put(itemId, item);
+        flush();
     }
 
-    public void writeToFile(){
+    private void writeToFile(){
         try {
-            File file = new File(path);
+            File file = path.toFile();
             if (!file.exists())
                 file.createNewFile();
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            bw.write(itemClass.getName());
+            bw.write(System.getProperty("line.separator"));
             List<DataItem> listOfItems = new ArrayList<>();
             int cnt = 1;
             for (Map.Entry<Long, DataItem> entry: items.entrySet()) {
@@ -141,20 +181,26 @@ public class DataTable {
             }
             bw.close();
         } catch (IOException e) {
-        } finally {
+            e.printStackTrace();
         }
     }
 
-    public void readFromFile() {
+    private void readFromFile() {
         try{
-            BufferedReader br=new BufferedReader(new FileReader(path));
-            String line;
+            File file = path.toFile();
+            if (!file.exists())
+                file.createNewFile();
+            BufferedReader br= new BufferedReader(new FileReader(file));
+            String line = br.readLine();
+            if (itemClass == null) {
+                itemClass = Class.forName(line);
+            }
             items.clear();
             while ((line = br.readLine()) != null) {
-                List<DataItem> res = JSONObject.parseArray(line, itemClass);
-                res.forEach(item->items.put(item.getId(), item));
+                List<?> res = JSONObject.parseArray(line, itemClass);
+                res.forEach(item->items.put(((DataItem)item).getId(), (DataItem) item));
             }
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
