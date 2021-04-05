@@ -32,6 +32,13 @@
                     <include>**/*.fxml</include>
                 </includes>
             </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/images/*.*</include>
+                </includes>
+            </resource>
         </resources>
         <plugins>
             <plugin>
@@ -40,6 +47,14 @@
                 <version>0.0.5</version>
                 <configuration>
                     <mainClass>main.Main</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
         </plugins>

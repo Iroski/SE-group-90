@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LiveController">
+   <children>
+      <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-text-fill: white;" text="back">
+         <font>
+            <Font name="Broadway" size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="216.0" layoutY="173.0" prefHeight="249.0" prefWidth="568.0" text="Living...">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

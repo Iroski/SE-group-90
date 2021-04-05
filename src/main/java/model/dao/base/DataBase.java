@@ -97,7 +97,7 @@ public class DataBase {
         return tables.get(tableName).query(arguments);
     }
 
-    public void update(String tableName, long itemId, DataItem item) throws NotInit, TableNotExists, InvalidDataItem {
+    public void update(String tableName, long itemId, DataItem item) throws NotInit, TableNotExists, InvalidDataItem,DataItemNotExists {
         checkInit();
         checkTable(tableName);
         tables.get(tableName).update(itemId, item);
