@@ -176,6 +176,5 @@
             </VBox>
          </children>
       </AnchorPane>
-      <ScrollBar layoutX="1165.0" layoutY="313.0" orientation="VERTICAL" prefHeight="675.0" prefWidth="24.0" style="-fx-max-height: 800;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0" />
    </children>
 </AnchorPane>

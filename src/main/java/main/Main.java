@@ -33,6 +33,8 @@ public class Main extends Application {
         this.primaryStage=primaryStage;
         initRootLayout();
         showPersonOverview();
+        primaryStage.setMinHeight(750);
+        primaryStage.setMinWidth(1200);
     }
 
     /**
@@ -47,6 +49,7 @@ public class Main extends Application {
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,7 +66,7 @@ public class Main extends Application {
             loader.setLocation(getClass().getResource("/view/fxml/Coach.fxml"));
             AnchorPane coaches = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
-            rootLayout.getChildren().add( 3, coaches);
+            rootLayout.getChildren().add( 2, coaches);
             coaches.setLayoutX(200);
             coaches.setLayoutY(75);
             // Give the controller access to the main app.
