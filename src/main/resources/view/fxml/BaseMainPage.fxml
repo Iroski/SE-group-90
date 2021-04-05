@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #dcdcdc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
+    <children>
+        <AnchorPane id="top_direct" layoutX="194.0" layoutY="87.0" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label layoutX="14.0" layoutY="15.0" text="MyApp" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <HBox layoutX="235.0" layoutY="30.0" AnchorPane.leftAnchor="235.0" />
+                <Button blendMode="SRC_ATOP" layoutX="314.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Username">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
+                </Button>
+                <Button blendMode="SRC_ATOP" layoutX="444.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Favorite">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
+                </Button>
+                <Button blendMode="SRC_ATOP" layoutX="553.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Account">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
+                </Button>
+                <Button blendMode="SRC_ATOP" layoutX="664.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: white;" text="History">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
+                </Button>
+                <Button blendMode="SRC_ATOP" layoutX="1058.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Logout" AnchorPane.rightAnchor="44.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
+                </Button>
+            </children></AnchorPane>
+        <AnchorPane id="left_direct" layoutX="74.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+            <children>
+                <VBox layoutX="23.0" layoutY="43.0" spacing="30.0">
+                    <children>
+                        <Button fx:id="b_home" blendMode="SRC_ATOP" layoutX="42.0" layoutY="42.0" mnemonicParsing="false" onMouseEntered="#mouseEnter_home" onMouseExited="#mouseLeave_home" style="-fx-background-color: #242424;" text="Home" textFill="WHITE">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                            <padding>
+                                <Insets right="15.0" />
+                            </padding>
+                        </Button>
+                        <Button fx:id="b_video" blendMode="SRC_ATOP" layoutX="42.0" layoutY="119.0" mnemonicParsing="false" onMouseEntered="#mouseEnter_video" onMouseExited="#mouseLeave_video" style="-fx-background-color: #242424;" text="Videos" textFill="WHITE">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                            <padding>
+                                <Insets right="15.0" />
+                            </padding>
+                        </Button>
+                        <Button fx:id="b_coach" blendMode="SRC_ATOP" layoutX="42.0" layoutY="187.0" mnemonicParsing="false" onMouseEntered="#mouseEnter_coach" onMouseExited="#mouseLeave_coach" style="-fx-background-color: #242424;" text="Coaches" textFill="WHITE">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                            <padding>
+                                <Insets right="15.0" />
+                            </padding>
+                        </Button>
+                        <Button fx:id="b_lesson" blendMode="SRC_ATOP" layoutX="42.0" layoutY="260.0" mnemonicParsing="false" onMouseEntered="#mouseEnter_lesson" onMouseExited="#mouseLeave_lesson" style="-fx-background-color: #242424;" text="My Lessons" textFill="WHITE">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                            <padding>
+                                <Insets right="15.0" />
+                            </padding>
+                        </Button>
+                    </children>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <ScrollBar layoutX="1165.0" layoutY="313.0" orientation="VERTICAL" prefHeight="675.0" prefWidth="24.0" style="-fx-max-height: 800;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0" />
+    </children>
+</AnchorPane>
