@@ -1,22 +1,15 @@
 package main;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * @author ：Yubo Wang
- * @date ：2021-04-04 17:35
- * @description：
- * @modified By：
- * @version:
- */
 public class Main extends Application {
+
     private Stage primaryStage;
     public AnchorPane rootLayout;
 
@@ -26,13 +19,6 @@ public class Main extends Application {
 
     public void setRootLayout(AnchorPane rootLayout) {
         this.rootLayout = rootLayout;
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        this.primaryStage=primaryStage;
-        initRootLayout();
-        showPersonOverview();
     }
 
     /**
@@ -47,6 +33,7 @@ public class Main extends Application {
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,7 +50,7 @@ public class Main extends Application {
             loader.setLocation(getClass().getResource("/view/fxml/Coach.fxml"));
             AnchorPane coaches = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
-            rootLayout.getChildren().add( 3, coaches);
+            rootLayout.getChildren().add( 2, coaches);
             coaches.setLayoutX(200);
             coaches.setLayoutY(75);
             // Give the controller access to the main app.
@@ -72,7 +59,14 @@ public class Main extends Application {
         }
     }
 
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/LoginPage.fxml"));
+        primaryStage.setTitle("Login");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
