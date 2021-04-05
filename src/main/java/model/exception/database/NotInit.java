@@ -4,10 +4,6 @@ import model.exception.BaseException;
 
 /**
  * @author ：Yubo Wang
- * @date ：2021-04-04 13:58
- * @description：
- * @modified By：
- * @version:
  */
 public class NotInit extends BaseException {
 

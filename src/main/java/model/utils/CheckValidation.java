@@ -5,10 +5,6 @@ import java.util.regex.Pattern;
 
 /**
  * @author ：YanBo Zhang
- * @date ：Created in 2021 2021/3/29 19:05
- * @description：
- * @modified By：
- * @version:
  */
 public class CheckValidation {
     public  static boolean checkEmail(String mail){

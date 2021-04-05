@@ -5,10 +5,6 @@ import model.dao.base.DataItem;
 
 /**
  * @author ：Yubo Wang
- * @date ：Created in 2021 2021/4/3 21:00
- * @description：
- * @modified By：
- * @version:
  */
 @Data()
 @ToString(callSuper = true)
