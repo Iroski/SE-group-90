@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookingPageController">
+   <children>
+      <Circle fx:id="coach_photo" fill="DODGERBLUE" layoutX="84.0" layoutY="80.0" radius="43.0" stroke="WHITE" strokeType="INSIDE" />
+      <Label fx:id="coach_name" layoutX="148.0" layoutY="61.0" text="CoachName">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="162.0" text="Please choose the lessen date and time">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="295.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#chooseFinished" prefHeight="38.0" prefWidth="111.0" text="OK" />
+      <Button layoutX="591.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#closeThePage" prefHeight="38.0" prefWidth="66.0" text="Back" />
+      <Separator layoutX="31.0" layoutY="123.0" prefHeight="20.0" prefWidth="639.0" />
+      <ChoiceBox fx:id="dateChoose" layoutX="54.0" layoutY="206.0" prefHeight="44.0" prefWidth="188.0" />
+      <VBox layoutX="308.0" layoutY="214.0" spacing="10.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="308.0" layoutY="214.0" spacing="20.0">
+               <children>
+                  <Label layoutX="308.0" layoutY="214.0" text="09:00 - 09:50">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="firstLesson" layoutX="447.0" layoutY="218.0" mnemonicParsing="false" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="308.0" layoutY="250.0" spacing="20.0">
+               <children>
+                  <Label layoutX="308.0" layoutY="250.0" text="10:00 - 10:50">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="secondLesson" layoutX="447.0" layoutY="254.0" mnemonicParsing="false" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="308.0" layoutY="288.0" spacing="20.0">
+               <children>
+                  <Label layoutX="308.0" layoutY="214.0" text="14:00 - 14:50">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="thirdLesson" layoutX="447.0" layoutY="218.0" mnemonicParsing="false" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="308.0" layoutY="325.0" spacing="20.0">
+               <children>
+                  <Label layoutX="308.0" layoutY="214.0" text="15:00 - 15:50">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="fourthLesson" layoutX="447.0" layoutY="218.0" mnemonicParsing="false" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="308.0" layoutY="360.0" spacing="20.0">
+               <children>
+                  <Label layoutX="308.0" layoutY="214.0" text="16:00 - 16:50">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="fifthLesson" layoutX="447.0" layoutY="218.0" mnemonicParsing="false" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
