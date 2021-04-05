@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.tests.controller.coachController">
+   <children>
+      <GridPane fx:id="gridPane" prefHeight="529.0" prefWidth="851.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-border-style: solid; -fx-background-color: white; -fx-border-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <children>
+                  <Label fx:id="name5" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="123.0" prefHeight="15.0" prefWidth="200.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Circle fx:id="circle5" fill="#fcfcfc" layoutX="106.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="description5" alignment="CENTER" layoutX="5.0" layoutY="151.0" prefHeight="15.0" prefWidth="200.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pane1" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle1" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="name1" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="124.0" prefHeight="15.0" prefWidth="161.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Label fx:id="description1" alignment="CENTER" layoutX="88.0" layoutY="152.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pane2" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle2" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="name2" alignment="CENTER" layoutX="92.0" layoutY="124.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Label fx:id="description2" alignment="CENTER" layoutX="92.0" layoutY="153.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pane3" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle3" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="57.0" />
+                  <Label fx:id="name3" alignment="CENTER" layoutX="100.0" layoutY="123.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Label fx:id="description3" alignment="CENTER" layoutX="98.0" layoutY="151.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle6" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="description6" alignment="CENTER" layoutX="90.0" layoutY="147.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Label fx:id="name6" alignment="CENTER" layoutX="5.0" layoutY="119.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle7" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="description7" alignment="CENTER" layoutX="90.0" layoutY="151.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Label fx:id="name7" alignment="CENTER" layoutX="92.0" layoutY="127.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle9" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="description9" alignment="CENTER" layoutX="90.0" layoutY="151.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Label fx:id="name9" alignment="CENTER" layoutX="90.0" layoutY="123.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle10" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="description10" alignment="CENTER" layoutX="90.0" layoutY="150.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Label fx:id="name10" alignment="CENTER" layoutX="91.0" layoutY="123.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle11" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="description11" alignment="CENTER" layoutX="90.0" layoutY="151.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                  <Label fx:id="name11" alignment="CENTER" layoutX="90.0" layoutY="124.0" text="Label" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pane4" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle4" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="name4" layoutX="86.0" layoutY="122.0" text="Label" />
+                  <Label fx:id="description4" alignment="CENTER" layoutX="86.0" layoutY="156.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle8" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="name8" layoutX="86.0" layoutY="129.0" text="Label" />
+                  <Label fx:id="description8" alignment="CENTER" layoutX="86.0" layoutY="156.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#chooseTheCoach" prefHeight="190.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <children>
+                  <Circle fx:id="circle12" fill="WHITE" layoutX="105.0" layoutY="62.0" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="name12" layoutX="86.0" layoutY="122.0" text="Label" />
+                  <Label fx:id="description12" alignment="CENTER" layoutX="86.0" layoutY="151.0" text="No details yet" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
