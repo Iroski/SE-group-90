@@ -45,8 +45,8 @@ public class MainPageController {
         AnchorPane coaches = (AnchorPane) loader.load();
         // Set person overview into the center of root layout.
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-        anchorPane.getChildren().remove(3);
-        anchorPane.getChildren().add(3, coaches);
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, coaches);
 
         coaches.setLayoutX(200);
         coaches.setLayoutY(75);
