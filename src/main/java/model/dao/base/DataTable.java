@@ -110,7 +110,7 @@ class DataTable {
         flush();
     }
 
-    protected ArrayList<DataItem> query(HashMap<String, String> arguments) throws InvalidArgument{
+    protected List<?> query(HashMap<String, String> arguments) throws InvalidArgument{
         queryArgsCheck(arguments);
         ArrayList<DataItem> results = new ArrayList<>();
         if (arguments.containsKey("id") && items.containsKey(Long.valueOf(arguments.get("id")))) {

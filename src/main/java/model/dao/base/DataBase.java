@@ -6,6 +6,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author ：Yubo Wang
@@ -90,7 +91,7 @@ public class DataBase {
         tables.get(tableName).delete(itemId);
     }
 
-    public ArrayList<DataItem> query(String tableName, HashMap<String, String> arguments) throws NotInit, TableNotExists, InvalidArgument {
+    public List<?> query(String tableName, HashMap<String, String> arguments) throws NotInit, TableNotExists, InvalidArgument {
         checkInit();
         checkTable(tableName);
         return tables.get(tableName).query(arguments);
