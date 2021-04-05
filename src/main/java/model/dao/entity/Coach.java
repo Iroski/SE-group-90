@@ -1,6 +1,6 @@
-package test.tests.model;
+package model.dao.entity;
 
-public class coach {
+public class Coach {
     int id;
     String name;
     String sex;
@@ -22,7 +22,7 @@ public class coach {
         return photoPath;
     }
 
-    public coach(int id, String name, String sex, int height, int weight, int age, String course, String photoPath) {
+    public Coach(int id, String name, String sex, int height, int weight, int age, String course, String photoPath) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -37,7 +37,7 @@ public class coach {
         this.photoPath = photoPath;
     }
 
-    public coach(int id, String name, String sex, int height, int weight, int age, String course) {
+    public Coach(int id, String name, String sex, int height, int weight, int age, String course) {
         this.id=id;
         this.name = name;
         this.sex = sex;

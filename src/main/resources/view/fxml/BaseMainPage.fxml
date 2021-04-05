@@ -11,9 +11,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #dcdcdc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LZH_Pages.mainPageController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #dcdcdc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
    <children>
-      <AnchorPane id="top_direct" layoutX="194.0" layoutY="87.0" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="top_direct" layoutX="194.0" layoutY="87.0" onMouseClicked="#goToCoach" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="14.0" layoutY="15.0" text="MyApp" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
                <font>
@@ -27,7 +27,7 @@
                         <Insets right="25.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../pictures/user_picture1.png" />
+                        <Image url="/view/images/coach.jpg" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -147,7 +147,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="b_coach" blendMode="SRC_ATOP" layoutX="42.0" layoutY="187.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange2" onMouseExited="#buttonColorChange2" style="-fx-background-color: #242424;" text="Coaches" textFill="WHITE">
+                  <Button fx:id="b_coach" blendMode="SRC_ATOP" layoutX="42.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#goToCoach" onMouseEntered="#buttonColorChange2" onMouseExited="#buttonColorChange2" style="-fx-background-color: #242424;" text="Coaches" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
