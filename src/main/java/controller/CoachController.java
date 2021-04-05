@@ -1,4 +1,4 @@
-package test.tests.controller;
+package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,11 +11,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import test.tests.model.coach;
+import main.Main;
+import model.dao.entity.Coach;
 
 import java.io.IOException;
 
-public class coachController {
+public class CoachController {
 
     public Circle circle4;
     public Label name4;
@@ -57,11 +58,11 @@ public class coachController {
     public AnchorPane pane2;
     public AnchorPane pane3;
     public AnchorPane pane4;
-    private coach choosedCoach;
+    private Coach choosedCoach;
 
     @FXML
     public void initialize() {
-        Image image=new Image("test/tests/1.png");
+        Image image=new Image("view/images/1.png");
         circle1.setFill(new ImagePattern(image));
         circle2.setFill(new ImagePattern(image));
         circle3.setFill(new ImagePattern(image));
@@ -75,9 +76,9 @@ public class coachController {
         circle11.setFill(new ImagePattern(image));
         circle12.setFill(new ImagePattern(image));
 
-        pane1.setUserData(new coach(1,"He luyao","man",170,45,11,"chinese","test/tests/coach.jpg"));
+        pane1.setUserData(new Coach(1,"He luyao","man",170,45,11,"chinese","view/images/coach.jpg"));
         //image4.setImage(image);
-        pane2.setUserData(new coach(2,"He luyao2","man2",170,45,11,"english","test/tests/coach.jpg"));
+        pane2.setUserData(new Coach(2,"He luyao2","man2",170,45,11,"english","view/images/coach.jpg"));
         description4.setText("身高：170cm 体重：180Kg");
         description1.setText("身高：170cm 体重：180Kg");
         description2.setText("身高：170cm 体重：180Kg");
@@ -102,13 +103,18 @@ public class coachController {
         Stage stage = (Stage) circle1.getScene().getWindow();
         stage.setTitle("Coach information");
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/coachInfo.fxml"));
-        Parent coachViewParent = loader.load();
-        Scene newScene = new Scene(coachViewParent);
-        stage.setScene(newScene);
+        loader.setLocation(getClass().getResource("/view/fxml/CoachInfo.fxml"));
+        AnchorPane coachesInfo = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(3);
+        anchorPane.getChildren().add(3, coachesInfo);
+
+        coachesInfo.setLayoutX(200);
+        coachesInfo.setLayoutY(75);
         AnchorPane pane= (AnchorPane) mouseEvent.getSource();
-        choosedCoach=(coach)pane.getUserData();
-        coachInfoController coachInfoController=loader.getController();
+        choosedCoach=(Coach)pane.getUserData();
+        CoachInfoController coachInfoController=loader.getController();
         coachInfoController.photo.setUserData(choosedCoach);
         coachInfoController.age.setText(String.valueOf(choosedCoach.getAge()));
         coachInfoController.name.setText(choosedCoach.getName());
@@ -120,7 +126,5 @@ public class coachController {
         coachInfoController.photo.setImage(image);
         coachInfoController.description.setText("  This teacher is very handsome and clever oh !!!!!!" +
                 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-        stage.show();
     }
 }

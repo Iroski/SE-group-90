@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.tests.controller.coachInfoController">
+<AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CoachInfoController">
    <children>
       <SplitPane dividerPositions="0.42084168336673344" layoutX="272.0" layoutY="199.0" prefHeight="675.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -92,7 +92,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <Button id="1" fx:id="reserve" layoutX="175.0" layoutY="592.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="199.0" style="-fx-background-color: BLACK; -fx-text-fill: white; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="reserve">
+                  <Button id="1" fx:id="reserve" layoutX="175.0" layoutY="592.0" mnemonicParsing="false" onMouseClicked="#reserve" prefHeight="67.0" prefWidth="199.0" style="-fx-background-color: BLACK; -fx-text-fill: white; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="reserve">
                      <font>
                         <Font name="Arial" size="36.0" />
                      </font></Button>

@@ -1,4 +1,4 @@
-package test.tests.controller;
+package controller;
 
-public class live {
+public class Live {
 }
