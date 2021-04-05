@@ -125,7 +125,7 @@
          <children>
             <VBox layoutX="23.0" layoutY="43.0" spacing="30.0">
                <children>
-                  <Button fx:id="b_home" blendMode="SRC_ATOP" layoutX="42.0" layoutY="42.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange2" onMouseExited="#buttonColorChange2" style="-fx-background-color: #242424;" text="Home" textFill="WHITE">
+                  <Button fx:id="b_home" blendMode="SRC_ATOP" layoutX="42.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#goToHome" onMouseEntered="#buttonColorChange2" onMouseExited="#buttonColorChange2" style="-fx-background-color: #242424;" text="Home" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -136,7 +136,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="b_video" blendMode="SRC_ATOP" layoutX="42.0" layoutY="119.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange2" onMouseExited="#buttonColorChange2" style="-fx-background-color: #242424;" text="Videos" textFill="WHITE">
+                  <Button fx:id="b_video" blendMode="SRC_ATOP" layoutX="42.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#goToVideo" onMouseEntered="#buttonColorChange2" onMouseExited="#buttonColorChange2" style="-fx-background-color: #242424;" text="Videos" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -158,7 +158,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="b_lesson" blendMode="SRC_ATOP" layoutX="42.0" layoutY="260.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange2" onMouseExited="#buttonColorChange2" style="-fx-background-color: #242424;" text="My Lessons" textFill="WHITE">
+                  <Button fx:id="b_lesson" blendMode="SRC_ATOP" layoutX="42.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#goToMyLesson" onMouseEntered="#buttonColorChange2" onMouseExited="#buttonColorChange2" style="-fx-background-color: #242424;" text="My Lessons" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

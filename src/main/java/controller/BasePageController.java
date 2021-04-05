@@ -51,4 +51,52 @@ public class BasePageController {
         coaches.setLayoutX(200);
         coaches.setLayoutY(75);
     }
+    public void goToVideo(MouseEvent mouseEvent) throws IOException {
+        //choosedCoach = (Coach) photo.getUserData();
+
+        Stage stage = (Stage) b_home.getScene().getWindow();
+        stage.setTitle("Videos");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/VideoPage.fxml"));
+        AnchorPane coaches = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, coaches);
+
+        coaches.setLayoutX(200);
+        coaches.setLayoutY(75);
+    }
+    public void goToMyLesson(MouseEvent mouseEvent) throws IOException {
+        //choosedCoach = (Coach) photo.getUserData();
+
+        Stage stage = (Stage) b_home.getScene().getWindow();
+        stage.setTitle("My Lessons");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/LessonPage.fxml"));
+        AnchorPane coaches = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, coaches);
+
+        coaches.setLayoutX(200);
+        coaches.setLayoutY(75);
+    }
+    public void goToHome(MouseEvent mouseEvent) throws IOException {
+        //choosedCoach = (Coach) photo.getUserData();
+
+        Stage stage = (Stage) b_home.getScene().getWindow();
+        stage.setTitle("Home");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/MainPage.fxml"));
+        AnchorPane coaches = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, coaches);
+
+        coaches.setLayoutX(200);
+        coaches.setLayoutY(75);
+    }
 }
