@@ -1,22 +1,15 @@
 package main;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * @author ：Yubo Wang
- * @date ：2021-04-04 17:35
- * @description：
- * @modified By：
- * @version:
- */
 public class Main extends Application {
+
     private Stage primaryStage;
     public AnchorPane rootLayout;
 
@@ -26,15 +19,6 @@ public class Main extends Application {
 
     public void setRootLayout(AnchorPane rootLayout) {
         this.rootLayout = rootLayout;
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        this.primaryStage=primaryStage;
-        initRootLayout();
-        showPersonOverview();
-        primaryStage.setMinHeight(750);
-        primaryStage.setMinWidth(1200);
     }
 
     /**
@@ -75,7 +59,14 @@ public class Main extends Application {
         }
     }
 
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/LoginPage.fxml"));
+        primaryStage.setTitle("Login");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
