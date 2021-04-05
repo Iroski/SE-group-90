@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Separator layoutY="95.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label layoutX="35.0" layoutY="31.0" text="MyAPP" />
+      <Button layoutX="175.0" layoutY="368.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="350.0" text="Login" />
+      <TextField layoutX="228.0" layoutY="191.0" style="-fx-background-color: transparent;" />
+      <TextField layoutX="228.0" layoutY="279.0" style="-fx-background-color: transparent;" />
+      <Separator layoutX="170.0" layoutY="239.0" prefWidth="360.0" />
+      <Separator layoutX="170.0" layoutY="328.0" prefWidth="360.0" />
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="300.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" scaleZ="20.0" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="175.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="175.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="35.0" layoutY="438.0" mnemonicParsing="false" onAction="#showSignUpPage" style="-fx-background-color: transparent;" text="Sign Up" />
+   </children>
+</AnchorPane>
