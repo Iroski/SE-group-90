@@ -1,30 +1,28 @@
-    public void PageChange() throws IOException { //页面内跳转与传参
-        Stage primaryStage = (Stage) jumpButton.getScene().getWindow();
+    public void backToCoach(MouseEvent mouseEvent) throws IOException {    //主页面不变，变更插入的页面
+        Stage stage = (Stage) photo.getScene().getWindow();
+        stage.setTitle("Coaches");
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/RootLayout.fxml")); //主页面
-        BorderPane rootLayout = (BorderPane) loader.load();
-        Scene scene = new Scene(rootLayout);
-        primaryStage.setScene(scene);
-        FXMLLoader loader2 = new FXMLLoader();
-        loader2.setLocation(getClass().getResource("../view/testsView.fxml")); //分页面
-        AnchorPane testView = (AnchorPane) loader2.load();
-        TestsViewController testsViewController = loader2.getController();
-        testsViewController.userNameLabel.setUserData("id");  //要传的参数
-        testsViewController.returnedButton.setText((String) testsViewController.userNameLabel.getUserData());
-        rootLayout.setCenter(testView);
-    }
+        loader.setLocation(getClass().getResource("/view/fxml/Coach.fxml"));
+        AnchorPane coaches = (AnchorPane) loader.load();
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, coaches);
 
-    public void PageChange2() throws IOException { //页面跳转与传参
-        Stage primaryStage = (Stage) jumpButton.getScene().getWindow();
-        primaryStage.close();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/testsView.fxml")); //要去的页面
-        Parent TestViewParent = loader.load();
-        TestsViewController testsViewController = loader2.getController();
-        testsViewController.userNameLabel.setUserData("id");  //要传的参数
-        testsViewController.returnedButton.setText((String) testsViewController.userNameLabel.getUserData());
-        Scene newScene = new Scene(TestViewParent);
-        stage.setScene(newScene);
+        coaches.setLayoutX(200);
+        coaches.setLayoutY(75);
+    }
+ 
+    public void reserve(MouseEvent mouseEvent) throws IOException {   //跳出来个新页面
+        choosedCoach= (Coach) photo.getUserData();
+        Stage stage=new Stage();
+        stage.setTitle("Reserve");
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/BookingPage.fxml"));
+        AnchorPane layout= loader.load();
+        BookingPageController bookingPageController=loader.getController();
+        bookingPageController.coach_photo.setUserData(choosedCoach);   //这里可以给要跳转到的页面的一个node设置userData传参
+        bookingPageController.coach_name.setText(choosedCoach.getName());
+        Scene scene = new Scene(layout);
+        stage.setScene(scene);
         stage.show();
     }
