@@ -1,12 +1,15 @@
 package model.dao.base;
 
 import model.exception.database.*;
+import org.reflections.Reflections;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author ：Yubo Wang
@@ -23,13 +26,15 @@ public class DataBase {
     }
 
     private void initTables() {
+        // Use reflections to find the subclasses of DataItem and create data table.
         File tableDir = tablesDirPath.toFile();
-        File[] tableFiles = tableDir.listFiles();
-        for (File tableFile: tableFiles) {
-            System.out.println(tableFile);
-            String fileName = tableFile.getName();
-            String tableName = fileName.split("\\.")[0];
-            DataTable dataTable = new DataTable(Path.of(tableFile.getPath()));
+        Reflections reflections = new Reflections("model.dao.entity");
+        Set<Class<? extends DataItem>> subClasses = reflections.getSubTypesOf(DataItem.class);
+        for (Class<? extends DataItem> subClass : subClasses) {
+            String tableName = subClass.getSimpleName();
+            String fileName = tableName + ".json";
+            Path filePath = Paths.get(tableDir.getPath(), fileName);
+            DataTable dataTable = new DataTable(filePath, subClass);
             tables.put(tableName, dataTable);
         }
     }
@@ -52,26 +57,6 @@ public class DataBase {
 
     public static DataBase getInstance() {
         return instance;
-    }
-
-    public void addTable(Class<?> itemClass) throws NotInit, TableHaveExists, InvalidDataItem {
-        checkInit();
-        if (!DataItem.class.isAssignableFrom(itemClass)) {
-            throw new InvalidDataItem(String.format("Class %s is not inherited from %s!", itemClass.getClass(), DataItem.class.getClass()));
-        }
-        String tableName = itemClass.getName();
-        if (tables.containsKey(tableName))
-            throw new TableHaveExists(String.format("Table %s has exist!", tableName));
-        Path newTablePath = tablesDirPath.resolve(itemClass.getSimpleName() + ".json");
-        DataTable newTable = new DataTable(newTablePath, itemClass);
-        tables.put(itemClass.getName(), newTable);
-    }
-
-    public void delTable(String tableName) throws NotInit, TableNotExists {
-        checkInit();
-        checkTable(tableName);
-        tables.get(tableName).deleteFile();
-        tables.remove(tableName);
     }
 
     public void flush(String tableName) throws NotInit, TableNotExists {
@@ -98,11 +83,10 @@ public class DataBase {
         return tables.get(tableName).query(arguments);
     }
 
-    public void update(String tableName, DataItem item) throws NotInit, TableNotExists, InvalidDataItem,DataItemNotExists {
+    public void update(String tableName, DataItem item) throws NotInit, TableNotExists, InvalidDataItem, DataItemNotExists {
         checkInit();
         checkTable(tableName);
         tables.get(tableName).update(item);
     }
-
 
 }
