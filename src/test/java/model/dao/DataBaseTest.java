@@ -1,6 +1,8 @@
 package model.dao;
 
 import static org.junit.Assert.*;
+
+import model.exception.database.RedundancyDataItem;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -24,6 +26,7 @@ import java.util.List;
 public class DataBaseTest {
     static DataBase db;
     static String tableName;
+
     @BeforeClass
     public static void datatableInit() {
         db = DataBase.getInstance();
@@ -32,22 +35,19 @@ public class DataBaseTest {
 
     @Test
     public void test01AddTable() {
-        tableName = User.class.getName();
-        db.addTable(User.class);
+        tableName = User.class.getSimpleName();
     }
 
     @Test
     public void test02Insert() {
-        HashMap<Long, DataItem> myItems = new HashMap<>();
-        HashMap<String, String> args = new HashMap<>();
         for (long i = 0; i < 200; ++i) {
-            args.put("id", String.valueOf(i));
-            List<?> results = db.query(tableName, args);
-            if (results.size() > 0)
-                continue;
-            User user = new User(i,"927986413@qq.com",String.valueOf(i % 20),"1","1","1",1.0,1,1);
-            myItems.put(i, user);
-            db.insert(tableName, user);
+            User user = new User("927986413@qq.com",String.valueOf(i % 20),"1","1","1",1.0,1,1);
+            try {
+                user = (User) db.insert(tableName, user);
+            } catch (RedundancyDataItem e) {
+                System.out.println(user);
+            }
+
         }
     }
 
@@ -62,13 +62,17 @@ public class DataBaseTest {
 
     @Test
     public void test04Update() {
-        User new_user = new User(50,"123", "sb","1","1","1",1.0,1,1);
-        db.update(tableName, 50, new_user);
         HashMap<String, String> args = new HashMap<>();
         args.put("id", "50");
         List<?> results = db.query(tableName, args);
+        User user;
+        System.out.println(results.size());
+        user = (User) results.get(0);
+        user.setAge(80);
+        db.update(tableName, user);
+        results = db.query(tableName, args);
         for (Object result: results)
-            assertEquals(result, new_user);
+            assertEquals(((User)result).getAge(), Integer.valueOf(80));
     }
 
     @Test

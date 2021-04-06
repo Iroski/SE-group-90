@@ -26,6 +26,7 @@ class DataTable {
     private HashMap<Long, DataItem> items;
     private Map<String, Field> itemClassFieldMap;
     private Map<String, Method> itemClassMethodMap;
+    static Long curPK;
 
     private void queryArgsCheck(HashMap<String, String> arguments) throws InvalidArgument {
         for (Map.Entry<String, String> argument: arguments.entrySet()) {
@@ -48,29 +49,13 @@ class DataTable {
         }
     }
 
-    private void readItemClass() {
-        try{
-            File file = path.toFile();
-            if (!file.exists())
-                file.createNewFile();
-            BufferedReader br= new BufferedReader(new FileReader(file));
-            br.readLine();
-            String line;
-            items.clear();
-            while ((line = br.readLine()) != null) {
-                List<?> res = JSONObject.parseArray(line, itemClass);
-                res.forEach(item->items.put(((DataItem)item).getId(), (DataItem) item));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     protected DataTable(Path path) {
         setPath(path);
         items = new HashMap<>();
         itemClassMethodMap = new HashMap<>();
         itemClassFieldMap = new HashMap<>();
+        curPK = Long.valueOf(0);
         readFromFile();
         getItemClassInfo();
     }
@@ -81,6 +66,7 @@ class DataTable {
         items = new HashMap<>();
         itemClassMethodMap = new HashMap<>();
         itemClassFieldMap = new HashMap<>();
+        curPK = Long.valueOf(0);
         readFromFile();
         getItemClassInfo();
     }
@@ -94,13 +80,14 @@ class DataTable {
         writeToFile();
     }
 
-    protected void insert(DataItem item) throws InvalidDataItem {
+    protected DataItem insert(DataItem item) throws InvalidDataItem {
         if (item == null || item.getClass() != this.itemClass)
             throw new InvalidDataItem("Wrong data item type is inserted!");
-        if (items.getOrDefault(item.getId(), null) != null)
-            throw new RedundancyDataItem("Data item has exists!");
+        item.setId(curPK);
+        ++curPK;
         items.put(item.getId(), item);
         flush();
+        return item;
     }
 
     protected void delete(long itemId) {
@@ -141,12 +128,12 @@ class DataTable {
         return results;
     }
 
-    protected void update(long itemId, DataItem item) throws DataItemNotExists, InvalidDataItem {
+    protected void update(DataItem item) throws DataItemNotExists, InvalidDataItem {
         if (item.getClass() != this.itemClass)
             throw new InvalidDataItem("Wrong data item type is inserted!");
-        if (!items.containsKey(itemId))
+        if (!items.containsKey(item.getId()))
             throw new DataItemNotExists("Data item not exists!");
-        items.put(itemId, item);
+        items.put(item.getId(), item);
         flush();
     }
 
@@ -156,10 +143,14 @@ class DataTable {
             if (!file.exists())
                 file.createNewFile();
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            // write headers
             bw.write(itemClass.getName());
+            bw.write(System.getProperty("line.separator"));
+            bw.write("Current pk:" + curPK);
             bw.write(System.getProperty("line.separator"));
             List<DataItem> listOfItems = new ArrayList<>();
             int cnt = 1;
+            // write contents
             for (Map.Entry<Long, DataItem> entry: items.entrySet()) {
                 if ((cnt % 101) == 0) {
                     JSONArray.writeJSONString(bw, listOfItems);
@@ -183,17 +174,27 @@ class DataTable {
     private void readFromFile() {
         try{
             File file = path.toFile();
-            if (!file.exists())
+            if (!file.exists()) {
                 file.createNewFile();
+                writeToFile();
+            }
+            // Read file headers
             BufferedReader br= new BufferedReader(new FileReader(file));
             String line = br.readLine();
             if (itemClass == null) {
                 itemClass = Class.forName(line);
             }
             items.clear();
+            line = br.readLine();
+            String curPk = line.split(":")[1];
+            curPK = Long.valueOf(curPk);
+            // Read file contents
             while ((line = br.readLine()) != null) {
-                List<?> res = JSONObject.parseArray(line, itemClass);
-                res.forEach(item->items.put(((DataItem)item).getId(), (DataItem) item));
+                List<?> results = JSONObject.parseArray(line, itemClass);
+                for (Object result : results) {
+                    DataItem dataItem = (DataItem) result;
+                    items.put(dataItem.getId(), dataItem);
+                }
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
