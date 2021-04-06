@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -58,44 +59,20 @@ public class CoachController {
     public AnchorPane pane2;
     public AnchorPane pane3;
     public AnchorPane pane4;
+    public GridPane gridPane;
+    public AnchorPane pane5;
+    public AnchorPane pane6;
+    public AnchorPane pane7;
+    public AnchorPane pane8;
+    public AnchorPane pane9;
+    public AnchorPane pane10;
+    public AnchorPane pane11;
+    public AnchorPane pane12;
     private Coach choosedCoach;
 
     @FXML
     public void initialize() {
-        Image image=new Image("view/images/1.png");
-        circle1.setFill(new ImagePattern(image));
-        circle2.setFill(new ImagePattern(image));
-        circle3.setFill(new ImagePattern(image));
-        circle4.setFill(new ImagePattern(image));
-        circle5.setFill(new ImagePattern(image));
-        circle6.setFill(new ImagePattern(image));
-        circle7.setFill(new ImagePattern(image));
-        circle8.setFill(new ImagePattern(image));
-        circle9.setFill(new ImagePattern(image));
-        circle10.setFill(new ImagePattern(image));
-        circle11.setFill(new ImagePattern(image));
-        circle12.setFill(new ImagePattern(image));
 
-        pane1.setUserData(new Coach(1,"He luyao","man",170,45,11,"chinese","view/images/coach.jpg"));
-        //image4.setImage(image);
-        pane2.setUserData(new Coach(2,"He luyao2","man2",170,45,11,"english","view/images/coach.jpg"));
-        description4.setText("身高：170cm 体重：180Kg");
-        description1.setText("身高：170cm 体重：180Kg");
-        description2.setText("身高：170cm 体重：180Kg");
-        description3.setText("身高：170cm 体重：180Kg");
-        description5.setText("身高：170cm 体重：180Kg");
-        name1.setText("hly1");
-        name2.setText("hly2");
-        name3.setText("hly3");
-        name4.setText("hly4");
-        name5.setText("hly5");
-        name6.setText("hly6");
-        name7.setText("hly7");
-        name8.setText("hly8");
-        name9.setText("hly9");
-        name10.setText("hly10");
-        name11.setText("hly11");
-        name12.setText("hly12");
     }
 
 
