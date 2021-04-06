@@ -19,8 +19,19 @@ public class User extends DataItem {
     private Integer height;
     private Integer age;
 
-    public User(long id, String email, String name, String password, String phone, String gender, double weight, int height, int age) {
+    public User(Long id, String email, String name, String password, String phone, String gender, double weight, int height, int age) {
         super(id);
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.gender = gender;
+        this.weight = weight;
+        this.height = height;
+        this.age = age;
+    }
+
+    public User(String email, String name, String password, String phone, String gender, double weight, int height, int age) {
         this.email = email;
         this.name = name;
         this.password = password;

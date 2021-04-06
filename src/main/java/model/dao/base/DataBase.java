@@ -26,6 +26,7 @@ public class DataBase {
         File tableDir = tablesDirPath.toFile();
         File[] tableFiles = tableDir.listFiles();
         for (File tableFile: tableFiles) {
+            System.out.println(tableFile);
             String fileName = tableFile.getName();
             String tableName = fileName.split("\\.")[0];
             DataTable dataTable = new DataTable(Path.of(tableFile.getPath()));
@@ -79,10 +80,10 @@ public class DataBase {
         tables.get(tableName).flush();
     }
 
-    public void insert(String tableName, DataItem item) throws NotInit, TableNotExists, InvalidDataItem {
+    public DataItem insert(String tableName, DataItem item) throws NotInit, TableNotExists, InvalidDataItem {
         checkInit();
         checkTable(tableName);
-        tables.get(tableName).insert(item);
+        return tables.get(tableName).insert(item);
     }
 
     public void delete(String tableName, long itemId) throws NotInit, TableNotExists {
@@ -97,9 +98,11 @@ public class DataBase {
         return tables.get(tableName).query(arguments);
     }
 
-    public void update(String tableName, long itemId, DataItem item) throws NotInit, TableNotExists, InvalidDataItem,DataItemNotExists {
+    public void update(String tableName, DataItem item) throws NotInit, TableNotExists, InvalidDataItem,DataItemNotExists {
         checkInit();
         checkTable(tableName);
-        tables.get(tableName).update(itemId, item);
+        tables.get(tableName).update(item);
     }
+
+
 }
