@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 /**
  * @author ：YanBo Zhang
  */
-public class CheckValidation {
+public class CheckUserInfoValidation {
     public  static boolean checkEmail(String mail){
         String regex = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
         Pattern p   =   Pattern.compile(regex);

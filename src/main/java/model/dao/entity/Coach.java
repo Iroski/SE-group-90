@@ -1,58 +1,62 @@
 package model.dao.entity;
 
-public class Coach {
-    int id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import model.dao.base.DataItem;
+
+import java.util.List;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
+@AllArgsConstructor
+public class Coach extends DataItem {
     String name;
-    String sex;
+    String gender;
     int height;
     int weight;
     int age;
+    String description;
     String course;
     String photoPath;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    List<Long> BookedTime;
 
     public String getPhotoPath() {
         return photoPath;
-    }
-
-    public Coach(int id, String name, String sex, int height, int weight, int age, String course, String photoPath) {
-        this.id = id;
-        this.name = name;
-        this.sex = sex;
-        this.height = height;
-        this.weight = weight;
-        this.age = age;
-        this.course = course;
-        this.photoPath = photoPath;
     }
 
     public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
     }
 
-    public Coach(int id, String name, String sex, int height, int weight, int age, String course) {
-        this.id=id;
+    public Coach(Long id, String name, String sex, int height, int weight, int age, String course,String photoPath) {
+        super.setId(id);
         this.name = name;
-        this.sex = sex;
+        this.gender = sex;
         this.height = height;
         this.weight = weight;
         this.age = age;
         this.course = course;
+        this.photoPath=photoPath;
+        this.description="";
     }
 
+    @Override
+    public @NonNull Long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(@NonNull Long id) {
+        super.setId(id);
+    }
 
     @Override
     public String toString() {
         return "coach{" +
                 "name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
+                ", sex='" + gender + '\'' +
                 ", height=" + height +
                 ", weight=" + weight +
                 ", age=" + age +
@@ -60,51 +64,4 @@ public class Coach {
                 '}';
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
 }
