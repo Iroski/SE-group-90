@@ -124,7 +124,7 @@ public class CoachController {
         coachInfoController.course.setText(choosedCoach.getCourse());
         Image image=new Image(choosedCoach.getPhotoPath());
         coachInfoController.photo.setImage(image);
-        coachInfoController.description.setText("  This teacher is very handsome and clever oh !!!!!!" +
+        coachInfoController.description.setText("  This teacher is very handsome and clever, oh !!!!!!" +
                 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 }

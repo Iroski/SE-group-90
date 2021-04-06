@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: DDDDDD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReserveLessonConfirmation">
+   <children>
+      <Button fx:id="yesButton" layoutX="216.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#chooseYes" prefHeight="30.0" prefWidth="62.0" text="Yes" />
+      <Button fx:id="noButton" layoutX="308.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#chooseNo" prefHeight="30.0" prefWidth="62.0" text="No" />
+      <Label layoutX="59.0" layoutY="64.0" prefHeight="25.0" prefWidth="300.0" text="Are you sure to choose these">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="90.0" text="lessons?">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="tempLabel" layoutX="50.0" layoutY="14.0" />
+   </children>
+</AnchorPane>

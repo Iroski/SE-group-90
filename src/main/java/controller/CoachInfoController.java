@@ -35,7 +35,6 @@ public class CoachInfoController {
     private Coach choosedCoach;
 
     public void backToCoach(MouseEvent mouseEvent) throws IOException {
-        choosedCoach= (Coach) photo.getUserData();
 
         Stage stage = (Stage) photo.getScene().getWindow();
         stage.setTitle("Coaches");
