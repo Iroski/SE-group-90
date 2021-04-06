@@ -8,10 +8,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import model.dao.base.DataBase;
-import model.dao.base.DataItem;
 import model.dao.entity.User;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,7 +45,6 @@ public class DataBaseTest {
             } catch (RedundancyDataItem e) {
                 System.out.println(user);
             }
-
         }
     }
 

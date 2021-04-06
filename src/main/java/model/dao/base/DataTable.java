@@ -6,7 +6,6 @@ import lombok.Setter;
 import model.exception.database.DataItemNotExists;
 import model.exception.database.InvalidArgument;
 import model.exception.database.InvalidDataItem;
-import model.exception.database.RedundancyDataItem;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -26,7 +25,7 @@ class DataTable {
     private HashMap<Long, DataItem> items;
     private Map<String, Field> itemClassFieldMap;
     private Map<String, Method> itemClassMethodMap;
-    static Long curPK;
+    private Long curPK;
 
     private void queryArgsCheck(HashMap<String, String> arguments) throws InvalidArgument {
         for (Map.Entry<String, String> argument: arguments.entrySet()) {
@@ -49,17 +48,6 @@ class DataTable {
         }
     }
 
-
-    protected DataTable(Path path) {
-        setPath(path);
-        items = new HashMap<>();
-        itemClassMethodMap = new HashMap<>();
-        itemClassFieldMap = new HashMap<>();
-        curPK = Long.valueOf(0);
-        readFromFile();
-        getItemClassInfo();
-    }
-
     protected DataTable(Path path, Class<?> itemClass) {
         setItemClass(itemClass);
         setPath(path);
@@ -69,11 +57,6 @@ class DataTable {
         curPK = Long.valueOf(0);
         readFromFile();
         getItemClassInfo();
-    }
-
-    protected boolean deleteFile() {
-        File file = path.toFile();
-        return file.delete();
     }
 
     protected void flush() {
@@ -144,8 +127,6 @@ class DataTable {
                 file.createNewFile();
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             // write headers
-            bw.write(itemClass.getName());
-            bw.write(System.getProperty("line.separator"));
             bw.write("Current pk:" + curPK);
             bw.write(System.getProperty("line.separator"));
             List<DataItem> listOfItems = new ArrayList<>();
@@ -177,18 +158,16 @@ class DataTable {
             if (!file.exists()) {
                 file.createNewFile();
                 writeToFile();
+                return;
             }
             // Read file headers
             BufferedReader br= new BufferedReader(new FileReader(file));
             String line = br.readLine();
-            if (itemClass == null) {
-                itemClass = Class.forName(line);
-            }
-            items.clear();
-            line = br.readLine();
             String curPk = line.split(":")[1];
             curPK = Long.valueOf(curPk);
             // Read file contents
+            items.clear();
+            System.out.println(itemClass);
             while ((line = br.readLine()) != null) {
                 List<?> results = JSONObject.parseArray(line, itemClass);
                 for (Object result : results) {
@@ -196,7 +175,7 @@ class DataTable {
                     items.put(dataItem.getId(), dataItem);
                 }
             }
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
