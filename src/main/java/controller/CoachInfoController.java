@@ -39,7 +39,7 @@ public class CoachInfoController {
         Stage stage = (Stage) photo.getScene().getWindow();
         stage.setTitle("Coaches");
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/fxml/Coach.fxml"));
+        loader.setLocation(getClass().getResource("/view/fxml/CoachPage.fxml"));
         AnchorPane coaches = (AnchorPane) loader.load();
         // Set person overview into the center of root layout.
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
