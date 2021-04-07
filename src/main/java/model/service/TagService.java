@@ -2,9 +2,9 @@ package model.service;
 
 import common.CommunicationStatus;
 import model.dao.TagDao;
-import model.dao.entity.ReturnEntity;
-import model.dao.entity.Tag;
-import model.dao.entity.Video;
+import model.entity.ReturnEntity;
+import model.entity.Tag;
+import model.entity.Video;
 import model.enumPackage.TagOperateType;
 import model.exception.database.DataItemNotExists;
 
@@ -83,4 +83,16 @@ public class TagService {
         }
         return new ReturnEntity(CommunicationStatus.OK.getCode(),tagList);
     }
+     public int saveTag(Tag newTag){
+         Optional<Tag> tagList;
+         try{
+             tagList=tagDao.getAllTag().stream().filter(tag -> tag.getTagName().equals(newTag.getTagName() )).findAny();
+             if(tagList.isPresent())
+                 return CommunicationStatus.TAG_ALREADY_EXIST.getCode();
+             tagDao.saveTag(newTag);
+         }catch (RuntimeException e){
+             return CommunicationStatus.INTERNAL_ERROR.getCode();
+         }
+         return CommunicationStatus.OK.getCode();
+     }
 }

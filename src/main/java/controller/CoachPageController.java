@@ -6,12 +6,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import lombok.SneakyThrows;
-import model.dao.entity.Coach;
+import model.entity.Coach;
 
 import java.util.ArrayList;
 
@@ -24,7 +22,7 @@ public class CoachPageController {
     @FXML
     public void initialize() {
         for (int i=0;i<100;i++) {
-            coachArrayList.add(new Coach(1,"He luyao","man",170,45,11,"chinese","view/images/1.png"));
+            coachArrayList.add(new Coach((long) 1,"He luyao","man",170,45,11,"chinese", "sex","view/images/1.png",new ArrayList<Long>()));
         }
         number=coachArrayList.size();
         if (number % 12 == 0) {

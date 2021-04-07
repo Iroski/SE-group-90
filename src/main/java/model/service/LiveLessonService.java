@@ -2,9 +2,9 @@ package model.service;
 
 import common.CommunicationStatus;
 import model.dao.LiveLessonDao;
-import model.dao.entity.LiveLesson;
-import model.dao.entity.LiveLessonTable;
-import model.dao.entity.ReturnEntity;
+import model.entity.LiveLesson;
+import model.entity.LiveLessonTable;
+import model.entity.ReturnEntity;
 import model.enumPackage.LiveSessionTimeType;
 import model.exception.database.DataItemNotExists;
 
@@ -27,14 +27,6 @@ public class LiveLessonService {
         liveLessonDao = new LiveLessonDao();
     }
 
-    public int saveLiveLessonTable(LiveLessonTable liveLessonTable) {
-        try {
-            liveLessonDao.saveLiveLessonTable(liveLessonTable);
-        } catch (RuntimeException e) {
-            return CommunicationStatus.INTERNAL_ERROR.getCode();
-        }
-        return CommunicationStatus.OK.getCode();
-    }
 
     public void createLiveLessonTableForSignUp(String username){
         Optional<LiveLessonTable> tableWithSameName=liveLessonDao.getAllLiveLessonTable().stream().filter(table -> table.getUsername().equals(username)).findAny();
@@ -86,6 +78,8 @@ public class LiveLessonService {
         else if (conditionType.equals(LiveSessionTimeType.IS_END.getDescription()))
             result = lessons.stream().filter(liveLesson -> liveLesson.getLessonTime() < currentTime && liveLesson.getUsername().equals(username))
                     .collect(Collectors.toList());
+        else
+            return new ReturnEntity(CommunicationStatus.BAD_REQUEST.getCode(),null);
         return new ReturnEntity(CommunicationStatus.OK.getCode(), result);
     }
 

@@ -1,8 +1,7 @@
 package model.dao;
 
 import model.dao.base.DataBase;
-import model.dao.entity.LiveLesson;
-import model.dao.entity.LiveLessonTable;
+import model.entity.LiveLessonTable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +27,7 @@ import java.util.List;
     }
 
     public void updateLiveLessonTable(LiveLessonTable liveLessonTable){
-        db.update(tableName,liveLessonTable.getId(),liveLessonTable);
+        db.update(tableName,liveLessonTable);
     }
 
     public List<LiveLessonTable> getAllLiveLessonTable(){

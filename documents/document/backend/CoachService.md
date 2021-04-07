@@ -44,3 +44,12 @@ return: int
 | 200 | run successful |
 |4044 | coach not found|
 | 5000 |database error |
+
+### 6. save new coach
+meghod: saveCoach(Coach coach)
+return: int
+| return type | meaning |
+|:--:|:--:|
+| 200 | insert successful |
+|4003|coach already exist|
+| 5000 | database error |

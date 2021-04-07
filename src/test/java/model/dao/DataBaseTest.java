@@ -1,17 +1,17 @@
 package model.dao;
 
-import static org.junit.Assert.*;
-
+import model.dao.base.DataBase;
+import model.entity.User;
 import model.exception.database.RedundancyDataItem;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import model.dao.base.DataBase;
-import model.dao.entity.User;
 
 import java.util.HashMap;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author ：Yubo Wang

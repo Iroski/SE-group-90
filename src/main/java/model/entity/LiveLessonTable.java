@@ -1,6 +1,5 @@
-package model.dao.entity;
+package model.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -18,9 +17,18 @@ import java.util.List;
 @Data()
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
 public class LiveLessonTable extends DataItem {
     private String username;
     private List<LiveLesson> lessonList;
 
+    public LiveLessonTable(String username, List<LiveLesson> lessonList) {
+        this.username = username;
+        this.lessonList = lessonList;
+    }
+
+    public LiveLessonTable(Long id,String username, List<LiveLesson> lessonList) {
+        super(id);
+        this.username = username;
+        this.lessonList = lessonList;
+    }
 }

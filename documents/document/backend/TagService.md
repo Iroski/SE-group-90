@@ -36,3 +36,12 @@ return: int
 |remove|40461| tag is not found in video|
 ||40462|operateType is wrong|
 || 5000 | database error |
+
+### 4. save new tag
+meghod: saveTag(Tag tag)
+return: int
+| return type | meaning |
+|:--:|:--:|
+| 200 | insert successful |
+|40024|tag already exist|
+| 5000 | database error |

@@ -1,12 +1,8 @@
 # LiveLessonTableService
 ## Interface
 ### 1. save new LiveLessonTable
-method: saveLiveLessonTable(LiveLessonTable liveLessonTable)
-return: int
-| return type | meaning |
-|:--:|:--:|
-| 200 | insert successful |
-| 5000 | database error |
+(__not an interface__) it will automatically generated when user sign up
+
 ```
 class LiveLessonTable{
 	String username;
@@ -21,7 +17,7 @@ class LiveLesson{
 }
 ```
 
-### 2. update live lessonTable 
+### 2. update live lesson table 
 method: updateLiveLessonTable(LiveLessonTable liveLessonTable)
 return: int
 | return type | meaning |
@@ -30,7 +26,7 @@ return: int
 | 4043 | liveLesson table not exist |
 | 5000 | database error |
 
-### 3. get  live lessonTable by username
+### 3. get live lesson table by username
 method: getLiveLessonTableByUsername(String username)
 return: ReturnEntity(code,LiveLessonTable )
 | return type | meaning |

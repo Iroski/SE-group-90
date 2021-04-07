@@ -2,10 +2,13 @@ package model.service;
 
 import common.CommunicationStatus;
 import model.dao.CoachDao;
-import model.dao.entity.Coach;
-import model.dao.entity.ReturnEntity;
+import model.dao.base.DataItem;
+import model.entity.Coach;
+import model.entity.ReturnEntity;
+import model.exception.database.DataItemNotExists;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +39,10 @@ public class CoachService {
     public int updateCoach(Coach coach){
         try{
             coachDao.updateCoach(coach);
-        }catch (RuntimeException e) {
+        }catch (DataItemNotExists e){
+            return CommunicationStatus.COACH_NOT_FOUND.getCode();
+        }
+        catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }
         return CommunicationStatus.OK.getCode();
@@ -81,6 +87,19 @@ public class CoachService {
             Coach coach=result.get();
             coach.setBookedTime(timetable);
             coachDao.updateCoach(coach);
+        }catch (RuntimeException e) {
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+        return CommunicationStatus.OK.getCode();
+    }
+
+    public int saveCoach(Coach newCoach){
+        Optional<Coach> coaches;
+        try{
+            coaches=coachDao.getAllCoaches().stream().filter(coach -> coach.equals(newCoach)).findAny();
+            if(coaches.isPresent())
+                return CommunicationStatus.COACH_ALREADY_EXIST.getCode();
+            coachDao.saveCoach(newCoach);
         }catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }

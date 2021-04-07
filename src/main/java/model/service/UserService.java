@@ -3,10 +3,9 @@ package model.service;
 import common.CommunicationStatus;
 import model.dao.UserDao;
 import model.dao.base.DataBase;
-import model.dao.entity.ReturnEntity;
-import model.dao.entity.User;
+import model.entity.ReturnEntity;
+import model.entity.User;
 import model.exception.database.DataItemNotExists;
-import model.utils.CheckUserInfoValidation;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -40,6 +39,7 @@ public class UserService {
             //todo 这里还需要创建一个account
             new LiveLessonService().createLiveLessonTableForSignUp(newUser.getName());
         } catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }
 
@@ -59,13 +59,13 @@ public class UserService {
             if (returnEntity.getObject() == null)
                 returnEntity.setCode(CommunicationStatus.USER_NOT_FOUND_OR_WRONG_PASSWORD.getCode());
         } catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
             returnEntity.setCode(CommunicationStatus.INTERNAL_ERROR.getCode());
         }
         return returnEntity;
     }
 
     public ReturnEntity getUser(String username) {
-
         ReturnEntity returnEntity = new ReturnEntity();
         try {
             List<User> users = userDao.getAllUser();
@@ -78,6 +78,7 @@ public class UserService {
             if (returnEntity.getObject() == null)
                 returnEntity.setCode(CommunicationStatus.USER_NOT_FOUND.getCode());
         } catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
             returnEntity.setCode(CommunicationStatus.INTERNAL_ERROR.getCode());
         }
         return returnEntity;
@@ -89,6 +90,7 @@ public class UserService {
         } catch (DataItemNotExists e) {
             return CommunicationStatus.USER_NOT_FOUND.getCode();
         } catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }
         return CommunicationStatus.OK.getCode();
@@ -103,6 +105,7 @@ public class UserService {
                     isExist.set(true);
             });
         } catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
             return false;
         }
         return isExist.get();

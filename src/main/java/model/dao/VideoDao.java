@@ -1,6 +1,7 @@
-package model.dao.base;
+package model.dao;
 
-import model.dao.entity.Video;
+import model.dao.base.DataBase;
+import model.entity.Video;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,10 @@ public class VideoDao {
     }
 
     public void updateVideo(Video video){
-        db.update(tableName,video.getId(),video);
+        db.update(tableName,video);
+    }
+    public void saveVideo(Video video){
+        db.insert(tableName,video);
     }
 
 

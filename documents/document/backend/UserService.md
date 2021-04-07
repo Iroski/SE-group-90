@@ -18,7 +18,7 @@ return: ReturnEntity(code, User)
 |4042 | user not exist or wrong password|
 | 5000 | database error |
 
-### 3.getUserInfo
+### 3.get user
 method: getUser(String username)
 return: ReturnEntity(code, User)
 | return type | meaning |
@@ -27,7 +27,7 @@ return: ReturnEntity(code, User)
 |4041 | user not exist |
 | 5000 | database error |
 
-### 4.updateUserInfo
+### 4.update user info
 method: updateUser(User user)
 return: ReturnEntity(code, User)
 | return type | meaning |
@@ -35,3 +35,7 @@ return: ReturnEntity(code, User)
 | 200| insert successful|
 |4041 | user not exist|
 | 5000 | database error |
+
+### 5. check if user is exist
+method: isUserExist(String username)
+return: boolean

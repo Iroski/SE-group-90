@@ -1,10 +1,7 @@
-package model.dao.entity;
+package model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-import model.dao.base.DataItem;
 
 /**
  * @author :YanBo Zhang
@@ -19,8 +16,8 @@ import model.dao.base.DataItem;
 public class LiveLesson {
     private String username;
     private String coachName;
-    private long lessonTime;
-    private int status;
-    private long createTime;
+    private Long lessonTime;
+    private Integer status;
+    private Long createTime;
 
 }

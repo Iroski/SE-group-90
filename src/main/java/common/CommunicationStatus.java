@@ -16,7 +16,10 @@ public enum CommunicationStatus {
     BAD_REQUEST(400,"input value is invalid"),
     USERNAME_ALREADY_EXISTS(4001,"username already exists"),
     TAG_ALREADY_EXIST_IN_VIDEO(40021,"this tag is already exist in video."),
-    VIDEO_ALREADY_EXIST_IN_TAG(40022,"this video is already exist in video"),
+    TAG_ALREADY_EXIST(40022,"this tag is exist"),
+    VIDEO_ALREADY_EXIST_IN_TAG(40023,"this video is already exist in video"),
+    VIDEO_ALREADY_EXIST(40024,"this video is already exist"),
+    COACH_ALREADY_EXIST(4003,"this coach is already exist"),
 
     USER_NOT_FOUND(4041,"user is not exist!"),
     USER_NOT_FOUND_OR_WRONG_PASSWORD(4042,"user is not exist or password is wrong"),

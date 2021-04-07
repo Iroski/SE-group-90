@@ -1,9 +1,10 @@
 package model.service;
 
 import common.CommunicationStatus;
-import model.dao.base.VideoDao;
-import model.dao.entity.ReturnEntity;
-import model.dao.entity.Video;
+import model.dao.VideoDao;
+import model.entity.ReturnEntity;
+import model.entity.Tag;
+import model.entity.Video;
 import model.enumPackage.TagOperateType;
 import model.exception.database.DataItemNotExists;
 
@@ -43,7 +44,7 @@ public class VideoService {
         List<Video> result;
         try {
             result = videoDao.getAllVideos();
-            if (result.size() < videoNum)
+            if (result.size() < videoNum||videoNum<1)
                 return new ReturnEntity(CommunicationStatus.BAD_REQUEST.getCode(), null);
             Collections.shuffle(result);
         } catch (RuntimeException e) {
@@ -77,4 +78,18 @@ public class VideoService {
         }
         return CommunicationStatus.OK.getCode();
     }
+
+    public int saveVideo(Video newVideo){
+        Optional<Video> videoList;
+        try{
+            videoList=videoDao.getAllVideos().stream().filter(video -> video.equals(newVideo)).findAny();
+            if(videoList.isPresent())
+                return CommunicationStatus.VIDEO_ALREADY_EXIST.getCode();
+            videoDao.saveVideo(newVideo);
+        }catch (RuntimeException e){
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+        return CommunicationStatus.OK.getCode();
+    }
+
 }

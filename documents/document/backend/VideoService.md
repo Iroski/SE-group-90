@@ -19,7 +19,7 @@ method: getRandomVideosWithNum(int videoNum)
 |400| null| invalid input|
 | 5000 | null |database error |
 
-### 3. update  Video Tag
+### 3. update Video Tag
 __Not recommend to use this method as it will not trigger the update in Tag class. Instead, user the updateVideoTag method in TagService.__ By zyb
 method: updateVideoTag(String tagName, Video changedVideo, String operateType)
 return: int
@@ -32,3 +32,12 @@ return: int
 |remove|40461| tag is not found in video|
 ||40462|operateType is wrong|
 || 5000 | database error |
+
+### 4. save new video
+meghod: saveVideo(Video video)
+return: int
+| return type | meaning |
+|:--:|:--:|
+| 200 | insert successful |
+|40022|tag already exist|
+| 5000 | database error |

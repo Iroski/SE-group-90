@@ -1,7 +1,7 @@
 package model.dao;
 
 import model.dao.base.DataBase;
-import model.dao.entity.Coach;
+import model.entity.Coach;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,11 +28,12 @@ public class CoachDao {
     }
 
     public void updateCoach(Coach coach){
-        db.update(tableName,coach.getId(),coach);
+        db.update(tableName,coach);
     }
 
     public void saveCoach(Coach coach){
         db.insert(tableName,coach);
     }
+
 
 }

@@ -1,14 +1,10 @@
 package model.dao;
 
-import common.CommunicationStatus;
 import model.dao.base.DataBase;
-import model.dao.entity.ReturnEntity;
-import model.dao.entity.User;
-import model.exception.database.DataItemNotExists;
+import model.entity.User;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @author :YanBo Zhang
@@ -34,7 +30,7 @@ import java.util.concurrent.atomic.AtomicReference;
     }
 
     public void updateUser(User user){
-        db.update("User",user.getId(),user);
+        db.update("User",user);
     }
 
 }
