@@ -18,16 +18,16 @@ public class DateUtils {
         return new Date(timeStamp);
     }
 
-    public static String TimeStampToString(long timeStamp){
+    public static String timeStampToString(long timeStamp){
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date(timeStamp));
     }
 
-    public static long DateToTimeStamp(Date date){
+    public static long dateToTimeStamp(Date date){
         return date.getTime();
     }
 
-    public static long StringToTimeStamp(String time) throws NullPointerException {
+    public static long stringToTimeStamp(String time) throws NullPointerException {
          return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time, new ParsePosition(0)).getTime() ;
     }
 }

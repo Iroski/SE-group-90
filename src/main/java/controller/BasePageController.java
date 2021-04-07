@@ -13,6 +13,7 @@ import java.io.IOException;
 import static javafx.scene.paint.Color.*;
 
 public class BasePageController {
+    public Button userName;
     @FXML
     Button b_home;
 
@@ -73,14 +74,14 @@ public class BasePageController {
         stage.setTitle("My Lessons");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/LessonPage.fxml"));
-        AnchorPane coaches = (AnchorPane) loader.load();
+        AnchorPane lessons = (AnchorPane) loader.load();
         // Set person overview into the center of root layout.
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().remove(2);
-        anchorPane.getChildren().add(2, coaches);
+        anchorPane.getChildren().add(2, lessons);
 
-        coaches.setLayoutX(200);
-        coaches.setLayoutY(75);
+        lessons.setLayoutX(200);
+        lessons.setLayoutY(75);
     }
     public void goToHome(MouseEvent mouseEvent) throws IOException {
         //choosedCoach = (Coach) photo.getUserData();

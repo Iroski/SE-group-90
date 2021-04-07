@@ -33,7 +33,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Button blendMode="SRC_ATOP" layoutX="314.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Username">
+                  <Button fx:id="userName" blendMode="SRC_ATOP" layoutX="314.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Username">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
