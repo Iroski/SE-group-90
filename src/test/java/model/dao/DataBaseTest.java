@@ -1,17 +1,17 @@
 package model.dao;
 
-import static org.junit.Assert.*;
-
+import model.dao.base.DataBase;
+import model.entity.User;
 import model.exception.database.RedundancyDataItem;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import model.dao.base.DataBase;
-import model.dao.entity.User;
 
 import java.util.HashMap;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author ：Yubo Wang
@@ -48,6 +48,12 @@ public class DataBaseTest {
         }
     }
 
+//    @Test
+//    public void test10Insert(){
+//        User user = new User(1113,"927986413@qq.com",String.valueOf(1111 % 20),"1","1","1",1.0,1,1);
+//        db
+//    }
+
     @Test
     public void test03Delete() {
         db.delete(tableName, 5);
@@ -80,4 +86,6 @@ public class DataBaseTest {
         List<?> results = db.query(tableName, args);
         assertEquals(results.size(), 0);
     }
+
+
 }

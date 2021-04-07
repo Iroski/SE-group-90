@@ -8,10 +8,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.Main;
-import model.dao.entity.Coach;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class LoginController {
     public Button LoginButton;

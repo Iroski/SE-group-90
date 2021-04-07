@@ -1,4 +1,4 @@
-package model.dao.entity;
+package model.entity;
 
 import lombok.*;
 import model.dao.base.DataItem;
@@ -19,7 +19,7 @@ public class User extends DataItem {
     private Integer height;
     private Integer age;
 
-    public User(Long id, String email, String name, String password, String phone, String gender, double weight, int height, int age) {
+    public User(Long id, String email, String name, String password, String phone, String gender, Double weight, Integer height, Integer age) {
         super(id);
         this.email = email;
         this.name = name;
@@ -31,7 +31,7 @@ public class User extends DataItem {
         this.age = age;
     }
 
-    public User(String email, String name, String password, String phone, String gender, double weight, int height, int age) {
+    public User(String email, String name, String password, String phone, String gender, Double weight, Integer height, Integer age) {
         this.email = email;
         this.name = name;
         this.password = password;

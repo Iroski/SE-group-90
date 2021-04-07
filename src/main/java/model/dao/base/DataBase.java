@@ -28,7 +28,7 @@ public class DataBase {
     private void initTables() {
         // Use reflections to find the subclasses of DataItem and create data table.
         File tableDir = tablesDirPath.toFile();
-        Reflections reflections = new Reflections("model.dao.entity");
+        Reflections reflections = new Reflections("model.entity");
         Set<Class<? extends DataItem>> subClasses = reflections.getSubTypesOf(DataItem.class);
         for (Class<? extends DataItem> subClass : subClasses) {
             String tableName = subClass.getSimpleName();

@@ -2,18 +2,14 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import main.Main;
-import model.dao.entity.Coach;
+import model.entity.Coach;
 
 import java.io.IOException;
 
@@ -97,7 +93,7 @@ public class CoachController {
         coachInfoController.name.setText(choosedCoach.getName());
         coachInfoController.height.setText(String.valueOf(choosedCoach.getHeight()));
         coachInfoController.weight.setText(String.valueOf(choosedCoach.getHeight()));
-        coachInfoController.sex.setText(choosedCoach.getSex());
+        coachInfoController.sex.setText(choosedCoach.getGender());
         coachInfoController.course.setText(choosedCoach.getCourse());
         Image image=new Image(choosedCoach.getPhotoPath());
         coachInfoController.photo.setImage(image);

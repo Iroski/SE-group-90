@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.dao.entity.Coach;
 
 import java.io.IOException;
 

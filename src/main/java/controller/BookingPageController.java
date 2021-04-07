@@ -10,11 +10,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import model.dao.entity.Coach;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 
 public class BookingPageController {
