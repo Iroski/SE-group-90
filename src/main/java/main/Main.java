@@ -4,7 +4,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.dao.CoachDao;
 import model.dao.base.DataBase;
+import model.service.CoachService;
 
 import java.io.IOException;
 
@@ -16,11 +18,12 @@ public class Main extends Application {
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+        db=DataBase.getInstance();
+        db.init("src/main/resources/database");
     }
 
     public static void main(String[] args) {
-        db=DataBase.getInstance();
-        db.init("src/main/resources/database");
 
         launch(args);
     }
