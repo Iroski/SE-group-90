@@ -36,6 +36,8 @@ public class LoginController {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/BaseMainPage.fxml"));
         AnchorPane rootLayout=(AnchorPane) loader.load();
+        //BasePageController basePageController=loader.getController();
+        //basePageController.userName.setUserData();
         Scene scene=new Scene(rootLayout);
         stage.setScene(scene);
         stage.setTitle("MainPage");
