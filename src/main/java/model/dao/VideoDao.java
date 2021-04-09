@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.dao.base.DataBase;
+import model.dao.base.DataHouse;
 import model.entity.Video;
 
 import java.util.HashMap;
@@ -14,11 +14,11 @@ import java.util.List;
  * @modifiedBy By:
  */
 public class VideoDao {
-    private DataBase db;
+    private DataHouse db;
     private String tableName;
 
     public VideoDao() {
-        db = DataBase.getInstance();
+        db = DataHouse.getInstance();
         tableName = "Video";
 
     }

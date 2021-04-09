@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.dao.base.DataBase;
+import model.dao.base.DataHouse;
 import model.entity.User;
 
 import java.util.HashMap;
@@ -14,11 +14,11 @@ import java.util.List;
  * @version :
  */public class UserDao {
     String tableName;
-    DataBase db;
+    DataHouse db;
 
     public UserDao(){
         tableName="User";
-        db=DataBase.getInstance();
+        db= DataHouse.getInstance();
     }
 
     public List<User> getAllUser(){

@@ -2,7 +2,7 @@ package model.service;
 
 import common.CommunicationStatus;
 import model.dao.UserDao;
-import model.dao.base.DataBase;
+import model.dao.base.DataHouse;
 import model.entity.ReturnEntity;
 import model.entity.User;
 import model.exception.database.DataItemNotExists;
@@ -19,12 +19,12 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class UserService {
     String tableName;
-    DataBase db;
+    DataHouse db;
     UserDao userDao;
 
     public UserService() {
         tableName = "User";
-        db = DataBase.getInstance();
+        db = DataHouse.getInstance();
         userDao = new UserDao();
     }
 
