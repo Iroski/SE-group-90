@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.dao.base.DataBase;
+import model.dao.base.DataHouse;
 import model.entity.LiveLessonTable;
 
 import java.util.HashMap;
@@ -14,12 +14,12 @@ import java.util.List;
  * @version :
  */public class LiveLessonDao {
     String tableName;
-    DataBase db;
+    DataHouse db;
 
 
     public LiveLessonDao(){
         tableName="LiveLessonTable";
-        db=DataBase.getInstance();
+        db= DataHouse.getInstance();
     }
 
     public void saveLiveLessonTable(LiveLessonTable liveLessonTable){
