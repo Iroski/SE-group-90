@@ -1,18 +1,7 @@
 package model.service;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import model.dao.base.DataBase;
-import model.entity.Coach;
-import model.entity.Tag;
-import model.entity.Video;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * @author :YanBo Zhang
@@ -24,11 +13,11 @@ import java.util.Collections;
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
 public class TagTest {
 //
-//    static DataBase db;
+//    static DataHouse db;
 //    static String tableName;
 //    @BeforeClass
 //    public static void datatableInit() {
-//        db = DataBase.getInstance();
+//        db = DataHouse.getInstance();
 //        db.init("src/test/resources/database");
 //    }
 //    @Test

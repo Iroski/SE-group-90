@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.dao.base.DataBase;
+import model.dao.base.DataHouse;
 import model.entity.Coach;
 
 import java.util.HashMap;
@@ -15,12 +15,12 @@ import java.util.List;
  */
 public class CoachDao {
     String tableName;
-    DataBase db;
+    DataHouse db;
 
 
     public CoachDao(){
         tableName="Coach";
-        db=DataBase.getInstance();
+        db= DataHouse.getInstance();
     }
 
     public List<Coach> getAllCoaches(){

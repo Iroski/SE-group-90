@@ -13,7 +13,7 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #dcdcdc;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BasePageController">
    <children>
-      <AnchorPane id="top_direct" layoutX="194.0" layoutY="87.0" onMouseClicked="#goToCoach" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="top_direct" layoutX="194.0" layoutY="87.0" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="14.0" layoutY="15.0" text="MyApp" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
                <font>
@@ -33,7 +33,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Button blendMode="SRC_ATOP" layoutX="314.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Username">
+                  <Button fx:id="userName" blendMode="SRC_ATOP" layoutX="314.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToProfile" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Username">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -44,7 +44,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Button>
-                  <Button blendMode="SRC_ATOP" layoutX="444.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Favorite">
+                  <Button fx:id="favorite" blendMode="SRC_ATOP" layoutX="444.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Favorite">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -55,7 +55,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Button>
-                  <Button blendMode="SRC_ATOP" layoutX="553.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Account">
+                  <Button fx:id="b_account" blendMode="SRC_ATOP" layoutX="553.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToAccount" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Account">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -66,7 +66,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Button>
-                  <Button blendMode="SRC_ATOP" layoutX="664.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="History">
+                  <Button fx:id="history" blendMode="SRC_ATOP" layoutX="664.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="History">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

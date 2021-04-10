@@ -1,10 +1,6 @@
 package model.service;
 
-import model.dao.base.DataBase;
-import model.entity.User;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 /**
@@ -16,11 +12,11 @@ import org.junit.runners.MethodSorters;
  */
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
 public class UserServiceTest {
-//    static DataBase db;
+//    static DataHouse db;
 //    static String tableName;
 //    @BeforeClass
 //    public static void datatableInit() {
-//        db = DataBase.getInstance();
+//        db = DataHouse.getInstance();
 //        db.init("src/test/resources/database");
 //    }
 //

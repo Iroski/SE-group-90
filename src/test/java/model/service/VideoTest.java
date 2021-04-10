@@ -1,6 +1,6 @@
 package model.service;
 
-import model.dao.base.DataBase;
+import model.dao.base.DataHouse;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -12,11 +12,11 @@ import org.junit.Test;
  * @version :
  */
 public class VideoTest {
-    static DataBase db;
+    static DataHouse db;
     static String tableName;
     @BeforeClass
     public static void datatableInit() {
-        db = DataBase.getInstance();
+        db = DataHouse.getInstance();
         db.init("src/test/resources/database");
     }
     @Test
