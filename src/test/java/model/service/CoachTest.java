@@ -1,14 +1,7 @@
 package model.service;
 
-import model.dao.base.DataBase;
-import model.entity.Coach;
-import model.entity.LiveLessonTable;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
-import java.util.ArrayList;
 
 /**
  * @author :YanBo Zhang
@@ -19,11 +12,11 @@ import java.util.ArrayList;
  */
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
 public class CoachTest {
-//    static DataBase db;
+//    static DataHouse db;
 //    static String tableName;
 //    @BeforeClass
 //    public static void datatableInit() {
-//        db = DataBase.getInstance();
+//        db = DataHouse.getInstance();
 //        db.init("src/test/resources/database");
 //    }
 //    @Test

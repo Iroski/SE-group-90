@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.dao.base.DataBase;
+import model.dao.base.DataHouse;
 import model.entity.Tag;
 
 import java.util.HashMap;
@@ -14,11 +14,11 @@ import java.util.List;
  * @modifiedBy By:
  */
 public class TagDao {
-    private DataBase db;
+    private DataHouse db;
     private String tableName;
 
     public TagDao() {
-        db = DataBase.getInstance();
+        db = DataHouse.getInstance();
         tableName = "Tag";
     }
 

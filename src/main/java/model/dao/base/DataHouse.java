@@ -6,7 +6,6 @@ import org.reflections.Reflections;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -14,14 +13,14 @@ import java.util.Set;
 /**
  * @author ：Yubo Wang
  */
-public class DataBase {
+public class DataHouse {
     private Path tablesDirPath;
     private HashMap<String, DataTable> tables;
 
     private static boolean isInit = false;
-    private static DataBase instance = new DataBase();
+    private static DataHouse instance = new DataHouse();
 
-    private DataBase() {
+    private DataHouse() {
         tables = new HashMap<>();
     }
 
@@ -55,7 +54,7 @@ public class DataBase {
         isInit = true;
     }
 
-    public static DataBase getInstance() {
+    public static DataHouse getInstance() {
         return instance;
     }
 
