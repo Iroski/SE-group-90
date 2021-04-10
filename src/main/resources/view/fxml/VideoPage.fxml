@@ -26,7 +26,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-border-style: soild; -fx-background-color: white; -fx-border-color: white;" GridPane.columnIndex="2">
                     <children>
                         <Rectangle fx:id="video3" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name3" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name3" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -37,7 +37,7 @@
                     <children>
                         <AnchorPane layoutY="7.0" prefHeight="150.0" prefWidth="150.0" />
                         <Rectangle fx:id="video2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff03" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name2" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name2" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -47,7 +47,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="3">
                     <children>
                         <Rectangle fx:id="video4" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name4" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name4" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -57,7 +57,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.rowIndex="1">
                     <children>
                         <Rectangle fx:id="video5" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name5" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name5" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -67,7 +67,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
                         <Rectangle fx:id="video6" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name6" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name6" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -77,7 +77,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                     <children>
                         <Rectangle fx:id="video7" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name7" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name7" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -87,7 +87,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                     <children>
                         <Rectangle fx:id="video8" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name8" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name8" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -97,7 +97,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
                     <children>
                         <Rectangle fx:id="video9" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name9" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name9" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -107,7 +107,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
                         <Rectangle fx:id="video10" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name10" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name10" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -117,7 +117,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                     <children>
                         <Rectangle fx:id="video11" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name11" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name11" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -127,7 +127,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="2">
                     <children>
                         <Rectangle fx:id="video12" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name12" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name12" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
@@ -137,7 +137,7 @@
                 <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;">
                     <children>
                         <Rectangle fx:id="video1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name1" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video">
+                        <Label fx:id="name1" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                             <font>
                                 <Font size="17.0" />
                             </font>
