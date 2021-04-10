@@ -46,7 +46,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.5</version>
                 <configuration>
-                    <mainClass>main.Main</mainClass>
+                    <mainClass>main.Launcher</mainClass>
                 </configuration>
             </plugin>
             <plugin>

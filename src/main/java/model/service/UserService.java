@@ -36,7 +36,7 @@ public class UserService {
                 return CommunicationStatus.USERNAME_ALREADY_EXISTS.getCode();
             userDao.saveUser(newUser);
 
-            //todo 这里还需要创建一个account
+            //todo need account
             new LiveLessonService().createLiveLessonTableForSignUp(newUser.getName());
         } catch (RuntimeException e) {
             System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());

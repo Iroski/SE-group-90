@@ -34,7 +34,6 @@ public class TagService {
             if(returnTag.isEmpty())
                 return new ReturnEntity(CommunicationStatus.TAG_NOT_FOUND.getCode(),null);
         }catch (DataItemNotExists e){
-            //todo 这个错误现在还会抛出吗
             return new ReturnEntity(CommunicationStatus.TAG_NOT_FOUND.getCode(),null);
         }catch (RuntimeException e){
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
