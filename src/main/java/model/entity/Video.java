@@ -16,32 +16,20 @@ import java.util.List;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Video extends DataItem {
-    private String videoName;
-    private String author;
-    private Long length;
+    private Long staticVideoId;
     private Long views;
     private List<String> tagsName;
-    private String videoPath;
-    private String coverPath;
 
-    public Video(String videoName, String author, Long length, Long views, List<String> tagsName, String videoPath, String coverPath) {
-        this.videoName = videoName;
-        this.author = author;
-        this.length = length;
+    public Video(Long staticVideoId, Long views, List<String> tagsName) {
+        this.staticVideoId = staticVideoId;
         this.views = views;
         this.tagsName = tagsName;
-        this.videoPath = videoPath;
-        this.coverPath = coverPath;
     }
 
-    public Video(@NonNull Long id, String videoName, String author, Long length, Long views, List<String> tagsName, String videoPath, String coverPath) {
+    public Video(@NonNull Long id, Long staticVideoId, Long views, List<String> tagsName) {
         super(id);
-        this.videoName = videoName;
-        this.author = author;
-        this.length = length;
+        this.staticVideoId = staticVideoId;
         this.views = views;
         this.tagsName = tagsName;
-        this.videoPath = videoPath;
-        this.coverPath = coverPath;
     }
 }
