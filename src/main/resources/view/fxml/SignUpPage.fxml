@@ -11,126 +11,81 @@
    <children>
       <Label layoutX="33.0" layoutY="20.0" text="Welcome to Sign Up" AnchorPane.leftAnchor="33.0" />
       <Separator layoutY="57.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <GridPane layoutX="91.0" layoutY="86.0" prefHeight="403.0" prefWidth="418.0">
-        <columnConstraints>
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="*user name:">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="*e-mail:" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="*passward:" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="*phone number:" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="sex:" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="height:" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="weight:" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="cm" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </Label>
-            <Label text="kg" GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </Label>
-            <TextField GridPane.columnIndex="1">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </TextField>
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </GridPane.margin>
-            </ChoiceBox>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </TextField>
-         </children>
-      </GridPane>
-      <Button layoutX="105.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="submit" />
-      <Button layoutX="346.0" layoutY="517.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" prefWidth="120.0" text="cancel" />
+      <Button fx:id="submit" layoutX="108.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="40.0" prefWidth="120.0" text="Submit" />
+      <Button fx:id="cancel" layoutX="346.0" layoutY="517.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" prefWidth="120.0" text="Cancel" />
+      <TextField fx:id="userName" layoutX="264.0" layoutY="79.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <TextField fx:id="email" layoutX="264.0" layoutY="129.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <TextField fx:id="password" layoutX="264.0" layoutY="180.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <TextField fx:id="phoneNumber" layoutX="264.0" layoutY="231.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <ComboBox fx:id="gender" layoutX="264.0" layoutY="284.0" prefHeight="39.0" prefWidth="202.0" />
+      <TextField fx:id="height" layoutX="264.0" layoutY="338.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <TextField fx:id="weight" layoutX="264.0" layoutY="391.0">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </TextField>
+      <Label layoutX="472.0" layoutY="343.0" text="cm" />
+      <Label layoutX="474.0" layoutY="396.0" text="kg" />
+      <Label alignment="CENTER_RIGHT" layoutX="65.0" layoutY="396.0" prefHeight="27.0" prefWidth="135.0" text="Weight:">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <Label layoutX="132.0" layoutY="343.0" text="Height:">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="122.0" layoutY="290.0" prefHeight="27.0" prefWidth="78.0" text="Gender:">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="57.0" layoutY="236.0" text="*Phone Number:">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <Label layoutX="105.0" layoutY="185.0" text="*Passward:">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <Label layoutX="136.0" layoutY="134.0" text="*Email:">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="84.0" text="*User Name:">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <TextField fx:id="age" layoutX="264.0" layoutY="441.0" prefHeight="39.0" prefWidth="202.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="65.0" layoutY="447.0" prefHeight="27.0" prefWidth="135.0" text="Age:">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
    </children>
 </AnchorPane>

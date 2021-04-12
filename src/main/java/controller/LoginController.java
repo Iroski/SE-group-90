@@ -2,23 +2,42 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import main.Main;
 
 import java.io.IOException;
 
 public class LoginController {
+    @FXML
     public Button LoginButton;
+
+    @FXML
+    private ImageView imageView;
+
+    @FXML
+    public void initialize() {
+        Rectangle rectangle = new Rectangle(imageView.prefWidth(-1), imageView.prefHeight(-1));
+        //Rectangle2D rectangle2 = new Rectangle2D(0, 0, 100, 100);
+        rectangle.setArcWidth(100);
+        rectangle.setArcHeight(100);
+        imageView.setClip(rectangle);
+        //imageView.setViewport(rectangle2);
+    }
 
     @FXML
     public void showSignUpPage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/view/fxml/" + "SignUpPage.fxml"));
         AnchorPane page = loader.load();
+        //page.getChildren().add(imageView);
         Stage signUpStage = new Stage();
         signUpStage.setTitle("SignUpPage");
         Scene scene = new Scene(page);
@@ -26,6 +45,8 @@ public class LoginController {
         SignUpController controller = loader.getController();
         controller.setSignUpStage(signUpStage);
         signUpStage.showAndWait();
+
+
     }
 
     public void goToMainPage (MouseEvent mouseEvent) throws IOException {
@@ -51,4 +72,5 @@ public class LoginController {
         mainPage.setLayoutY(75);
         stage.show();
     }
+
 }
