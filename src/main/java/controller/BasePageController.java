@@ -9,7 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -20,9 +22,20 @@ import static javafx.scene.paint.Color.*;
 public class BasePageController {
     public Button userName;
     public Label vipLabel;
+    public Button history;
+    public AnchorPane historyPane;
+    public ImageView history1;
     @FXML
     Button b_home;
     Image image = new Image("view/images/1.png");
+
+    public void initialize() {
+        Image image=new Image("view/images/1.png");
+        historyPane.setVisible(false);
+    }
+    public void closeHistory(MouseEvent mouseEvent) {
+        historyPane.setVisible(false);
+    }
 
     public void buttonColorChange1(MouseEvent me){
         Button b = (Button) me.getSource();
@@ -150,5 +163,14 @@ public class BasePageController {
         stage.setScene(scene);
         stage.setTitle("Login");
         stage.show();
+    }
+
+    public void goToHistory(MouseEvent mouseEvent) throws  IOException {
+        historyPane.setVisible(true);
+        history1.setImage(new Image("view/images/1.png"));
+    }
+
+    public void closeHistory2(ZoomEvent zoomEvent) {
+        historyPane.setVisible(false);
     }
 }
