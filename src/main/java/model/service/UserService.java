@@ -57,39 +57,29 @@ public class UserService {
     public ReturnEntity login(String username, String password) {
         ReturnEntity returnEntity = new ReturnEntity();
         try {
-            List<User> users = userDao.getAllUser();
-            users.forEach(user -> {
-                if (user.getName().equals(username) && user.getPassword().equals(password)) {
-                    returnEntity.setCode(CommunicationStatus.OK.getCode());
-                    returnEntity.setObject(user);
-                }
-            });
-            if (returnEntity.getObject() == null)
-                returnEntity.setCode(CommunicationStatus.USER_NOT_FOUND_OR_WRONG_PASSWORD.getCode());
+            Optional<User> sUser=getUserByUsername(username);
+            if(sUser.isEmpty())
+                return new ReturnEntity(CommunicationStatus.USER_NOT_FOUND.getCode(),null);
+            if (password.equals(sUser.get().getPassword()))
+                return new ReturnEntity(CommunicationStatus.WRONG_PASSWORD.getCode(),null);
+            return new ReturnEntity(CommunicationStatus.OK.getCode(),sUser.get());
         } catch (RuntimeException e) {
             System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
-            returnEntity.setCode(CommunicationStatus.INTERNAL_ERROR.getCode());
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
         }
-        return returnEntity;
     }
 
     public ReturnEntity getUser(String username) {
         ReturnEntity returnEntity = new ReturnEntity();
         try {
-            List<User> users = userDao.getAllUser();
-            users.forEach(user -> {
-                if (user.getName().equals(username)) {
-                    returnEntity.setCode(CommunicationStatus.OK.getCode());
-                    returnEntity.setObject(user);
-                }
-            });
-            if (returnEntity.getObject() == null)
-                returnEntity.setCode(CommunicationStatus.USER_NOT_FOUND.getCode());
+            Optional<User> sUser=getUserByUsername(username);
+            if (sUser.isEmpty())
+                return new ReturnEntity(CommunicationStatus.USER_NOT_FOUND.getCode(),null);
+            return new ReturnEntity(CommunicationStatus.OK.getCode(),sUser.get());
         } catch (RuntimeException e) {
             System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
-            returnEntity.setCode(CommunicationStatus.INTERNAL_ERROR.getCode());
+            return new ReturnEntity((CommunicationStatus.INTERNAL_ERROR.getCode()),null);
         }
-        return returnEntity;
     }
 
     public int updateUser(User user) {
@@ -107,11 +97,9 @@ public class UserService {
     public boolean isUserExist(String username) {
         AtomicReference<Boolean> isExist = new AtomicReference<>(false);
         try {
-            List<User> users = userDao.getAllUser();
-            users.forEach(user -> {
-                if (user.getName().equals(username))
-                    isExist.set(true);
-            });
+            Optional<User> sUser=getUserByUsername(username);
+            if (sUser.isPresent())
+                return true;
         } catch (RuntimeException e) {
             System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
             return false;
@@ -123,8 +111,7 @@ public class UserService {
         ReturnEntity returnEntity = new ReturnEntity();
         try {
             //check user validation
-            List<User> users = userDao.getAllUser();
-            Optional<User> sUser=users.stream().filter(user->user.getName().equals(username)).findAny();
+            Optional<User> sUser=getUserByUsername(username);
             if (sUser.isEmpty())
                 return new ReturnEntity(CommunicationStatus.USER_NOT_FOUND.getCode(),null);
 
@@ -132,12 +119,11 @@ public class UserService {
             VideoDao videoDao=new VideoDao();
             List<Video> videos=videoDao.getAllVideos();
             List<Video> sVideo=videos.stream().filter(video -> sVideosId.contains(video.getId())).collect(Collectors.toList());
-            returnEntity.setEntity(CommunicationStatus.OK.getCode(),sVideo);
+            return new ReturnEntity(CommunicationStatus.OK.getCode(),sVideo);
         } catch (RuntimeException e) {
             System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
         }
-        return returnEntity;
     }
 
     public int setHistoryByName(String username,Long id){

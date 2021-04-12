@@ -15,7 +15,8 @@ return: ReturnEntity(code, User)
 | return type | meaning |
 |:--:|:--:|
 | 200| insert successful|
-|4042 | user not exist or wrong password|
+|4004 | wrong password|
+|4041 | user not exist |
 | 5000 | database error |
 
 ### 3.get user

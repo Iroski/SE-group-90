@@ -20,9 +20,9 @@ public enum CommunicationStatus {
     VIDEO_ALREADY_EXIST_IN_TAG(40023,"this video is already exist in video"),
     VIDEO_ALREADY_EXIST(40024,"this video is already exist"),
     COACH_ALREADY_EXIST(4003,"this coach is already exist"),
+    WRONG_PASSWORD(4004,"password is wrong"),
 
     USER_NOT_FOUND(4041,"user is not exist!"),
-    USER_NOT_FOUND_OR_WRONG_PASSWORD(4042,"user is not exist or password is wrong"),
     LIVE_LESSON_TABLE_NOT_FOUND(4043,"live lesson table is not found"),
     COACH_NOT_FOUND(4044,"the coach is not found"),
     VIDEO_NOT_FOUND(4045,"there is no video!"),
