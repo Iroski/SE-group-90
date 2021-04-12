@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -134,4 +135,18 @@ public class BasePageController {
         profile.setLayoutY(75);
     }
 
+    public void goToLogin(MouseEvent mouseEvent) throws IOException{
+        Stage stage = (Stage) b_home.getScene().getWindow();
+        stage.close();
+        stage=new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/LoginPage.fxml"));
+        AnchorPane rootLayout=(AnchorPane) loader.load();
+        //BasePageController basePageController=loader.getController();
+        //basePageController.userName.setUserData();
+        Scene scene=new Scene(rootLayout);
+        stage.setScene(scene);
+        stage.setTitle("Login");
+        stage.show();
+    }
 }

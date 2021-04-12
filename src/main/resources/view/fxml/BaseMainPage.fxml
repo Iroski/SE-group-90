@@ -81,7 +81,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="922.0" layoutY="6.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button fx:id="b_log_out" blendMode="SRC_ATOP" layoutX="835.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Logout" AnchorPane.rightAnchor="278.0">
+                  <Button fx:id="b_log_out" blendMode="SRC_ATOP" layoutX="835.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToLogin" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Logout" AnchorPane.rightAnchor="278.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

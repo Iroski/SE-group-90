@@ -15,6 +15,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/LoginPage.fxml"));
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
         db= DataHouse.getInstance();
