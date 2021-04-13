@@ -5,6 +5,7 @@ import model.dao.LiveLessonDao;
 import model.entity.LiveLesson;
 import model.entity.LiveLessonTable;
 import model.entity.ReturnEntity;
+import model.enumPackage.LiveLessonStatus;
 import model.enumPackage.LiveSessionTimeType;
 import model.exception.database.DataItemNotExists;
 
@@ -81,6 +82,51 @@ public class LiveLessonService {
         else
             return new ReturnEntity(CommunicationStatus.BAD_REQUEST.getCode(),null);
         return new ReturnEntity(CommunicationStatus.OK.getCode(), result);
+    }
+
+    public int finishLesson(String username,LiveLesson liveLesson){
+        return this.updateLessonStateByType(username,liveLesson,"FINISHED");
+    }
+
+    protected int insertLesson(String username,LiveLesson liveLesson){
+        try{
+            Optional<LiveLessonTable> sTableOption=this.getTableByName(username);
+            if(sTableOption.isEmpty())
+                return CommunicationStatus.LIVE_LESSON_TABLE_NOT_FOUND.getCode();
+            LiveLessonTable liveLessonTable=sTableOption.get();
+            List<LiveLesson> list=liveLessonTable.getLessonList();
+            list.add(liveLesson);
+            liveLessonTable.setLessonList(list);
+            return this.updateLiveLessonTable(liveLessonTable);
+        }catch (RuntimeException e){
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+    }
+
+    protected int updateLessonStateByType(String username,LiveLesson liveLesson,String type){
+        try{
+            Optional<LiveLessonTable> sTableOption=this.getTableByName(username);
+            if(sTableOption.isEmpty())
+                return CommunicationStatus.LIVE_LESSON_TABLE_NOT_FOUND.getCode();
+            LiveLessonTable liveLessonTable=sTableOption.get();
+            if("PAYED".equals(type))
+                liveLesson.setStatus(LiveLessonStatus.IS_PAYED.getCode());
+            else if("CANCELED".equals(type))
+                liveLesson.setStatus(LiveLessonStatus.IS_CANCELED.getCode());
+            else if("FINISHED".equals(type))
+                liveLesson.setStatus(LiveLessonStatus.IS_FINISH.getCode());
+            List<LiveLesson> list=liveLessonTable.getLessonList();
+            list=list.stream().filter(liveLesson1 -> !liveLesson1.getCreateTime().equals(liveLesson.getCreateTime())).collect(Collectors.toList());
+            list.add(liveLesson);
+            liveLessonTable.setLessonList(list);
+            return this.updateLiveLessonTable(liveLessonTable);
+        }catch (RuntimeException e){
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+    }
+
+    protected Optional<LiveLessonTable> getTableByName(String username){
+        return liveLessonDao.getAllLiveLessonTable().stream().filter(table->table.getUsername().equals(username)).findAny();
     }
 
 }
