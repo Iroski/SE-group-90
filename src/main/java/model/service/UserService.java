@@ -44,7 +44,7 @@ public class UserService {
                 return CommunicationStatus.USERNAME_ALREADY_EXISTS.getCode();
             userDao.saveUser(newUser);
 
-            //todo need account
+            new AccountService().createAccountForSignUp(newUser.getName());
             new LiveLessonService().createLiveLessonTableForSignUp(newUser.getName());
         } catch (RuntimeException e) {
             System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
@@ -133,11 +133,13 @@ public class UserService {
                 return CommunicationStatus.USER_NOT_FOUND.getCode();
             User user=sUser.get();
             List<Long> videosId=user.getHistory();
-            if(videosId.size()==HISTORY_NUM)
-                videosId.remove(0);
-            videosId.add(HISTORY_NUM,id);
-            user.setHistory(videosId);
-            userDao.updateUser(user);
+            if(!videosId.contains(id)){
+                if(videosId.size()==HISTORY_NUM)
+                    videosId.remove(0);
+                videosId.add(id);
+                user.setHistory(videosId);
+                userDao.updateUser(user);
+            }
         }catch (RuntimeException e) {
             System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
             return CommunicationStatus.INTERNAL_ERROR.getCode();
@@ -145,7 +147,7 @@ public class UserService {
         return CommunicationStatus.OK.getCode();
     }
 
-    private Optional<User> getUserByUsername(String username){
+    protected Optional<User> getUserByUsername(String username){
         List<User> users = userDao.getAllUser();
         return users.stream().filter(user->user.getName().equals(username)).findAny();
     }

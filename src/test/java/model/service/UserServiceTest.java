@@ -1,7 +1,13 @@
 package model.service;
 
+import model.dao.base.DataHouse;
+import model.entity.User;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import java.util.ArrayList;
 
 /**
  * @author :YanBo Zhang
@@ -23,7 +29,7 @@ public class UserServiceTest {
 //    @Test
 //    public void test01Signup(){
 //        System.out.println("------------1");
-//        User user = new User("927986413@qq.com","userTest3","111111","1","1",1.0,1,1);
+//        User user = new User("927986413@qq.com","userTest2","111111","1","1",1.0,1,1,new ArrayList<Long>());
 //        System.out.println(new UserService().saveUser(user));
 //    }
 //
@@ -52,5 +58,24 @@ public class UserServiceTest {
 //        System.out.println("------------5");
 //        System.out.println(new UserService().isUserExist("userTest3"));
 //        System.out.println(new UserService().isUserExist("userTest4"));
+//    }
+//    @Test
+//    public void test06setAndGetHistory(){
+//        System.out.println("------------6");
+//        System.out.println(new UserService().setHistoryByName("userTest1",(long)1));
+//        System.out.println(new UserService().getHistoryByName("userTest1"));
+//        System.out.println(new UserService().setHistoryByName("userTest1",(long)1));
+//        System.out.println(new UserService().getHistoryByName("userTest1"));
+//        System.out.println(new UserService().setHistoryByName("userTest1",(long)2));
+//        System.out.println(new UserService().setHistoryByName("userTest1",(long)3));
+//        System.out.println(new UserService().setHistoryByName("userTest1",(long)4));
+//        System.out.println(new UserService().setHistoryByName("userTest1",(long)5));
+//        System.out.println(new UserService().setHistoryByName("userTest1",(long)6));
+//        System.out.println(new UserService().getHistoryByName("userTest1"));
+//        System.out.println(new UserService().setHistoryByName("userTest1",(long)7));
+//        System.out.println(new UserService().getHistoryByName("userTest1"));
+//        System.out.println(new UserService().setHistoryByName("userTest0",(long)1));
+//        System.out.println(new UserService().getHistoryByName("userTest0"));
+//
 //    }
 }

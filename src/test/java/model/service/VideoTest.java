@@ -12,26 +12,26 @@ import org.junit.Test;
  * @version :
  */
 public class VideoTest {
-    static DataHouse db;
-    static String tableName;
-    @BeforeClass
-    public static void datatableInit() {
-        db = DataHouse.getInstance();
-        db.init("src/test/resources/database");
-    }
-    @Test
-    public void test01getAllVideos(){
-        System.out.println("------------1");
-        System.out.println(new VideoService().getAllVideos());
-    }
-
-    @Test
-    public void test02getRandomVideo(){
-        System.out.println("------------2");
-        System.out.println(new VideoService().getRandomVideosWithNum(0));
-        System.out.println(new VideoService().getRandomVideosWithNum(1));
-        System.out.println(new VideoService().getRandomVideosWithNum(2));
-        System.out.println(new VideoService().getRandomVideosWithNum(3));
-    }
+//    static DataHouse db;
+//    static String tableName;
+//    @BeforeClass
+//    public static void datatableInit() {
+//        db = DataHouse.getInstance();
+//        db.init("src/test/resources/database");
+//    }
+//    @Test
+//    public void test01getAllVideos(){
+//        System.out.println("------------1");
+//        System.out.println(new VideoService().getAllVideos());
+//    }
+//
+//    @Test
+//    public void test02getRandomVideo(){
+//        System.out.println("------------2");
+//        System.out.println(new VideoService().getRandomVideosWithNum(0));
+//        System.out.println(new VideoService().getRandomVideosWithNum(1));
+//        System.out.println(new VideoService().getRandomVideosWithNum(2));
+//        System.out.println(new VideoService().getRandomVideosWithNum(3));
+//    }
 
 }
