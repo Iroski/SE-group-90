@@ -46,43 +46,43 @@
       </TextField>
       <Label layoutX="472.0" layoutY="343.0" text="cm" />
       <Label layoutX="474.0" layoutY="396.0" text="kg" />
-      <Label alignment="CENTER_RIGHT" layoutX="65.0" layoutY="396.0" prefHeight="27.0" prefWidth="135.0" text="Weight:">
+      <Label alignment="CENTER_RIGHT" layoutX="65.0" layoutY="396.0" prefHeight="27.0" prefWidth="135.0" text="Weight:" AnchorPane.rightAnchor="410.0">
          <padding>
             <Insets right="10.0" />
          </padding>
       </Label>
-      <Label layoutX="132.0" layoutY="343.0" text="Height:">
+      <Label layoutX="132.0" layoutY="343.0" text="Height:" AnchorPane.rightAnchor="410.0">
          <padding>
             <Insets right="10.0" />
          </padding>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="122.0" layoutY="290.0" prefHeight="27.0" prefWidth="78.0" text="Gender:">
+      <Label alignment="CENTER_RIGHT" layoutX="122.0" layoutY="290.0" prefHeight="27.0" prefWidth="78.0" text="Gender:" AnchorPane.rightAnchor="410.0">
          <padding>
             <Insets right="10.0" />
          </padding>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="57.0" layoutY="236.0" text="*Phone Number:">
+      <Label alignment="CENTER_RIGHT" layoutX="57.0" layoutY="236.0" text="*Phone Number:" AnchorPane.rightAnchor="410.0">
          <padding>
             <Insets right="10.0" />
          </padding>
       </Label>
-      <Label layoutX="105.0" layoutY="185.0" text="*Passward:">
+      <Label layoutX="105.0" layoutY="185.0" text="*Passward:" AnchorPane.rightAnchor="410.0">
          <padding>
             <Insets right="10.0" />
          </padding>
       </Label>
-      <Label layoutX="136.0" layoutY="134.0" text="*Email:">
+      <Label layoutX="136.0" layoutY="134.0" text="*Email:" AnchorPane.rightAnchor="410.0">
          <padding>
             <Insets right="10.0" />
          </padding>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="84.0" text="*User Name:">
+      <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="84.0" text="*User Name:" AnchorPane.rightAnchor="410.0">
          <padding>
             <Insets right="10.0" />
          </padding>
       </Label>
       <TextField fx:id="age" layoutX="264.0" layoutY="441.0" prefHeight="39.0" prefWidth="202.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="65.0" layoutY="447.0" prefHeight="27.0" prefWidth="135.0" text="Age:">
+      <Label alignment="CENTER_RIGHT" layoutX="65.0" layoutY="447.0" prefHeight="27.0" prefWidth="135.0" text="Age:" AnchorPane.rightAnchor="410.0">
          <padding>
             <Insets right="10.0" />
          </padding>
