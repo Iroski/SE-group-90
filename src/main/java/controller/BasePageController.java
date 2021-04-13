@@ -39,6 +39,10 @@ public class BasePageController {
 
     public void buttonColorChange1(MouseEvent me){
         Button b = (Button) me.getSource();
+        if(b.equals(history)){
+            historyPane.setVisible(true);
+            history1.setImage(new Image("view/images/1.png"));
+        }
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
             b.setTextFill(PINK);
         else if(me.getEventType().equals(MouseEvent.MOUSE_EXITED))
@@ -165,10 +169,6 @@ public class BasePageController {
         stage.show();
     }
 
-    public void goToHistory(MouseEvent mouseEvent) throws  IOException {
-        historyPane.setVisible(true);
-        history1.setImage(new Image("view/images/1.png"));
-    }
 
     public void closeHistory2(ZoomEvent zoomEvent) {
         historyPane.setVisible(false);

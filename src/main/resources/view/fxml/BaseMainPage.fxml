@@ -55,7 +55,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="history" blendMode="SRC_ATOP" layoutX="664.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToHistory" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="History">
+                  <Button fx:id="history" blendMode="SRC_ATOP" layoutX="664.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="History">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
