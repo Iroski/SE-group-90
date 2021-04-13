@@ -15,7 +15,8 @@ return: ReturnEntity(code, User)
 | return type | meaning |
 |:--:|:--:|
 | 200| insert successful|
-|4042 | user not exist or wrong password|
+|4004 | wrong password|
+|4041 | user not exist |
 | 5000 | database error |
 
 ### 3.get user
@@ -39,3 +40,21 @@ return: ReturnEntity(code, User)
 ### 5. check if user is exist
 method: isUserExist(String username)
 return: boolean
+
+### 6. get history from a user
+method: getHistoryByName(String username)
+return ReturnEntity(code,List<Video>)
+| return type | meaning |
+|:--:|:--:|
+| 200| successful|
+|4041 | user not exist|
+| 5000 | database error |
+
+### 7. set history to a user
+method: setHistoryByName(String username,Long id)
+return: int
+| return type | meaning |
+|:--:|:--:|
+| 200| insert successful|
+|4041 | user not exist|
+| 5000 | database error |
