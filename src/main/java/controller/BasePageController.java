@@ -4,10 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,12 +21,28 @@ import static javafx.scene.paint.Color.*;
 
 public class BasePageController {
     public Button userName;
+    public Label vipLabel;
+    public Button history;
+    public AnchorPane historyPane;
+    public ImageView history1;
     @FXML
     Button b_home;
     Image image = new Image("view/images/1.png");
 
+    public void initialize() {
+        Image image=new Image("view/images/1.png");
+        historyPane.setVisible(false);
+    }
+    public void closeHistory(MouseEvent mouseEvent) {
+        historyPane.setVisible(false);
+    }
+
     public void buttonColorChange1(MouseEvent me){
         Button b = (Button) me.getSource();
+        if(b.equals(history)){
+            historyPane.setVisible(true);
+            history1.setImage(new Image("view/images/1.png"));
+        }
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
             b.setTextFill(PINK);
         else if(me.getEventType().equals(MouseEvent.MOUSE_EXITED))
@@ -134,4 +154,23 @@ public class BasePageController {
         profile.setLayoutY(75);
     }
 
+    public void goToLogin(MouseEvent mouseEvent) throws IOException{
+        Stage stage = (Stage) b_home.getScene().getWindow();
+        stage.close();
+        stage=new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/LoginPage.fxml"));
+        AnchorPane rootLayout=(AnchorPane) loader.load();
+        //BasePageController basePageController=loader.getController();
+        //basePageController.userName.setUserData();
+        Scene scene=new Scene(rootLayout);
+        stage.setScene(scene);
+        stage.setTitle("Login");
+        stage.show();
+    }
+
+
+    public void closeHistory2(ZoomEvent zoomEvent) {
+        historyPane.setVisible(false);
+    }
 }
