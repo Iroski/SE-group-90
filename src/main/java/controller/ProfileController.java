@@ -14,7 +14,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.entity.Coach;
-
 import java.io.IOException;
 
 public class ProfileController {
