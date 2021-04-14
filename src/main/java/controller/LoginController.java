@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -12,15 +15,31 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import main.Main;
+import model.entity.ReturnEntity;
+import model.entity.User;
+import model.service.UserService;
 
 import java.io.IOException;
 
+/**
+ * @author :Yifei Cao
+ * @date :
+ * @description:
+ * @modifiedBy By:
+ * @version :
+ */
 public class LoginController {
     @FXML
     public Button LoginButton;
 
     @FXML
     private ImageView imageView;
+
+    @FXML
+    private TextField account;
+
+    @FXML
+    private PasswordField password;
 
     @FXML
     public void initialize() {
@@ -49,7 +68,7 @@ public class LoginController {
 
     }
 
-    public void goToMainPage (MouseEvent mouseEvent) throws IOException {
+    public void goToMainPage() throws IOException {
 
         Stage stage = (Stage) LoginButton.getScene().getWindow();
         stage.close();
@@ -73,4 +92,31 @@ public class LoginController {
         stage.show();
     }
 
+    @FXML
+    public void login(MouseEvent mouseEvent) throws IOException {
+        UserService service = new UserService();
+        ReturnEntity returnEntity = service.login(account.getText(),password.getText());
+        int code = returnEntity.getCode();
+        if(code == 200){
+            goToMainPage();
+        }
+        else if(code == 4004){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("wrong password");
+            alert.showAndWait();
+        }
+        else if(code == 4041){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("user not exist");
+            alert.showAndWait();
+        }
+        else if(code == 5000){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("database error");
+            alert.showAndWait();
+        }
+    }
 }
