@@ -45,7 +45,7 @@ public class SignUpController {
         );
         gender.getSelectionModel().selectFirst();
 
-        user = new User("","","","","",null,null,null);
+        user = new User("","","","","",null,null,null,null);
     }
     /**
      * Sets the stage of this dialog.

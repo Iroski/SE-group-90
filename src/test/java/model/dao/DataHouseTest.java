@@ -39,7 +39,7 @@ public class DataHouseTest {
     @Test
     public void test02Insert() {
         for (long i = 0; i < 200; ++i) {
-            User user = new User("927986413@qq.com",String.valueOf(i % 20),"1","1","1",1.0,1,1);
+            User user = new User("927986413@qq.com",String.valueOf(i % 20),"1","1","1",1.0,1,1,null);
             try {
                 user = (User) db.insert(tableName, user);
             } catch (RedundancyDataItem e) {
