@@ -1,16 +1,12 @@
 package controller;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.entity.Coach;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class AccountController {
