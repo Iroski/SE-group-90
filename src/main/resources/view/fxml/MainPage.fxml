@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VideoPageController">
+<AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
     <children>
         <GridPane layoutX="5.0" layoutY="46.0" prefHeight="584.0" prefWidth="991.0">
             <columnConstraints>
