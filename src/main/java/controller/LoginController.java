@@ -94,6 +94,20 @@ public class LoginController {
 
     @FXML
     public void login(MouseEvent mouseEvent) throws IOException {
+        if(account.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("Please input username!");
+            alert.showAndWait();
+            return;
+        }
+        if(password.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("Please input password!");
+            alert.showAndWait();
+            return;
+        }
         UserService service = new UserService();
         ReturnEntity returnEntity = service.login(account.getText(),password.getText());
         int code = returnEntity.getCode();
