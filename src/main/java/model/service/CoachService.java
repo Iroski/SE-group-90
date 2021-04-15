@@ -105,4 +105,34 @@ public class CoachService {
         }
         return CommunicationStatus.OK.getCode();
     }
+
+    protected int updateTimeList(String coachName, Long time,String type){
+        try{
+            Optional<Coach> sCoachOption=this.getCoachByName(coachName);
+            if(sCoachOption.isEmpty())
+                return CommunicationStatus.COACH_NOT_FOUND.getCode();
+            Coach sCoach=sCoachOption.get();
+            List<Long> timeList=sCoach.getBookedTime();
+            if("ADD".equals(type)){
+                if(timeList.contains(time))
+                    return CommunicationStatus.BAD_REQUEST.getCode();
+                timeList.add(time);
+            }
+            else if("REMOVE".equals(type)){
+                if(!timeList.contains(time))
+                    return CommunicationStatus.BAD_REQUEST.getCode();
+                timeList.remove(time);
+            }
+            sCoach.setBookedTime(timeList);
+            coachDao.updateCoach(sCoach);
+        }
+        catch (RuntimeException e) {
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+        return CommunicationStatus.OK.getCode();
+    }
+
+    protected Optional<Coach> getCoachByName(String name){
+        return coachDao.getAllCoaches().stream().filter(coach -> coach.getName().equals(name)).findAny();
+    }
 }

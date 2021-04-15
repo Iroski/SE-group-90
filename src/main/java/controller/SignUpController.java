@@ -16,6 +16,7 @@ import model.utils.CheckUserInfoValidation;
 import model.utils.Encryption;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author :Yifei Cao
@@ -55,7 +56,7 @@ public class SignUpController {
         );
         gender.getSelectionModel().selectFirst();
 
-        user = new User("","","","","",null,null,null,null);
+        user = new User("","","","","",null,null,null,new ArrayList<Long>());
     }
     /**
      * Sets the stage of this dialog.
