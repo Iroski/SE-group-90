@@ -1,4 +1,18 @@
 # VideoService
+## Video entity structure
+```java
+class Video{
+    private Long id
+    private String videoName;
+    private String author;
+    private Long length;
+    private Long views;
+    private List<String> tagsName;
+    private String videoPath;
+    private String coverPath;
+    private AtomicBoolean isPremium;
+}
+```
 ## interface
 ### 1. get all videos
 method: getAllVideos()
