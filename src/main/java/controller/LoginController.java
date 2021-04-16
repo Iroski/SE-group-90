@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import main.Main;
 import model.entity.ReturnEntity;
 import model.service.UserService;
+import model.utils.Encryption;
 
 import java.io.IOException;
 
@@ -93,7 +94,7 @@ public class LoginController {
     @FXML
     public void login(MouseEvent mouseEvent) throws IOException {
         UserService service = new UserService();
-        ReturnEntity returnEntity = service.login(account.getText(),password.getText());
+        ReturnEntity returnEntity = service.login(account.getText(), Encryption.getMD5Str(password.getText()));
         int code = returnEntity.getCode();
         userName = account.getText();
         if(code == 200){
