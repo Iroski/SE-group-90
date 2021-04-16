@@ -2,4 +2,7 @@
 **/*.iml
 **/target
 **/src/test/resources/database/*.json
-
+**/src/test/resources/database/Video.json
+**/src/test/resources/database/Coach.json
+**/src/test/resources/database/User.json
+**/src/test/resources/database/Account.json
