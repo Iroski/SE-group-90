@@ -1,4 +1,12 @@
 # TagService
+## Tag entity structure
+```java
+class Tag{
+    private Long id
+    private String tagName;
+    private List<Video> videoList;
+}
+```
 ## interface
 ### 1. get all tags' name
 method: getAllTagsName()
