@@ -46,6 +46,26 @@ public class BasePageController {
             b.setTextFill(BLACK);
     }
 
+    public void showVip(MouseEvent me) throws IOException{
+        Label l = (Label) me.getSource();
+        if(l.equals(vipLabel)){
+            //vipPane.setVisible(true);
+            Stage stage = (Stage) b_home.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/fxml/VipPageForVip.fxml"));
+            AnchorPane vip = (AnchorPane) loader.load();
+            AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+            anchorPane.getChildren().add(3, vip);
+            vip.setLayoutY(75);
+            vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
+            vip.setVisible(true);
+        }
+    }
+
+    public void closeVip(MouseEvent me) throws IOException{
+
+    }
+
     public void buttonColorChange2(MouseEvent me){
         Button b = (Button) me.getSource();
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
