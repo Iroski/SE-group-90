@@ -2,13 +2,11 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -16,8 +14,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import main.Main;
 import model.entity.ReturnEntity;
-import model.entity.User;
 import model.service.UserService;
+import model.utils.Encryption;
 
 import java.io.IOException;
 
@@ -41,6 +39,7 @@ public class LoginController {
     @FXML
     private PasswordField password;
 
+    public static String userName = "test";
     @FXML
     public void initialize() {
         Rectangle rectangle = new Rectangle(imageView.prefWidth(-1), imageView.prefHeight(-1));
@@ -95,8 +94,9 @@ public class LoginController {
     @FXML
     public void login(MouseEvent mouseEvent) throws IOException {
         UserService service = new UserService();
-        ReturnEntity returnEntity = service.login(account.getText(),password.getText());
+        ReturnEntity returnEntity = service.login(account.getText(), Encryption.getMD5Str(password.getText()));
         int code = returnEntity.getCode();
+        userName = account.getText();
         if(code == 200){
             goToMainPage();
         }

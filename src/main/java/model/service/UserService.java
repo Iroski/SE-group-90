@@ -8,6 +8,7 @@ import model.entity.ReturnEntity;
 import model.entity.User;
 import model.entity.Video;
 import model.exception.database.DataItemNotExists;
+import model.utils.Encryption;
 
 import javax.swing.text.html.Option;
 import java.util.LinkedList;
@@ -60,7 +61,7 @@ public class UserService {
             Optional<User> sUser=getUserByUsername(username);
             if(sUser.isEmpty())
                 return new ReturnEntity(CommunicationStatus.USER_NOT_FOUND.getCode(),null);
-            if (password.equals(sUser.get().getPassword()))
+            if (!password.equals(sUser.get().getPassword()))
                 return new ReturnEntity(CommunicationStatus.WRONG_PASSWORD.getCode(),null);
             return new ReturnEntity(CommunicationStatus.OK.getCode(),sUser.get());
         } catch (RuntimeException e) {
