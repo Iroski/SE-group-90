@@ -1,3 +1,7 @@
 **/.idea
 **/*.iml
 **/target
+**/src/test/resources/database/User.json
+**/src/test/resources/database/Account.json
+**/src/test/resources/database/LiveLessonTable.json
+**/src/test/resources/database/Order.json
