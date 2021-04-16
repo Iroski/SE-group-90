@@ -11,8 +11,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.entity.Coach;
+import model.entity.ReturnEntity;
+import model.entity.Video;
+import model.service.CoachService;
+import model.service.UserService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static javafx.scene.paint.Color.*;
 
@@ -27,7 +33,7 @@ public class BasePageController {
     Image image = new Image("view/images/1.png");
 
     public void initialize() {
-        Image image=new Image("view/images/1.png");
+        //Image image=new Image("view/images/1.png");
         historyPane.setVisible(false);
     }
     public void closeHistory(MouseEvent mouseEvent) {
@@ -36,9 +42,21 @@ public class BasePageController {
 
     public void buttonColorChange1(MouseEvent me){
         Button b = (Button) me.getSource();
+        ArrayList<Video> historyList;
         if(b.equals(history)){
+            UserService Service=new UserService();
+            ReturnEntity returnEntity=Service.getHistoryByName("hly");
+            if (returnEntity.getCode()==5000) {
+                System.out.println("Data base error!");
+            }
+            else if(returnEntity.getObject()==null) {
+                historyList=null;
+            }
+            else {
+                historyList= (ArrayList<Video>) returnEntity.getObject();
+                history1.setImage(new Image(historyList.get(0).getCoverPath()));
+            }
             historyPane.setVisible(true);
-            history1.setImage(new Image("view/images/1.png"));
         }
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
             b.setTextFill(PINK);
