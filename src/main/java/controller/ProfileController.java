@@ -21,14 +21,22 @@ public class ProfileController {
     public Button saveProfile;
     public User user;
     @FXML
-    public void initialize() {
+    public void initialize() throws NullPointerException {
         UserService service = new UserService();
         ReturnEntity returnEntity = service.getUser(LoginController.userName);
         User user = (User) returnEntity.getObject();
         UserName.setText(user.getName());
         Gender.setText(user.getGender());
-        Height.setText(user.getHeight().toString());
-        Weight.setText(user.getWeight().toString());
+        try{
+            Height.setText(user.getHeight().toString());
+        }catch (NullPointerException e) {
+            Height.setText(null);
+        }
+        try{
+            Weight.setText(user.getWeight().toString());
+        }catch (NullPointerException e) {
+            Weight.setText(null);
+        }
         UserName.setEditable(false);
         Gender.setEditable(false);
         Height.setEditable(false);

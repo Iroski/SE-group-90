@@ -39,7 +39,7 @@ public class LoginController {
     @FXML
     private PasswordField password;
 
-    public static String userName = "test";
+    public static String userName;
     @FXML
     public void initialize() {
         Rectangle rectangle = new Rectangle(imageView.prefWidth(-1), imageView.prefHeight(-1));
