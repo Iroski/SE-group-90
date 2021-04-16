@@ -23,7 +23,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-border-style: soild; -fx-background-color: white; -fx-border-color: white;" GridPane.columnIndex="2">
+                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-border-style: solid; -fx-background-color: white; -fx-border-color: white;" GridPane.columnIndex="2">
                     <children>
                         <Rectangle fx:id="video3" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
                         <Label fx:id="name3" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">

@@ -18,8 +18,11 @@ import main.Main;
 import model.entity.ReturnEntity;
 import model.entity.User;
 import model.service.UserService;
+import model.utils.Encryption;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author :Yifei Cao
@@ -41,6 +44,7 @@ public class LoginController {
     @FXML
     private PasswordField password;
 
+    public static String userName = "test";
     @FXML
     public void initialize() {
         Rectangle rectangle = new Rectangle(imageView.prefWidth(-1), imageView.prefHeight(-1));
@@ -115,8 +119,9 @@ public class LoginController {
             return;
         }
         UserService service = new UserService();
-        ReturnEntity returnEntity = service.login(account.getText(),password.getText());
+        ReturnEntity returnEntity = service.login(account.getText(), Encryption.getMD5Str(password.getText()));
         int code = returnEntity.getCode();
+        userName = account.getText();
         if(code == 200){
             goToMainPage();
         }
