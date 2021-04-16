@@ -51,6 +51,9 @@ public class LoginController {
         //imageView.setViewport(rectangle2);
     }
 
+    /**
+     * Open the MainPage.
+     */
     @FXML
     public void showSignUpPage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -64,12 +67,12 @@ public class LoginController {
         SignUpController controller = loader.getController();
         controller.setSignUpStage(signUpStage);
         signUpStage.showAndWait();
-
-
     }
 
+    /**
+     * Open the MainPage.
+     */
     public void goToMainPage() throws IOException {
-
         Stage stage = (Stage) LoginButton.getScene().getWindow();
         stage.close();
         stage=new Stage();
@@ -92,6 +95,9 @@ public class LoginController {
         stage.show();
     }
 
+    /**
+     * check the legality of inputs. If so, admit to login.
+     */
     @FXML
     public void login(MouseEvent mouseEvent) throws IOException {
         if(account.getText().equals("")){
