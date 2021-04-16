@@ -117,7 +117,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="vipLabel" layoutX="823.0" layoutY="21.0" prefHeight="20.0" prefWidth="59.0" text="vip" textFill="#c9c0c0f5">
+            <Label fx:id="vipLabel" layoutX="823.0" layoutY="21.0" onMouseEntered="#showVip" prefHeight="20.0" prefWidth="59.0" text="vip" textFill="#c9c0c0f5" AnchorPane.rightAnchor="315.0">
                <font>
                   <Font name="Berlin Sans FB" size="26.0" />
                </font>
