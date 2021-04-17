@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.entity.Coach;
 import model.entity.ReturnEntity;
 import model.entity.Video;
@@ -26,46 +27,37 @@ public class BasePageController {
     public Button userName;
     public Label vipLabel;
     public Button history;
-    public AnchorPane historyPane;
-    public ImageView history1;
+
     @FXML
     Button b_home;
     Image image = new Image("view/images/1.png");
 
+    @FXML
     public void initialize() {
         //Image image=new Image("view/images/1.png");
-        historyPane.setVisible(false);
-    }
-    public void closeHistory(MouseEvent mouseEvent) {
-        historyPane.setVisible(false);
+
     }
 
-    public void buttonColorChange1(MouseEvent me){
-        Button b = (Button) me.getSource();
-        ArrayList<Video> historyList;
-        if(b.equals(history)){
-            UserService Service=new UserService();
-            ReturnEntity returnEntity=Service.getHistoryByName("hly");
-            if (returnEntity.getCode()==5000) {
-                System.out.println("Data base error!");
-            }
-            else if(returnEntity.getObject()==null) {
-                historyList=null;
-            }
-            else {
-                historyList= (ArrayList<Video>) returnEntity.getObject();
-                history1.setImage(new Image(historyList.get(0).getCoverPath()));
-            }
-            historyPane.setVisible(true);
-        }
+
+    public void showHistory(MouseEvent me) throws IOException{
+            //vipPane.setVisible(true);
+        Stage stage = (Stage) b_home.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/HistoryPage.fxml"));
+        AnchorPane historyPane = (AnchorPane) loader.load();;
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().add(historyPane);
+        historyPane.setLayoutY(75);
+        historyPane.setLayoutX(history.getLayoutX()-0.5*history.getPrefWidth()+0.5*history.getPrefWidth());
+        historyPane.setVisible(true);
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
-            b.setTextFill(PINK);
+            history.setTextFill(PINK);
         else if(me.getEventType().equals(MouseEvent.MOUSE_EXITED))
-            b.setTextFill(BLACK);
+            history.setTextFill(BLACK);
     }
 
-    public void showVip(MouseEvent me) throws IOException{
-        Label l = (Label) me.getSource();
+    public void showVip(MouseEvent event) throws IOException{
+        Label l = (Label) event.getSource();
         if(l.equals(vipLabel)){
             //vipPane.setVisible(true);
             Stage stage = (Stage) b_home.getScene().getWindow();
@@ -73,7 +65,7 @@ public class BasePageController {
             loader.setLocation(getClass().getResource("/view/fxml/VipPageForVip.fxml"));
             AnchorPane vip = (AnchorPane) loader.load();
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-            anchorPane.getChildren().add(3, vip);
+            anchorPane.getChildren().add(vip);
             vip.setLayoutY(75);
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
             vip.setVisible(true);
@@ -83,7 +75,13 @@ public class BasePageController {
     public void closeVip(MouseEvent me) throws IOException{
 
     }
-
+    public void buttonColorChange1(MouseEvent me){
+        Button b = (Button) me.getSource();
+        if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
+            b.setTextFill(PINK);
+        else if(me.getEventType().equals(MouseEvent.MOUSE_EXITED))
+            b.setTextFill(BLACK);
+    }
     public void buttonColorChange2(MouseEvent me){
         Button b = (Button) me.getSource();
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
@@ -204,8 +202,4 @@ public class BasePageController {
         stage.show();
     }
 
-
-    public void closeHistory2(ZoomEvent zoomEvent) {
-        historyPane.setVisible(false);
-    }
 }
