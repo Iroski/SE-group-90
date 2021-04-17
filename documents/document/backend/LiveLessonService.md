@@ -1,4 +1,19 @@
 # LiveLessonTableService
+## LiveLesson entity structure
+```java
+class LiveLesson{
+    private String username;
+    private String coachName;
+    private Long lessonTime;
+    private Integer status;
+    private Long createTime;
+}
+class LiveLessonTable{
+    private Long id;
+    private String username;
+    private List<LiveLesson> lessonList;
+}
+```
 ## Interface
 ### 1. save new LiveLessonTable
 (__not an interface__) it will automatically generated when user sign up

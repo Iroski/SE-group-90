@@ -7,10 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LiveController">
    <children>
-      <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-text-fill: white;" text="back">
+      <Button fx:id="backButton" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#goToMyLesson" style="-fx-background-color: black; -fx-text-fill: white;" text="back">
          <font>
             <Font name="Broadway" size="15.0" />
          </font>

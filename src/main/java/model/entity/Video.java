@@ -17,35 +17,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Video extends DataItem {
-    private String videoName;
-    private String author;
-    private Long length;
+    private StaticVideo staticVideo;
     private Long views;
     private List<String> tagsName;
-    private String videoPath;
-    private String coverPath;
     private AtomicBoolean isPremium;
 
-    public Video(@NonNull Long id, String videoName, String author, Long length, Long views, List<String> tagsName, String videoPath, String coverPath, AtomicBoolean isPremium) {
-        super(id);
-        this.videoName = videoName;
-        this.author = author;
-        this.length = length;
+    public Video(StaticVideo staticVideo, Long views, List<String> tagsName, AtomicBoolean isPremium) {
+        this.staticVideo = staticVideo;
         this.views = views;
         this.tagsName = tagsName;
-        this.videoPath = videoPath;
-        this.coverPath = coverPath;
         this.isPremium = isPremium;
     }
 
-    public Video(String videoName, String author, Long length, Long views, List<String> tagsName, String videoPath, String coverPath, AtomicBoolean isPremium) {
-        this.videoName = videoName;
-        this.author = author;
-        this.length = length;
+    public Video(Long id, StaticVideo staticVideo, Long views, List<String> tagsName, AtomicBoolean isPremium) {
+        super(id);
+        this.staticVideo = staticVideo;
         this.views = views;
         this.tagsName = tagsName;
-        this.videoPath = videoPath;
-        this.coverPath = coverPath;
         this.isPremium = isPremium;
     }
 }
