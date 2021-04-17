@@ -49,7 +49,6 @@ public class HistoryController {
 
     @FXML
     public void initialize() {
-        //Image image=new Image("view/images/1.png");
         ArrayList<Video> historyList=null;
         UserService Service=new UserService();
         ReturnEntity returnEntity=Service.getHistoryByName("hly");
