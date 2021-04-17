@@ -1,4 +1,17 @@
 # AccountService
+## Account entity structure
+```java
+class Account{
+    private Long id
+    private String username;
+    private BigDecimal balance;
+    private List<Long> orderId;
+    private Integer premiumLevel;
+    private Integer freeLiveLessonTime;
+    private Long createTime;
+    private Long premiumEndTime;
+}
+```
 ## Interface
 ### 1. create account
 It will automatically generated account when using signup method in userService

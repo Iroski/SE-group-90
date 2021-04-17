@@ -1,4 +1,21 @@
 # OrderService
+## Order entity structure
+```java
+class Order{
+    private Long id
+    private String username;
+    private Integer type;
+    //type==1 : livelesson order
+    private Long liveLessonCreateTime;
+    //type==0 : premium order
+    private Integer premiumType;
+    private Long premiumDuration;
+
+    private BigDecimal money;
+    private Integer state;
+    private Long createTime;
+}
+```
 ## Interface
 ### 1. get orders by name
 method: getOrdersByName(String username)
