@@ -20,17 +20,20 @@ public class Video extends DataItem {
     private StaticVideo staticVideo;
     private Long views;
     private List<String> tagsName;
+    private AtomicBoolean isPremium;
 
-    public Video(StaticVideo staticVideo, Long views, List<String> tagsName) {
+    public Video(StaticVideo staticVideo, Long views, List<String> tagsName, AtomicBoolean isPremium) {
         this.staticVideo = staticVideo;
         this.views = views;
         this.tagsName = tagsName;
+        this.isPremium = isPremium;
     }
 
-    public Video(Long id, StaticVideo staticVideo, Long views, List<String> tagsName) {
+    public Video(Long id, StaticVideo staticVideo, Long views, List<String> tagsName, AtomicBoolean isPremium) {
         super(id);
         this.staticVideo = staticVideo;
         this.views = views;
         this.tagsName = tagsName;
+        this.isPremium = isPremium;
     }
 }
