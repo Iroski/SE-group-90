@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,130 +8,120 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<AnchorPane prefHeight="550.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
-      <Label layoutX="33.0" layoutY="20.0" text="Welcome to Sign Up" AnchorPane.leftAnchor="33.0" />
+      <Label layoutX="33.0" layoutY="20.0" text="Welcome to Sign Up" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="12.0">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font></Label>
       <Separator layoutY="57.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <GridPane layoutX="91.0" layoutY="86.0" prefHeight="403.0" prefWidth="418.0">
-        <columnConstraints>
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <Button fx:id="submit" layoutX="108.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="35.0" prefWidth="120.0" text="Submit" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="90.0" />
+      <Button fx:id="cancel" layoutX="346.0" layoutY="517.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="35.0" prefWidth="120.0" text="Cancel" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="90.0" />
+      <Label layoutX="396.0" layoutY="315.0" text="cm" AnchorPane.rightAnchor="76.0" />
+      <Label layoutX="400.0" layoutY="357.0" text="kg" AnchorPane.rightAnchor="76.0" />
+      <VBox layoutX="270.0" layoutY="100.0" prefWidth="150.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="80.0">
          <children>
-            <Label text="*user name:">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="*e-mail:" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="*passward:" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="*phone number:" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="sex:" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="height:" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="weight:" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </Label>
-            <Label text="cm" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </Label>
-            <Label text="kg" GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </Label>
-            <TextField GridPane.columnIndex="1">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
+            <TextField fx:id="userName" prefHeight="30.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
+            <TextField fx:id="email" prefHeight="30.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
+            <TextField fx:id="password" prefHeight="30.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
+            <TextField fx:id="phoneNumber" prefHeight="30.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </TextField>
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </GridPane.margin>
-            </ChoiceBox>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
+            <ComboBox fx:id="gender" prefHeight="30.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </ComboBox>
+            <TextField fx:id="height" prefHeight="30.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
+            <TextField fx:id="weight" prefHeight="30.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </TextField>
+            <TextField fx:id="age" prefHeight="30.0" prefWidth="150.0" />
          </children>
-      </GridPane>
-      <Button layoutX="105.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="submit" />
-      <Button layoutX="346.0" layoutY="517.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" prefWidth="120.0" text="cancel" />
+      </VBox>
+      <VBox alignment="TOP_RIGHT" layoutX="78.0" layoutY="100.0" prefHeight="402.0" prefWidth="174.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="78.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="30.0" text="*User Name:">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="*Email:">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="*Passward:">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="30.0" text="*Phone Number:">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="30.0" text="Gender:">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="Height:">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="30.0" text="Weight:">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="30.0" text="Age:">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font></Label>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

@@ -3,22 +3,59 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import main.Main;
+import model.entity.ReturnEntity;
+import model.service.UserService;
+import model.utils.Encryption;
 
 import java.io.IOException;
 
+/**
+ * @author :Yifei Cao
+ * @date :
+ * @description:
+ * @modifiedBy By:
+ * @version :
+ */
 public class LoginController {
+    @FXML
     public Button LoginButton;
+
+    @FXML
+    private ImageView imageView;
+
+    @FXML
+    private TextField account;
+
+    @FXML
+    private PasswordField password;
+
+    public static String userName;
+    @FXML
+    public void initialize() {
+        Rectangle rectangle = new Rectangle(imageView.prefWidth(-1), imageView.prefHeight(-1));
+        //Rectangle2D rectangle2 = new Rectangle2D(0, 0, 100, 100);
+        rectangle.setArcWidth(100);
+        rectangle.setArcHeight(100);
+        imageView.setClip(rectangle);
+        //imageView.setViewport(rectangle2);
+    }
 
     @FXML
     public void showSignUpPage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/view/fxml/" + "SignUpPage.fxml"));
         AnchorPane page = loader.load();
+        //page.getChildren().add(imageView);
         Stage signUpStage = new Stage();
         signUpStage.setTitle("SignUpPage");
         Scene scene = new Scene(page);
@@ -26,9 +63,11 @@ public class LoginController {
         SignUpController controller = loader.getController();
         controller.setSignUpStage(signUpStage);
         signUpStage.showAndWait();
+
+
     }
 
-    public void goToMainPage (MouseEvent mouseEvent) throws IOException {
+    public void goToMainPage() throws IOException {
 
         Stage stage = (Stage) LoginButton.getScene().getWindow();
         stage.close();
@@ -50,5 +89,34 @@ public class LoginController {
         mainPage.setLayoutX(200);
         mainPage.setLayoutY(75);
         stage.show();
+    }
+
+    @FXML
+    public void login(MouseEvent mouseEvent) throws IOException {
+        UserService service = new UserService();
+        ReturnEntity returnEntity = service.login(account.getText(), Encryption.getMD5Str(password.getText()));
+        int code = returnEntity.getCode();
+        userName = account.getText();
+        if(code == 200){
+            goToMainPage();
+        }
+        else if(code == 4004){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("wrong password");
+            alert.showAndWait();
+        }
+        else if(code == 4041){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("user not exist");
+            alert.showAndWait();
+        }
+        else if(code == 5000){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("database error");
+            alert.showAndWait();
+        }
     }
 }

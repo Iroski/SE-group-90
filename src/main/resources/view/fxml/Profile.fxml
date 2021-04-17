@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
+   <children>
+      <Label layoutX="280.0" layoutY="150.0" prefHeight="45.0" prefWidth="100.0" text="UserName">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="219.0" prefHeight="45.0" prefWidth="100.0" text="Gender">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="293.0" prefHeight="45.0" prefWidth="100.0" text="Height">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="365.0" prefHeight="45.0" prefWidth="100.0" text="Weight">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="editProfile" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#EditTheProfile" prefHeight="66.0" prefWidth="171.0" text="Edit">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Button>
+      <TextField fx:id="UserName" editable="false" layoutX="430.0" layoutY="160.0" />
+      <TextField fx:id="Gender" editable="false" layoutX="430.0" layoutY="230.0" />
+      <TextField fx:id="Height" editable="false" layoutX="430.0" layoutY="302.0" />
+      <TextField fx:id="Weight" editable="false" layoutX="430.0" layoutY="374.0" />
+      <Button fx:id="saveProfile" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#SaveTheProfile" prefHeight="66.0" prefWidth="171.0" text="Save">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

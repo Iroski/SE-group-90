@@ -1,8 +1,6 @@
 package model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * @author :YanBo Zhang
@@ -17,4 +15,9 @@ import lombok.NoArgsConstructor;
 public class ReturnEntity {
      int code;
      Object object;
+
+     public void setEntity(int code, Object object){
+          this.code=code;
+          this.object=object;
+     }
 }

@@ -4,6 +4,7 @@ import lombok.*;
 import model.dao.base.DataItem;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author :YanBo Zhang
@@ -26,7 +27,7 @@ public class Video extends DataItem {
         this.tagsName = tagsName;
     }
 
-    public Video(@NonNull Long id, Long staticVideoId, Long views, List<String> tagsName) {
+    public Video(Long id, Long staticVideoId, Long views, List<String> tagsName) {
         super(id);
         this.staticVideoId = staticVideoId;
         this.views = views;
