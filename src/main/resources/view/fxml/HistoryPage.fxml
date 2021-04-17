@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="historyPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseExited="#closeHistory" prefHeight="480.0" prefWidth="350.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HistoryController">
+   <children>
+      <VBox fx:id="allHistory" layoutX="-46.0" layoutY="-364.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="480.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="h1Pane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="350.0">
+               <children>
+                  <ImageView fx:id="history1" fitHeight="67.0" fitWidth="98.0" layoutX="66.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="3.0" />
+                  <Label fx:id="description1" layoutX="138.0" layoutY="14.0" prefHeight="35.0" prefWidth="191.0" text="Title: nigeiwoligiaogiao" />
+                  <Label fx:id="author1" layoutX="265.0" layoutY="50.0" prefHeight="20.0" prefWidth="80.0" text="He Luyao" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="h2Pane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="350.0">
+               <children>
+                  <ImageView fx:id="history2" fitHeight="67.0" fitWidth="98.0" layoutX="66.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="3.0" />
+                  <Label fx:id="description2" layoutX="138.0" layoutY="14.0" prefHeight="35.0" prefWidth="191.0" text="Title: nigeiwoligiaogiao" />
+                  <Label fx:id="author2" layoutX="265.0" layoutY="50.0" prefHeight="20.0" prefWidth="80.0" text="He Luyao" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="h3Pane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="350.0">
+               <children>
+                  <ImageView fx:id="history3" fitHeight="67.0" fitWidth="98.0" layoutX="66.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="3.0" />
+                  <Label fx:id="description3" layoutX="138.0" layoutY="14.0" prefHeight="35.0" prefWidth="191.0" text="Title: nigeiwoligiaogiao" />
+                  <Label fx:id="author3" layoutX="265.0" layoutY="50.0" prefHeight="20.0" prefWidth="80.0" text="He Luyao" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="h4Pane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="350.0">
+               <children>
+                  <ImageView fx:id="history4" fitHeight="67.0" fitWidth="98.0" layoutX="66.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="3.0" />
+                  <Label fx:id="description4" layoutX="138.0" layoutY="14.0" prefHeight="35.0" prefWidth="191.0" text="Title: nigeiwoligiaogiao" />
+                  <Label fx:id="author4" layoutX="265.0" layoutY="50.0" prefHeight="20.0" prefWidth="80.0" text="He Luyao" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="h5Pane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="350.0">
+               <children>
+                  <ImageView fx:id="history5" fitHeight="67.0" fitWidth="98.0" layoutX="66.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="3.0" />
+                  <Label fx:id="description5" layoutX="138.0" layoutY="14.0" prefHeight="35.0" prefWidth="191.0" text="Title: nigeiwoligiaogiao" />
+                  <Label fx:id="author5" layoutX="265.0" layoutY="50.0" prefHeight="20.0" prefWidth="80.0" text="He Luyao" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="h6Pane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="350.0">
+               <children>
+                  <ImageView fx:id="history6" fitHeight="67.0" fitWidth="98.0" layoutX="66.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="3.0" />
+                  <Label fx:id="description6" layoutX="138.0" layoutY="14.0" prefHeight="35.0" prefWidth="191.0" text="Title: nigeiwoligiaogiao" />
+                  <Label fx:id="author6" layoutX="265.0" layoutY="50.0" prefHeight="20.0" prefWidth="80.0" text="He Luyao" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
