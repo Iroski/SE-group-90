@@ -99,6 +99,8 @@ public class LoginController {
      */
     @FXML
     public void login(MouseEvent mouseEvent) throws IOException {
+        account.setText("hly");
+        password.setText("000000");
         if(account.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.titleProperty().set("Error");

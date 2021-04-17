@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomController">
+   <children>
+      <Label layoutX="111.0" layoutY="80.0" text="Please enter the amount of topping up:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="amountTextField" layoutX="231.0" layoutY="176.0" prefHeight="48.0" prefWidth="141.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <Button layoutX="247.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" text="Confirm">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Label layoutX="209.0" layoutY="184.0" text="\$">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

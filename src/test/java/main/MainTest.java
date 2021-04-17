@@ -21,8 +21,8 @@ public class MainTest extends Application {
         primaryStage.show();
 
         db= DataHouse.getInstance();
-        db.init("src\\test\\resources\\database");
-        ResourceLoader.staticVideoLoader("src\\test\\resources\\view\\videos");
+        db.init("src/test/resources/database");
+        ResourceLoader.staticVideoLoader("src/test/resources/view/videos");
     }
 
     public static void main(String[] args) {
