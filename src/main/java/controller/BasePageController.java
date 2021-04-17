@@ -54,7 +54,7 @@ public class BasePageController {
             }
             else {
                 historyList= (ArrayList<Video>) returnEntity.getObject();
-                history1.setImage(new Image(historyList.get(0).getCoverPath()));
+                history1.setImage(new Image(historyList.get(0).getStaticVideo().getCoverPath()));
             }
             historyPane.setVisible(true);
         }

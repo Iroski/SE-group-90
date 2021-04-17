@@ -17,19 +17,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Video extends DataItem {
-    private Long staticVideoId;
+    private StaticVideo staticVideo;
     private Long views;
     private List<String> tagsName;
 
-    public Video(Long staticVideoId, Long views, List<String> tagsName) {
-        this.staticVideoId = staticVideoId;
+    public Video(StaticVideo staticVideo, Long views, List<String> tagsName) {
+        this.staticVideo = staticVideo;
         this.views = views;
         this.tagsName = tagsName;
     }
 
-    public Video(Long id, Long staticVideoId, Long views, List<String> tagsName) {
+    public Video(Long id, StaticVideo staticVideo, Long views, List<String> tagsName) {
         super(id);
-        this.staticVideoId = staticVideoId;
+        this.staticVideo = staticVideo;
         this.views = views;
         this.tagsName = tagsName;
     }

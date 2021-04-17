@@ -33,15 +33,6 @@ public class StaticVideo extends StaticResources {
         this.filePath = filePath;
     }
 
-    public StaticVideo(Long id, String videoName, String type, String author, String coverPath, String filePath) {
-        super(id);
-        this.videoName = videoName;
-        this.type = type;
-        this.author = author;
-        this.coverPath = coverPath;
-        this.filePath = filePath;
-    }
-
     public StaticVideo(String filePath) {
         this.filePath = filePath;
         parseName();

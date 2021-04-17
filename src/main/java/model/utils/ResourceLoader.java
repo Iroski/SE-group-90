@@ -7,6 +7,7 @@ import model.entity.Video;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -21,19 +22,18 @@ public class ResourceLoader {
         DataHouse dataHouse = DataHouse.getInstance();
         File file = new File(fileDir);
         File[] videoFiles = file.listFiles();
+        List<?> videos = dataHouse.query("Video", new HashMap<>());
+        HashSet<String> videoPaths = new HashSet<>();
+        for (Object video: videos) {
+            videoPaths.add(((Video)video).getStaticVideo().getFilePath());
+        }
         for (File videoFile : videoFiles) {
             if (videoFile.isFile()) {
-                StaticVideo staticVideo = new StaticVideo(videoFile.getPath());
-                HashMap<String, String> queryArgs = new HashMap<>();
-                queryArgs.put("filePath", staticVideo.getFilePath());
-                List<?> staticVideos = dataHouse.query("StaticVideo", queryArgs);
-                if (staticVideos.size() > 0) {
+                if (videoPaths.contains(videoFile.getPath()))
                     continue;
-                } else {
-                    staticVideo = (StaticVideo) dataHouse.insert("StaticVideo", staticVideo);
-                    Video video = new Video(staticVideo.getId(), 0L, new ArrayList<>());
-                    dataHouse.insert("Video", video);
-                }
+                StaticVideo staticVideo = new StaticVideo(videoFile.getPath());
+                Video video = new Video(staticVideo, 0L, new ArrayList<>());
+                dataHouse.insert("Video", video);
             }
         }
     }

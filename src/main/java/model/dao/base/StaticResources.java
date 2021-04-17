@@ -9,19 +9,15 @@ import lombok.*;
  * @modified By：
  * @version:
  */
-@Data()
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
-public abstract class StaticResources extends DataItem {
+
+public abstract class StaticResources {
     /**
      * Constructor with item id.
      * @author Yubo Wang
      * @date 2021-04-10 15:37
-     * @param id
      * @return null
      */
     public StaticResources(Long id) {
-        super(id);
     }
     /**
      * Constructor without item id.
