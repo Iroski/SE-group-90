@@ -1,4 +1,19 @@
 # UserService
+## User entity structure
+```java
+class User{
+    private Long id
+    private String email;
+    private String name;
+    private String password;
+    private String phone;
+    private String gender;
+    private Double weight;
+    private Integer height;
+    private Integer age;
+    private List<Long> history;
+}
+```
 ## Interface
 ### 1. sign up(save a new user)
 method: saveUser(User user)

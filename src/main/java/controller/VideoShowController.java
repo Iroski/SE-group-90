@@ -24,9 +24,6 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.awt.event.WindowEvent;
-
-import static javax.swing.text.StyleConstants.setIcon;
 
 public class VideoShowController {
     public Button playBT;
@@ -205,7 +202,7 @@ public class VideoShowController {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if(processSD.isValueChanging()){
-                    //加入Slider正在改变的判定，否则由于update线程的存在，mediaPlayer会不停地回绕
+                    //Add the judgment that slider is changing, otherwise, due to the existence of update thread, mediaplayer will continue to loop around
                     mediaPlayer.seek(duration.multiply(processSD.getValue()/100.0));
                 }
             }
@@ -267,9 +264,9 @@ public class VideoShowController {
         }
     }
 
-    //将Duration数据格式化，用于播放时间标签
+    //Format the duration data for playing time tags
     protected String formatTime(Duration elapsed,Duration duration){
-        //将两个Duartion参数转化为 hh：mm：ss的形式后输出
+        //Two duartion parameters are converted to HH: mm: SS and output
         int intElapsed = (int)Math.floor(elapsed.toSeconds());
         int elapsedHours = intElapsed / (60 * 60);
         int elapsedMinutes = (intElapsed - elapsedHours *60 *60)/ 60;
@@ -313,20 +310,20 @@ public class VideoShowController {
         });
     }
 
-    //设置播放器尺寸
+    //Set player size
     public void setSize(int width,int height){
         currentWidth = width;
         currentHeight  = height;
         setUISuitable();
     }
 
-    //UI控件自适应大小
+    //UI control adaptive size
     private void setUISuitable(){
         anchorPane.setPrefSize(currentWidth,currentHeight);
-        anchorPane.setBottomAnchor(controlBar, 0.0);    //设置控制条位置
-        anchorPane.setTopAnchor(mediaPane,((double)currentHeight  - (double)currentWidth *(double)mediaHeight / (double)mediaWidth - 50)/2);  //设置视频面板位置
-        mediaView.setFitWidth(currentWidth);       //设置MediaView尺寸
+        anchorPane.setBottomAnchor(controlBar, 0.0);    //set the location of slide
+        anchorPane.setTopAnchor(mediaPane,((double)currentHeight  - (double)currentWidth *(double)mediaHeight / (double)mediaWidth - 50)/2);  //set the location of video pane
+        mediaView.setFitWidth(currentWidth);       //set the size of mediaView
         mediaView.setFitHeight((double)currentWidth*(double)mediaHeight / (double)mediaHeight);
-        controlBar.setPrefWidth(currentWidth);  //设置工具条宽度
+        controlBar.setPrefWidth(currentWidth);  //set the width of tools
     }
 }

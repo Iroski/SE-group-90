@@ -8,6 +8,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DataItem {
+public abstract class DataItem {
     @NonNull private Long id;
 }

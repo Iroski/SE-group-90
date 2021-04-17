@@ -1,4 +1,19 @@
 # CoachService
+## Coach entity structure
+```java
+class Coach{
+    private Long id
+    String name;
+    String gender;
+    Integer height;
+    Integer weight;
+    Integer age;
+    String description;
+    String course;
+    String photoPath;
+    List<Long> BookedTime;
+}
+```
 ## Interface
 ### 1. get all coaches
 method: getAllCoaches()

@@ -4,19 +4,25 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import model.entity.LiveLesson;
 import model.entity.LiveLessonTable;
 import model.entity.ReturnEntity;
 import model.service.LiveLessonService;
 import model.utils.DateUtils;
 
+import java.io.IOException;
+
 
 public class LessonPageController {
+    public AnchorPane lessonsPane;
     private ObservableList<LiveLesson> lessonData = FXCollections.observableArrayList();
     @FXML
     private TableView<LiveLesson> lessonTableView;
@@ -73,6 +79,23 @@ public class LessonPageController {
                                 //获取list列表中的位置，进而获取列表对应的信息数据
                                 LiveLesson l = lessonData.get(getIndex());
                                 //按钮事件自己添加
+                                Stage stage = (Stage) lessonsPane.getScene().getWindow();
+                                stage.setTitle("Living room");
+                                FXMLLoader loader = new FXMLLoader();
+                                loader.setLocation(getClass().getResource("/view/fxml/LivePage.fxml"));
+                                AnchorPane lessons = null;
+                                try {
+                                    lessons = (AnchorPane) loader.load();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                // Set person overview into the center of root layout.
+                                AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+                                anchorPane.getChildren().remove(2);
+                                anchorPane.getChildren().add(2, lessons);
+
+                                lessons.setLayoutX(200);
+                                lessons.setLayoutY(75);
                             });
                             HBox buttons = new HBox(button2, button1);
                             buttons.setAlignment(Pos.CENTER);

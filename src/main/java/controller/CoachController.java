@@ -92,7 +92,7 @@ public class CoachController {
         coachInfoController.age.setText(String.valueOf(choosedCoach.getAge()));
         coachInfoController.name.setText(choosedCoach.getName());
         coachInfoController.height.setText(String.valueOf(choosedCoach.getHeight()));
-        coachInfoController.weight.setText(String.valueOf(choosedCoach.getHeight()));
+        coachInfoController.weight.setText(String.valueOf(choosedCoach.getWeight()));
         coachInfoController.sex.setText(choosedCoach.getGender());
         coachInfoController.course.setText(choosedCoach.getCourse());
         Image image=new Image(choosedCoach.getPhotoPath());

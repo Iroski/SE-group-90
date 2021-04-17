@@ -5,14 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+
 
 import static javafx.scene.paint.Color.*;
 
@@ -20,34 +17,35 @@ public class BasePageController {
     public Button userName;
     public Label vipLabel;
     public Button history;
-    public AnchorPane historyPane;
-    public ImageView history1;
+
     @FXML
     Button b_home;
-    Image image = new Image("view/images/1.png");
 
+    @FXML
     public void initialize() {
-        Image image=new Image("view/images/1.png");
-        historyPane.setVisible(false);
-    }
-    public void closeHistory(MouseEvent mouseEvent) {
-        historyPane.setVisible(false);
+
+
     }
 
-    public void buttonColorChange1(MouseEvent me){
-        Button b = (Button) me.getSource();
-        if(b.equals(history)){
-            historyPane.setVisible(true);
-            history1.setImage(new Image("view/images/1.png"));
-        }
+    public void showHistory(MouseEvent me) throws IOException{
+            //vipPane.setVisible(true);
+        Stage stage = (Stage) b_home.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/HistoryPage.fxml"));
+        AnchorPane historyPane = (AnchorPane) loader.load();;
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().add(historyPane);
+        historyPane.setLayoutY(75);
+        historyPane.setLayoutX(history.getLayoutX()+0.3*historyPane.getPrefWidth());
+        historyPane.setVisible(true);
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
-            b.setTextFill(PINK);
+            history.setTextFill(PINK);
         else if(me.getEventType().equals(MouseEvent.MOUSE_EXITED))
-            b.setTextFill(BLACK);
+            history.setTextFill(BLACK);
     }
 
-    public void showVip(MouseEvent me) throws IOException{
-        Label l = (Label) me.getSource();
+    public void showVip(MouseEvent event) throws IOException{
+        Label l = (Label) event.getSource();
         if(l.equals(vipLabel)){
             //vipPane.setVisible(true);
             Stage stage = (Stage) b_home.getScene().getWindow();
@@ -55,17 +53,21 @@ public class BasePageController {
             loader.setLocation(getClass().getResource("/view/fxml/VipPageForVip.fxml"));
             AnchorPane vip = (AnchorPane) loader.load();
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-            anchorPane.getChildren().add(3, vip);
+            anchorPane.getChildren().add(vip);
             vip.setLayoutY(75);
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
             vip.setVisible(true);
         }
     }
 
-    public void closeVip(MouseEvent me) throws IOException{
 
+    public void buttonColorChange1(MouseEvent me){
+        Button b = (Button) me.getSource();
+        if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
+            b.setTextFill(PINK);
+        else if(me.getEventType().equals(MouseEvent.MOUSE_EXITED))
+            b.setTextFill(BLACK);
     }
-
     public void buttonColorChange2(MouseEvent me){
         Button b = (Button) me.getSource();
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
@@ -75,7 +77,6 @@ public class BasePageController {
     }
 
     public void goToCoach(MouseEvent mouseEvent) throws IOException {
-        //choosedCoach = (Coach) photo.getUserData();
 
         Stage stage = (Stage) b_home.getScene().getWindow();
         stage.setTitle("Coaches");
@@ -91,7 +92,6 @@ public class BasePageController {
         coaches.setLayoutY(75);
     }
     public void goToVideo(MouseEvent mouseEvent) throws IOException {
-        //choosedCoach = (Coach) photo.getUserData();
 
         Stage stage = (Stage) b_home.getScene().getWindow();
         stage.setTitle("Videos");
@@ -107,7 +107,6 @@ public class BasePageController {
         video.setLayoutY(75);
     }
     public void goToMyLesson(MouseEvent mouseEvent) throws IOException {
-        //choosedCoach = (Coach) photo.getUserData();
 
         Stage stage = (Stage) b_home.getScene().getWindow();
         stage.setTitle("My Lessons");
@@ -123,7 +122,6 @@ public class BasePageController {
         lessons.setLayoutY(75);
     }
     public void goToHome(MouseEvent mouseEvent) throws IOException {
-        //choosedCoach = (Coach) photo.getUserData();
 
         Stage stage = (Stage) b_home.getScene().getWindow();
         stage.setTitle("Home");
@@ -139,7 +137,6 @@ public class BasePageController {
         home.setLayoutY(75);
     }
     public void goToAccount(MouseEvent mouseEvent) throws IOException {
-        //choosedCoach = (Coach) photo.getUserData();
 
         Stage stage = (Stage) b_home.getScene().getWindow();
         stage.setTitle("Account");
@@ -155,7 +152,6 @@ public class BasePageController {
         account.setLayoutY(75);
     }
     public void goToProfile(MouseEvent mouseEvent) throws IOException {
-        //choosedCoach = (Coach) photo.getUserData();
 
         Stage stage = (Stage) b_home.getScene().getWindow();
         stage.setTitle("Profile");
@@ -186,8 +182,4 @@ public class BasePageController {
         stage.show();
     }
 
-
-    public void closeHistory2(ZoomEvent zoomEvent) {
-        historyPane.setVisible(false);
-    }
 }
