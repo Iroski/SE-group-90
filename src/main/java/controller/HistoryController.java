@@ -60,36 +60,37 @@ public class HistoryController {
         }
         else {
             historyList= (ArrayList<Video>) returnEntity.getObject();
+            System.out.println(historyList);
         }
         try {
             if (historyList.get(0) != null) {
-                history1.setImage(new Image(historyList.get(0).getCoverPath()));
-                author1.setText(historyList.get(0).getAuthor());
+                history1.setImage(new Image(historyList.get(0).getStaticVideo().getCoverPath()));
+                author1.setText(historyList.get(0).getStaticVideo().getAuthor());
                 description1.setText("it's a good video!");
             }
             if (historyList.get(1) != null) {
-                history2.setImage(new Image(historyList.get(1).getCoverPath()));
-                author2.setText(historyList.get(1).getAuthor());
+                history2.setImage(new Image(historyList.get(1).getStaticVideo().getCoverPath()));
+                author2.setText(historyList.get(1).getStaticVideo().getAuthor());
                 description2.setText("it's a good video!");
             }
             if (historyList.get(2) != null) {
-                history3.setImage(new Image(historyList.get(2).getCoverPath()));
-                author3.setText(historyList.get(2).getAuthor());
+                history3.setImage(new Image(historyList.get(2).getStaticVideo().getCoverPath()));
+                author3.setText(historyList.get(2).getStaticVideo().getAuthor());
                 description3.setText("it's a good video!");
             }
             if (historyList.get(3) != null) {
-                history4.setImage(new Image(historyList.get(3).getCoverPath()));
-                author4.setText(historyList.get(3).getAuthor());
+                history4.setImage(new Image(historyList.get(3).getStaticVideo().getCoverPath()));
+                author4.setText(historyList.get(3).getStaticVideo().getAuthor());
                 description4.setText("it's a good video!");
             }
             if (historyList.get(4) != null) {
-                history5.setImage(new Image(historyList.get(4).getCoverPath()));
-                author5.setText(historyList.get(4).getAuthor());
+                history5.setImage(new Image(historyList.get(4).getStaticVideo().getCoverPath()));
+                author5.setText(historyList.get(4).getStaticVideo().getAuthor());
                 description5.setText("it's a good video!");
             }
             if (historyList.get(5) != null) {
-                history6.setImage(new Image(historyList.get(5).getCoverPath()));
-                author6.setText(historyList.get(5).getAuthor());
+                history6.setImage(new Image(historyList.get(5).getStaticVideo().getCoverPath()));
+                author6.setText(historyList.get(5).getStaticVideo().getAuthor());
                 description6.setText("it's a good video!");
             }
         }
