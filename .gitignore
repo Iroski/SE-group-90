@@ -1,4 +1,4 @@
 **/.idea
 **/*.iml
 **/target
-**/src/test/resources/database/*.json
+**/src/test/resources/**

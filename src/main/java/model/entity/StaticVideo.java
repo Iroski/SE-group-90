@@ -6,6 +6,8 @@ import lombok.ToString;
 import model.dao.base.StaticResources;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * @author ：Yubo Wang
@@ -34,7 +36,11 @@ public class StaticVideo extends StaticResources {
     }
 
     public StaticVideo(String filePath) {
-        this.filePath = filePath;
+        String separator = "/|\\\\";
+        String[] splitedFilePath = filePath.split(separator);
+        int len = splitedFilePath.length;
+        Path path = Paths.get(splitedFilePath[len-3], splitedFilePath[len-2], splitedFilePath[len-1]);
+        this.filePath = path.toString();
         parseName();
     }
 
