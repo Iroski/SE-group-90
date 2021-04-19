@@ -51,7 +51,7 @@ public class BasePageController {
     public void showVip(MouseEvent event) throws IOException{
         AccountService accountService = new AccountService();
         ReturnEntity returnEntity = accountService.isPremium("Heluyao");
-        AtomicBoolean check = new AtomicBoolean(true);
+        AtomicBoolean check = new AtomicBoolean(false);
         if(returnEntity.getCode() == 200){
             // successful
             check = (AtomicBoolean)returnEntity.getObject();
