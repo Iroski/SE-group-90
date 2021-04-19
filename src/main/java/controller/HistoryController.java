@@ -60,11 +60,15 @@ public class HistoryController {
         }
         else {
             historyList= (ArrayList<Video>) returnEntity.getObject();
-            System.out.println(historyList);
+            //System.out.println(historyList);
         }
         try {
             if (historyList.get(0) != null) {
-                history1.setImage(new Image(historyList.get(0).getStaticVideo().getCoverPath()));
+                if (historyList.get(0).getStaticVideo().getCoverPath()==null) {
+                    history1.setImage(new Image("view/images/1.png"));
+                }
+                else
+                    history1.setImage(new Image(historyList.get(0).getStaticVideo().getCoverPath()));
                 author1.setText(historyList.get(0).getStaticVideo().getAuthor());
                 description1.setText("it's a good video!");
             }
