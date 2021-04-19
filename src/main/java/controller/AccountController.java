@@ -2,22 +2,30 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.entity.Account;
+import model.entity.ReturnEntity;
+import model.entity.User;
+import model.service.AccountService;
+import model.service.UserService;
 
 import java.io.IOException;
 
 public class AccountController {
 
     public javafx.scene.control.Button topup;
-    public TextField balance;
-
+    public Label balance;
+    AccountService accountService = new AccountService();
     @FXML
     public void initialize() {
-        balance.setText("10000");
-        balance.setEditable(false);
+        Account account;
+        ReturnEntity returnEntity = accountService.getAccount(LoginController.userName);
+        account = (Account) returnEntity.getObject();
+        balance.setText("$"+account.getBalance().toString());
     }
 
     public void TopUp(MouseEvent mouseEvent) throws IOException {

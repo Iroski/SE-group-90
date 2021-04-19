@@ -47,6 +47,7 @@ public class SignUpController {
     public TextField age;
 
     User user;
+
     @FXML
     public void initialize() {
         gender.getItems().addAll(
@@ -58,8 +59,9 @@ public class SignUpController {
 
         user = new User("","","","","",null,null,null,new ArrayList<Long>());
     }
+
     /**
-     * Sets the stage of this dialog.
+     * Set the stage of this dialog.
      *
      * @param SignUpStage
      */
@@ -74,7 +76,10 @@ public class SignUpController {
     private void handleCancel() {
         singUpStage.close();
     }
-
+    
+    /**
+     * Deal with submission, check the legality of inputs.
+     */
     @FXML
     public void handleSubmit(MouseEvent mouseEvent) throws IOException {
         String userName = this.userName.getText();
@@ -94,10 +99,6 @@ public class SignUpController {
             alert.showAndWait();
             return;
         }
-//        if(email.equals("")){
-//            System.out.println("email不能为空");
-//            return;
-//        }
         String password = this.password.getText();
         if(password.equals("")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -178,6 +179,5 @@ public class SignUpController {
             alert.headerTextProperty().set("database error!");
             alert.showAndWait();
         }
-
     }
 }

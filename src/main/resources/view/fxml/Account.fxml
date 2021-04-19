@@ -19,6 +19,10 @@
             <Font size="33.0" />
          </font>
       </Button>
-      <TextField fx:id="balance" layoutX="481.0" layoutY="245.0" />
+      <Label fx:id="balance" layoutX="473.0" layoutY="225.0" prefHeight="66.0" prefWidth="209.0">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

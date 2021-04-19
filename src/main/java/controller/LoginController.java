@@ -50,6 +50,9 @@ public class LoginController {
         //imageView.setViewport(rectangle2);
     }
 
+    /**
+     * Open the MainPage.
+     */
     @FXML
     public void showSignUpPage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -63,12 +66,12 @@ public class LoginController {
         SignUpController controller = loader.getController();
         controller.setSignUpStage(signUpStage);
         signUpStage.showAndWait();
-
-
     }
 
+    /**
+     * Open the MainPage.
+     */
     public void goToMainPage() throws IOException {
-
         Stage stage = (Stage) LoginButton.getScene().getWindow();
         stage.close();
         stage=new Stage();
@@ -91,8 +94,27 @@ public class LoginController {
         stage.show();
     }
 
+    /**
+     * check the legality of inputs. If so, admit to login.
+     */
     @FXML
     public void login(MouseEvent mouseEvent) throws IOException {
+        account.setText("hly");
+        password.setText("000000");
+        if(account.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("Please input username!");
+            alert.showAndWait();
+            return;
+        }
+        if(password.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("Please input password!");
+            alert.showAndWait();
+            return;
+        }
         UserService service = new UserService();
         ReturnEntity returnEntity = service.login(account.getText(), Encryption.getMD5Str(password.getText()));
         int code = returnEntity.getCode();

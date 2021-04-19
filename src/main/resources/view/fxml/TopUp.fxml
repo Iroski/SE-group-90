@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TopUpController">
    <children>
-      <Label layoutX="20.0" prefHeight="90.0" prefWidth="376.0" text="Top up your account">
+      <Label layoutX="27.0" layoutY="37.0" prefHeight="90.0" prefWidth="354.0" text="Top up for your account:">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff07" height="84.0" layoutX="64.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff07" height="84.0" layoutX="299.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff07" height="84.0" layoutX="540.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff07" height="84.0" layoutX="783.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff07" height="84.0" layoutX="64.0" layoutY="358.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff07" height="84.0" layoutX="299.0" layoutY="358.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff07" height="84.0" layoutX="540.0" layoutY="358.0" stroke="BLACK" strokeType="INSIDE" width="425.0" />
-      <Button fx:id="confirmButton" layoutX="425.0" layoutY="529.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="132.0" text="Confirm">
+      <Button fx:id="confirmButton" layoutX="434.0" layoutY="513.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="64.0" prefWidth="132.0" text="Confirm">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="882.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#backToAccount" prefHeight="38.0" prefWidth="97.0" text="Back">
+      <Button fx:id="backButton" layoutX="834.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#backToAccount" prefHeight="38.0" prefWidth="97.0" text="Back">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Label layoutX="126.0" layoutY="186.0" prefHeight="44.0" prefWidth="75.0" text="6$">
+      <Label fx:id="l1" alignment="CENTER" layoutX="64.0" layoutY="171.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" style="-fx-border-color: black;" text="\$6">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="349.0" layoutY="186.0" prefHeight="44.0" prefWidth="75.0" text="18$">
+      <Label fx:id="l2" alignment="CENTER" layoutX="300.0" layoutY="171.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" style="-fx-border-color: black;" text="\$18">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="590.0" layoutY="186.0" prefHeight="44.0" prefWidth="75.0" text="68$">
+      <Label fx:id="l3" alignment="CENTER" layoutX="540.0" layoutY="171.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" style="-fx-border-color: black;" text="\$68">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="825.0" layoutY="186.0" prefHeight="44.0" prefWidth="91.0" text="233$">
+      <Label fx:id="l4" alignment="CENTER" layoutX="787.0" layoutY="171.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" style="-fx-border-color: black;" text="\$233">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="110.0" layoutY="378.0" prefHeight="44.0" prefWidth="91.0" text="648$">
+      <Label fx:id="l5" alignment="CENTER" layoutX="64.0" layoutY="359.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" style="-fx-border-color: black;" text="\$648">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="341.0" layoutY="378.0" prefHeight="44.0" prefWidth="91.0" text="998$">
+      <Label fx:id="l6" alignment="CENTER" layoutX="300.0" layoutY="359.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" style="-fx-border-color: black;" text="\$998">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="551.0" layoutY="378.0" prefHeight="47.0" prefWidth="200.0" text="Custom">
+      <Label fx:id="l7" alignment="CENTER" layoutX="540.0" layoutY="359.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" style="-fx-border-color: black;" text="\$8848">
          <font>
             <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="l8" alignment="CENTER" layoutX="787.0" layoutY="359.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" style="-fx-border-color: black;" text="Custom">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="amountLabel" layoutX="481.0" layoutY="38.0" text="\$0" textFill="#ff2400">
+         <font>
+            <Font name="System Bold Italic" size="60.0" />
          </font>
       </Label>
    </children>
