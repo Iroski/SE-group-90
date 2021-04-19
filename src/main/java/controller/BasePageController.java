@@ -8,7 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.entity.ReturnEntity;
+import model.service.AccountService;
+
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 import static javafx.scene.paint.Color.*;
@@ -45,12 +49,36 @@ public class BasePageController {
     }
 
     public void showVip(MouseEvent event) throws IOException{
+        AccountService accountService = new AccountService();
+        ReturnEntity returnEntity = accountService.isPremium("Heluyao");
+        AtomicBoolean check = new AtomicBoolean(true);
+        if(returnEntity.getCode() == 200){
+            // successful
+            check = (AtomicBoolean)returnEntity.getObject();
+        }
+        else if(returnEntity.getCode() == 4042){
+            // account not exist
+        }
+        else if(returnEntity.getCode() == 5000){
+            // database error
+        }
+
         Label l = (Label) event.getSource();
-        if(l.equals(vipLabel)){
-            //vipPane.setVisible(true);
+        if(l.equals(vipLabel) && check.get()){ // is premium
             Stage stage = (Stage) b_home.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/fxml/VipPageForVip.fxml"));
+            AnchorPane vip = (AnchorPane) loader.load();
+            AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+            anchorPane.getChildren().add(vip);
+            vip.setLayoutY(75);
+            vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
+            vip.setVisible(true);
+        }
+        else if(l.equals(vipLabel) && !check.get()){ // is not premium
+            Stage stage = (Stage) b_home.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/fxml/VipPageForOrdinary.fxml"));
             AnchorPane vip = (AnchorPane) loader.load();
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
             anchorPane.getChildren().add(vip);

@@ -14,6 +14,7 @@ public class VipController {
     private void initialize(){
 
     }
+
     public void closeVip(MouseEvent mouseEvent) {
         Stage stage = (Stage) vipCard.getScene().getWindow();
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();

@@ -79,5 +79,6 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
+      <Label layoutX="251.0" layoutY="304.0" text="more &gt;" textFill="WHITE" AnchorPane.rightAnchor="30.0" />
    </children>
 </AnchorPane>
