@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import model.entity.Coach;
 
@@ -32,11 +33,9 @@ public class CoachInfoController {
     public Label sexLabel;
     public Label nameLabel;
     public ImageView photo;
-    public Label description;
-    private Coach choosedCoach;
+    public TextFlow description;
 
     public void backToCoach(MouseEvent mouseEvent) throws IOException {
-
         Stage stage = (Stage) photo.getScene().getWindow();
         stage.setTitle("Coaches");
         FXMLLoader loader = new FXMLLoader();
@@ -52,7 +51,7 @@ public class CoachInfoController {
     }
 
     public void reserve(MouseEvent mouseEvent) throws IOException {
-        choosedCoach= (Coach) photo.getUserData();
+        Coach choosedCoach = (Coach) photo.getUserData();
         Stage stage=new Stage();
         stage.setTitle("Reserve");
         FXMLLoader loader=new FXMLLoader();
@@ -70,7 +69,7 @@ public class CoachInfoController {
 
     @FXML
     public void initialize() {
-        description.setWrapText(true);
+        //description.setWrapText(true);
 
     }
 }
