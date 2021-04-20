@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.Main;
+import model.entity.Account;
 import model.service.UserService;
 import model.utils.CheckUserInfoValidation;
 
@@ -38,7 +39,7 @@ public class CustomController {
             alert.showAndWait();
         }
         else {
-            TopUpController.amount = Integer.parseInt(amount);
+            AccountController.amount = Integer.parseInt(amount);
             singUpStage.close();
         }
     }
