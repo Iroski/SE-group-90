@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.entity.Coach;
 
@@ -97,7 +98,9 @@ public class CoachController {
         coachInfoController.course.setText(choosedCoach.getCourse());
         Image image=new Image(choosedCoach.getPhotoPath());
         coachInfoController.photo.setImage(image);
-        coachInfoController.description.setText("  This teacher is very handsome and clever, oh !!!!!!" +
-                "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        Text text=new Text("This teacher is very handsome and clever, as the coach's name is hly and he is no Gokop, he is hly!"+
+                " oh!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        text.setStyle("-fx-font: 24 arial;");
+        coachInfoController.description.getChildren().add(text);
     }
 }
