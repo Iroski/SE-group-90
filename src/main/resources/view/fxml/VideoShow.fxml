@@ -59,5 +59,6 @@
             </BorderPane>
          </children>
       </VBox>
+      <Button fx:id="backButton" mnemonicParsing="false" onMouseClicked="#backToHome" text="Back" />
    </children>
 </AnchorPane>
