@@ -51,7 +51,8 @@ public class HistoryController {
     public void initialize() {
         ArrayList<Video> historyList=null;
         UserService Service=new UserService();
-        ReturnEntity returnEntity=Service.getHistoryByName("hly");
+        //ReturnEntity returnEntity=Service.getHistoryByName("hly");
+        ReturnEntity returnEntity=Service.getHistoryByName(LoginController.userName);
         if (returnEntity.getCode()==5000) {
             System.out.println("Data base error!");
         }
