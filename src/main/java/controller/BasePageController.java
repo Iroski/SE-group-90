@@ -85,6 +85,7 @@ public class BasePageController {
             vip.setLayoutY(75);
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
             vip.setVisible(true);
+
         }
     }
 

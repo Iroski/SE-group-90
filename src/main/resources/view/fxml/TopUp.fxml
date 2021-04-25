@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TopUpController">
    <children>
-      <Label layoutX="27.0" layoutY="37.0" prefHeight="90.0" prefWidth="354.0" text="Top up for your account:">
+      <Label layoutX="27.0" layoutY="37.0" prefHeight="90.0" prefWidth="392.0" text="Top up for your account:">
          <font>
             <Font size="31.0" />
          </font>
