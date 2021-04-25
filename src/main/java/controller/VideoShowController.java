@@ -72,7 +72,8 @@ public class VideoShowController {
         setIcon(volumeBT,volOnIcon,15);
         setIcon(maxBT,maxIcon,25);
 
-        java.io.File file = new java.io.File("src/main/resources/view/videos/testVideo.mp4");
+        java.io.File file = new java.io.File("src/main/resources/"+MainPageController.path);
+        System.out.println("src/main/resources/"+MainPageController.path);
         url = file.toURI().toString();
         media = new Media(url);
         mediaPlayer = new MediaPlayer(media);
