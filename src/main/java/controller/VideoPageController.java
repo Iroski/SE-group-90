@@ -84,7 +84,6 @@ public class VideoPageController {
                 for (String s : tagName) {
                     if (tag.equals(s)) {
                         counter++;
-                        System.out.println(value.getStaticVideo().getCoverPath());
                         VideoBox videoBox = new VideoBox(value.getStaticVideo().getCoverPath(),value.getStaticVideo().getVideoName());
                         videoBox.setOnMouseClicked(mouseEvent1 -> {
                             try {

@@ -15,6 +15,7 @@ import model.service.UserService;
 import java.util.ArrayList;
 
 public class HistoryController {
+
     public AnchorPane historyPane;
     public VBox allHistory;
     public AnchorPane h1Pane;
@@ -46,12 +47,13 @@ public class HistoryController {
     public ImageView history6;
     public Label description6;
     public Label author6;
-
+    private Image image=new Image("view/images/1.png");
     @FXML
     public void initialize() {
         ArrayList<Video> historyList=null;
         UserService Service=new UserService();
-        ReturnEntity returnEntity=Service.getHistoryByName("hly");
+        //ReturnEntity returnEntity=Service.getHistoryByName("hly");
+        ReturnEntity returnEntity=Service.getHistoryByName(LoginController.userName);
         if (returnEntity.getCode()==5000) {
             System.out.println("Data base error!");
         }
@@ -62,40 +64,22 @@ public class HistoryController {
             historyList= (ArrayList<Video>) returnEntity.getObject();
             //System.out.println(historyList);
         }
+        ImageView[] historys={history1,history2,history3,history4,history5,history6};
+        Label[] authors={author1,author2,author3,author4,author5,author6};
+        Label[] descriptions={description1,description2,description3,description4,description5,description6};
         try {
-            if (historyList.get(0) != null) {
-                if (historyList.get(0).getStaticVideo().getCoverPath()==null) {
-                    history1.setImage(new Image("view/images/1.png"));
+            for (int i=0;i<6;i++) {
+                if (historyList.get(i) != null) {
+                    if (historyList.get(i).getStaticVideo().getCoverPath()==null) {
+                        historys[i].setImage(image);
+                    }
+                    else
+                        historys[i].setImage(new Image(historyList.get(i).getStaticVideo().getCoverPath()));
+                    authors[i].setText(historyList.get(i).getStaticVideo().getAuthor());
+                    descriptions[i].setText("it's a good video!");
                 }
                 else
-                    history1.setImage(new Image(historyList.get(0).getStaticVideo().getCoverPath()));
-                author1.setText(historyList.get(0).getStaticVideo().getAuthor());
-                description1.setText("it's a good video!");
-            }
-            if (historyList.get(1) != null) {
-                history2.setImage(new Image(historyList.get(1).getStaticVideo().getCoverPath()));
-                author2.setText(historyList.get(1).getStaticVideo().getAuthor());
-                description2.setText("it's a good video!");
-            }
-            if (historyList.get(2) != null) {
-                history3.setImage(new Image(historyList.get(2).getStaticVideo().getCoverPath()));
-                author3.setText(historyList.get(2).getStaticVideo().getAuthor());
-                description3.setText("it's a good video!");
-            }
-            if (historyList.get(3) != null) {
-                history4.setImage(new Image(historyList.get(3).getStaticVideo().getCoverPath()));
-                author4.setText(historyList.get(3).getStaticVideo().getAuthor());
-                description4.setText("it's a good video!");
-            }
-            if (historyList.get(4) != null) {
-                history5.setImage(new Image(historyList.get(4).getStaticVideo().getCoverPath()));
-                author5.setText(historyList.get(4).getStaticVideo().getAuthor());
-                description5.setText("it's a good video!");
-            }
-            if (historyList.get(5) != null) {
-                history6.setImage(new Image(historyList.get(5).getStaticVideo().getCoverPath()));
-                author6.setText(historyList.get(5).getStaticVideo().getAuthor());
-                description6.setText("it's a good video!");
+                    break;
             }
         }
         catch (Exception ignored){
