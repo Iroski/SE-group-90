@@ -1,6 +1,7 @@
 package controller;
 
-import javafx.collections.ObservableList;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,13 +9,15 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.entity.Coach;
 import model.entity.ReturnEntity;
 import model.service.CoachService;
-import model.utils.DateUtils;
 
 import java.io.IOException;
 import java.time.*;
@@ -32,14 +35,21 @@ public class BookingPageController {
     public CheckBox thirdLesson;
     public CheckBox fourthLesson;
     public CheckBox fifthLesson;
+    public VBox lessonTime;
 
 
     LinkedList<LocalDate> day_list;
     LinkedList<LocalTime> time_list;
+    LinkedList<CheckBox> time_box_list;
+    LocalDate selectedDate = null;
+    LocalTime selectedTime = null;
+
     @FXML
     public void initialize(){
         Coach coach = (Coach) coach_photo.getUserData();
-        long coach_id = coach.getId();
+        System.out.println(coach);
+        //long coach_id = coach.getId();
+        long coach_id = 0;
         Image image = new Image("view/images/coach.jpg");
         coach_photo.setFill(new ImagePattern(image));
         day_list = new LinkedList<>();
@@ -49,13 +59,20 @@ public class BookingPageController {
         day_list.add(LocalDate.now().plusDays(4));
         day_list.add(LocalDate.now().plusDays(5));
         dateChoose.getItems().addAll(day_list);
-        dateChoose.getSelectionModel().selectFirst();
 
+        time_list = new LinkedList<>();
         time_list.add(LocalTime.of(9,0,0));
         time_list.add(LocalTime.of(10,0,0));
         time_list.add(LocalTime.of(14,0,0));
         time_list.add(LocalTime.of(15,0,0));
         time_list.add(LocalTime.of(16,0,0));
+
+        time_box_list = new LinkedList<>();
+        time_box_list.add(fifthLesson);
+        time_box_list.add(secondLesson);
+        time_box_list.add(thirdLesson);
+        time_box_list.add(fourthLesson);
+        time_box_list.add(fifthLesson);
 
         boolean [][] reserved = new boolean[5][5];
 
@@ -87,18 +104,45 @@ public class BookingPageController {
             }
         }
 
+        dateChoose.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) { // old new
+                int index = dateChoose.getSelectionModel().getSelectedIndex();
+                setCheckBox(reserved[index]);
+                selectedDate = day_list.get(index);
+            }
+        });
 
-        /*ArrayList<LocalDate> d = new ArrayList<>();
-        d.add(LocalDate.now());
-        ObservableList<LocalDate> dates = FXCollections.observableList(d);
-        dateChoose.setItems(dates);*/
+        for(CheckBox cb : time_box_list){
+            cb.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                    for(int i = 0; i < 5; ++i){
+                        if(time_box_list.get(i) == cb){
+                            selectedTime = time_list.get(i);
+                        }
+                        else{
+                            time_box_list.get(i).setSelected(false);
+                        }
+                    }
+                }
+            });
+        }
 
-        /*ArrayList<LocalDate> d = new ArrayList<>();
-        d.add(LocalDate.now());
-        ObservableList<LocalDate> dates = FXCollections.observableList(d);
-        dateChoose.setItems(dates);*/
+        dateChoose.getSelectionModel().selectFirst();
     }
 
+    public void setCheckBox(boolean[] reserved){
+        for(int i = 0; i < 5; ++i){
+            if(reserved[i]){
+                HBox box = (HBox) lessonTime.getChildren().get(i);
+                Label label = (Label) box.getChildren().get(0);
+                CheckBox c_box = (CheckBox) box.getChildren().get(1);
+                label.setTextFill(Color.GRAY);
+                c_box.setVisible(false);  // has been reserved. can not be booked
+            }
+        }
+    }
 
     public void closeThePage(MouseEvent mouseEvent) {
         Stage stage= (Stage) coach_photo.getScene().getWindow();

@@ -42,7 +42,7 @@ public class CoachInfoController {
         loader.setLocation(getClass().getResource("/view/fxml/CoachPage.fxml"));
         AnchorPane coaches = (AnchorPane) loader.load();
         // Set person overview into the center of root layout.
-        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().remove(2);
         anchorPane.getChildren().add(2, coaches);
 
@@ -51,13 +51,13 @@ public class CoachInfoController {
     }
 
     public void reserve(MouseEvent mouseEvent) throws IOException {
-        Coach choosedCoach = (Coach) photo.getUserData();
-        Stage stage=new Stage();
+        Stage stage = new Stage();
         stage.setTitle("Reserve");
-        FXMLLoader loader=new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/BookingPage.fxml"));
-        AnchorPane layout= loader.load();
-        BookingPageController bookingPageController=loader.getController();
+        AnchorPane layout = loader.load();
+        BookingPageController bookingPageController = loader.getController();
+        Coach choosedCoach = (Coach) photo.getUserData();
         bookingPageController.coach_photo.setUserData(choosedCoach);
         bookingPageController.coach_photo.setFill(new ImagePattern(new Image(choosedCoach.getPhotoPath())));
         bookingPageController.coach_name.setText(choosedCoach.getName());
