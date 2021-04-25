@@ -2,6 +2,9 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -9,10 +12,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainPageController {
-    public javafx.scene.control.Button test;
+    public Button test;
+    public ImageView video1;
+
     @FXML
     public void initialize() {
-         test.setVisible(false);
+        video1.setImage(new Image("view/images/1.png"));
+        test.setVisible(false);
     }
 
     public void showVideo(MouseEvent mouseEvent) throws IOException {
@@ -28,6 +34,6 @@ public class MainPageController {
 
         video.setLayoutX(200);
         video.setLayoutY(75);
-
     }
+
 }

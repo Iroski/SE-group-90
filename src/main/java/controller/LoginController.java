@@ -3,13 +3,15 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import main.Main;
@@ -29,26 +31,22 @@ import java.io.IOException;
 public class LoginController {
     @FXML
     public Button LoginButton;
-
-    @FXML
-    private ImageView imageView;
-
     @FXML
     private TextField account;
-
     @FXML
     private PasswordField password;
-
+    @FXML
+    Separator line1;
+    @FXML
+    Separator line2;
+    @FXML
+    Rectangle rectangle;
     public static String userName;
     @FXML
     public void initialize() {
-        Rectangle rectangle = new Rectangle(imageView.prefWidth(-1), imageView.prefHeight(-1));
-        //Rectangle2D rectangle2 = new Rectangle2D(0, 0, 100, 100);
-        rectangle.setArcWidth(100);
-        rectangle.setArcHeight(100);
-        imageView.setClip(rectangle);
-        //imageView.setViewport(rectangle2);
+        LoginButton.setStyle("-fx-border-color: #04b9f9 ; -fx-background-color: #04b9f9 ; -fx-border-radius: 5px ");
     }
+
 
     /**
      * Open the MainPage.
