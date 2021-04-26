@@ -108,7 +108,7 @@
                                 <Font size="17.0" />
                             </font>
                         </Label>
-                  <ImageView fx:id="video1" fitHeight="150.0" fitWidth="206.0" layoutX="21.0" layoutY="14.0" onMouseClicked="#showVideo" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="camel" fitHeight="150.0" fitWidth="206.0" layoutX="21.0" layoutY="14.0" onMouseClicked="#clickVideo" pickOnBounds="true" preserveRatio="true">
                   </ImageView>
                     </children>
                 </AnchorPane>
