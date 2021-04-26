@@ -3,12 +3,10 @@ package model.service;
 import common.CommunicationStatus;
 import model.dao.VideoDao;
 import model.entity.ReturnEntity;
-import model.entity.Tag;
 import model.entity.Video;
 import model.enumPackage.TagOperateType;
 import model.exception.database.DataItemNotExists;
 
-import javax.swing.text.html.Option;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
