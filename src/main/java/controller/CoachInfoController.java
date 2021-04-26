@@ -55,12 +55,13 @@ public class CoachInfoController {
         stage.setTitle("Reserve");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/BookingPage.fxml"));
-        AnchorPane layout = loader.load();
+        AnchorPane layout = (AnchorPane)loader.load();
         BookingPageController bookingPageController = loader.getController();
         Coach choosedCoach = (Coach) photo.getUserData();
         bookingPageController.coach_photo.setUserData(choosedCoach);
         bookingPageController.coach_photo.setFill(new ImagePattern(new Image(choosedCoach.getPhotoPath())));
         bookingPageController.coach_name.setText(choosedCoach.getName());
+        bookingPageController.init();
         Scene scene = new Scene(layout);
         stage.setScene(scene);
         stage.show();

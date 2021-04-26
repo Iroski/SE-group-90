@@ -6,9 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.fxml.PayForOrderController">
+   <children>
+      <Button layoutX="89.0" layoutY="311.0" mnemonicParsing="false" text="Pay immediately" />
+      <Button layoutX="448.0" layoutY="311.0" mnemonicParsing="false" text="Pay latter" />
+   </children>
 </AnchorPane>
