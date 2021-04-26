@@ -1,2 +1,2 @@
-Current pk:0
-[]
+Current pk:3
+[{"id":0,"isPremium":false,"staticVideo":{"author":"lzh","coverPath":"view/images/1.png","filePath":"view\\videos\\testVideo_lyh.mp4","type":"mp4","videoName":"camel"},"tagsName":["running"],"views":0},{"id":1,"isPremium":false,"staticVideo":{"author":"lzh","coverPath":"view/images/1.png","filePath":"view\\videos\\testVideo_lyh.mp4","type":"mp4","videoName":"camel1"},"tagsName":["biking"],"views":0},{"id":2,"isPremium":false,"staticVideo":{"coverPath":"view/images/1.png","author":"lzh","filePath":"view\\videos\\camel_lzh.mp4","type":"mp4","videoName":"camel"},"tagsName":[],"views":0},{"id":3,"isPremium":false,"staticVideo":{"coverPath":"view/images/1.png","author":"lzh","coverPath":"view/images/1.png","filePath":"view\\videos\\testVideo_lyh.mp4","type":"mp4","videoName":"camel3"},"tagsName":["yoga"],"views":0}]
