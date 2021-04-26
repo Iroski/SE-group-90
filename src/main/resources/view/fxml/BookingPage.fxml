@@ -25,7 +25,7 @@
       <Button layoutX="591.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#closeThePage" prefHeight="38.0" prefWidth="66.0" text="Back" />
       <Separator layoutX="31.0" layoutY="123.0" prefHeight="20.0" prefWidth="639.0" />
       <ChoiceBox fx:id="dateChoose" layoutX="54.0" layoutY="206.0" prefHeight="44.0" prefWidth="188.0" />
-      <VBox layoutX="308.0" layoutY="214.0" spacing="10.0">
+      <VBox fx:id="lessonTime" layoutX="308.0" layoutY="214.0" spacing="10.0">
          <children>
             <HBox alignment="CENTER" layoutX="308.0" layoutY="214.0" spacing="20.0">
                <children>

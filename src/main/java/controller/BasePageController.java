@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.entity.ReturnEntity;
 import model.service.AccountService;
@@ -85,6 +87,7 @@ public class BasePageController {
             vip.setLayoutY(75);
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
             vip.setVisible(true);
+
         }
     }
 
