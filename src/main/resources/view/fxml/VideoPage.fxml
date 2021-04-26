@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -9,142 +12,28 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VideoPageController">
-    <children>
-        <GridPane prefHeight="675.0" prefWidth="1000.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-border-style: solid; -fx-background-color: white; -fx-border-color: white;" GridPane.columnIndex="2">
-                    <children>
-                        <Rectangle fx:id="video3" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name3" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1">
-                    <children>
-                        <AnchorPane layoutY="7.0" prefHeight="150.0" prefWidth="150.0" />
-                        <Rectangle fx:id="video2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff03" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name2" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="3">
-                    <children>
-                        <Rectangle fx:id="video4" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name4" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.rowIndex="1">
-                    <children>
-                        <Rectangle fx:id="video5" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name5" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <children>
-                        <Rectangle fx:id="video6" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name6" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                    <children>
-                        <Rectangle fx:id="video7" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name7" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                    <children>
-                        <Rectangle fx:id="video8" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name8" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
-                    <children>
-                        <Rectangle fx:id="video9" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name9" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                    <children>
-                        <Rectangle fx:id="video10" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name10" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                    <children>
-                        <Rectangle fx:id="video11" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name11" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                    <children>
-                        <Rectangle fx:id="video12" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name12" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: white;">
-                    <children>
-                        <Rectangle fx:id="video1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff02" height="146.0" layoutX="22.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
-                        <Label fx:id="name1" alignment="CENTER" layoutX="86.0" layoutY="168.0" prefHeight="29.0" prefWidth="78.0" text="Test Video" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-            </children>
-        </GridPane>
-    </children>
+   <children>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1000.0" spacing="30.0" AnchorPane.bottomAnchor="615.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <Button fx:id="all" mnemonicParsing="false" onMouseClicked="#showAllVideos" prefHeight="27.0" prefWidth="74.0" style="-fx-background-radius: 10;" text="All videos" />
+            <Button fx:id="running" mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="Running" />
+            <Button fx:id="yoga" mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="Yoga" />
+            <Button fx:id="biking" mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="Biking" />
+            <Button fx:id="empty" mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="empty" />
+            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
+            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
+            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
+            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
+            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
+         </children>
+         <opaqueInsets>
+            <Insets bottom="10.0" right="10.0" />
+         </opaqueInsets>
+      </HBox>
+      <ScrollPane fx:id="scrollPane" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <content>
+            <FlowPane fx:id="flowPane" prefHeight="612.0" prefWidth="1000.0" />
+         </content>
+      </ScrollPane>
+   </children>
 </AnchorPane>

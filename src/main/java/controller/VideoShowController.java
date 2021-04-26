@@ -6,6 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,12 +25,15 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
+
 
 public class VideoShowController {
     public Button playBT;
     public Button stopBT;
     public Button maxBT;
     public Button volumeBT;
+    public Button backButton;
     public Label timeLB;
     public Slider processSD;
     public Slider volumeSD;
@@ -68,7 +72,7 @@ public class VideoShowController {
         setIcon(volumeBT,volOnIcon,15);
         setIcon(maxBT,maxIcon,25);
 
-        java.io.File file = new java.io.File("src/main/resources/view/images/test.mp4");
+        java.io.File file = new java.io.File("src/main/resources/"+MainPageController.path);
         url = file.toURI().toString();
         media = new Media(url);
         mediaPlayer = new MediaPlayer(media);
@@ -325,5 +329,20 @@ public class VideoShowController {
         mediaView.setFitWidth(currentWidth);       //set the size of mediaView
         mediaView.setFitHeight((double)currentWidth*(double)mediaHeight / (double)mediaHeight);
         controlBar.setPrefWidth(currentWidth);  //set the width of tools
+    }
+
+    public void backToHome(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.setTitle("Home");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/MainPage.fxml"));
+        AnchorPane home = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, home);
+
+        home.setLayoutX(200);
+        home.setLayoutY(75);
     }
 }
