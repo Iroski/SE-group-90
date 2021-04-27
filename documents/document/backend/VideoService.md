@@ -55,3 +55,25 @@ return: int
 | 200 | insert successful |
 |40022|tag already exist|
 | 5000 | database error |
+
+### 5. get video by id
+method: getVideoById(Long id)
+return: ReturnEntity(code,Video)
+| return code|return object | meaning |
+|:--:|:--:|:--:|
+| 200 |video| run successful |
+| 4045|null| video not found|
+| 5000 | null |database error |
+
+### 6. get video by name
+method: getVideoById(String name)
+return: ReturnEntity(code,Video)
+| return code|return object | meaning |
+|:--:|:--:|:--:|
+| 200 |video| run successful |
+| 4045|null| video not found|
+| 5000 | null |database error |
+
+### 7. check if the video is premium only
+method: isVideoPremium(Long id)
+return: AtomicBoolean

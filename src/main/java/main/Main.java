@@ -22,8 +22,4 @@ public class Main extends Application {
         db.init("src/main/resources/database");
     }
 
-    public static void main(String[] args) {
-
-        launch(args);
-    }
 }
