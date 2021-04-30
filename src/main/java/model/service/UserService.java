@@ -184,6 +184,25 @@ public class UserService {
         }
     }
 
+    public int removeFavoriteByName(String username,Long id){
+        try{
+            Optional<User> sUser=getUserByUsername(username);
+            if(sUser.isEmpty())
+                return CommunicationStatus.USER_NOT_FOUND.getCode();
+            User user=sUser.get();
+            List<Long> videosId=user.getFavorite();
+            if(videosId.contains(id)){
+                videosId.remove(id);
+                user.setFavorite(videosId);
+                userDao.updateUser(user);
+            }
+        }catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+        return CommunicationStatus.OK.getCode();
+    }
+
     protected Optional<User> getUserByUsername(String username){
         List<User> users = userDao.getAllUser();
         return users.stream().filter(user->user.getName().equals(username)).findAny();
