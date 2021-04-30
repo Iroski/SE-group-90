@@ -60,7 +60,7 @@ public class AccountService {
 
             BigDecimal subBalance = account.getBalance().subtract(orderMoney);
             int isValid = (subBalance).compareTo(BigDecimal.ZERO);
-            if (isValid <= 0)
+            if (isValid < 0)
                 return CommunicationStatus.NO_ENOUGH_BALANCE.getCode();
 
             account.setBalance(subBalance);
