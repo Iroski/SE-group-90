@@ -73,3 +73,21 @@ return: int
 | 200| insert successful|
 |4041 | user not exist|
 | 5000 | database error |
+
+### 8. get favorite video from a user
+method: getFavoriteByName(String username)
+return ReturnEntity(code,List<Video>)
+| return type | meaning |
+|:--:|:--:|
+| 200| successful|
+|4041 | user not exist|
+| 5000 | database error |
+
+### 9. set favorite video to a user
+method: setFavoriteByName(String username,Long id)
+return: int
+| return type | meaning |
+|:--:|:--:|
+| 200| insert successful|
+|4041 | user not exist|
+| 5000 | database error |

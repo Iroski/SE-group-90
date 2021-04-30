@@ -21,8 +21,22 @@ public class User extends DataItem {
     private Integer height;
     private Integer age;
     private List<Long> history;
+    private List<Long> favorite;
 
-    public User(Long id, String email, String name, String password, String phone, String gender, Double weight, Integer height, Integer age,List<Long> history) {
+    public User(String email, String name, String password, String phone, String gender, Double weight, Integer height, Integer age, List<Long> history, List<Long> favorite) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.gender = gender;
+        this.weight = weight;
+        this.height = height;
+        this.age = age;
+        this.history = history;
+        this.favorite = favorite;
+    }
+
+    public User(@NonNull Long id, String email, String name, String password, String phone, String gender, Double weight, Integer height, Integer age, List<Long> history, List<Long> favorite) {
         super(id);
         this.email = email;
         this.name = name;
@@ -32,18 +46,7 @@ public class User extends DataItem {
         this.weight = weight;
         this.height = height;
         this.age = age;
-        this.history=history;
-    }
-
-    public User(String email, String name, String password, String phone, String gender, Double weight, Integer height, Integer age,List<Long> history) {
-        this.email = email;
-        this.name = name;
-        this.password = password;
-        this.phone = phone;
-        this.gender = gender;
-        this.weight = weight;
-        this.height = height;
-        this.age = age;
-        this.history=history;
+        this.history = history;
+        this.favorite = favorite;
     }
 }
