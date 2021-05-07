@@ -29,7 +29,7 @@ public class UserServiceTest {
 //    @Test
 //    public void test01Signup(){
 //        System.out.println("------------1");
-//        User user = new User("927986413@qq.com","userTest2","111111","1","1",1.0,1,1,new ArrayList<Long>());
+//        User user = new User("927986413@qq.com","userTest2","111111","1","1",1.0,1,1,new ArrayList<Long>(),new ArrayList<Long>());
 //        System.out.println(new UserService().saveUser(user));
 //    }
 //

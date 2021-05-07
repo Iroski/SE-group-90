@@ -9,7 +9,8 @@ class Order{
     private Long liveLessonCreateTime;
     //type==0 : premium order
     private Integer premiumType;
-    private Long premiumDuration;
+    //the num of premium. if buy one month's premium then premiumType is 1 and premium is 1
+    private Integer premiumNum;
 
     private BigDecimal money;
     private Integer state;

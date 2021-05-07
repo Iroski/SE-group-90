@@ -20,21 +20,21 @@ import static org.junit.Assert.assertEquals;
  * @modified By：
  * @version:
  */
-@FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
-public class DataHouseTest {
-    static DataHouse db;
-    static String tableName;
-
-    @BeforeClass
-    public static void datatableInit() {
-        db = DataHouse.getInstance();
-        db.init("src/test/resources/database");
-    }
-
-    @Test
-    public void test01AddTable() {
-        tableName = User.class.getSimpleName();
-    }
+//@FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
+//public class DataHouseTest {
+//    static DataHouse db;
+//    static String tableName;
+//
+//    @BeforeClass
+//    public static void datatableInit() {
+//        db = DataHouse.getInstance();
+//        db.init("src/test/resources/database");
+//    }
+//
+//    @Test
+//    public void test01AddTable() {
+//        tableName = User.class.getSimpleName();
+//    }
 
 //    @Test
 //    public void test02Insert() {
@@ -86,6 +86,6 @@ public class DataHouseTest {
 //        List<?> results = db.query(tableName, args);
 //        assertEquals(results.size(), 0);
 //    }
-
-
-}
+//
+//
+//}

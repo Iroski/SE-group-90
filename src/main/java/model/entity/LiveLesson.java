@@ -18,6 +18,7 @@ public class LiveLesson {
     private String coachName;
     private Long lessonTime;
     private Integer status;
+    private Boolean isCustomized;
+    private String specificExercise;
     private Long createTime;
-
 }

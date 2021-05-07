@@ -279,7 +279,7 @@ public class BookingPageController {
             case 200: // successful
                 Account account = (Account) returnEntity.getObject();
                 int premiumType = account.getPremiumLevel();
-                int freeTime = account.getFreeLiveLessonTime();
+                int freeTime = account.getFreeLiveLessonNum();
                 if(premiumType != 0 && freeTime > 0){
                     res.set(true);
                 }

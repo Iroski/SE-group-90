@@ -16,7 +16,6 @@ public enum LiveSessionTimeType {
     IS_END("isEnd");
     String description;
 
-
     public String getDescription() {
         return description;
     }

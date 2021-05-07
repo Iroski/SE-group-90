@@ -71,7 +71,7 @@ public class LiveLessonService {
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
         }
 
-        long currentTime = System.currentTimeMillis();
+        long currentTime = System.currentTimeMillis()/1000;
         List<LiveLesson> result = new ArrayList<>();
         if (conditionType.equals(LiveSessionTimeType.NOT_START.getDescription()))
             result = lessons.stream().filter(liveLesson -> liveLesson.getLessonTime() >= currentTime && liveLesson.getUsername().equals(username))

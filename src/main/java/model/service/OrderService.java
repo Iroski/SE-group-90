@@ -58,7 +58,7 @@ public class OrderService {
             int accountServiceCode = accountService.updateBalance(username, order.getMoney());
             if (accountServiceCode != 200)
                 return accountServiceCode;
-            accountServiceCode = accountService.setPremium(username, order.getPremiumType(), order.getPremiumDuration());
+            accountServiceCode = accountService.setPremium(username, order.getPremiumType(), order.getPremiumNum());
             if (accountServiceCode != 200)
                 return accountServiceCode;
             order.setState(OrderStatus.IS_PAYED.getCode());
