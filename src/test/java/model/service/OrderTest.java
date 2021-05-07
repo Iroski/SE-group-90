@@ -1,16 +1,7 @@
 package model.service;
 
-import model.dao.base.DataHouse;
-import model.entity.Account;
-import model.entity.User;
-import model.service.premium.SeasonPremium;
-import model.utils.target.FatReduction;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
-import java.util.ArrayList;
 
 /**
  * @author :YanBo Zhang

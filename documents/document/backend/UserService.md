@@ -91,3 +91,12 @@ return: int
 | 200| insert successful|
 |4041 | user not exist|
 | 5000 | database error |
+
+### 10. remove favorite video to a user
+method: removeFavoriteByName(String username,Long id)
+return: int
+| return type | meaning |
+|:--:|:--:|
+| 200| insert successful|
+|4041 | user not exist|
+| 5000 | database error |

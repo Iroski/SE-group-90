@@ -1,7 +1,7 @@
 package model.enumPackage;
 
 import lombok.AllArgsConstructor;
-import model.utils.target.*;
+import model.utils.targetPlan.*;
 
 import java.util.ArrayList;
 import java.util.List;
