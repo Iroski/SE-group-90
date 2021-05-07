@@ -20,10 +20,13 @@ import model.utils.DateUtils;
 
 import java.io.IOException;
 
+import static controller.LoginController.userName;
+
 
 public class LessonPageController {
     public AnchorPane lessonsPane;
     private ObservableList<LiveLesson> lessonData = FXCollections.observableArrayList();
+
     @FXML
     private TableView<LiveLesson> lessonTableView;
     @FXML
@@ -40,7 +43,7 @@ public class LessonPageController {
     @FXML
     private void initialize() {
         liveLessonService = new LiveLessonService();
-        ReturnEntity returnEntity = liveLessonService.getLiveLessonTableByUsername("Heluyao");
+        ReturnEntity returnEntity = liveLessonService.getLiveLessonTableByUsername(userName);
         if(returnEntity.getCode() == 4043){
             // 表不存在
 
@@ -50,9 +53,9 @@ public class LessonPageController {
         }
         else{ // code == 200
             LiveLessonTable liveLessonTable = (LiveLessonTable) returnEntity.getObject();
-            lessonData = (ObservableList<LiveLesson>) liveLessonTable.getLessonList();
+            lessonData = FXCollections.observableArrayList(liveLessonTable.getLessonList());
         }
-        lessonData.add(new LiveLesson("HeLuyao", "Goubo", new Long(1), 1, new Long(1)));
+        //lessonData.add(new LiveLesson("HeLuyao", "Goubo", new Long(1), 1, new Long(1)));
         lessonName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsername()));
         lessonTime.setCellValueFactory(cellData -> new SimpleStringProperty(DateUtils.timeStampToString(cellData.getValue().getLessonTime())));
         coach.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCoachName()));
