@@ -25,31 +25,31 @@ public class Order extends DataItem {
     private Long liveLessonCreateTime;
     //type==0
     private Integer premiumType;
-    private Long premiumDuration;
+    private Integer premiumNum;
 
 
     private BigDecimal money;
     private Integer state;
     private Long createTime;
 
-    public Order(String username, Integer type, Long liveLessonCreateTime, Integer premiumType, Long premiumDuration, BigDecimal money, Integer state, Long createTime) {
+    public Order(String username, Integer type, Long liveLessonCreateTime, Integer premiumType, Integer premiumNum, BigDecimal money, Integer state, Long createTime) {
         this.username = username;
         this.type = type;
         this.liveLessonCreateTime = liveLessonCreateTime;
         this.premiumType = premiumType;
-        this.premiumDuration = premiumDuration;
+        this.premiumNum = premiumNum;
         this.money = money;
         this.state = state;
         this.createTime = createTime;
     }
 
-    public Order(@NonNull Long id, String username, Integer type, Long liveLessonCreateTime, Integer premiumType, Long premiumDuration, BigDecimal money, Integer state, Long createTime) {
+    public Order(@NonNull Long id, String username, Integer type, Long liveLessonCreateTime, Integer premiumType, Integer premiumNum, BigDecimal money, Integer state, Long createTime) {
         super(id);
         this.username = username;
         this.type = type;
         this.liveLessonCreateTime = liveLessonCreateTime;
         this.premiumType = premiumType;
-        this.premiumDuration = premiumDuration;
+        this.premiumNum = premiumNum;
         this.money = money;
         this.state = state;
         this.createTime = createTime;

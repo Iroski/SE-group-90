@@ -8,7 +8,6 @@ import model.dao.base.DataItem;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author :YanBo Zhang
@@ -25,27 +24,27 @@ public class Account extends DataItem {
     private BigDecimal balance;
     private List<Long> orderId;
     private Integer premiumLevel;
-    private Integer freeLiveLessonTime;
+    private Integer freeLiveLessonNum;
     private Long createTime;
     private Long premiumEndTime;
 
-    public Account(@NonNull Long id, String username, BigDecimal balance, List<Long> orderId, Integer premiumLevel, Integer freeLiveLessonTime, Long createTime, Long premiumEndTime) {
+    public Account(@NonNull Long id, String username, BigDecimal balance, List<Long> orderId, Integer premiumLevel, Integer freeLiveLessonNum, Long createTime, Long premiumEndTime) {
         super(id);
         this.username = username;
         this.balance = balance;
         this.orderId = orderId;
         this.premiumLevel = premiumLevel;
-        this.freeLiveLessonTime = freeLiveLessonTime;
+        this.freeLiveLessonNum = freeLiveLessonNum;
         this.createTime = createTime;
         this.premiumEndTime = premiumEndTime;
     }
 
-    public Account(String username, BigDecimal balance, List<Long> orderId, Integer premiumLevel, Integer freeLiveLessonTime, Long createTime, Long premiumEndTime) {
+    public Account(String username, BigDecimal balance, List<Long> orderId, Integer premiumLevel, Integer freeLiveLessonNum, Long createTime, Long premiumEndTime) {
         this.username = username;
         this.balance = balance;
         this.orderId = orderId;
         this.premiumLevel = premiumLevel;
-        this.freeLiveLessonTime = freeLiveLessonTime;
+        this.freeLiveLessonNum = freeLiveLessonNum;
         this.createTime = createTime;
         this.premiumEndTime = premiumEndTime;
     }

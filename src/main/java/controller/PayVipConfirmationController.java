@@ -39,10 +39,10 @@ public class PayVipConfirmationController {
         accountService.updateBalance(userName, BigDecimal.valueOf(pay));
         LocalDate finishDate=LocalDate.now().plusDays(plusDay);
         Date date = Date.from(finishDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        accountService.setPremium(userName,type, DateUtils.dateToTimeStamp(date));
+        accountService.setPremium(userName,type, 1); //todo: 这里要改 premiumNum变量内容改变了
 
         OrderService orderService=new OrderService();
-        Order order=new Order(userName,0,null,type,DateUtils.dateToTimeStamp(date),
+        Order order=new Order(userName,0,null,type,1, //todo: 同上
                 BigDecimal.valueOf(pay),1,DateUtils.dateToTimeStamp(new Date()));
         orderService.createPremiumOrder(userName,order);
         Stage stage= (Stage) yesButton.getScene().getWindow();

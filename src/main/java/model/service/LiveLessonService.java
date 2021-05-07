@@ -5,8 +5,9 @@ import model.dao.LiveLessonDao;
 import model.entity.LiveLesson;
 import model.entity.LiveLessonTable;
 import model.entity.ReturnEntity;
+import model.entity.User;
 import model.enumPackage.LiveLessonStatus;
-import model.enumPackage.LiveSessionTimeType;
+import model.enumPackage.TargetType;
 import model.exception.database.DataItemNotExists;
 
 import java.util.ArrayList;
@@ -23,9 +24,11 @@ import java.util.stream.Collectors;
  */
 public class LiveLessonService {
     LiveLessonDao liveLessonDao;
+    UserService userService;
 
     public LiveLessonService() {
         liveLessonDao = new LiveLessonDao();
+        userService=new UserService();
     }
 
 
@@ -71,12 +74,12 @@ public class LiveLessonService {
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
         }
 
-        long currentTime = System.currentTimeMillis();
+        long currentTime = System.currentTimeMillis()/1000;
         List<LiveLesson> result = new ArrayList<>();
-        if (conditionType.equals(LiveSessionTimeType.NOT_START.getDescription()))
+        if (conditionType.equals(LiveLessonStatus.IS_PAYED.getType()))
             result = lessons.stream().filter(liveLesson -> liveLesson.getLessonTime() >= currentTime && liveLesson.getUsername().equals(username))
                     .collect(Collectors.toList());
-        else if (conditionType.equals(LiveSessionTimeType.IS_END.getDescription()))
+        else if (conditionType.equals(LiveLessonStatus.IS_FINISH.getDescription()))
             result = lessons.stream().filter(liveLesson -> liveLesson.getLessonTime() < currentTime && liveLesson.getUsername().equals(username))
                     .collect(Collectors.toList());
         else
@@ -88,15 +91,32 @@ public class LiveLessonService {
         return this.updateLessonStateByType(username,liveLesson,"FINISHED");
     }
 
+    public ReturnEntity getTargets(){
+        return new ReturnEntity(CommunicationStatus.OK.getCode(), TargetType.getAllDescription());
+    }
+
     protected int insertLesson(String username,LiveLesson liveLesson){
         try{
+            Optional<User> sUser=userService.getUserByUsername(username);
+            if(sUser.isEmpty())
+                return CommunicationStatus.USER_NOT_FOUND.getCode();
+            User user=sUser.get();
+
             Optional<LiveLessonTable> sTableOption=this.getTableByName(username);
             if(sTableOption.isEmpty())
                 return CommunicationStatus.LIVE_LESSON_TABLE_NOT_FOUND.getCode();
+
+
             LiveLessonTable liveLessonTable=sTableOption.get();
             List<LiveLesson> list=liveLessonTable.getLessonList();
             if(list.stream().anyMatch(liveLesson1 -> liveLesson1.getLessonTime().equals(liveLesson.getLessonTime())))
                 return CommunicationStatus.BAD_REQUEST.getCode();
+
+            if(liveLesson.getIsCustomized()){
+                String plan=TargetType.getBasePlanGeneratorByDesc(liveLesson.getTarget()).generatePlan(user.getHeight(),user.getWeight());
+                liveLesson.setSpecificExercise(plan);
+            }
+
             list.add(liveLesson);
             liveLessonTable.setLessonList(list);
             return this.updateLiveLessonTable(liveLessonTable);

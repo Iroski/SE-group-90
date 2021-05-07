@@ -55,7 +55,7 @@ public class LessonPageController {
             LiveLessonTable liveLessonTable = (LiveLessonTable) returnEntity.getObject();
             lessonData = FXCollections.observableArrayList(liveLessonTable.getLessonList());
         }
-        //lessonData.add(new LiveLesson("HeLuyao", "Goubo", new Long(1), 1, new Long(1)));
+        //lessonData.add(new LiveLesson("HeLuyao", "Goubo", new Long(1), 1,false,"","", new Long(1)));
         lessonName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsername()));
         lessonTime.setCellValueFactory(cellData -> new SimpleStringProperty(DateUtils.timeStampToString(cellData.getValue().getLessonTime())));
         coach.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCoachName()));
