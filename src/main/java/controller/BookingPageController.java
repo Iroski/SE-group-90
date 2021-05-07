@@ -15,10 +15,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import main.Main;
 import model.entity.*;
 import model.service.AccountService;
 import model.service.CoachService;
 import model.service.OrderService;
+import model.service.UserService;
 import model.utils.DateUtils;
 
 import java.io.IOException;
@@ -49,6 +51,8 @@ public class BookingPageController {
     LocalDate selectedDate = null;
     LocalTime selectedTime = null;
     Coach coach;
+    User user;
+    private int lessonPrice = 30;
 
     @FXML
     public void initialize(){
@@ -57,9 +61,11 @@ public class BookingPageController {
 
     public void init(){
         this.coach = (Coach) coach_photo.getUserData();
-        System.out.println(coach);
+        String userName = LoginController.userName;
+        UserService userService = new UserService();
+        ReturnEntity returnEntity1 = userService.getUser(userName);
+        this.user = (User) returnEntity1.getObject();
         long coach_id = coach.getId();
-        //long coach_id = 0;
         Image image = new Image("view/images/coach.jpg");
         coach_photo.setFill(new ImagePattern(image));
         day_list = new LinkedList<>();
@@ -131,7 +137,6 @@ public class BookingPageController {
                     for(int i = 0; i < 5; ++i){
                         if(time_box_list.get(i) == cb){
                             selectedTime = time_list.get(i);
-                            System.out.println(selectedTime);
                         }
                         else{
                             time_box_list.get(i).setSelected(false);
@@ -179,23 +184,23 @@ public class BookingPageController {
                 Date date = Date.from(localDateTime.atZone(ZoneOffset.ofHours(8)).toInstant());
                 Long lessonTime = DateUtils.dateToTimeStamp(date);
 
-                //createOrder(coach, user, lessonTime);
+                createOrder(coach, user, lessonTime);
             }
 
         }
     }
 
-    public void createOrder(Coach coach, User user, Long lessonTime){
+    public void createOrder(Coach coach, User user, Long lessonTime) throws IOException {
         OrderService orderService = new OrderService();
         Long createTime = DateUtils.dateToTimeStamp(new Date());
         LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, false,"1","",createTime);
         int premiumType = getPremiumType(user);
-        BigDecimal money = BigDecimal.valueOf(30);  // 暂时定价为30一节课
+        BigDecimal money = BigDecimal.valueOf(lessonPrice);  // 暂时定价为30一节课
         Order order = new Order(user.getName(), 1, createTime, premiumType, null, money, 0, createTime);
         ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);
         switch (returnEntity.getCode()){
             case 200: // successful
-                Long id = (Long) returnEntity.getObject();
+                order = (Order) returnEntity.getObject();
                 payForLessonOrder(user, order, liveLesson);
                 break;
             case 400: // bad input time
@@ -236,7 +241,7 @@ public class BookingPageController {
         return premiumType;
     }
 
-    public void payForLessonOrder(User user, Order order, LiveLesson liveLesson){
+    public void payForLessonOrder(User user, Order order, LiveLesson liveLesson) throws IOException {
         AtomicBoolean isFreeByPremium = isFreeByPremium(user);
         if(isFreeByPremium.get()){
             order.setMoney(BigDecimal.valueOf(0));
@@ -244,13 +249,16 @@ public class BookingPageController {
 
         AtomicBoolean paid = new AtomicBoolean(false);
         // pay page
+        paid = showIfPay(); // show and return
 
         OrderService orderService = new OrderService();
         if(paid.get()){
             int code = orderService.payLiveLessonOrder(user.getName(), order, liveLesson, isFreeByPremium);
             switch (code){
                 case 200: // successful
-
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.titleProperty().set("Success");
+                    alert.headerTextProperty().set("You have booked the lesson successfully");
                     break;
                 case 4042: // account not exist
 
@@ -259,7 +267,10 @@ public class BookingPageController {
 
                     break;
                 case 5001: // not enough balance
-
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.titleProperty().set("Fail");
+                    alert.headerTextProperty().set("You don not have enough money, top up please!");
+                    //goToAccount();
                     break;
                 case 5002: // no enough free lesson
 
@@ -293,5 +304,24 @@ public class BookingPageController {
         }
         return res;
     }
+
+    public AtomicBoolean showIfPay() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrder.fxml"));
+        AnchorPane page = loader.load();
+        Stage payOrder = new Stage();
+        payOrder.setTitle("Pay For the Order");
+        Scene scene = new Scene(page);
+        payOrder.setScene(scene);
+        PayForOrderController controller = loader.getController();
+        payOrder.showAndWait();
+        return controller.getIfPay();
+    }
+
+    public void goToAccount(){
+        BasePageController basePageController = new BasePageController();
+        //basePageController.showAccount();
+    }
+
 }
 

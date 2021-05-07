@@ -5,13 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.entity.ReturnEntity;
+import model.entity.User;
 import model.service.AccountService;
+import model.service.UserService;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -23,14 +26,21 @@ public class BasePageController {
     public Button userName;
     public Label vipLabel;
     public Button history;
+    public ImageView user_image;
 
     @FXML
     Button b_home;
 
     @FXML
     public void initialize() {
-
-
+        String userName = LoginController.userName;
+        UserService userService=new UserService();
+        ReturnEntity returnEntity=userService.getUser(userName);
+        User user=null;
+        if (returnEntity.getCode()==200) {
+            user = (User) returnEntity.getObject();
+        }
+        user_image.setUserData(user);
     }
 
     public void showHistory(MouseEvent me) throws IOException{
@@ -52,7 +62,8 @@ public class BasePageController {
 
     public void showVip(MouseEvent event) throws IOException{
         AccountService accountService = new AccountService();
-        ReturnEntity returnEntity = accountService.isPremium("Heluyao");
+        //ReturnEntity returnEntity = accountService.isPremium("Heluyao");
+        ReturnEntity returnEntity=accountService.isPremium(LoginController.userName);
         AtomicBoolean check = new AtomicBoolean(false);
         if(returnEntity.getCode() == 200){
             // successful
