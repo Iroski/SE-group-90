@@ -1,7 +1,15 @@
 package model.service;
 
+import model.dao.base.DataHouse;
+import model.entity.LiveLesson;
+import model.entity.LiveLessonTable;
+import model.entity.User;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import java.util.ArrayList;
 
 /**
  * @author :YanBo Zhang
@@ -12,21 +20,23 @@ import org.junit.runners.MethodSorters;
  */
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
 public class LiveLessonTest {
-//    static DataHouse db;
-//    static String tableName;
-//    @BeforeClass
-//    public static void datatableInit() {
-//        db = DataHouse.getInstance();
-//        db.init("src/test/resources/database");
-//    }
-//
-//    @Test
-//    public void test01GetEmptyTable(){
-//        System.out.println("------------1");
-//        LiveLessonTable liveLessonTable=new LiveLessonTable("userTest", new ArrayList<LiveLesson>());
-//        System.out.println(new LiveLessonService().getLiveLessonTableByUsername("userTest"));
-//        System.out.println(new LiveLessonService().getLiveLessonTableByUsername("userTest500"));
-//    }
+    static DataHouse db;
+    static String tableName;
+    @BeforeClass
+    public static void datatableInit() {
+        db = DataHouse.getInstance();
+        db.init("src/test/resources/database");
+    }
+
+    @Test
+    public void test01GetEmptyTable(){
+        User user = new User("927986413@qq.com","userTest2","111111","1","1",1.0,1,1,new ArrayList<Long>(),new ArrayList<Long>());
+        System.out.println(new UserService().saveUser(user));
+        LiveLesson liveLesson1=new LiveLesson("userTest2","!23",(long)1,1,false,"","",System.currentTimeMillis()/1000);
+        LiveLesson liveLesson2=new LiveLesson("userTest2","!23",(long)2,1,true,"Reduce fat","",System.currentTimeMillis()/1000);
+        System.out.println(new LiveLessonService().insertLesson("userTest2",liveLesson1));
+        System.out.println(new LiveLessonService().insertLesson("userTest2",liveLesson2));
+    }
 //
 //    @Test
 //    public void test02UpdateTable(){

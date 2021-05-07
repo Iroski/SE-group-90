@@ -7,7 +7,7 @@ class Account{
     private BigDecimal balance;
     private List<Long> orderId;
     private Integer premiumLevel;
-    private Integer freeLiveLessonTime;
+    private Integer freeLiveLessonNum; //this can be used when by series lessons
     private Long createTime;
     private Long premiumEndTime;
 }
@@ -56,10 +56,19 @@ return: ReturnEntity(code, AtomicBoolean)
 | 5000 | database error |
 
 ### 6. set account  premium
-method: setPremium(String username, Integer type, Long premiumDuration)
+method: setPremium(String username, Integer type, Integer premiumNum)
 return: int
 | return type | meaning |
 |:--:|:--:|
 | 200| successful|
 |4042 | account not exist|
+| 5000 | database error |
+
+### 7. check account by premium
+method: getBargainByUsername(String username)
+return: ReturnEntity(code, BigDecimal)
+| return type | meaning |
+|:--:|:--:|
+| 200| successful|
+| 4042 | account not exist|
 | 5000 | database error |

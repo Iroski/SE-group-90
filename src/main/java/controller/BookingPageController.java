@@ -188,7 +188,7 @@ public class BookingPageController {
     public void createOrder(Coach coach, User user, Long lessonTime){
         OrderService orderService = new OrderService();
         Long createTime = DateUtils.dateToTimeStamp(new Date());
-        LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, createTime);
+        LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, false,"1","",createTime);
         int premiumType = getPremiumType(user);
         BigDecimal money = BigDecimal.valueOf(30);  // 暂时定价为30一节课
         Order order = new Order(user.getName(), 1, createTime, premiumType, null, money, 0, createTime);

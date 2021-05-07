@@ -11,12 +11,13 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public enum LiveLessonStatus {
-    NOT_PAYED(0,"the lesson is just book with out payment"),
-    IS_PAYED(1,"the lesson is payed but not start"),
-    IS_FINISH(2,"the lesson is finish successfully"),
-    IS_CANCELED(3,"the lesson is canceled");
+    NOT_PAYED(0,"the lesson is just book with out payment","notStart"),
+    IS_PAYED(1,"the lesson is payed but not start","notStart"),
+    IS_FINISH(2,"the lesson is finish successfully","isEnd"),
+    IS_CANCELED(3,"the lesson is canceled","isEnd");
     int code;
     String description;
+    String type;
 
     public int getCode() {
         return code;
@@ -24,5 +25,9 @@ public enum LiveLessonStatus {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getType(){
+        return type;
     }
 }

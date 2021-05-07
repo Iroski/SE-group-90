@@ -2,22 +2,15 @@ package model.service;
 
 import model.dao.base.DataHouse;
 import model.entity.Account;
-import model.entity.LiveLesson;
-import model.entity.Order;
 import model.entity.User;
-import model.enumPackage.LiveLessonStatus;
-import model.enumPackage.OrderStatus;
-import model.enumPackage.OrderType;
-import model.enumPackage.PremiumType;
 import model.service.premium.SeasonPremium;
+import model.utils.target.FatReduction;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author :YanBo Zhang
@@ -28,23 +21,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OrderTest {
-    static DataHouse db;
-
-    @BeforeClass
-    public static void datatableInit() {
-        db = DataHouse.getInstance();
-        db.init("src/test/resources/database");
-    }
-
-    @Test
-    public void test01Premium() {
-        User user = new User("927986413@qq.com","userTest2","111111","1","1",1.0,1,1,new ArrayList<Long>(),new ArrayList<Long>());
-        System.out.println(new UserService().saveUser(user));
-        System.out.println("current: "+System.currentTimeMillis()/1000);
-        System.out.println((Account)new AccountService().getAccount(user.getName()).getObject());
-        SeasonPremium seasonPremium=new SeasonPremium();
-        seasonPremium.setPremium((Account) new AccountService().getAccount(user.getName()).getObject(),1);
-        System.out.println((Account) new AccountService().getAccount(user.getName()).getObject());
+//    static DataHouse db;
+//
+//    @BeforeClass
+//    public static void datatableInit() {
+//        db = DataHouse.getInstance();
+//        db.init("src/test/resources/database");
+//    }
+//
+//    @Test
+//    public void test01Premium() {
+//        User user = new User("927986413@qq.com","userTest2","111111","1","1",1.0,1,1,new ArrayList<Long>(),new ArrayList<Long>());
+//        System.out.println(new UserService().saveUser(user));
+//        System.out.println("current: "+System.currentTimeMillis()/1000);
+//        System.out.println((Account)new AccountService().getAccount(user.getName()).getObject());
+//        SeasonPremium seasonPremium=new SeasonPremium();
+//        seasonPremium.setPremium((Account) new AccountService().getAccount(user.getName()).getObject(),1);
+//        System.out.println((Account) new AccountService().getAccount(user.getName()).getObject());
 //        System.out.println("------------1");
 //        Order order = new Order("userTest1", OrderType.PREMIUM_ORDER.getCode(), null, PremiumType.MONTH_PREMIUM.getType(), (long) 10000, new BigDecimal("10"), OrderStatus.NOT_PAYED.getCode(), System.currentTimeMillis());
 //        System.out.println(order);
@@ -64,7 +57,7 @@ public class OrderTest {
 //        System.out.println(new OrderService().getOrdersByName("userTest1"));
 //
 //        System.out.println(new AccountService().getAccountByUsername("userTest1"));
-    }
+//    }
 //
 //    @Test
 //    public void test02LiveLesson(){
