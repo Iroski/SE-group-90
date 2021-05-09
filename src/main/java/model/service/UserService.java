@@ -207,4 +207,8 @@ public class UserService {
         List<User> users = userDao.getAllUser();
         return users.stream().filter(user->user.getName().equals(username)).findAny();
     }
+
+    protected List<User> getAllUsers(){
+        return userDao.getAllUser();
+    }
 }
