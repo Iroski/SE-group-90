@@ -4,6 +4,7 @@ import common.CommunicationStatus;
 import model.dao.AccountDao;
 import model.entity.Account;
 import model.entity.ReturnEntity;
+import model.entity.User;
 import model.enumPackage.PremiumType;
 import model.exception.database.DataItemNotExists;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 /**
  * @author :YanBo Zhang
@@ -32,6 +34,16 @@ public class AccountService {
         if (sAccount.isPresent())
             return;
         accountDao.saveAccount(new Account(username, new BigDecimal("0.0"), new ArrayList<Long>(),0, 0 ,System.currentTimeMillis()/1000, (long) 0));
+    }
+
+    public void createAccountForDeletedInfo(){
+        UserService userService=new UserService();
+        List<String> usernameList=userService.getAllUsers().stream().map(User::getName).collect(Collectors.toList());
+        List<String> accNameList=accountDao.getAllAccount().stream().map(Account::getUsername).collect(Collectors.toList());
+        for(String a:usernameList){
+            if(!accNameList.contains(a))
+                createAccountForSignUp(a);
+        }
     }
 
     public int updateAccount(Account account) {
@@ -169,5 +181,9 @@ public class AccountService {
 
     protected Optional<Account> getAccountByUsername(String username) {
         return accountDao.getAllAccount().stream().filter(account -> account.getUsername().equals(username)).findAny();
+    }
+
+    protected List<Account> getAllAccounts(){
+        return accountDao.getAllAccount();
     }
 }
