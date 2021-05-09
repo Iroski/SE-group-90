@@ -2,10 +2,7 @@ package model.service;
 
 import common.CommunicationStatus;
 import model.dao.LiveLessonDao;
-import model.entity.LiveLesson;
-import model.entity.LiveLessonTable;
-import model.entity.ReturnEntity;
-import model.entity.User;
+import model.entity.*;
 import model.enumPackage.LiveLessonStatus;
 import model.enumPackage.TargetType;
 import model.exception.database.DataItemNotExists;
@@ -37,6 +34,15 @@ public class LiveLessonService {
         if(tableWithSameName.isPresent())
             return;
         liveLessonDao.saveLiveLessonTable(new LiveLessonTable(username, new ArrayList<LiveLesson>()));
+    }
+
+    public void createInfoForDeleteInfo(){
+        List<String> usernameList=userService.getAllUsers().stream().map(User::getName).collect(Collectors.toList());
+        List<String> liveNameList=liveLessonDao.getAllLiveLessonTable().stream().map(LiveLessonTable::getUsername).collect(Collectors.toList());
+        for(String a:usernameList){
+            if(!liveNameList.contains(a))
+                createLiveLessonTableForSignUp(a);
+        }
     }
 
     public int updateLiveLessonTable(LiveLessonTable liveLessonTable) {
@@ -95,7 +101,7 @@ public class LiveLessonService {
         return new ReturnEntity(CommunicationStatus.OK.getCode(), TargetType.getAllDescription());
     }
 
-    protected int insertLesson(String username,LiveLesson liveLesson){
+    public int insertLesson(String username,LiveLesson liveLesson){
         try{
             Optional<User> sUser=userService.getUserByUsername(username);
             if(sUser.isEmpty())
