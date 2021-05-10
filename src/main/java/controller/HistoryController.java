@@ -47,7 +47,7 @@ public class HistoryController {
     public ImageView history6;
     public Label description6;
     public Label author6;
-    private Image image=new Image("view/images/1.png");
+    private Image image=new Image("view/images/1.jpg");
     @FXML
     public void initialize() {
         ArrayList<Video> historyList=null;

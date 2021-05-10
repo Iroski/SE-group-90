@@ -26,7 +26,7 @@ public class MainPageController {
         VideoService videoService = new VideoService();
         ReturnEntity returnEntity = videoService.getAllVideos();
         list = (List<Video>) returnEntity.getObject();
-        camel.setImage(new Image("view/images/1.png"));
+        camel.setImage(new Image("view/images/1.jpg"));
         test.setVisible(false);
     }
 
