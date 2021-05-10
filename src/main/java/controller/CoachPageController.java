@@ -3,9 +3,12 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -19,13 +22,20 @@ import java.util.ArrayList;
 
 public class CoachPageController {
     public Pagination pages;
+    public TextField searchText;
+    public Button searchButton;
     int number;
     int pageNumber;
     ArrayList<Coach> coachArrayList;
     CoachService coachService;
 
-    @FXML
-    public void initialize() {
+    public void search(MouseEvent mouseEvent) {
+        getCoaches();
+        coachArrayList.remove(0);
+        setPage();
+    }
+
+    public void getCoaches() {
         coachService=new CoachService();
         ReturnEntity returnEntity=coachService.getAllCoaches();
         if (returnEntity.getCode()==5000) {
@@ -37,9 +47,9 @@ public class CoachPageController {
         else {
             coachArrayList= (ArrayList<Coach>) returnEntity.getObject();
         }
-//        for (int i=0;i<100;i++) {
-//            coachArrayList.add(new Coach((long) 1,"He luyao","man",170,45,11,"chinese", "sell cute","view/images/1.png",new ArrayList<Long>()));
-//        }
+    }
+
+    public void setPage() {
         number=coachArrayList.size();
         if (number % 12 == 0) {
             pageNumber = number / 12;
@@ -85,5 +95,11 @@ public class CoachPageController {
             }
         });
         pages.setVisible(true);
+    }
+
+    @FXML
+    public void initialize() {
+        getCoaches();
+        setPage();
     }
 }
