@@ -80,7 +80,7 @@ public class LiveLessonService {
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
         }
 
-        long currentTime = System.currentTimeMillis()-3600000; //this need to be decided by LZH
+        long currentTime = System.currentTimeMillis()-3600000; //this need to be decided by LZH; minus one hour to prevent lessons is being on
         List<LiveLesson> result ;
         result=lessons.stream().filter(l -> (l.getStatus()==LiveLessonStatus.NOT_PAYED.getCode()||l.getStatus()==LiveLessonStatus.IS_PAYED.getCode())&&l.getLessonTime()<=currentTime).collect(Collectors.toList());
         return new ReturnEntity(CommunicationStatus.OK.getCode(), result);
