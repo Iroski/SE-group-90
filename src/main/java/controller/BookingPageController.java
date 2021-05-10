@@ -180,6 +180,7 @@ public class BookingPageController {
 
         CoachInfoController coachInfoController = loader.getController();
         coachInfoController.photo.setUserData(coach);
+        coachInfoController.init();
 
         coaches.setLayoutX(200);
         coaches.setLayoutY(75);

@@ -2,7 +2,9 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -90,17 +92,6 @@ public class CoachController {
         choosedCoach=(Coach)pane.getUserData();
         CoachInfoController coachInfoController=loader.getController();
         coachInfoController.photo.setUserData(choosedCoach);
-        coachInfoController.age.setText(String.valueOf(choosedCoach.getAge()));
-        coachInfoController.name.setText(choosedCoach.getName());
-        coachInfoController.height.setText(String.valueOf(choosedCoach.getHeight()));
-        coachInfoController.weight.setText(String.valueOf(choosedCoach.getWeight()));
-        coachInfoController.sex.setText(choosedCoach.getGender());
-        coachInfoController.course.setText(choosedCoach.getCourse());
-        Image image=new Image(choosedCoach.getPhotoPath());
-        coachInfoController.photo.setImage(image);
-        Text text=new Text("This teacher is very handsome and clever, as the coach's name is hly and he is no Gokop, he is hly!"+
-                " oh!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        text.setStyle("-fx-font: 24 arial;");
-        coachInfoController.description.getChildren().add(text);
+        coachInfoController.init();
     }
 }
