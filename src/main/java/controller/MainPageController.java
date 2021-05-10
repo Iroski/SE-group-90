@@ -19,10 +19,12 @@ import java.util.List;
 public class MainPageController {
     public Button test;
     public ImageView camel;
+    public static String previousPage;
     List<Video> list;
     public static String path;
     @FXML
     public void initialize() {
+        previousPage = "Home";
         VideoService videoService = new VideoService();
         ReturnEntity returnEntity = videoService.getAllVideos();
         list = (List<Video>) returnEntity.getObject();
@@ -40,9 +42,10 @@ public class MainPageController {
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().remove(2);
         anchorPane.getChildren().add(2, video);
-
+        
         video.setLayoutX(200);
         video.setLayoutY(75);
+
     }
 
     public void clickVideo(MouseEvent mouseEvent) throws IOException {
@@ -51,7 +54,6 @@ public class MainPageController {
         for(int i=0; i<list.size(); i++){
             if(videoName.equals(list.get(i).getStaticVideo().getVideoName())){
                 path = list.get(i).getStaticVideo().getFilePath();
-                System.out.println(path);
                 break;
             }
         }
