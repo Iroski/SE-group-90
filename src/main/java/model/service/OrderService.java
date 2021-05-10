@@ -137,6 +137,10 @@ public class OrderService {
                 return CommunicationStatus.ORDER_NOT_FOUND.getCode();
             BigDecimal balance = sOrderOption.get().getMoney();
 
+            int liveLessonCode = new LiveLessonService().updateLessonStateByType(username, liveLesson, "CANCELED");
+            if (liveLessonCode != 200)
+                return liveLessonCode;
+
             int accountCode = new AccountService().updateBalance(username, balance.multiply(new BigDecimal("-1")));
             if (accountCode != 200)
                 return accountCode;
