@@ -1,5 +1,6 @@
 package controller;
 
+import component.VideoBox;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,8 +25,10 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.entity.Video;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class VideoShowController {
@@ -331,7 +334,7 @@ public class VideoShowController {
         controlBar.setPrefWidth(currentWidth);  //set the width of tools
     }
 
-    public void backToHome(MouseEvent mouseEvent) throws IOException {
+    public void goToHome() throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setTitle("Home");
         FXMLLoader loader = new FXMLLoader();
@@ -344,5 +347,33 @@ public class VideoShowController {
 
         home.setLayoutX(200);
         home.setLayoutY(75);
+    }
+
+    public void goToVideo() throws IOException {
+
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.setTitle("Videos");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/VideoPage.fxml"));
+        AnchorPane video = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, video);
+
+        video.setLayoutX(200);
+        video.setLayoutY(75);
+    }
+
+
+    public void backToPreviousPage(MouseEvent mouseEvent) throws IOException {
+        switch (MainPageController.previousPage){
+            case "Home":
+                goToHome();
+                break;
+            case "Videos":
+                goToVideo();
+                break;
+        }
     }
 }

@@ -53,11 +53,21 @@ public class ProfileController {
         saveProfile.setVisible(true);
     }
 
-    public void SaveTheProfile(MouseEvent mouseEvent) throws IOException {
+    public void SaveTheProfile(MouseEvent mouseEvent){
         String username = UserName.getText();
         String gender = Gender.getText();
-        int height = Integer.parseInt(Height.getText());
-        Double weight = Double.valueOf(Weight.getText());
+        int height;
+        Double weight;
+        if(!Height.getText().equals("")){
+            height = Integer.parseInt(Height.getText());
+        } else {
+            height = 0;
+        }
+        if(!Weight.getText().equals("")) {
+            weight = Double.valueOf(Weight.getText());
+        } else {
+            weight = 0.0;
+        }
         UserService service = new UserService();
         ReturnEntity returnEntity = service.getUser(LoginController.userName);
         User user = (User) returnEntity.getObject();
