@@ -59,7 +59,7 @@ public class LiveLessonService {
     public ReturnEntity getLiveLessonTableByUsername(String username){
         Optional<LiveLessonTable> resultTable;
         try{
-            resultTable=liveLessonDao.getAllLiveLessonTable().stream().filter(table-> table.getUsername().equals(username)).findFirst();
+            resultTable=this.getTableByName(username);
             if(resultTable.isEmpty())
                 return new ReturnEntity(CommunicationStatus.LIVE_LESSON_TABLE_NOT_FOUND.getCode(),null);
         } catch (RuntimeException e) {

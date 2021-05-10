@@ -74,7 +74,7 @@ return: int
 | 4043 | liveLesson table not exist |
 | 5000 | database error |
 
-### 9. get live lessons which not start  by username
+### 9. get live lessons which not start by username
 method: getNotStartPayedLiveLessonByUsername(String username)
 return: ReturnEntity(code,LiveLessonTable )
 | return type | meaning |
