@@ -17,10 +17,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import main.Main;
 import model.entity.*;
-import model.service.AccountService;
-import model.service.CoachService;
-import model.service.OrderService;
-import model.service.UserService;
+import model.service.*;
 import model.utils.DateUtils;
 
 import java.io.IOException;
@@ -52,6 +49,7 @@ public class BookingPageController {
     LocalTime selectedTime = null;
     Coach coach;
     User user;
+    String userName;
     private int lessonPrice = 30;
 
     @FXML
@@ -65,6 +63,7 @@ public class BookingPageController {
         UserService userService = new UserService();
         ReturnEntity returnEntity1 = userService.getUser(userName);
         this.user = (User) returnEntity1.getObject();
+        this.userName = user.getName();
         long coach_id = coach.getId();
         Image image = new Image("view/images/coach.jpg");
         coach_photo.setFill(new ImagePattern(image));
@@ -96,6 +95,7 @@ public class BookingPageController {
         ReturnEntity returnEntity = coachService.getReservedTimeById(coach_id);
         if(returnEntity.getCode() == 4044){
             // 教练不存在
+            System.out.println("coach not exist");
         }
         else if(returnEntity.getCode() == 5000){
             System.out.println("Data base error!");
@@ -106,12 +106,14 @@ public class BookingPageController {
                 //String t = DateUtils.timeStampToString(time); // yyyy-MM-dd HH:mm:ss
                 LocalDateTime localDateTime = Instant.ofEpochMilli(time).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
                 LocalDate localDate = localDateTime.toLocalDate();
+                System.out.println(localDateTime);
                 for(int i = 0; i < 5; ++i){
                     if(day_list.get(i).equals(localDate)){
                         LocalTime localTime = localDateTime.toLocalTime();
                         for(int j = 0; j < 5; ++j){
-                            if(localTime.equals(time_list.get(i))){
+                            if(localTime.equals(time_list.get(j))){
                                 reserved[i][j] = true;
+                                System.out.println(i + " " + j);
                             }
                         }
                     }
@@ -151,19 +153,36 @@ public class BookingPageController {
 
     public void setCheckBox(boolean[] reserved){
         for(int i = 0; i < 5; ++i){
+            HBox box = (HBox) lessonTime.getChildren().get(i);
+            Label label = (Label) box.getChildren().get(0);
+            CheckBox c_box = (CheckBox) box.getChildren().get(1);
             if(reserved[i]){
-                HBox box = (HBox) lessonTime.getChildren().get(i);
-                Label label = (Label) box.getChildren().get(0);
-                CheckBox c_box = (CheckBox) box.getChildren().get(1);
                 label.setTextFill(Color.GRAY);
                 c_box.setVisible(false);  // has been reserved. can not be booked
+            }
+            else{
+                label.setTextFill(Color.BLACK);
+                c_box.setVisible(true);
             }
         }
     }
 
-    public void closeThePage(MouseEvent mouseEvent) {
-        Stage stage= (Stage) coach_photo.getScene().getWindow();
-        stage.close();
+    public void closeThePage(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) coach_photo.getScene().getWindow();
+        stage.setTitle("Coach information");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/CoachInfo.fxml"));
+
+        AnchorPane coaches = (AnchorPane) loader.load();
+        AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, coaches);
+
+        CoachInfoController coachInfoController = loader.getController();
+        coachInfoController.photo.setUserData(coach);
+
+        coaches.setLayoutX(200);
+        coaches.setLayoutY(75);
     }
 
     public void chooseFinished(MouseEvent mouseEvent) throws IOException {  //出个弹窗
@@ -178,8 +197,6 @@ public class BookingPageController {
         stage.showAndWait();
         if (reserveLessonConfirmation.tempLabel.getText() == "yes") {
             if(selectedDate != null && selectedTime != null){
-                Stage stage1 = (Stage)coach_photo.getScene().getWindow();
-                stage1.close();
                 LocalDateTime localDateTime = LocalDateTime.of(selectedDate, selectedTime);
                 Date date = Date.from(localDateTime.atZone(ZoneOffset.ofHours(8)).toInstant());
                 Long lessonTime = DateUtils.dateToTimeStamp(date);
@@ -198,6 +215,7 @@ public class BookingPageController {
         BigDecimal money = BigDecimal.valueOf(lessonPrice);  // 暂时定价为30一节课
         Order order = new Order(user.getName(), 1, createTime, premiumType, null, money, 0, createTime);
         ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);
+        System.out.println("createorder code " + returnEntity.getCode());
         switch (returnEntity.getCode()){
             case 200: // successful
                 order = (Order) returnEntity.getObject();

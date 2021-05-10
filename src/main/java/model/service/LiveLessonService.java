@@ -101,7 +101,7 @@ public class LiveLessonService {
         return new ReturnEntity(CommunicationStatus.OK.getCode(), TargetType.getAllDescription());
     }
 
-    public int insertLesson(String username,LiveLesson liveLesson){
+    protected int insertLesson(String username,LiveLesson liveLesson){
         try{
             Optional<User> sUser=userService.getUserByUsername(username);
             if(sUser.isEmpty())
