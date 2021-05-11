@@ -2,16 +2,15 @@ package controller;
 
 
 import component.VideoBox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,10 +18,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.SneakyThrows;
 import model.entity.ReturnEntity;
 import model.entity.Video;
 import model.service.VideoService;
 
+import javax.swing.event.ChangeEvent;
 import java.io.IOException;
 import java.util.List;
 /**
@@ -41,10 +42,25 @@ public class VideoPageController {
     public FlowPane flowPane;
     public ImageView searchImage;
     public TextField searchText;
+    public ComboBox category;
     List<Video> list;
 
     @FXML
     public void initialize() throws IOException {
+        category.getItems().addAll(
+                "All videos",
+                "running",
+                "yoga",
+                "biking"
+        );
+        category.getSelectionModel().selectFirst();
+        category.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @SneakyThrows
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                handleSelect();
+            }
+        });
         VideoService videoService = new VideoService();
         ReturnEntity returnEntity = videoService.getAllVideos();
         list = (List<Video>) returnEntity.getObject();
@@ -78,7 +94,7 @@ public class VideoPageController {
                 MainPageController.path = value.getStaticVideo().getFilePath();
             }
         }
-        Stage stage = (Stage) all.getScene().getWindow();
+        Stage stage = (Stage) category.getScene().getWindow();
         stage.setTitle("Video Show");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
@@ -92,14 +108,12 @@ public class VideoPageController {
         video.setLayoutY(75);
     }
 
-    public void filterVideosByTag(MouseEvent mouseEvent) throws IOException {
+    public void filterVideosByTag(String tag) throws IOException {
         flowPane.getChildren().clear();
-        Button button = (Button) mouseEvent.getSource();
         int counter = 0;
         List<String> tagName;
-        String tag = button.getId();
-        Stage stage = (Stage) all.getScene().getWindow();
-        stage.setTitle(tag);
+//        Stage stage = (Stage) all.getScene().getWindow();
+//        stage.setTitle(tag);
         for (Video value : list) {
             if(value.getTagsName()!=null) {
                 tagName = value.getTagsName();
@@ -128,8 +142,8 @@ public class VideoPageController {
     }
 
     public void showAllVideos() {
-        Stage stage = (Stage) all.getScene().getWindow();
-        stage.setTitle("Videos");
+//        Stage stage = (Stage) all.getScene().getWindow();
+//        stage.setTitle("Videos");
         MainPageController.previousPage = "Videos";
         flowPane.getChildren().clear();
         for(int i=0; i<list.size(); i++){
@@ -152,4 +166,15 @@ public class VideoPageController {
             showAllVideos();
         }
     }
+
+    public void handleSelect() throws IOException {
+        String selection = category.getValue().toString();
+        if(selection.equals("All videos")){
+            showAllVideos();
+        }
+        else{
+            filterVideosByTag(selection);
+        }
+    }
+
 }

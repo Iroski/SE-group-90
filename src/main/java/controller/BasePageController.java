@@ -23,7 +23,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static javafx.scene.paint.Color.*;
 
 public class BasePageController {
-    public Button userName;
     public Label vipLabel;
     public Button history;
     public ImageView user_image;

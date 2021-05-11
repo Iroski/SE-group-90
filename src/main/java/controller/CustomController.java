@@ -21,10 +21,10 @@ import java.io.IOException;
  * @date 4/17/2021 21:31
  */
 public class CustomController {
-    private Stage singUpStage;
+    private Stage CustomStage;
     public TextField amountTextField;
-    public void setSignUpStage(Stage SignUpStage) {
-        this.singUpStage = SignUpStage;
+    public void setCustomStage(Stage CustomStage) {
+        this.CustomStage = CustomStage;
     }
 
     /**
@@ -40,7 +40,7 @@ public class CustomController {
         }
         else {
             AccountController.amount = Integer.parseInt(amount);
-            singUpStage.close();
+            CustomStage.close();
         }
     }
 }
