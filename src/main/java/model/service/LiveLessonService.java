@@ -82,7 +82,7 @@ public class LiveLessonService {
 
         long currentTime = System.currentTimeMillis()-3600000; //this need to be decided by LZH; minus one hour to prevent lessons is being on
         List<LiveLesson> result ;
-        result=lessons.stream().filter(l -> (l.getStatus()==LiveLessonStatus.NOT_PAYED.getCode()||l.getStatus()==LiveLessonStatus.IS_PAYED.getCode())&&l.getLessonTime()<=currentTime).collect(Collectors.toList());
+        result=lessons.stream().filter(l -> (l.getStatus()==LiveLessonStatus.NOT_PAYED.getCode()||l.getStatus()==LiveLessonStatus.IS_PAYED.getCode())&&l.getLessonTime()>=currentTime).collect(Collectors.toList());
         return new ReturnEntity(CommunicationStatus.OK.getCode(), result);
     }
 
@@ -133,7 +133,7 @@ public class LiveLessonService {
 
             LiveLessonTable liveLessonTable=sTableOption.get();
             List<LiveLesson> list=liveLessonTable.getLessonList();
-            if(list.stream().anyMatch(liveLesson1 -> liveLesson1.getLessonTime().equals(liveLesson.getLessonTime())))
+            if(list.stream().anyMatch(liveLesson1 -> liveLesson1.getLessonTime().equals(liveLesson.getLessonTime())&&liveLesson1.getStatus()!=LiveLessonStatus.IS_CANCELED.getCode()))
                 return CommunicationStatus.BAD_REQUEST.getCode();
 
             if(liveLesson.getIsCustomized()){

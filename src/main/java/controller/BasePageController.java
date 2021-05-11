@@ -168,6 +168,8 @@ public class BasePageController {
 
         lessons.setLayoutX(200);
         lessons.setLayoutY(75);
+        LessonPageController lessonPageController = loader.getController();
+        lessonPageController.init();
     }
     public void goToHome(MouseEvent mouseEvent) throws IOException {
 
