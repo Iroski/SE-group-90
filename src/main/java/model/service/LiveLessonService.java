@@ -59,7 +59,7 @@ public class LiveLessonService {
     public ReturnEntity getLiveLessonTableByUsername(String username){
         Optional<LiveLessonTable> resultTable;
         try{
-            resultTable=liveLessonDao.getAllLiveLessonTable().stream().filter(table-> table.getUsername().equals(username)).findFirst();
+            resultTable=this.getTableByName(username);
             if(resultTable.isEmpty())
                 return new ReturnEntity(CommunicationStatus.LIVE_LESSON_TABLE_NOT_FOUND.getCode(),null);
         } catch (RuntimeException e) {
@@ -68,11 +68,29 @@ public class LiveLessonService {
         return new ReturnEntity(CommunicationStatus.OK.getCode(),resultTable.get());
     }
 
+    public ReturnEntity getNotStartPayedLiveLessonByUsername(String username){
+        List<LiveLesson> lessons;
+        Optional<LiveLessonTable> resultTable;
+        try {
+            resultTable = this.getTableByName(username);
+            if(resultTable.isEmpty())
+                return new ReturnEntity(CommunicationStatus.LIVE_LESSON_TABLE_NOT_FOUND.getCode(),null);
+            lessons=resultTable.get().getLessonList();
+        } catch (RuntimeException e) {
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
+        }
+
+        long currentTime = System.currentTimeMillis()-3600000; //this need to be decided by LZH; minus one hour to prevent lessons is being on
+        List<LiveLesson> result ;
+        result=lessons.stream().filter(l -> (l.getStatus()==LiveLessonStatus.NOT_PAYED.getCode()||l.getStatus()==LiveLessonStatus.IS_PAYED.getCode())&&l.getLessonTime()<=currentTime).collect(Collectors.toList());
+        return new ReturnEntity(CommunicationStatus.OK.getCode(), result);
+    }
+
     public ReturnEntity getLiveLessonsByTimeCondition(String username, String conditionType) {
         List<LiveLesson> lessons;
         Optional<LiveLessonTable> resultTable;
         try {
-            resultTable = liveLessonDao.getAllLiveLessonTable().stream().filter(table->table.getUsername().equals(username)).findFirst();
+            resultTable = this.getTableByName(username);
             if(resultTable.isEmpty())
                 return new ReturnEntity(CommunicationStatus.LIVE_LESSON_TABLE_NOT_FOUND.getCode(),null);
             lessons=resultTable.get().getLessonList();
@@ -83,10 +101,10 @@ public class LiveLessonService {
         long currentTime = System.currentTimeMillis()/1000;
         List<LiveLesson> result = new ArrayList<>();
         if (conditionType.equals(LiveLessonStatus.IS_PAYED.getType()))
-            result = lessons.stream().filter(liveLesson -> liveLesson.getLessonTime() >= currentTime && liveLesson.getUsername().equals(username))
+            result = lessons.stream().filter(liveLesson -> liveLesson.getLessonTime() >= currentTime )
                     .collect(Collectors.toList());
-        else if (conditionType.equals(LiveLessonStatus.IS_FINISH.getDescription()))
-            result = lessons.stream().filter(liveLesson -> liveLesson.getLessonTime() < currentTime && liveLesson.getUsername().equals(username))
+        else if (conditionType.equals(LiveLessonStatus.IS_FINISH.getType()))
+            result = lessons.stream().filter(liveLesson -> liveLesson.getLessonTime() < currentTime )
                     .collect(Collectors.toList());
         else
             return new ReturnEntity(CommunicationStatus.BAD_REQUEST.getCode(),null);
@@ -101,7 +119,7 @@ public class LiveLessonService {
         return new ReturnEntity(CommunicationStatus.OK.getCode(), TargetType.getAllDescription());
     }
 
-    public int insertLesson(String username,LiveLesson liveLesson){
+    protected int insertLesson(String username,LiveLesson liveLesson){
         try{
             Optional<User> sUser=userService.getUserByUsername(username);
             if(sUser.isEmpty())

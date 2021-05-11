@@ -50,11 +50,15 @@ public class VipPageForOrdinaryController {
         anchorPane.getChildren().remove(this.vipPane);
     }
 
-//    public void closeTheVip() {
-//        Stage stage = (Stage) annually.getScene().getWindow();
-//        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-//        anchorPane.getChildren().remove(this.vipPane);
-//    }
+    public void closeTheVip() {
+        try {
+            Stage stage = (Stage) annually.getScene().getWindow();
+            AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+            anchorPane.getChildren().remove(this.vipPane);
+        } catch (Exception ignored) {
+
+        }
+    }
 
     public void startPay(MouseEvent mouseEvent) throws IOException {
         String userName = LoginController.userName;
@@ -65,17 +69,15 @@ public class VipPageForOrdinaryController {
             account= (Account) returnEntity.getObject();
         }
         else {
-            System.out.println("?");
+
         }
         if (choosedPane==monthlyPane) {
             if (account.getBalance().compareTo(BigDecimal.valueOf(monthlyPay))>=0.00) {
                 showConfirmationPage(monthlyPay);
             }
             else {
-//                Stage stage = (Stage) annually.getScene().getWindow();
-//                AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-//                anchorPane.getChildren().remove(this.vipPane);
                 goToAccount();
+                closeTheVip();
                 showMoneyNotEnoughPage();
             }
         }
@@ -84,14 +86,13 @@ public class VipPageForOrdinaryController {
                 showConfirmationPage(annuallyPay);
             }
             else {
-//                Stage stage = (Stage) annually.getScene().getWindow();
-//                AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-//                anchorPane.getChildren().remove(this.vipPane);
                 goToAccount();
+                closeTheVip();
                 showMoneyNotEnoughPage();
             }
         }
     }
+
     public void goToAccount() throws IOException {
         Stage stage = (Stage) annually.getScene().getWindow();
         stage.setTitle("Profile");

@@ -16,7 +16,7 @@ import java.util.*;
  * @modifiedBy By:
  * @version :
  */
-@Data()
+@Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Account extends DataItem {

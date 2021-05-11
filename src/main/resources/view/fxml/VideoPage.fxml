@@ -13,18 +13,13 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VideoPageController">
    <children>
-      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1000.0" spacing="30.0" AnchorPane.bottomAnchor="615.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="537.0" spacing="30.0" AnchorPane.bottomAnchor="615.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="453.0" AnchorPane.topAnchor="10.0">
          <children>
             <Button fx:id="all" mnemonicParsing="false" onMouseClicked="#showAllVideos" prefHeight="27.0" prefWidth="74.0" style="-fx-background-radius: 10;" text="All videos" />
             <Button fx:id="running" mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="Running" />
             <Button fx:id="yoga" mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="Yoga" />
             <Button fx:id="biking" mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="Biking" />
             <Button fx:id="empty" mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="empty" />
-            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
-            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
-            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
-            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
-            <Button mnemonicParsing="false" onMouseClicked="#filterVideosByTag" style="-fx-background-radius: 10;" text="test" />
          </children>
          <opaqueInsets>
             <Insets bottom="10.0" right="10.0" />
@@ -35,5 +30,7 @@
             <FlowPane fx:id="flowPane" prefHeight="612.0" prefWidth="1000.0" />
          </content>
       </ScrollPane>
+      <TextField fx:id="searchText" layoutX="573.0" layoutY="22.0" prefHeight="27.0" prefWidth="256.0" style="-fx-background-radius: 10;" />
+      <ImageView fx:id="searchImage" fitHeight="25.0" fitWidth="28.0" layoutX="795.0" layoutY="24.0" onMouseClicked="#SearchVideo" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
