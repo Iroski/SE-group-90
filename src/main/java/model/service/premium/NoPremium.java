@@ -1,6 +1,7 @@
 package model.service.premium;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import model.entity.Account;
 
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
  * @modifiedBy By:
  * @version :
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class NoPremium extends BasePremium {
 
@@ -21,8 +23,4 @@ public class NoPremium extends BasePremium {
         super.bargain=new BigDecimal("1.0");
     }
 
-    @Override
-    public Account setPremium(Account account, int num) {
-        return account;
-    }
 }
