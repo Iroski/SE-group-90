@@ -10,10 +10,11 @@
             <children>
                 <TableView fx:id="lessonTableView" layoutX="287.0" layoutY="201.0" prefHeight="635.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                        <TableColumn fx:id="lessonName" prefWidth="250.0" text="Lesson Name" />
-                        <TableColumn fx:id="lessonTime" minWidth="0.0" prefWidth="250.0" text="Lesson Time" />
-                        <TableColumn fx:id="coach" prefWidth="250.0" text="Coach" />
-                        <TableColumn fx:id="buttonColumn" prefWidth="210.0" />
+                        <TableColumn fx:id="lessonName" prefWidth="187.0" text="Lesson Name" />
+                        <TableColumn fx:id="lessonTime" minWidth="0.0" prefWidth="211.0" text="Lesson Time" />
+                        <TableColumn fx:id="coach" prefWidth="174.0" text="Coach" />
+                        <TableColumn fx:id="buttonColumn" prefWidth="234.0" />
+                  <TableColumn fx:id="targetDescriptionColumn" prefWidth="153.0" />
                     </columns>
                 </TableView>
             </children>

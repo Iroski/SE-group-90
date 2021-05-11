@@ -1,22 +1,21 @@
 package controller;
 
-
 import component.VideoBox;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;
 import model.entity.ReturnEntity;
@@ -24,17 +23,16 @@ import model.entity.Video;
 import model.service.UserService;
 import model.service.VideoService;
 
-import javax.swing.event.ChangeEvent;
 import java.io.IOException;
 import java.util.List;
+
 /**
+ * @author smile
+ * @version 1.0
  * @description: TODO
- * @author Yuhang Lu
- * @date
- * @modifiedBy Yifei Cao
- * @version 3.0
+ * @date 5/11/2021 19:21
  */
-public class VideoPageController {
+public class FavoriteController {
     public FlowPane flowPane;
     public ImageView searchImage;
     public TextField searchText;
@@ -57,8 +55,8 @@ public class VideoPageController {
                 handleSelect();
             }
         });
-        VideoService videoService = new VideoService();
-        ReturnEntity returnEntity = videoService.getAllVideos();
+        UserService userService = new UserService();
+        ReturnEntity returnEntity = userService.getFavoriteByName(LoginController.userName);
         list = (List<Video>) returnEntity.getObject();
         flowPane.setOrientation(Orientation.HORIZONTAL);
         flowPane.setPadding(new Insets(39));

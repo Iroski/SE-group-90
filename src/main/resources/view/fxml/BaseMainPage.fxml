@@ -20,9 +20,9 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" layoutX="232.0" layoutY="13.0" prefHeight="42.0" prefWidth="421.0" AnchorPane.leftAnchor="232.0">
+            <HBox alignment="CENTER" layoutX="232.0" layoutY="13.0" prefHeight="42.0" prefWidth="421.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="18.0">
                <children>
-                  <Button fx:id="userName" blendMode="SRC_ATOP" layoutX="314.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToProfile" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Username">
+                  <Button fx:id="favorite" blendMode="SRC_ATOP" layoutX="444.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToFavorite" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Favorite">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -30,18 +30,7 @@
                         <Font size="21.0" />
                      </font>
                      <padding>
-                        <Insets right="15.0" />
-                     </padding>
-                  </Button>
-                  <Button fx:id="favorite" blendMode="SRC_ATOP" layoutX="444.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Favorite">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                     <padding>
-                        <Insets right="15.0" />
+                        <Insets right="30.0" />
                      </padding>
                   </Button>
                   <Button fx:id="b_account" blendMode="SRC_ATOP" layoutX="553.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToAccount" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Account">
@@ -52,7 +41,7 @@
                         <Font size="21.0" />
                      </font>
                      <padding>
-                        <Insets right="15.0" />
+                        <Insets right="30.0" />
                      </padding>
                   </Button>
                   <Button fx:id="history" blendMode="SRC_ATOP" layoutX="664.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#showHistory" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="History">
@@ -109,7 +98,7 @@
                   </Button>
                </children>
             </HBox>
-            <ImageView fx:id="user_image" fitHeight="50.0" fitWidth="50.0" layoutX="753.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="user_image" fitHeight="50.0" fitWidth="50.0" layoutX="610.0" layoutY="13.0" onMouseClicked="#goToProfile" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="610.0" AnchorPane.topAnchor="13.0">
                <image>
                   <Image url="/view/images/coach.jpg" />
                </image>
@@ -117,11 +106,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="vipLabel" layoutX="823.0" layoutY="21.0" onMouseEntered="#showVip" prefHeight="20.0" prefWidth="59.0" text="vip" textFill="#c9c0c0f5" AnchorPane.rightAnchor="315.0">
+            <Label fx:id="vipLabel" layoutX="823.0" layoutY="21.0" onMouseEntered="#showVip" prefHeight="20.0" prefWidth="59.0" text="vip" textFill="#c9c0c0f5" AnchorPane.rightAnchor="315.0" AnchorPane.topAnchor="21.0">
                <font>
                   <Font name="Berlin Sans FB" size="26.0" />
                </font>
             </Label>
+            <Button fx:id="userName" layoutX="651.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#goToProfile" prefHeight="45.0" style="-fx-background-color: white;" text="userName" AnchorPane.topAnchor="19.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
       <AnchorPane id="left_direct" layoutX="74.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>

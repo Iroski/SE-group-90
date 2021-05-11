@@ -64,17 +64,7 @@ return: ReturnEntity(code, List<String>)
 method: finishLesson(String username,LiveLesson liveLesson)
 return: refer update live lesson table
 
-### 8. insert a lesson
-method: insertLesson(String username,LiveLesson liveLesson)
-return: int
-| return type | meaning |
-|:--:|:--:|
-| 200 | insert successful |
-| 400 | the time is crashed |
-| 4043 | liveLesson table not exist |
-| 5000 | database error |
-
-### 9. get live lessons which not start by username
+### 8. get live lessons which not start by username
 method: getNotStartPayedLiveLessonByUsername(String username)
 return: ReturnEntity(code,LiveLessonTable )
 | return type | meaning |

@@ -84,7 +84,7 @@ public class AccountController {
             Scene scene = new Scene(page);
             CustomAmount.setScene(scene);
             CustomController controller = loader.getController();
-            controller.setSignUpStage(CustomAmount);
+            controller.setCustomStage(CustomAmount);
             CustomAmount.showAndWait();
         }
         balance.setText(showBalance + " + " + amount);

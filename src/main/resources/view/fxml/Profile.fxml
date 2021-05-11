@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,39 +10,55 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
    <children>
-      <Label layoutX="280.0" layoutY="150.0" prefHeight="45.0" prefWidth="100.0" text="UserName">
+      <Label layoutX="496.0" layoutY="150.0" prefHeight="45.0" prefWidth="100.0" text="UserName">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label layoutX="280.0" layoutY="219.0" prefHeight="45.0" prefWidth="100.0" text="Gender">
+      <Label layoutX="496.0" layoutY="230.0" prefHeight="45.0" prefWidth="100.0" text="Gender">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label layoutX="280.0" layoutY="293.0" prefHeight="45.0" prefWidth="100.0" text="Height">
+      <Label layoutX="496.0" layoutY="310.0" prefHeight="45.0" prefWidth="100.0" text="Height">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label layoutX="280.0" layoutY="365.0" prefHeight="45.0" prefWidth="100.0" text="Weight">
+      <Label layoutX="496.0" layoutY="390.0" prefHeight="45.0" prefWidth="100.0" text="Weight">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="editProfile" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#EditTheProfile" prefHeight="66.0" prefWidth="171.0" text="Edit">
+      <Button fx:id="editProfile" layoutX="415.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#goToEditPage" prefHeight="27.0" prefWidth="141.0" text="Edit">
          <font>
-            <Font size="34.0" />
+            <Font size="30.0" />
          </font>
       </Button>
-      <TextField fx:id="UserName" editable="false" layoutX="430.0" layoutY="160.0" />
-      <TextField fx:id="Gender" editable="false" layoutX="430.0" layoutY="230.0" />
-      <TextField fx:id="Height" editable="false" layoutX="430.0" layoutY="302.0" />
-      <TextField fx:id="Weight" editable="false" layoutX="430.0" layoutY="374.0" />
-      <Button fx:id="saveProfile" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#SaveTheProfile" prefHeight="66.0" prefWidth="171.0" text="Save">
+      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="105.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/view/images/coach.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="UserName" layoutX="698.0" layoutY="150.0" prefHeight="45.0" prefWidth="100.0" text="1" AnchorPane.leftAnchor="700.0">
          <font>
-            <Font size="34.0" />
+            <Font size="21.0" />
          </font>
-      </Button>
+      </Label>
+      <Label fx:id="Gender" layoutX="698.0" layoutY="230.0" prefHeight="45.0" prefWidth="100.0" text="1" AnchorPane.leftAnchor="700.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="Height" layoutX="698.0" layoutY="310.0" prefHeight="45.0" prefWidth="100.0" text="1" AnchorPane.leftAnchor="700.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="Weight" layoutX="698.0" layoutY="390.0" prefHeight="45.0" prefWidth="100.0" text="1" AnchorPane.leftAnchor="700.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

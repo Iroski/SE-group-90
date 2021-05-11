@@ -49,6 +49,8 @@ public class LiveController {
 
         lessons.setLayoutX(200);
         lessons.setLayoutY(75);
+        LessonPageController lessonPageController = loader.getController();
+        lessonPageController.init();
     }
 
     public void sendText(MouseEvent mouseEvent) {

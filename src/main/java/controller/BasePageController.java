@@ -8,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.entity.ReturnEntity;
 import model.entity.User;
@@ -23,10 +21,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static javafx.scene.paint.Color.*;
 
 public class BasePageController {
-    public Button userName;
     public Label vipLabel;
     public Button history;
     public ImageView user_image;
+    public Button b_log_out;
+    public Button favorite;
+    public Button b_account;
+    public Button b_video;
+    public Button b_coach;
+    public Button b_lesson;
+    public Button userName;
 
     @FXML
     Button b_home;
@@ -34,8 +38,10 @@ public class BasePageController {
     @FXML
     public void initialize() {
         String userName = LoginController.userName;
+        this.userName.setText(userName);
         UserService userService=new UserService();
         ReturnEntity returnEntity=userService.getUser(userName);
+
         User user=null;
         if (returnEntity.getCode()==200) {
             user = (User) returnEntity.getObject();
@@ -52,7 +58,7 @@ public class BasePageController {
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().add(historyPane);
         historyPane.setLayoutY(75);
-        historyPane.setLayoutX(history.getLayoutX()+0.3*historyPane.getPrefWidth());
+        historyPane.setLayoutX(history.getLayoutX()+0.1*historyPane.getPrefWidth());
         historyPane.setVisible(true);
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
             history.setTextFill(PINK);
@@ -162,6 +168,8 @@ public class BasePageController {
 
         lessons.setLayoutX(200);
         lessons.setLayoutY(75);
+        LessonPageController lessonPageController = loader.getController();
+        lessonPageController.init();
     }
     public void goToHome(MouseEvent mouseEvent) throws IOException {
 
@@ -177,6 +185,20 @@ public class BasePageController {
 
         home.setLayoutX(200);
         home.setLayoutY(75);
+    }
+    public void goToFavorite(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) b_home.getScene().getWindow();
+        stage.setTitle("Favorite");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/FavoritePage.fxml"));
+        AnchorPane account = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, account);
+
+        account.setLayoutX(200);
+        account.setLayoutY(75);
     }
     public void goToAccount(MouseEvent mouseEvent) throws IOException {
 
