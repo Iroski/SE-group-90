@@ -3,10 +3,12 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.entity.ReturnEntity;
@@ -70,6 +72,10 @@ public class HistoryController {
         Label[] authors = {author1, author2, author3, author4, author5, author6};
         Label[] descriptions = {description1, description2, description3, description4, description5, description6};
         AnchorPane[] panes = {h1Pane, h2Pane, h3Pane, h4Pane, h5Pane, h6Pane};
+        if (historyList.size()==0) {
+            description1.setText("No history Yet");
+            panes[0].setStyle("-fx-background-color: white");
+        }
         try {
             for (int i = 0; i < 6; i++) {
                 if (historyList.get(i) != null) {
@@ -80,8 +86,10 @@ public class HistoryController {
                     authors[i].setText(historyList.get(i).getStaticVideo().getAuthor());
                     descriptions[i].setText("it's a good video!");
                     panes[i].setUserData(historyList.get(i).getStaticVideo().getFilePath());
-                } else
+                    panes[i].setStyle("-fx-background-color: white; -fx-border-color: black");
+                } else {
                     break;
+                }
             }
         } catch (Exception ignored) {
 

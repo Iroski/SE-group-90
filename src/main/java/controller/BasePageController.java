@@ -26,6 +26,12 @@ public class BasePageController {
     public Label vipLabel;
     public Button history;
     public ImageView user_image;
+    public Button b_log_out;
+    public Button favorite;
+    public Button b_account;
+    public Button b_video;
+    public Button b_coach;
+    public Button b_lesson;
 
     @FXML
     Button b_home;
@@ -33,8 +39,10 @@ public class BasePageController {
     @FXML
     public void initialize() {
         String userName = LoginController.userName;
+        this.userName.setText(userName);
         UserService userService=new UserService();
         ReturnEntity returnEntity=userService.getUser(userName);
+
         User user=null;
         if (returnEntity.getCode()==200) {
             user = (User) returnEntity.getObject();
@@ -51,7 +59,7 @@ public class BasePageController {
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().add(historyPane);
         historyPane.setLayoutY(75);
-        historyPane.setLayoutX(history.getLayoutX()+0.3*historyPane.getPrefWidth());
+        historyPane.setLayoutX(history.getLayoutX()+0.1*historyPane.getPrefWidth());
         historyPane.setVisible(true);
         if(me.getEventType().equals(MouseEvent.MOUSE_ENTERED))
             history.setTextFill(PINK);
