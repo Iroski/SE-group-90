@@ -22,11 +22,4 @@ public class SeasonPremium  extends BasePremium {
         super.bargain=new BigDecimal("0.8");
     }
 
-    @Override
-    public Account setPremium(Account account, int num) {
-        account.setPremiumLevel(type);
-        account.setPremiumEndTime((account.getPremiumEndTime() < System.currentTimeMillis()/1000 ? System.currentTimeMillis()/1000 : account.getPremiumEndTime()) + num*duration);
-        account.setFreeLiveLessonNum(account.getFreeLiveLessonNum()+ freeLesson*num);
-        return account;
-    }
 }

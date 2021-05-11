@@ -9,9 +9,7 @@ import model.enumPackage.PremiumType;
 import model.exception.database.DataItemNotExists;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
@@ -33,7 +31,7 @@ public class AccountService {
         Optional<Account> sAccount = accountDao.getAllAccount().stream().filter(account -> account.getUsername().equals(username)).findAny();
         if (sAccount.isPresent())
             return;
-        accountDao.saveAccount(new Account(username, new BigDecimal("0.0"), new ArrayList<Long>(),0, 0 ,System.currentTimeMillis()/1000, (long) 0));
+        accountDao.saveAccount(new Account(username, new BigDecimal("0.0"), new ArrayList<>(),0, 0 ,System.currentTimeMillis()/1000, (long) 0));
     }
 
     public void createAccountForDeletedInfo(){
@@ -91,10 +89,8 @@ public class AccountService {
             //check if still be premium when login
             Account sAccount = sAccountOption.get();
             if (sAccount.getPremiumEndTime() < System.currentTimeMillis()/1000) {
-                sAccount.setPremiumLevel(0);
-
                 int updateCode;
-                if ((updateCode = this.updateAccount(sAccount)) != 200)
+                if ((updateCode = this.updatePremium(sAccount)) != 200)
                     return new ReturnEntity(updateCode, null);
             }
 
@@ -185,5 +181,21 @@ public class AccountService {
 
     protected List<Account> getAllAccounts(){
         return accountDao.getAllAccount();
+    }
+
+    protected int updatePremium(Account account){
+        try{
+            Map<Long,Integer> notStartList=account.getNotStartPremium();
+            if(!notStartList.isEmpty()){
+                Map.Entry<Long,Integer> firstPremium=notStartList.entrySet().stream().min(Map.Entry.comparingByKey()).get();
+                account.setPremiumLevel(firstPremium.getValue());
+                account.getNotStartPremium().remove(firstPremium.getKey());
+            }else{
+                account.setPremiumLevel(PremiumType.NOT_PREMIUM.getType());
+            }
+            return this.updateAccount(account);
+        }catch (RuntimeException e){
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
     }
 }

@@ -7,7 +7,7 @@ import lombok.ToString;
 import model.dao.base.DataItem;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author :YanBo Zhang
@@ -27,17 +27,7 @@ public class Account extends DataItem {
     private Integer freeLiveLessonNum;
     private Long createTime;
     private Long premiumEndTime;
-
-    public Account(@NonNull Long id, String username, BigDecimal balance, List<Long> orderId, Integer premiumLevel, Integer freeLiveLessonNum, Long createTime, Long premiumEndTime) {
-        super(id);
-        this.username = username;
-        this.balance = balance;
-        this.orderId = orderId;
-        this.premiumLevel = premiumLevel;
-        this.freeLiveLessonNum = freeLiveLessonNum;
-        this.createTime = createTime;
-        this.premiumEndTime = premiumEndTime;
-    }
+    private Map<Long,Integer> notStartPremium;
 
     public Account(String username, BigDecimal balance, List<Long> orderId, Integer premiumLevel, Integer freeLiveLessonNum, Long createTime, Long premiumEndTime) {
         this.username = username;
@@ -47,5 +37,18 @@ public class Account extends DataItem {
         this.freeLiveLessonNum = freeLiveLessonNum;
         this.createTime = createTime;
         this.premiumEndTime = premiumEndTime;
+        this.notStartPremium = new HashMap<>();
+    }
+
+    public Account(@NonNull Long id, String username, BigDecimal balance, List<Long> orderId, Integer premiumLevel, Integer freeLiveLessonNum, Long createTime, Long premiumEndTime, HashMap<Long, Integer> notStartPremium) {
+        super(id);
+        this.username = username;
+        this.balance = balance;
+        this.orderId = orderId;
+        this.premiumLevel = premiumLevel;
+        this.freeLiveLessonNum = freeLiveLessonNum;
+        this.createTime = createTime;
+        this.premiumEndTime = premiumEndTime;
+        this.notStartPremium = notStartPremium;
     }
 }

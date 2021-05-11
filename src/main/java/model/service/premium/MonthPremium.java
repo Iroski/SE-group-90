@@ -2,6 +2,7 @@ package model.service.premium;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import model.entity.Account;
 
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
  * @modifiedBy By:
  * @version :
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class MonthPremium extends BasePremium {
 
@@ -24,11 +26,4 @@ public class MonthPremium extends BasePremium {
         super.bargain=new BigDecimal("1.0");
     }
 
-    @Override
-    public Account setPremium(Account account, int num) {
-        account.setPremiumLevel(type);
-        account.setPremiumEndTime((account.getPremiumEndTime() < System.currentTimeMillis()/1000 ? System.currentTimeMillis()/1000 : account.getPremiumEndTime()) + num*duration);
-
-        return account;
-    }
 }

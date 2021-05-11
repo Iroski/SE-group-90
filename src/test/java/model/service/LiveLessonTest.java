@@ -28,15 +28,15 @@ public class LiveLessonTest {
         db.init("src/test/resources/database");
     }
 
-    @Test
-    public void test01GetEmptyTable(){
-        User user = new User("927986413@qq.com","userTest2","111111","1","1",1.0,1,1,new ArrayList<Long>(),new ArrayList<Long>());
-        System.out.println(new UserService().saveUser(user));
-        LiveLesson liveLesson1=new LiveLesson("userTest2","!23",(long)1,1,false,"","",System.currentTimeMillis()/1000);
-        LiveLesson liveLesson2=new LiveLesson("userTest2","!23",(long)2,1,true,"Reduce fat","",System.currentTimeMillis()/1000);
-        System.out.println(new LiveLessonService().insertLesson("userTest2",liveLesson1));
-        System.out.println(new LiveLessonService().insertLesson("userTest2",liveLesson2));
-    }
+//    @Test
+//    public void test01GetEmptyTable(){
+//        User user = new User("927986413@qq.com","userTest2","111111","1","1",1.0,1,1,new ArrayList<Long>(),new ArrayList<Long>());
+//        System.out.println(new UserService().saveUser(user));
+//        LiveLesson liveLesson1=new LiveLesson("userTest2","!23",(long)1,1,false,"","",System.currentTimeMillis()/1000);
+//        LiveLesson liveLesson2=new LiveLesson("userTest2","!23",(long)2,1,true,"Reduce fat","",System.currentTimeMillis()/1000);
+//        System.out.println(new LiveLessonService().insertLesson("userTest2",liveLesson1));
+//        System.out.println(new LiveLessonService().insertLesson("userTest2",liveLesson2));
+//    }
 //
 //    @Test
 //    public void test02UpdateTable(){
