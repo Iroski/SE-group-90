@@ -23,8 +23,8 @@
       </Label>
       <Button layoutX="428.0" layoutY="571.0" mnemonicParsing="false" onMouseClicked="#chooseFinished" prefHeight="51.0" prefWidth="144.0" text="OK" />
       <Button layoutX="872.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#closeThePage" prefHeight="38.0" prefWidth="66.0" text="Back" />
-      <Separator layoutX="31.0" layoutY="123.0" prefHeight="20.0" prefWidth="639.0" />
-      <ChoiceBox fx:id="dateChoose" layoutX="54.0" layoutY="272.0" prefHeight="44.0" prefWidth="188.0" />
+      <Separator layoutX="31.0" layoutY="135.0" prefHeight="20.0" prefWidth="639.0" />
+      <ChoiceBox fx:id="dateChoose" layoutX="54.0" layoutY="272.0" prefHeight="58.0" prefWidth="258.0" />
       <VBox fx:id="lessonTime" layoutX="362.0" layoutY="272.0" spacing="10.0">
          <children>
             <HBox alignment="CENTER" layoutX="308.0" layoutY="214.0" spacing="20.0">
@@ -79,5 +79,11 @@
             </HBox>
          </children>
       </VBox>
+      <CheckBox fx:id="customization" layoutX="696.0" layoutY="272.0" mnemonicParsing="false" text="Customization">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </CheckBox>
+      <ChoiceBox fx:id="targets" layoutX="696.0" layoutY="338.0" prefHeight="44.0" prefWidth="218.0" />
    </children>
 </AnchorPane>

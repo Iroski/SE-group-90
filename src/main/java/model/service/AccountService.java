@@ -142,6 +142,18 @@ public class AccountService {
         }
     }
 
+    public ReturnEntity getFreeLessonNumByUsername(String username){
+        try {
+            Optional<Account> sAccountOption = this.getAccountByUsername(username);
+            if (sAccountOption.isEmpty())
+                return new ReturnEntity(CommunicationStatus.ACCOUNT_NOT_FOUND.getCode(), null);
+
+            return new ReturnEntity(CommunicationStatus.OK.getCode(), sAccountOption.get().getFreeLiveLessonNum());
+        } catch (RuntimeException e) {
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
+        }
+    }
+
     protected int minusFreeTimeOfPremium(String username){
         try {
             Optional<Account> sAccountOption = this.getAccountByUsername(username);

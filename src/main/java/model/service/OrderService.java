@@ -106,10 +106,12 @@ public class OrderService {
         return new ReturnEntity(CommunicationStatus.OK.getCode(), order);
     }
 
-    public int payLiveLessonOrder(String username, Order order, LiveLesson liveLesson, AtomicBoolean isFreeByPremium) {
+    public int payLiveLessonOrder(String username, LiveLesson liveLesson, AtomicBoolean isFreeByPremium) {
         try {
-            if(!this.isOrderExist(order))
+            Optional<Order> sOrderOption = this.getOrderByLiveLessonCreateTime(liveLesson.getCreateTime());
+            if (sOrderOption.isEmpty())
                 return CommunicationStatus.ORDER_NOT_FOUND.getCode();
+            Order order=sOrderOption.get();
             AccountService accountService = new AccountService();
             int accountServiceCode = accountService.updateBalance(username, order.getMoney());
             if (accountServiceCode != 200)

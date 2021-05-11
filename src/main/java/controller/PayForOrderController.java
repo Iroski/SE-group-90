@@ -21,14 +21,17 @@ public class PayForOrderController {
         return this.ifPay;
     }
 
-    private void setIfPay(){
-        this.ifPay.set(true);
+    private void setIfPay(boolean b){
+        this.ifPay.set(b);
     }
 
     public void handleChoose(MouseEvent mouseEvent){
          Button button = (Button) mouseEvent.getSource();
          if(button.equals(pay)){
-             setIfPay();
+             setIfPay(true);
+         }
+         else{
+             setIfPay((false));
          }
          Stage stage = (Stage) pay.getScene().getWindow();
          stage.close();
