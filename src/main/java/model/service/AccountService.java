@@ -31,15 +31,15 @@ public class AccountService {
         Optional<Account> sAccount = accountDao.getAllAccount().stream().filter(account -> account.getUsername().equals(username)).findAny();
         if (sAccount.isPresent())
             return;
-        accountDao.saveAccount(new Account(username, new BigDecimal("0.0"), new ArrayList<>(),0, 0 ,System.currentTimeMillis()/1000, (long) 0));
+        accountDao.saveAccount(new Account(username, new BigDecimal("0.0"), new ArrayList<>(), 0, 0, System.currentTimeMillis() / 1000, (long) 0));
     }
 
-    public void createAccountForDeletedInfo(){
-        UserService userService=new UserService();
-        List<String> usernameList=userService.getAllUsers().stream().map(User::getName).collect(Collectors.toList());
-        List<String> accNameList=accountDao.getAllAccount().stream().map(Account::getUsername).collect(Collectors.toList());
-        for(String a:usernameList){
-            if(!accNameList.contains(a))
+    public void createAccountForDeletedInfo() {
+        UserService userService = new UserService();
+        List<String> usernameList = userService.getAllUsers().stream().map(User::getName).collect(Collectors.toList());
+        List<String> accNameList = accountDao.getAllAccount().stream().map(Account::getUsername).collect(Collectors.toList());
+        for (String a : usernameList) {
+            if (!accNameList.contains(a))
                 createAccountForSignUp(a);
         }
     }
@@ -56,13 +56,12 @@ public class AccountService {
     }
 
 
-
-    public int updateBalance(String username,BigDecimal orderMoney) {
+    public int updateBalance(String username, BigDecimal orderMoney) {
         try {
             Optional<Account> sAccountOption = this.getAccountByUsername(username);
             if (sAccountOption.isEmpty())
                 return CommunicationStatus.ACCOUNT_NOT_FOUND.getCode();
-            Account account=sAccountOption.get();
+            Account account = sAccountOption.get();
 
 
             BigDecimal subBalance = account.getBalance().subtract(orderMoney);
@@ -88,11 +87,10 @@ public class AccountService {
 
             //check if still be premium when login
             Account sAccount = sAccountOption.get();
-            if (sAccount.getPremiumEndTime() < System.currentTimeMillis()/1000) {
-                int updateCode;
-                if ((updateCode = this.updatePremium(sAccount)) != 200)
-                    return new ReturnEntity(updateCode, null);
-            }
+
+            int updateCode;
+            if ((updateCode = this.updatePremium(sAccount)) != 200)
+                return new ReturnEntity(updateCode, null);
 
 
             return new ReturnEntity(CommunicationStatus.OK.getCode(), sAccount);
@@ -119,14 +117,14 @@ public class AccountService {
                 return CommunicationStatus.ACCOUNT_NOT_FOUND.getCode();
 
             Account sAccount = sAccountOption.get();
-            sAccount=PremiumType.getPremiumByType(type).setPremium(sAccount,premiumNum);
+            sAccount = PremiumType.getPremiumByType(type).setPremium(sAccount, premiumNum);
             return this.updateAccount(sAccount);
         } catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }
     }
 
-    public ReturnEntity getBargainByUsername(String username){
+    public ReturnEntity getBargainByUsername(String username) {
         try {
             Optional<Account> sAccountOption = this.getAccountByUsername(username);
             if (sAccountOption.isEmpty())
@@ -138,35 +136,35 @@ public class AccountService {
         }
     }
 
-    protected int minusFreeTimeOfPremium(String username){
+    protected int minusFreeTimeOfPremium(String username) {
         try {
             Optional<Account> sAccountOption = this.getAccountByUsername(username);
             if (sAccountOption.isEmpty())
                 return CommunicationStatus.ACCOUNT_NOT_FOUND.getCode();
 
             Account sAccount = sAccountOption.get();
-            int freeTime=sAccount.getFreeLiveLessonNum();
-            if(freeTime<1)
+            int freeTime = sAccount.getFreeLiveLessonNum();
+            if (freeTime < 1)
                 return CommunicationStatus.NO_ENOUGH_FREE_LESSON.getCode();
-            sAccount.setFreeLiveLessonNum(freeTime-1);
+            sAccount.setFreeLiveLessonNum(freeTime - 1);
             return CommunicationStatus.OK.getCode();
         } catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }
     }
 
-    protected int addOrderId(String username,Long orderId){
-        try{
-            Optional<Account> sAccountOption=this.getAccountByUsername(username);
-            if(sAccountOption.isEmpty())
+    protected int addOrderId(String username, Long orderId) {
+        try {
+            Optional<Account> sAccountOption = this.getAccountByUsername(username);
+            if (sAccountOption.isEmpty())
                 return CommunicationStatus.ACCOUNT_NOT_FOUND.getCode();
 
-            Account sAccount=sAccountOption.get();
-            List<Long> orderList=sAccount.getOrderId();
+            Account sAccount = sAccountOption.get();
+            List<Long> orderList = sAccount.getOrderId();
             orderList.add(orderId);
             sAccount.setOrderId(orderList);
             return this.updateAccount(sAccount);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }
     }
@@ -179,22 +177,33 @@ public class AccountService {
         return accountDao.getAllAccount().stream().filter(account -> account.getUsername().equals(username)).findAny();
     }
 
-    protected List<Account> getAllAccounts(){
+    protected List<Account> getAllAccounts() {
         return accountDao.getAllAccount();
     }
 
-    protected int updatePremium(Account account){
-        try{
-            Map<Long,Integer> notStartList=account.getNotStartPremium();
-            if(!notStartList.isEmpty()){
-                Map.Entry<Long,Integer> firstPremium=notStartList.entrySet().stream().min(Map.Entry.comparingByKey()).get();
-                account.setPremiumLevel(firstPremium.getValue());
-                account.getNotStartPremium().remove(firstPremium.getKey());
-            }else{
+    protected int updatePremium(Account account) {
+        try {
+            Map<Long, Integer> notStartList = account.getNotStartPremium();
+            long curTime = System.currentTimeMillis() / 1000;
+            if (account.getPremiumEndTime() > curTime) {    //indicate that the user still has premium, but need to determine which one
+                if (!notStartList.isEmpty()) {
+                    List<Map.Entry<Long, Integer>> list = notStartList.entrySet().stream().filter(e -> e.getKey() <= curTime).collect(Collectors.toList());
+                    Optional<Map.Entry<Long, Integer>> optionalFirstPremium = list.stream().max(Map.Entry.comparingByKey());
+                    if (optionalFirstPremium.isPresent()) {   //this shows that the premium type may changed
+                        Map.Entry<Long, Integer> firstPremium = optionalFirstPremium.get();
+                        account.setPremiumLevel(firstPremium.getValue());
+                    }
+                    for (Map.Entry<Long, Integer> e : list) {    //remove all the used premium
+                        account.getNotStartPremium().remove(e.getKey());
+                    }
+
+                }
+            } else {  //indicate that user not have premium now
                 account.setPremiumLevel(PremiumType.NOT_PREMIUM.getType());
             }
+
             return this.updateAccount(account);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }
     }
