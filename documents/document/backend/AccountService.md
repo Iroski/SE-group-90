@@ -10,6 +10,7 @@ class Account{
     private Integer freeLiveLessonNum; //this can be used when by series lessons
     private Long createTime;
     private Long premiumEndTime;
+    private Map<Long,Integer> notStartPremium;
 }
 ```
 ## Interface
