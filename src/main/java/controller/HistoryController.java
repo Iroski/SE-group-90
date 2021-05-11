@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +13,7 @@ import model.entity.ReturnEntity;
 import model.entity.Video;
 import model.service.UserService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class HistoryController {
@@ -47,49 +49,78 @@ public class HistoryController {
     public ImageView history6;
     public Label description6;
     public Label author6;
+
     private Image image=new Image("view/images/1.jpg");
+
     @FXML
     public void initialize() {
-        ArrayList<Video> historyList=null;
-        UserService Service=new UserService();
+        ArrayList<Video> historyList = null;
+        UserService Service = new UserService();
         //ReturnEntity returnEntity=Service.getHistoryByName("hly");
-        ReturnEntity returnEntity=Service.getHistoryByName(LoginController.userName);
-        if (returnEntity.getCode()==5000) {
+        ReturnEntity returnEntity = Service.getHistoryByName(LoginController.userName);
+        if (returnEntity.getCode() == 5000) {
             System.out.println("Data base error!");
-        }
-        else if(returnEntity.getObject()==null) {
-            historyList=null;
-        }
-        else {
-            historyList= (ArrayList<Video>) returnEntity.getObject();
+        } else if (returnEntity.getObject() == null) {
+            historyList = null;
+        } else {
+            historyList = (ArrayList<Video>) returnEntity.getObject();
             //System.out.println(historyList);
         }
-        ImageView[] historys={history1,history2,history3,history4,history5,history6};
-        Label[] authors={author1,author2,author3,author4,author5,author6};
-        Label[] descriptions={description1,description2,description3,description4,description5,description6};
+        ImageView[] historys = {history1, history2, history3, history4, history5, history6};
+        Label[] authors = {author1, author2, author3, author4, author5, author6};
+        Label[] descriptions = {description1, description2, description3, description4, description5, description6};
+        AnchorPane[] panes = {h1Pane, h2Pane, h3Pane, h4Pane, h5Pane, h6Pane};
         try {
-            for (int i=0;i<6;i++) {
+            for (int i = 0; i < 6; i++) {
                 if (historyList.get(i) != null) {
-                    if (historyList.get(i).getStaticVideo().getCoverPath()==null) {
+                    if (historyList.get(i).getStaticVideo().getCoverPath() == null) {
                         historys[i].setImage(image);
-                    }
-                    else
+                    } else
                         historys[i].setImage(new Image(historyList.get(i).getStaticVideo().getCoverPath()));
                     authors[i].setText(historyList.get(i).getStaticVideo().getAuthor());
                     descriptions[i].setText("it's a good video!");
-                }
-                else
+                    panes[i].setUserData(historyList.get(i).getStaticVideo().getFilePath());
+                } else
                     break;
             }
-        }
-        catch (Exception ignored){
+        } catch (Exception ignored) {
 
         }
     }
 
     public void closeHistory(MouseEvent mouseEvent) {
+//        Stage stage = (Stage) historyPane.getScene().getWindow();
+//        AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+//        anchorPane.getChildren().remove(this.historyPane);
+        closeTheHistory();
+    }
+
+    public void closeTheHistory () {
+        try {
+            Stage stage = (Stage) historyPane.getScene().getWindow();
+            AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+            anchorPane.getChildren().remove(this.historyPane);
+        } catch (Exception ignored) {
+
+        }
+    }
+
+    public void showVideo(MouseEvent mouseEvent) throws IOException {
+        AnchorPane selectedHistory= (AnchorPane) mouseEvent.getSource();
+        if (selectedHistory.getUserData()==null) {
+            return ;
+        }
         Stage stage = (Stage) historyPane.getScene().getWindow();
-        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-        anchorPane.getChildren().remove(this.historyPane);
+        stage.setTitle("Video Show");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
+        MainPageController.path = (String) selectedHistory.getUserData();
+        AnchorPane video = (AnchorPane) loader.load();
+        AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, video);
+        video.setLayoutX(200);
+        video.setLayoutY(75);
+        closeTheHistory();
     }
 }

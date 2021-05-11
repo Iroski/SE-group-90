@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PayForOrderController">
+   <children>
+      <Button fx:id="pay" layoutX="89.0" layoutY="311.0" mnemonicParsing="false" onMouseClicked="#handleChoose" text="Pay immediately" />
+      <Button fx:id="notPay" layoutX="448.0" layoutY="311.0" mnemonicParsing="false" onMouseClicked="#handleChoose" text="Pay latter" />
+   </children>
+</AnchorPane>

@@ -2,14 +2,15 @@ package controller;
 
 
 import component.VideoBox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -17,10 +18,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.SneakyThrows;
 import model.entity.ReturnEntity;
 import model.entity.Video;
 import model.service.VideoService;
 
+import javax.swing.event.ChangeEvent;
 import java.io.IOException;
 import java.util.List;
 /**
@@ -37,9 +40,27 @@ public class VideoPageController {
     public Button biking;
     public Button empty;
     public FlowPane flowPane;
+    public ImageView searchImage;
+    public TextField searchText;
+    public ComboBox category;
     List<Video> list;
+
     @FXML
     public void initialize() throws IOException {
+        category.getItems().addAll(
+                "All videos",
+                "running",
+                "yoga",
+                "biking"
+        );
+        category.getSelectionModel().selectFirst();
+        category.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @SneakyThrows
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                handleSelect();
+            }
+        });
         VideoService videoService = new VideoService();
         ReturnEntity returnEntity = videoService.getAllVideos();
         list = (List<Video>) returnEntity.getObject();
@@ -47,7 +68,22 @@ public class VideoPageController {
         flowPane.setPadding(new Insets(39));
         flowPane.setHgap(39);
         flowPane.setVgap(50);
-        showAllVideos();
+
+        MainPageController.previousPage = "Videos";
+        flowPane.getChildren().clear();
+        for(int i=0; i<list.size(); i++){
+            VideoBox videoBox = new VideoBox(list.get(i).getStaticVideo().getCoverPath(),list.get(i).getStaticVideo().getVideoName());
+            videoBox.setOnMouseClicked(mouseEvent -> {
+                try {
+                    showVideo(mouseEvent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            flowPane.getChildren().add(videoBox);
+        }
+
+        searchImage.setImage(new Image("view/images/searchImage.png"));
     }
 
     public void showVideo(MouseEvent mouseEvent) throws IOException {
@@ -58,7 +94,7 @@ public class VideoPageController {
                 MainPageController.path = value.getStaticVideo().getFilePath();
             }
         }
-        Stage stage = (Stage) all.getScene().getWindow();
+        Stage stage = (Stage) category.getScene().getWindow();
         stage.setTitle("Video Show");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
@@ -72,12 +108,12 @@ public class VideoPageController {
         video.setLayoutY(75);
     }
 
-    public void filterVideosByTag(MouseEvent mouseEvent) throws IOException {
+    public void filterVideosByTag(String tag) throws IOException {
         flowPane.getChildren().clear();
-        Button button = (Button) mouseEvent.getSource();
         int counter = 0;
         List<String> tagName;
-        String tag = button.getId();
+//        Stage stage = (Stage) all.getScene().getWindow();
+//        stage.setTitle(tag);
         for (Video value : list) {
             if(value.getTagsName()!=null) {
                 tagName = value.getTagsName();
@@ -98,11 +134,17 @@ public class VideoPageController {
             }
         }
         if(counter==0){
-            System.out.println("狗屁没有");
+            Label noVideo = new Label("Sorry, there isn't any video with this tag");
+            noVideo.setAlignment(Pos.CENTER);
+            noVideo.setPrefSize(500,200);
+            flowPane.getChildren().add(noVideo);
         }
     }
 
     public void showAllVideos() {
+//        Stage stage = (Stage) all.getScene().getWindow();
+//        stage.setTitle("Videos");
+        MainPageController.previousPage = "Videos";
         flowPane.getChildren().clear();
         for(int i=0; i<list.size(); i++){
             VideoBox videoBox = new VideoBox(list.get(i).getStaticVideo().getCoverPath(),list.get(i).getStaticVideo().getVideoName());
@@ -116,4 +158,23 @@ public class VideoPageController {
             flowPane.getChildren().add(videoBox);
         }
     }
+
+    public void SearchVideo(MouseEvent mouseEvent) throws IOException{
+        String text = searchText.getText();
+        //Todo
+        if(text.equals("camel1")){
+            showAllVideos();
+        }
+    }
+
+    public void handleSelect() throws IOException {
+        String selection = category.getValue().toString();
+        if(selection.equals("All videos")){
+            showAllVideos();
+        }
+        else{
+            filterVideosByTag(selection);
+        }
+    }
+
 }

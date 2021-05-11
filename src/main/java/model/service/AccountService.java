@@ -1,12 +1,10 @@
 package model.service;
 
 import common.CommunicationStatus;
-import controller.CoachPageController;
 import model.dao.AccountDao;
-import model.dao.OrderDao;
 import model.entity.Account;
-import model.entity.Order;
 import model.entity.ReturnEntity;
+import model.entity.User;
 import model.enumPackage.PremiumType;
 import model.exception.database.DataItemNotExists;
 
@@ -15,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 /**
  * @author :YanBo Zhang
@@ -34,7 +33,17 @@ public class AccountService {
         Optional<Account> sAccount = accountDao.getAllAccount().stream().filter(account -> account.getUsername().equals(username)).findAny();
         if (sAccount.isPresent())
             return;
-        accountDao.saveAccount(new Account(username, new BigDecimal("0.0"), new ArrayList<Long>(),0, 0 ,System.currentTimeMillis(), (long) 0));
+        accountDao.saveAccount(new Account(username, new BigDecimal("0.0"), new ArrayList<Long>(),0, 0 ,System.currentTimeMillis()/1000, (long) 0));
+    }
+
+    public void createAccountForDeletedInfo(){
+        UserService userService=new UserService();
+        List<String> usernameList=userService.getAllUsers().stream().map(User::getName).collect(Collectors.toList());
+        List<String> accNameList=accountDao.getAllAccount().stream().map(Account::getUsername).collect(Collectors.toList());
+        for(String a:usernameList){
+            if(!accNameList.contains(a))
+                createAccountForSignUp(a);
+        }
     }
 
     public int updateAccount(Account account) {
@@ -60,7 +69,7 @@ public class AccountService {
 
             BigDecimal subBalance = account.getBalance().subtract(orderMoney);
             int isValid = (subBalance).compareTo(BigDecimal.ZERO);
-            if (isValid <= 0)
+            if (isValid < 0)
                 return CommunicationStatus.NO_ENOUGH_BALANCE.getCode();
 
             account.setBalance(subBalance);
@@ -81,7 +90,7 @@ public class AccountService {
 
             //check if still be premium when login
             Account sAccount = sAccountOption.get();
-            if (sAccount.getPremiumEndTime() < System.currentTimeMillis()) {
+            if (sAccount.getPremiumEndTime() < System.currentTimeMillis()/1000) {
                 sAccount.setPremiumLevel(0);
 
                 int updateCode;
@@ -107,20 +116,29 @@ public class AccountService {
         }
     }
 
-    public int setPremium(String username, Integer type, Long premiumDuration) {
+    public int setPremium(String username, Integer type, Integer premiumNum) {
         try {
             Optional<Account> sAccountOption = this.getAccountByUsername(username);
             if (sAccountOption.isEmpty())
                 return CommunicationStatus.ACCOUNT_NOT_FOUND.getCode();
 
             Account sAccount = sAccountOption.get();
-            sAccount.setPremiumLevel(type);
-            if(type== PremiumType.YEAR_PREMIUM.getType())
-                sAccount.setFreeLiveLessonTime(sAccount.getFreeLiveLessonTime()+12);
-            sAccount.setPremiumEndTime((sAccount.getPremiumEndTime() < System.currentTimeMillis() ? System.currentTimeMillis() : sAccount.getPremiumEndTime()) + premiumDuration);
+            sAccount=PremiumType.getPremiumByType(type).setPremium(sAccount,premiumNum);
             return this.updateAccount(sAccount);
         } catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+    }
+
+    public ReturnEntity getBargainByUsername(String username){
+        try {
+            Optional<Account> sAccountOption = this.getAccountByUsername(username);
+            if (sAccountOption.isEmpty())
+                return new ReturnEntity(CommunicationStatus.ACCOUNT_NOT_FOUND.getCode(), null);
+
+            return new ReturnEntity(CommunicationStatus.OK.getCode(), PremiumType.getPremiumByType(sAccountOption.get().getPremiumLevel()).getBargain());
+        } catch (RuntimeException e) {
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
         }
     }
 
@@ -131,10 +149,10 @@ public class AccountService {
                 return CommunicationStatus.ACCOUNT_NOT_FOUND.getCode();
 
             Account sAccount = sAccountOption.get();
-            int freeTime=sAccount.getFreeLiveLessonTime();
+            int freeTime=sAccount.getFreeLiveLessonNum();
             if(freeTime<1)
                 return CommunicationStatus.NO_ENOUGH_FREE_LESSON.getCode();
-            sAccount.setFreeLiveLessonTime(freeTime-1);
+            sAccount.setFreeLiveLessonNum(freeTime-1);
             return CommunicationStatus.OK.getCode();
         } catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
@@ -163,5 +181,9 @@ public class AccountService {
 
     protected Optional<Account> getAccountByUsername(String username) {
         return accountDao.getAllAccount().stream().filter(account -> account.getUsername().equals(username)).findAny();
+    }
+
+    protected List<Account> getAllAccounts(){
+        return accountDao.getAllAccount();
     }
 }

@@ -31,6 +31,7 @@ public class VideoBox extends VBox {
         this.getChildren().add(imageView);
         this.getChildren().add(label);
         this.setStyle("-fx-border-color: #04b9f9 ; -fx-background-color: #04b9f9 ; -fx-border-radius: 5px ");
+        this.setStyle("-fx-border-color: #98e6ff ; -fx-background-color: #04b9f9 ; -fx-border-radius: 5px ");
         this.setAlignment(Pos.CENTER);
     }
 }

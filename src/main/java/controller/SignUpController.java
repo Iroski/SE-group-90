@@ -57,7 +57,7 @@ public class SignUpController {
         );
         gender.getSelectionModel().selectFirst();
 
-        user = new User("","","","","",null,null,null,new ArrayList<Long>());
+        user = new User("","","","","",null,null,null,new ArrayList<Long>(),new ArrayList<Long>());
     }
 
     /**

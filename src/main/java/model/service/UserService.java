@@ -109,7 +109,6 @@ public class UserService {
     }
 
     public ReturnEntity getHistoryByName(String username){
-        ReturnEntity returnEntity = new ReturnEntity();
         try {
             //check user validation
             Optional<User> sUser=getUserByUsername(username);
@@ -148,8 +147,68 @@ public class UserService {
         return CommunicationStatus.OK.getCode();
     }
 
+    public int setFavoriteByName(String username,Long id){
+        try{
+            Optional<User> sUser=getUserByUsername(username);
+            if(sUser.isEmpty())
+                return CommunicationStatus.USER_NOT_FOUND.getCode();
+            User user=sUser.get();
+            List<Long> videosId=user.getFavorite();
+            if(!videosId.contains(id)){
+                videosId.add(id);
+                user.setFavorite(videosId);
+                userDao.updateUser(user);
+            }
+        }catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+        return CommunicationStatus.OK.getCode();
+    }
+
+    public ReturnEntity getFavoriteByName(String username){
+        try {
+            //check user validation
+            Optional<User> sUser=getUserByUsername(username);
+            if (sUser.isEmpty())
+                return new ReturnEntity(CommunicationStatus.USER_NOT_FOUND.getCode(),null);
+
+            List<Long> sVideosId=sUser.get().getFavorite();
+            VideoDao videoDao=new VideoDao();
+            List<Video> videos=videoDao.getAllVideos();
+            List<Video> sVideo=videos.stream().filter(video -> sVideosId.contains(video.getId())).collect(Collectors.toList());
+            return new ReturnEntity(CommunicationStatus.OK.getCode(),sVideo);
+        } catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
+        }
+    }
+
+    public int removeFavoriteByName(String username,Long id){
+        try{
+            Optional<User> sUser=getUserByUsername(username);
+            if(sUser.isEmpty())
+                return CommunicationStatus.USER_NOT_FOUND.getCode();
+            User user=sUser.get();
+            List<Long> videosId=user.getFavorite();
+            if(videosId.contains(id)){
+                videosId.remove(id);
+                user.setFavorite(videosId);
+                userDao.updateUser(user);
+            }
+        }catch (RuntimeException e) {
+            System.err.println("RuntimeError occur at "+ Thread.currentThread().getStackTrace()[2].getClassName()+" "+Thread.currentThread().getStackTrace()[2].getMethodName());
+            return CommunicationStatus.INTERNAL_ERROR.getCode();
+        }
+        return CommunicationStatus.OK.getCode();
+    }
+
     protected Optional<User> getUserByUsername(String username){
         List<User> users = userDao.getAllUser();
         return users.stream().filter(user->user.getName().equals(username)).findAny();
+    }
+
+    protected List<User> getAllUsers(){
+        return userDao.getAllUser();
     }
 }

@@ -58,7 +58,7 @@ public class OrderService {
             int accountServiceCode = accountService.updateBalance(username, order.getMoney());
             if (accountServiceCode != 200)
                 return accountServiceCode;
-            accountServiceCode = accountService.setPremium(username, order.getPremiumType(), order.getPremiumDuration());
+            accountServiceCode = accountService.setPremium(username, order.getPremiumType(), order.getPremiumNum());
             if (accountServiceCode != 200)
                 return accountServiceCode;
             order.setState(OrderStatus.IS_PAYED.getCode());
@@ -136,6 +136,10 @@ public class OrderService {
             if (sOrderOption.isEmpty())
                 return CommunicationStatus.ORDER_NOT_FOUND.getCode();
             BigDecimal balance = sOrderOption.get().getMoney();
+
+            int liveLessonCode = new LiveLessonService().updateLessonStateByType(username, liveLesson, "CANCELED");
+            if (liveLessonCode != 200)
+                return liveLessonCode;
 
             int accountCode = new AccountService().updateBalance(username, balance.multiply(new BigDecimal("-1")));
             if (accountCode != 200)

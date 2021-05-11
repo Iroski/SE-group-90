@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.dao.base.DataHouse;
+import model.service.AccountService;
+import model.service.LiveLessonService;
 import model.utils.ResourceLoader;
 
 import java.io.IOException;
@@ -23,6 +25,8 @@ public class MainTest extends Application {
         db= DataHouse.getInstance();
         db.init("src/test/resources/database");
         ResourceLoader.staticVideoLoader("src/test/resources/view/videos");
+        new AccountService().createAccountForDeletedInfo();
+        new LiveLessonService().createInfoForDeleteInfo();
     }
 
     public static void main(String[] args) {

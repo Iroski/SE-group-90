@@ -20,19 +20,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" layoutX="232.0" layoutY="13.0" prefHeight="42.0" prefWidth="421.0" AnchorPane.leftAnchor="232.0">
+            <HBox alignment="CENTER" layoutX="232.0" layoutY="13.0" prefHeight="42.0" prefWidth="421.0" AnchorPane.leftAnchor="232.0" AnchorPane.topAnchor="18.0">
                <children>
-                  <Button fx:id="userName" blendMode="SRC_ATOP" layoutX="314.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToProfile" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Username">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                     <padding>
-                        <Insets right="15.0" />
-                     </padding>
-                  </Button>
                   <Button fx:id="favorite" blendMode="SRC_ATOP" layoutX="444.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Favorite">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -41,7 +30,7 @@
                         <Font size="21.0" />
                      </font>
                      <padding>
-                        <Insets right="15.0" />
+                        <Insets right="30.0" />
                      </padding>
                   </Button>
                   <Button fx:id="b_account" blendMode="SRC_ATOP" layoutX="553.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToAccount" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Account">
@@ -52,7 +41,7 @@
                         <Font size="21.0" />
                      </font>
                      <padding>
-                        <Insets right="15.0" />
+                        <Insets right="30.0" />
                      </padding>
                   </Button>
                   <Button fx:id="history" blendMode="SRC_ATOP" layoutX="664.0" layoutY="24.0" mnemonicParsing="false" onMouseEntered="#showHistory" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="History">
@@ -109,7 +98,7 @@
                   </Button>
                </children>
             </HBox>
-            <ImageView fx:id="user_image" fitHeight="50.0" fitWidth="50.0" layoutX="753.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="user_image" fitHeight="50.0" fitWidth="50.0" layoutX="753.0" layoutY="10.0" onMouseClicked="#goToProfile" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="12.0">
                <image>
                   <Image url="/view/images/coach.jpg" />
                </image>

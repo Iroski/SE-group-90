@@ -72,6 +72,11 @@
                         </Label>
                      </children>
                   </HBox>
+                  <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="27.0" layoutY="101.0" prefHeight="20.0" prefWidth="83.0" text="送12节直播课" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -99,11 +104,6 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="27.0" layoutY="101.0" prefHeight="20.0" prefWidth="83.0" text="送12节直播课" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -111,7 +111,7 @@
             </AnchorPane>
          </children>
       </HBox>
-      <AnchorPane fx:id="getStart" layoutX="30.0" layoutY="262.0" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: linear-gradient(to right, #ffb64a, #FFDFA9); -fx-background-radius: 10;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+      <AnchorPane fx:id="getStart" layoutX="30.0" layoutY="262.0" onMouseClicked="#startPay" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: linear-gradient(to right, #ffb64a, #FFDFA9); -fx-background-radius: 10;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
          <children>
             <Label layoutX="107.0" layoutY="8.0" text="立即充值" textFill="#d08a20">
                <font>

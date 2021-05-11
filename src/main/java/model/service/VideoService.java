@@ -3,7 +3,6 @@ package model.service;
 import common.CommunicationStatus;
 import model.dao.VideoDao;
 import model.entity.ReturnEntity;
-import model.entity.Tag;
 import model.entity.Video;
 import model.enumPackage.TagOperateType;
 import model.exception.database.DataItemNotExists;
@@ -11,6 +10,7 @@ import model.exception.database.DataItemNotExists;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 /**
@@ -32,7 +32,6 @@ public class VideoService {
         try {
             result = videoDao.getAllVideos();
         } catch (DataItemNotExists e) {
-            //todo 这个错误现在还会抛出吗
             return new ReturnEntity(CommunicationStatus.VIDEO_NOT_FOUND.getCode(), null);
         } catch (RuntimeException e) {
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
@@ -91,5 +90,40 @@ public class VideoService {
         }
         return CommunicationStatus.OK.getCode();
     }
+
+    public ReturnEntity getVideoById(Long id){
+        try{
+            List<Video> list=videoDao.getAllVideos();
+            Optional<Video> videoOptional=list.stream().filter(r-> r.getId().equals(id)).findAny();
+            if(videoOptional.isEmpty()){
+                return new ReturnEntity(CommunicationStatus.VIDEO_NOT_FOUND.getCode(),null);
+            }
+            return new ReturnEntity(CommunicationStatus.OK.getCode(),videoOptional.get());
+        }catch (RuntimeException e){
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
+        }
+    }
+
+    public ReturnEntity getVideoByName(String videoName){
+        try{
+            List<Video> list=videoDao.getAllVideos();
+            Optional<Video> videoOptional=list.stream().filter(r-> r.getStaticVideo().getVideoName().equals(videoName)).findAny();
+            if(videoOptional.isEmpty()){
+                return new ReturnEntity(CommunicationStatus.VIDEO_NOT_FOUND.getCode(),null);
+            }
+            return new ReturnEntity(CommunicationStatus.OK.getCode(),videoOptional.get());
+        }catch (RuntimeException e){
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
+        }
+    }
+
+    public AtomicBoolean isVideoPremium(Long id){
+        List<Video> list=videoDao.getAllVideos();
+        Optional<Video> videoOptional=list.stream().filter(r-> r.getId().equals(id)).findAny();
+        if(videoOptional.isPresent())
+            return videoOptional.get().getIsPremium();
+        return new AtomicBoolean(false);
+    }
+
 
 }
