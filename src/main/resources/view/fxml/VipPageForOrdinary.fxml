@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
@@ -14,15 +15,15 @@
    <children>
       <HBox layoutX="27.0" layoutY="22.0" spacing="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0">
          <children>
-            <Circle fill="DODGERBLUE" layoutX="57.0" layoutY="52.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="userImage" fill="DODGERBLUE" layoutX="57.0" layoutY="52.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <VBox alignment="CENTER_LEFT" layoutX="107.0" layoutY="22.0">
                <children>
-                  <Label layoutX="107.0" layoutY="22.0" prefHeight="29.0" prefWidth="126.0" text="Ke ai Gou bo" textFill="#72706c">
+                  <Label fx:id="userName" layoutX="107.0" layoutY="22.0" prefHeight="29.0" prefWidth="126.0" text="Ke ai Gou bo" textFill="#72706c">
                      <font>
                         <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label text="You are not  a VIP" textFill="#d79f27" />
+                  <Label fx:id="vipInf" text="You are not  a VIP" textFill="#d79f27" />
                </children>
             </VBox>
          </children>
@@ -48,70 +49,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <HBox fx:id="choosePay" layoutX="30.0" layoutY="106.0" spacing="20.0">
-         <children>
-            <AnchorPane fx:id="annuallyPane" layoutX="30.0" layoutY="106.0" onMouseClicked="#setChoosePay" prefHeight="143.0" prefWidth="135.0" AnchorPane.leftAnchor="30.0">
-               <children>
-                  <Rectangle fx:id="annually" arcHeight="10.0" arcWidth="5.0" fill="WHITE" height="143.0" stroke="#ffb64a" strokeType="INSIDE" strokeWidth="3.0" width="135.0" />
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="25.0" text="年费会员" AnchorPane.topAnchor="25.0">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="62.0" AnchorPane.topAnchor="62.0">
-                     <children>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
-                           <padding>
-                              <Insets bottom="3.0" />
-                           </padding>
-                        </Label>
-                        <Label layoutX="55.0" layoutY="68.0" text="998" textFill="#e4a634">
-                           <font>
-                              <Font name="System Bold Italic" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="27.0" layoutY="101.0" prefHeight="20.0" prefWidth="83.0" text="送12节直播课" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </AnchorPane>
-            <AnchorPane fx:id="monthlyPane" layoutX="172.0" layoutY="106.0" onMouseClicked="#setChoosePay" prefHeight="143.0" prefWidth="135.0" AnchorPane.rightAnchor="30.0">
-               <children>
-                  <Rectangle fx:id="monthly" arcHeight="10.0" arcWidth="5.0" fill="WHITE" height="143.0" layoutX="1.0" stroke="#ffb64a" strokeType="INSIDE" strokeWidth="3.0" width="135.0" AnchorPane.rightAnchor="0.0" />
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="25.0" text="月费会员" AnchorPane.topAnchor="25.0">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="BOTTOM_LEFT" layoutX="33.0" layoutY="61.0" AnchorPane.topAnchor="61.0">
-                     <children>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
-                           <padding>
-                              <Insets bottom="3.0" />
-                           </padding>
-                        </Label>
-                        <Label layoutX="55.0" layoutY="68.0" text="99.8" textFill="#e4a634">
-                           <font>
-                              <Font name="System Bold Italic" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </AnchorPane>
-         </children>
-      </HBox>
-      <AnchorPane fx:id="getStart" layoutX="30.0" layoutY="262.0" onMouseClicked="#startPay" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: linear-gradient(to right, #ffb64a, #FFDFA9); -fx-background-radius: 10;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+      <AnchorPane fx:id="getStart" layoutX="30.0" layoutY="262.0" onMouseClicked="#showVip" prefHeight="40.0" prefWidth="276.0" style="-fx-background-color: linear-gradient(to right, #ffb64a, #FFDFA9); -fx-background-radius: 10;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
          <children>
             <Label layoutX="107.0" layoutY="8.0" text="立即充值" textFill="#d08a20">
                <font>
@@ -122,6 +60,15 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="vipCard" layoutX="31.0" layoutY="87.0" prefHeight="167.0" prefWidth="290.0" style="-fx-background-color: linear-gradient(to right, #ffd453, #FFDFA9); -fx-background-radius: 20px;">
+         <children>
+            <Label layoutX="17.0" layoutY="100.0" prefHeight="20.0" prefWidth="168.0" text="GOUBO VIP" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0">
+               <font>
+                  <Font name="Segoe Script Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
       </AnchorPane>
    </children>
 </AnchorPane>
