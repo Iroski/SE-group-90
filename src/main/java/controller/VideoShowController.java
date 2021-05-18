@@ -137,69 +137,65 @@ public class VideoShowController {
                 updateValues();
             }
         });
+
+
     }
 
     //set stop or play the video when click the MediaView
     @FXML
     private void setMediaViewOnClick(){
-        mediaView.setOnMouseClicked(event -> {
-            if(media == null)
-                return;
-            MediaPlayer.Status status = mediaPlayer.getStatus();
-            if(status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED ){
-                return;
+        if(media == null)
+            return;
+        MediaPlayer.Status status = mediaPlayer.getStatus();
+        if(status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED ){
+            return;
+        }
+        //When the videos stop
+        if(status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.READY || status == MediaPlayer.Status.STOPPED){
+            if(atEndOfMedia){
+                mediaPlayer.seek(mediaPlayer.getStartTime());
+                atEndOfMedia = false;
             }
-            //When the videos stop
-            if(status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.READY || status == MediaPlayer.Status.STOPPED){
-                if(atEndOfMedia){
-                    mediaPlayer.seek(mediaPlayer.getStartTime());
-                    atEndOfMedia = false;
-                }
-                mediaPlayer.play();
-                setIcon(playBT,pauseIcon,25);
-            }else{
-                //When the video plays
-                mediaPlayer.pause();
-                setIcon(playBT,playIcon,25);
-            }
-        });
+            mediaPlayer.play();
+            setIcon(playBT,pauseIcon,25);
+        }else{
+            //When the video plays
+            mediaPlayer.pause();
+            setIcon(playBT,playIcon,25);
+        }
     }
 
     //Set play button action
     @FXML
     private void setPlayButton(){
-        playBT.setOnAction((ActionEvent e)->{
-            if(media == null)
-                return;
-            MediaPlayer.Status status = mediaPlayer.getStatus();
-            if(status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED ){
-                return;
+        if(media == null)
+            return;
+        MediaPlayer.Status status = mediaPlayer.getStatus();
+        if(status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED ){
+            return;
+        }
+        //When the videos stop
+        if(status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.READY || status == MediaPlayer.Status.STOPPED){
+            if(atEndOfMedia){
+                mediaPlayer.seek(mediaPlayer.getStartTime());
+                atEndOfMedia = false;
             }
-            //When the videos stop
-            if(status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.READY || status == MediaPlayer.Status.STOPPED){
-                if(atEndOfMedia){
-                    mediaPlayer.seek(mediaPlayer.getStartTime());
-                    atEndOfMedia = false;
-                }
-                mediaPlayer.play();
-                setIcon(playBT,pauseIcon,25);
-            }else{
-                //When the video plays
-                mediaPlayer.pause();
-                setIcon(playBT,playIcon,25);
-            }
-        });
+            mediaPlayer.play();
+            setIcon(playBT,pauseIcon,25);
+        }else{
+            //When the video plays
+            mediaPlayer.pause();
+            setIcon(playBT,playIcon,25);
+        }
     }
 
     //Set stop button action
     @FXML
     private void setStopButton(){
-        stopBT.setOnAction((ActionEvent e )->{
-            if(media == null)
-                return;
-            mediaPlayer.stop();
-            setIcon(playBT,playIcon,25);
-        } );
+        if(media == null)
+            return;
+        mediaPlayer.stop();
+        setIcon(playBT,playIcon,25);
     }
 
     //Set processSlider action
@@ -219,20 +215,18 @@ public class VideoShowController {
     //Set volume button action
     @FXML
     private void setVolumeButton(){
-        volumeBT.setOnAction((ActionEvent e)->{
-            if(media == null)
-                return;
+        if(media == null)
+            return;
 
-            if(mediaPlayer.getVolume()>0){
-                volumeValue = mediaPlayer.getVolume();
-                volumeSD.setValue(0);
-                setIcon(volumeBT,volOffIcon,25);
-            }else{
-                mediaPlayer.setVolume(volumeValue);
-                volumeSD.setValue(volumeValue * 100);
-                setIcon(volumeBT,volOnIcon,15);
-            }
-        });
+        if(mediaPlayer.getVolume()>0){
+            volumeValue = mediaPlayer.getVolume();
+            volumeSD.setValue(0);
+            setIcon(volumeBT,volOffIcon,25);
+        }else{
+            mediaPlayer.setVolume(volumeValue);
+            volumeSD.setValue(volumeValue * 100);
+            setIcon(volumeBT,volOnIcon,15);
+        }
     }
 
     //set volumeSlide action

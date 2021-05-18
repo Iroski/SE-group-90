@@ -59,19 +59,6 @@ public class BookingPageController {
 
     @FXML
     public void initialize(){
-
-    }
-
-    public void init(){
-        this.coach = (Coach) coach_photo.getUserData();
-        String userName = LoginController.userName;
-        UserService userService = new UserService();
-        ReturnEntity returnEntity1 = userService.getUser(userName);
-        this.user = (User) returnEntity1.getObject();
-        this.userName = user.getName();
-        long coach_id = coach.getId();
-        Image image = new Image("view/images/coach.jpg");
-        coach_photo.setFill(new ImagePattern(image));
         day_list = new LinkedList<>();
         day_list.add(LocalDate.now().plusDays(1));
         day_list.add(LocalDate.now().plusDays(2));
@@ -93,6 +80,18 @@ public class BookingPageController {
         time_box_list.add(thirdLesson);
         time_box_list.add(fourthLesson);
         time_box_list.add(fifthLesson);
+    }
+
+    public void init(){
+        this.coach = (Coach) coach_photo.getUserData();
+        String userName = LoginController.userName;
+        UserService userService = new UserService();
+        ReturnEntity returnEntity1 = userService.getUser(userName);
+        this.user = (User) returnEntity1.getObject();
+        this.userName = user.getName();
+        long coach_id = coach.getId();
+        Image image = new Image(coach.getPhotoPath());
+        coach_photo.setFill(new ImagePattern(image));
 
         boolean [][] reserved = new boolean[5][5];
 

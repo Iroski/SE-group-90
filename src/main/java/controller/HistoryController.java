@@ -84,9 +84,10 @@ public class HistoryController {
                     } else
                         historys[i].setImage(new Image(historyList.get(i).getStaticVideo().getCoverPath()));
                     authors[i].setText(historyList.get(i).getStaticVideo().getAuthor());
-                    descriptions[i].setText("it's a good video!");
+                    descriptions[i].setText(historyList.get(i).getStaticVideo().getVideoName());
                     panes[i].setUserData(historyList.get(i).getStaticVideo().getFilePath());
                     panes[i].setStyle("-fx-background-color: white; -fx-border-color: black");
+                    panes[i].setOnMouseExited(this::closeHistory);
                 } else {
                     break;
                 }

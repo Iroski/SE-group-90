@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
@@ -44,7 +45,7 @@ public class LessonPageController {
 
     @FXML
     private void initialize(){
-
+        lessonName.setStyle("");
     }
 
     public void init() {
@@ -62,7 +63,7 @@ public class LessonPageController {
             lessonData = FXCollections.observableArrayList(liveLessonTable);
         }
 
-        lessonName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsername()));
+        lessonName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCoachName()+"'s live lesson for "+cellData.getValue().getUsername()));
         lessonTime.setCellValueFactory(cellData -> new SimpleStringProperty(DateUtils.timeStampToString(cellData.getValue().getLessonTime())));
         coach.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCoachName()));
         lessonTableView.setItems(lessonData);
@@ -72,6 +73,14 @@ public class LessonPageController {
                         @Override
                         protected void updateItem(String item, boolean empty) {
                             super.updateItem(item, empty);
+
+                            this.setText(null);
+                            this.setGraphic(null);
+                            TableRow<LiveLesson> currentRow = getTableRow();
+                            if (!isEmpty()) {
+                                currentRow.setStyle("-fx-background-color:#aafff5");
+                            }
+
                             Button button1 = new Button("Cancel");
                             button1.setOnMouseEntered(e->button1.setCursor(Cursor.HAND));
                             button1.setStyle("-fx-background-color: #00bcff;-fx-text-fill: #ffffff;");
@@ -94,7 +103,7 @@ public class LessonPageController {
                                     if(code != 200){
                                         System.out.println("lesson cancel error");
                                     }
-                                    initialize();
+                                    init();
                                 }
                             });
 
@@ -130,10 +139,21 @@ public class LessonPageController {
                                 AccountService accountService = new AccountService();
                                 if (result.get() == ButtonType.OK){
                                     int code = orderService.payLiveLessonOrder(userName, l, new AtomicBoolean((int)accountService.getFreeLessonNumByUsername(userName).getObject() > 0));
-                                    if(code != 200){
+                                    if(code == 5001){
+                                        alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.titleProperty().set("Fail");
+                                        alert.headerTextProperty().set("You don not have enough money, top up please!");
+                                        alert.show();
+                                        try {
+                                            goToAccount();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    else if(code != 200){
                                         System.out.println("pay error");
                                     }
-                                    initialize();
+                                    init();
                                 }
                             });
 
@@ -141,13 +161,14 @@ public class LessonPageController {
                             if(notPay.get()){
                                 buttons.getChildren().add(button3);
                             }
-                            buttons.setAlignment(Pos.CENTER_LEFT);
                             buttons.setSpacing(15);
 
                             if (empty) {
                                 setText(null);
                                 setGraphic(null);
                             } else {
+                                //this.setPadding(new Insets(5, 10, 5, 10));
+                                this.setAlignment(Pos.CENTER);
                                 this.setGraphic(buttons);
                             }
                         }
@@ -164,11 +185,10 @@ public class LessonPageController {
                             Button button = new Button("Show exercise");
                             button.setOnMouseEntered(e->button.setCursor(Cursor.HAND));
                             button.setStyle("-fx-background-color: #00bcff;-fx-text-fill: #ffffff;");
-
                             try{
                                 LiveLesson l = lessonData.get(getIndex());
                                 String exercise = l.getSpecificExercise();
-                                if(exercise == ""){
+                                if(exercise.equals("")){
                                     return;
                                 }
                                 button.setOnMouseClicked((col) -> {
@@ -180,12 +200,11 @@ public class LessonPageController {
                                 });
                             }catch (Exception e){}
 
-                            button.setAlignment(Pos.CENTER);
-
                             if (empty) {
                                 setText(null);
                                 setGraphic(null);
                             } else {
+                                this.setAlignment(Pos.CENTER);
                                 this.setGraphic(button);
                             }
                         }
@@ -232,6 +251,20 @@ public class LessonPageController {
         });
 
         return list;
+    }
+
+    public void goToAccount() throws IOException {
+        Stage stage = (Stage) lessonsPane.getScene().getWindow();
+        stage.setTitle("Profile");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/" + "Account.fxml"));
+        AnchorPane account = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, account);
+        account.setLayoutX(200);
+        account.setLayoutY(75);
     }
 
 }
