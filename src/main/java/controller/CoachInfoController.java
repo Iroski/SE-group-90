@@ -79,7 +79,7 @@ public class CoachInfoController {
     }
     public void init() {
         choosedCoach=(Coach)photo.getUserData();
-        System.out.println(choosedCoach);
+        //System.out.println(choosedCoach);
         age.setText(String.valueOf(choosedCoach.getAge()));
         name.setText(choosedCoach.getName());
         height.setText(String.valueOf(choosedCoach.getHeight()));

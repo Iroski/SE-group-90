@@ -191,8 +191,8 @@ public class VipPageController {
             AccountService accountService=new AccountService();
             accountService.updateBalance(userName, BigDecimal.valueOf(pay));
             OrderService orderService=new OrderService();
-            Order order=new Order(userName,0,(long)0,type,1,
-                    BigDecimal.valueOf(pay),0, DateUtils.dateToTimeStamp(new Date()));
+
+            Order order=new Order(userName,0,(long)0,type,1,BigDecimal.valueOf(pay),0, DateUtils.dateToTimeStamp(new Date()));
             orderService.createPremiumOrder(userName,order);
             orderService.payPremiumOrder(userName,order);
             showSuccess();
