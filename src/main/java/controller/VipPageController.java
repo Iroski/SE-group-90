@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -25,8 +24,6 @@ import model.utils.DateUtils;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 
@@ -168,8 +165,11 @@ public class VipPageController {
 
     public void showConfirmationPage (Double pay) throws IOException {
         String text="";
-        if (pay.equals(30.0)) {
+        if (pay.equals(monthlyPay)) {
             text = new String("Are you sure to buy the monthly vip?");
+        }
+        else if (pay.equals(quarterlyPay)){
+            text = new String("Are you sure to buy the quarterly vip?");
         }
         else {
             text = new String("Are you sure to buy the yearly vip?");
@@ -181,38 +181,22 @@ public class VipPageController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             int type=1;
-            int plusDay=30;
-            int premiumNum=1;
             if (pay.equals(quarterlyPay)) {
                 type=2;
-                plusDay=90;
-                premiumNum=3;
             }
             else if (pay.equals(annuallyPay)) {
                 type=3;
-                plusDay=365;
-                premiumNum=12;
-            }
-            else if (pay.equals(quarterlyPay)) {
-                type=2;
-                plusDay=90;
-                premiumNum=3;
             }
             String userName=LoginController.userName;
             AccountService accountService=new AccountService();
             accountService.updateBalance(userName, BigDecimal.valueOf(pay));
-            LocalDate finishDate=LocalDate.now().plusDays(plusDay);
-            Date date = Date.from(finishDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            accountService.setPremium(userName,type,premiumNum);
-
             OrderService orderService=new OrderService();
-            Order order=new Order(userName,0,0L,type,premiumNum,
-                    BigDecimal.valueOf(pay),0, DateUtils.dateToTimeStamp(new Date()));
+
+            Order order=new Order(userName,0,(long)0,type,1,BigDecimal.valueOf(pay),0, DateUtils.dateToTimeStamp(new Date()));
             orderService.createPremiumOrder(userName,order);
             orderService.payPremiumOrder(userName,order);
-
             showSuccess();
-            goToAccount();
+            showVip();
         }
     }
     public void showSuccess() {
@@ -221,5 +205,20 @@ public class VipPageController {
         alert.setContentText("");
         alert.setHeaderText("Successful!");
         alert.showAndWait();
+    }
+
+    public void showVip() throws IOException {
+        Stage stage = (Stage) vipInf.getScene().getWindow();
+        stage.setTitle("VIP");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/VipPage.fxml"));
+        AnchorPane account = loader.load();
+        VipPageController controller=loader.getController();
+        controller.init();
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, account);
+        account.setLayoutX(200);
+        account.setLayoutY(75);
     }
 }
