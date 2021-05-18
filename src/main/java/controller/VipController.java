@@ -40,6 +40,9 @@ public class VipController {
         if (returnEntity.getCode()==200) {
             account= (Account) returnEntity.getObject();
         }
+        else {
+            System.out.println("ERROR!");
+        }
         Date date=DateUtils.timeStampToDate(account.getPremiumEndTime()*1000);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         String transformDate=simpleDateFormat.format(date);
