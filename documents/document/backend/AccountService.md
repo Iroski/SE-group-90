@@ -65,9 +65,18 @@ return: int
 |4042 | account not exist|
 | 5000 | database error |
 
-### 7. check account by premium
+### 7. check bargain by name
 method: getBargainByUsername(String username)
 return: ReturnEntity(code, BigDecimal)
+| return type | meaning |
+|:--:|:--:|
+| 200| successful|
+| 4042 | account not exist|
+| 5000 | database error |
+
+### 8. get free lesson number by name
+method: getFreeLessonNumByUsername(String username)
+return: ReturnEntity(code, Integer)
 | return type | meaning |
 |:--:|:--:|
 | 200| successful|
