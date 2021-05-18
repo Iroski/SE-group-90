@@ -91,7 +91,7 @@ public class BasePageController {
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
             anchorPane.getChildren().add(vip);
             VipController vipController = loader.getController();
-            vipController.initialize();
+            vipController.init();
             vip.setLayoutY(75);
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
             vip.setVisible(true);
@@ -104,7 +104,7 @@ public class BasePageController {
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
             anchorPane.getChildren().add(vip);
             VipPageForOrdinaryController vipPageForOrdinaryController = loader.getController();
-            vipPageForOrdinaryController.initialize();
+            vipPageForOrdinaryController.init();
             vip.setLayoutY(75);
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
             vip.setVisible(true);

@@ -26,23 +26,31 @@ public class VipPageForOrdinaryController {
     private UserService userService = new UserService();
     private AccountService accountService = new AccountService();
 
-    @FXML
     public void init(){
-
-    }
-
-    public void initialize(){
         this.name = LoginController.userName;
         userName.setText(name);
         User user = (User) userService.getUser(name).getObject();
         //Image image = new Image( );
     }
 
+    @FXML
+    public void initialize(){
+
+    }
 
     public void closeVip(MouseEvent mouseEvent) {
         Stage stage = (Stage) vipPane.getScene().getWindow();
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().remove(this.vipPane);
+    }
+    public void closeTheVip() {
+        try {
+            Stage stage = (Stage) vipPane.getScene().getWindow();
+            AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+            anchorPane.getChildren().remove(this.vipPane);
+        } catch (Exception ignore) {
+
+        }
     }
 
     public void showVip(MouseEvent mouseEvent) throws IOException {
@@ -56,5 +64,6 @@ public class VipPageForOrdinaryController {
         anchorPane.getChildren().add(2, account);
         account.setLayoutX(200);
         account.setLayoutY(75);
+        closeTheVip();
     }
 }

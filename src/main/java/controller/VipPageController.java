@@ -4,18 +4,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.entity.Account;
 import model.entity.Order;
 import model.entity.ReturnEntity;
+import model.entity.User;
 import model.service.AccountService;
 import model.service.OrderService;
+import model.service.UserService;
 import model.utils.DateUtils;
 
 import java.io.IOException;
@@ -39,19 +44,42 @@ public class VipPageController {
     public Label userName;
     public Label vipInf;
     public Circle userImage;
-
+    UserService userService;
     private AnchorPane chosenPane;
     private double monthlyPay = 30;
     private double quarterlyPay = 75;
     private double annuallyPay = 250;
 
     @FXML
-    public void init(){}
-
     public void initialize(){
+
+    }
+
+    public void init(){
         String name = LoginController.userName;
         userName.setText(name);
+        this.userService=new UserService();
+        User user = (User) userService.getUser(name).getObject();
+        userImage.setFill(new ImagePattern(new Image("/view/images/coach.jpg")));
 
+        AccountService accountService=new AccountService();
+        ReturnEntity returnEntity=accountService.getAccount(name);
+        Account account=null;
+        if (returnEntity.getCode()==200) {
+            account= (Account) returnEntity.getObject();
+        }
+        if (account.getPremiumLevel()==0) {
+            vipInf.setText("You are not VIP");
+        }
+        else if (account.getPremiumLevel()==1) {
+            vipInf.setText("You are monthly VIP");
+        }
+        else if (account.getPremiumLevel()==2) {
+            vipInf.setText("You are quarterly VIP");
+        }
+        else if (account.getPremiumLevel()==3) {
+            vipInf.setText("You are annually VIP");
+        }
     }
 
     public void setChoosePay(MouseEvent mouseEvent){
@@ -155,8 +183,13 @@ public class VipPageController {
             int type=1;
             int plusDay=30;
             int premiumNum=1;
-            if (pay.equals(annuallyPay)) {
+            if (pay.equals(quarterlyPay)) {
                 type=2;
+                plusDay=90;
+                premiumNum=3;
+            }
+            else if (pay.equals(annuallyPay)) {
+                type=3;
                 plusDay=365;
                 premiumNum=12;
             }
@@ -177,6 +210,16 @@ public class VipPageController {
                     BigDecimal.valueOf(pay),0, DateUtils.dateToTimeStamp(new Date()));
             orderService.createPremiumOrder(userName,order);
             orderService.payPremiumOrder(userName,order);
+
+            showSuccess();
+            goToAccount();
         }
+    }
+    public void showSuccess() {
+        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setContentText("");
+        alert.setHeaderText("Successful!");
+        alert.showAndWait();
     }
 }

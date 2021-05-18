@@ -21,7 +21,8 @@ public class MonthPremium extends BasePremium {
 
     public MonthPremium() {
         super.type=1;
-        super.duration=2505600;
+        //super.duration=2505600;
+        super.duration=2592000;
         super.freeLesson=0;
         super.bargain=new BigDecimal("1.0");
     }
