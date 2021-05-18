@@ -16,12 +16,12 @@
             <Circle fill="DODGERBLUE" layoutX="57.0" layoutY="52.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <VBox alignment="CENTER_LEFT" layoutX="107.0" layoutY="22.0">
                <children>
-                  <Label layoutX="107.0" layoutY="22.0" prefHeight="29.0" prefWidth="126.0" text="Ke ai Gou bo" textFill="#ffb200">
+                  <Label fx:id="userName" layoutX="107.0" layoutY="22.0" prefHeight="29.0" prefWidth="126.0" text="Ke ai Gou bo" textFill="#ffb200">
                      <font>
                         <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="107.0" layoutY="52.0" text="VIP time: 2021.05.02 " textFill="#fffafa">
+                  <Label fx:id="vipTime" layoutX="107.0" layoutY="52.0" text="VIP time: 2021.05.02 " textFill="#fffafa">
                      <font>
                         <Font name="System Bold Italic" size="15.0" />
                      </font></Label>
@@ -46,7 +46,7 @@
             </Label>
             <AnchorPane layoutX="20.0" layoutY="159.0" prefHeight="29.0" prefWidth="91.0" style="-fx-border-radius: 15; -fx-background-radius: 15;" AnchorPane.bottomAnchor="10.0">
                <children>
-                  <Button layoutX="-23.0" layoutY="-14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: #131313; -fx-border-color: grey; -fx-border-radius: 15; -fx-background-radius: 15;" text="Button" textFill="#fcfcfc" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Button layoutX="-23.0" layoutY="-14.0" mnemonicParsing="false" onMouseClicked="#showVip" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: #131313; -fx-border-color: grey; -fx-border-radius: 15; -fx-background-radius: 15;" text="Button" textFill="#fcfcfc" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
