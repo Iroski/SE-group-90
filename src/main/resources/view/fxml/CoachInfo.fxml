@@ -32,32 +32,32 @@
                            <children>
                               <Label fx:id="nameLabel" layoutX="129.0" layoutY="92.0" text="name:">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="sexLabel" layoutX="129.0" layoutY="147.0" text="sex:">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="heightLabel" layoutX="129.0" layoutY="214.0" text="height:">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="weightLabel" layoutX="129.0" layoutY="291.0" text="weight:">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="ageLabel" layoutX="129.0" layoutY="384.0" text="age:">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="courseLabel" layoutX="129.0" layoutY="454.0" text="course:">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Label>
                            </children>
@@ -66,32 +66,32 @@
                            <children>
                               <Text fx:id="name" layoutX="215.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Text>
                               <Text fx:id="sex" layoutX="215.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Text>
                               <Text fx:id="height" layoutX="215.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Text>
                               <Text fx:id="weight" layoutX="215.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Text>
                               <Text fx:id="age" layoutX="215.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Text>
                               <Text fx:id="course" layoutX="215.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font size="26.0" />
                                  </font>
                               </Text>
                            </children>
