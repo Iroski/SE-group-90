@@ -20,7 +20,7 @@ public class YearPremium extends BasePremium {
 
     public YearPremium() {
         super.type=3;
-        super.duration=300672000;
+        super.duration=31104000;
         super.freeLesson=12;
         super.bargain=new BigDecimal("0.7");
     }
