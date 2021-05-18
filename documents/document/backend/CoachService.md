@@ -51,7 +51,7 @@ return: ReturnEntity(code, List<long> )
 |4044 | null |coach not found|
 | 5000 | null |database error |
 
-### 5. set a specific coach's booked list
+### 5. set a specific coach's booked list(__Not Recommend__)
 method: setReservedTimeById(long id, List<Long> timetable)
 return: int
 | return code| meaning |
