@@ -200,6 +200,7 @@ public class OrderService {
     }
 
     protected Optional<Order> getOrderByLiveLessonCreateTime(Long createTime) {
-        return orderDao.getAllOrder().stream().filter(order -> order.getLiveLessonCreateTime().equals(createTime)).findAny();
+        List<Order> sOrder=orderDao.getAllOrder();
+        return sOrder.stream().filter(order -> order.getLiveLessonCreateTime().equals(createTime)).findAny();
     }
 }

@@ -206,7 +206,7 @@ public class VipPageController {
             accountService.setPremium(userName,type,premiumNum);
 
             OrderService orderService=new OrderService();
-            Order order=new Order(userName,0,null,type,premiumNum,
+            Order order=new Order(userName,0,0L,type,premiumNum,
                     BigDecimal.valueOf(pay),0, DateUtils.dateToTimeStamp(new Date()));
             orderService.createPremiumOrder(userName,order);
             orderService.payPremiumOrder(userName,order);
