@@ -4,6 +4,5 @@
 **/src/test/resources/**
 lib
 test
-*.txt
 *.rar
 out
