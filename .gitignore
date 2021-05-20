@@ -2,3 +2,8 @@
 **/*.iml
 **/target
 **/src/test/resources/**
+lib
+test
+*.txt
+*.rar
+out

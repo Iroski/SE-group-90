@@ -8,6 +8,7 @@ import java.util.List;
 @Data()
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class Coach extends DataItem {
     String name;
     String gender;

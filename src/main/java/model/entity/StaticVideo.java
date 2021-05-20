@@ -2,6 +2,7 @@ package model.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import model.dao.base.StaticResources;
 
@@ -19,6 +20,7 @@ import java.nio.file.Paths;
 @Data()
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class StaticVideo extends StaticResources {
 
     private String videoName;

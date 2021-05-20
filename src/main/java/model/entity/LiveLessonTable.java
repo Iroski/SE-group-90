@@ -2,6 +2,7 @@ package model.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import model.dao.base.DataItem;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Data()
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class LiveLessonTable extends DataItem {
     private String username;
     private List<LiveLesson> lessonList;

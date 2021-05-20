@@ -11,6 +11,7 @@ import java.util.List;
 @Data()
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class User extends DataItem {
     private String email;
     private String name;
