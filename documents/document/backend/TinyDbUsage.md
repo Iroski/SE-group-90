@@ -24,6 +24,11 @@ db.init("src/test/resources/database");
 - 返回值``ArrayList<DataItem>``
 - 如果根据id(primary key)查询，速度为O(1), 否则为O(N)。
 - 目前只支持相等查询，使用hashmap传参。
+
+#### 模糊查询
+
+- tba
+
 #### 增加
 - ``add(String, customize class's object)``
 #### 删除

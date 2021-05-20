@@ -17,7 +17,8 @@ class Coach{
 ## Interface
 ### 1. get all coaches
 method: getAllCoaches()
-return: ReturnEntity(code,List<Coach>)
+return: ReturnEntity(code,List\<Coach>)
+
 | return code|return object | meaning |
 |:--:|:--:|:--:|
 | 200 |List that contains entity| run successful |
@@ -61,10 +62,23 @@ return: int
 | 5000 |database error |
 
 ### 6. save new coach
-meghod: saveCoach(Coach coach)
+method: saveCoach(Coach coach)
 return: int
+
 | return type | meaning |
 |:--:|:--:|
 | 200 | insert successful |
 |4003|coach already exist|
 | 5000 | database error |
+
+### 7. blur search by coach name
+
+method: blurSearchByName(String blurName)
+
+return: ReturnEntity(code,List\<Coach>)
+
+| return code |       return object       |                        meaning                        |
+| :---------: | :-----------------------: | :---------------------------------------------------: |
+|     200     | List that contains entity |                    run successful                     |
+|     200     |    List that is empty     | run successful but no lesson is satisfy the condition |
+|    5000     |           null            |                    database error                     |
