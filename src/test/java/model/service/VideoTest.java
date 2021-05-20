@@ -12,13 +12,13 @@ import org.junit.Test;
  * @version :
  */
 public class VideoTest {
-//    static DataHouse db;
-//    static String tableName;
-//    @BeforeClass
-//    public static void datatableInit() {
-//        db = DataHouse.getInstance();
-//        db.init("src/test/resources/database");
-//    }
+    static DataHouse db;
+    static String tableName;
+    @BeforeClass
+    public static void datatableInit() {
+        db = DataHouse.getInstance();
+        db.init("src/test/resources/database");
+    }
 //    @Test
 //    public void test01getAllVideos(){
 //        System.out.println("------------1");
@@ -33,5 +33,10 @@ public class VideoTest {
 //        System.out.println(new VideoService().getRandomVideosWithNum(2));
 //        System.out.println(new VideoService().getRandomVideosWithNum(3));
 //    }
-
+    @Test
+    public void test03BlurSearch() {
+        System.out.println("-----------3");
+        System.out.println(new VideoService().blurSearchByName("qaq"));
+        System.out.println(new VideoService().blurSearchByName("cam"));
+    }
 }

@@ -117,6 +117,18 @@ public class VideoService {
         }
     }
 
+    public ReturnEntity blurSearchByName(String blurName) {
+        try{
+            List<Video> list=videoDao.blurSearch("videoName", blurName);
+            if(list.isEmpty()){
+                return new ReturnEntity(CommunicationStatus.VIDEO_NOT_FOUND.getCode(),null);
+            }
+            return new ReturnEntity(CommunicationStatus.OK.getCode(), list);
+        }catch (RuntimeException e){
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
+        }
+    }
+
     public AtomicBoolean isVideoPremium(Long id){
         List<Video> list=videoDao.getAllVideos();
         Optional<Video> videoOptional=list.stream().filter(r-> r.getId().equals(id)).findAny();

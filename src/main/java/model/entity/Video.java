@@ -21,12 +21,14 @@ public class Video extends DataItem {
     private Long views;
     private List<String> tagsName;
     private AtomicBoolean isPremium;
+    private String videoName;
 
     public Video(StaticVideo staticVideo, Long views, List<String> tagsName, AtomicBoolean isPremium) {
         this.staticVideo = staticVideo;
         this.views = views;
         this.tagsName = tagsName;
         this.isPremium = isPremium;
+        this.videoName = staticVideo.getVideoName();
     }
 
     public Video(Long id, StaticVideo staticVideo, Long views, List<String> tagsName, AtomicBoolean isPremium) {
@@ -35,5 +37,6 @@ public class Video extends DataItem {
         this.views = views;
         this.tagsName = tagsName;
         this.isPremium = isPremium;
+        this.videoName = staticVideo.getVideoName();
     }
 }

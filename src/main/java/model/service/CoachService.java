@@ -5,6 +5,7 @@ import model.dao.CoachDao;
 import model.dao.base.DataItem;
 import model.entity.Coach;
 import model.entity.ReturnEntity;
+import model.entity.Video;
 import model.exception.database.DataItemNotExists;
 
 import java.util.ArrayList;
@@ -74,6 +75,18 @@ public class CoachService {
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
         }
         return new ReturnEntity(CommunicationStatus.OK.getCode(),result.get().getBookedTime());
+    }
+
+    public ReturnEntity blurSearchByName(String blurName) {
+        try{
+            List<Coach> list = coachDao.blurSearch("name", blurName);
+            if(list.isEmpty()){
+                return new ReturnEntity(CommunicationStatus.VIDEO_NOT_FOUND.getCode(),null);
+            }
+            return new ReturnEntity(CommunicationStatus.OK.getCode(), list);
+        }catch (RuntimeException e){
+            return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(),null);
+        }
     }
 
     public int setReservedTimeById(long id,List<Long> timetable){

@@ -27,6 +27,12 @@ public class CoachDao {
         return (List<Coach>)db.query(tableName,new HashMap<>());
     }
 
+    public List<Coach> blurSearch(String attName, String value) {
+        String queryArg = attName + "`" + value;
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("HAS", queryArg);
+        return (List<Coach>) db.query(tableName, arguments);
+    }
     public void updateCoach(Coach coach){
         db.update(tableName,coach);
     }
