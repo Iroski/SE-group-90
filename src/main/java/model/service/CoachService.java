@@ -81,7 +81,7 @@ public class CoachService {
         try{
             List<Coach> list = coachDao.blurSearch("name", blurName);
             if(list.isEmpty()){
-                return new ReturnEntity(CommunicationStatus.VIDEO_NOT_FOUND.getCode(),null);
+                return new ReturnEntity(CommunicationStatus.COACH_NOT_FOUND.getCode(),null);
             }
             return new ReturnEntity(CommunicationStatus.OK.getCode(), list);
         }catch (RuntimeException e){
