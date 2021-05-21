@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Data()
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class Video extends DataItem {
     private StaticVideo staticVideo;
     private Long views;
