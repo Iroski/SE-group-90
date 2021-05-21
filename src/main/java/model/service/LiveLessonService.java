@@ -137,7 +137,7 @@ public class LiveLessonService {
                 return CommunicationStatus.BAD_REQUEST.getCode();
 
             if(liveLesson.getIsCustomized()){
-                String plan=TargetType.getBasePlanGeneratorByDesc(liveLesson.getTarget()).generatePlan(user.getHeight(),user.getWeight());
+                String plan=TargetType.getBasePlanGeneratorByDesc(liveLesson.getTarget()).generatePlan(user.getHeight(),user.getWeight(),liveLesson.getTarget());
                 liveLesson.setSpecificExercise(plan);
             }
 
