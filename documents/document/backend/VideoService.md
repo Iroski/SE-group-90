@@ -77,3 +77,15 @@ return: ReturnEntity(code,Video)
 ### 7. check if the video is premium only
 method: isVideoPremium(Long id)
 return: AtomicBoolean
+
+### 8. blur search by coach name
+
+method: blurSearchByName(String blurName)
+
+return: ReturnEntity(code,List\<Video>)
+
+| return code |       return object       |                        meaning                        |
+| :---------: | :-----------------------: | :---------------------------------------------------: |
+|     200     | List that contains entity |                    run successful                     |
+|     200     |    List that is empty     | run successful but no lesson is satisfy the condition |
+|    5000     |           null            |                    database error                     |
