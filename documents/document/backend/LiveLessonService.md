@@ -21,7 +21,7 @@ class LiveLessonTable{
 ### 1. save new LiveLessonTable
 (__not an interface__) it will automatically generated when user sign up
 
-### 2. update live lesson table 
+### 2. update live lesson table(__Not Recommend__)
 method: updateLiveLessonTable(LiveLessonTable liveLessonTable)
 return: int
 | return type | meaning |

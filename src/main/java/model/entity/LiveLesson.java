@@ -2,6 +2,7 @@ package model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author :YanBo Zhang
@@ -13,6 +14,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class LiveLesson {
     private String username;
     private String coachName;

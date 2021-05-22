@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
@@ -74,12 +73,12 @@ public class LessonPageController {
                         protected void updateItem(String item, boolean empty) {
                             super.updateItem(item, empty);
 
-                            this.setText(null);
+                            /*this.setText(null);
                             this.setGraphic(null);
                             TableRow<LiveLesson> currentRow = getTableRow();
                             if (!isEmpty()) {
                                 currentRow.setStyle("-fx-background-color:#aafff5");
-                            }
+                            }*/
 
                             Button button1 = new Button("Cancel");
                             button1.setOnMouseEntered(e->button1.setCursor(Cursor.HAND));
@@ -167,8 +166,6 @@ public class LessonPageController {
                                 setText(null);
                                 setGraphic(null);
                             } else {
-                                //this.setPadding(new Insets(5, 10, 5, 10));
-                                this.setAlignment(Pos.CENTER);
                                 this.setGraphic(buttons);
                             }
                         }

@@ -17,8 +17,7 @@ class Account{
 ### 1. create account
 It will automatically generated account when using signup method in userService
 
-### 2. update account
-__not recommend__
+### 2. update account(__Not Recommend__)
 method: updateAccount(Account account)
 return: int
 | return type | meaning |
@@ -56,7 +55,8 @@ return: ReturnEntity(code, AtomicBoolean)
 |4042 | account not exist|
 | 5000 | database error |
 
-### 6. set account  premium
+### 6. set account premium(__Not Recommend__)
+__NOTICE:__the payPremiumOrder method in orderService will automatically set premium if payment is successfully
 method: setPremium(String username, Integer type, Integer premiumNum)
 return: int
 | return type | meaning |

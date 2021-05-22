@@ -1,6 +1,7 @@
 package model.dao;
 
 import model.dao.base.DataHouse;
+import model.entity.Coach;
 import model.entity.Video;
 
 import java.util.HashMap;
@@ -25,6 +26,13 @@ public class VideoDao {
 
     public List<Video> getAllVideos(){
         return (List<Video>)db.query(tableName,new HashMap<>());
+    }
+
+    public List<Video> blurSearch(String attName, String value) {
+        String queryArg = attName + "`" + value;
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("HAS", queryArg);
+        return (List<Video>) db.query(tableName, arguments);
     }
 
     public void updateVideo(Video video){

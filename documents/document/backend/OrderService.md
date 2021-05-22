@@ -2,7 +2,7 @@
 ## Order entity structure
 ```java
 class Order{
-    private Long id
+    private Long id;
     private String username;
     private Integer type;
     //type==1 : livelesson order
@@ -38,6 +38,7 @@ __the return order contains id, you need to use this to do the following procedu
 | 5000 | database error |
 
 ### 3. pay premium order
+__NOTICE:__ this will set premium level automatically
 method: payPremiumOrder(String username, Order order)
 return: int
 | return type | meaning |
@@ -59,6 +60,7 @@ return: int
 | 5000 | database error |
 
 ### 5. create livelesson order
+__NOTICE:__ this will book time for user and coach
 method: createLiveLessonOrder(String username, Order order, LiveLesson liveLesson)
 return: ReturnEntity(code, Order)
 __the return order contains id, you need to use this to do the following procedure(pay, cancel)__
@@ -72,8 +74,8 @@ __the return order contains id, you need to use this to do the following procedu
 | 5000 | database error |
 
 ### 6. pay live lesson order
+__NOTICE:__ this will change livelesson state
 method: payLiveLessonOrder(String username, Order order, LiveLesson liveLesson, AtomicBoolean isFreeByPremium)
-__year-premium can enjoy free live lesson 12 times a year. if the user use the right, the money in order should be 0 and isFreeByPremium is true__
 | return type | meaning |
 |:--:|:--:|
 | 200| successful|
@@ -107,7 +109,7 @@ return: int
 | 5001 | not enough balance |
 | 5000 | database error |
 
-### 8. update a order
+### 8. update a order(__Not Recommend__)
 method: updateOrder(Order order)
 return: int
 | return type | meaning |
@@ -116,7 +118,7 @@ return: int
 |4047 | order not found|
 | 5000 | database error |
 
-### 9. save a order
+### 9. save a order(__Not Recommend__)
 method: saveOrder(Order order)
 return: int
 | return type | meaning |

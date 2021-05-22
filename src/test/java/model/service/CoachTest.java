@@ -1,24 +1,27 @@
 package model.service;
 
+import model.dao.base.DataHouse;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 /**
  * @author :YanBo Zhang
  * @date :Created in 2021 2021/4/6 23:57
  * @description:
- * @modifiedBy By:
+ * @modifiedBy By:Yubo Wang
  * @version :
  */
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
 public class CoachTest {
-//    static DataHouse db;
-//    static String tableName;
-//    @BeforeClass
-//    public static void datatableInit() {
-//        db = DataHouse.getInstance();
-//        db.init("src/test/resources/database");
-//    }
+    static DataHouse db;
+    static String tableName;
+    @BeforeClass
+    public static void datatableInit() {
+        db = DataHouse.getInstance();
+        db.init("src/test/resources/database");
+    }
 //    @Test
 //    public void test01GetEmptyTable(){
 //        System.out.println("------------1");
@@ -76,4 +79,12 @@ public class CoachTest {
 //        System.out.println(new CoachService().getReservedTimeById(2));
 //        System.out.println(new CoachService().getReservedTimeById(20));
 //    }
+    @Test
+    public void test07BlurSearch() {
+        System.out.println("-----------7");
+        System.out.println(new CoachService().blurSearchByName("hl"));
+        System.out.println(new CoachService().blurSearchByName("ly"));
+        System.out.println(new CoachService().blurSearchByName("hly"));
+        System.out.println(new CoachService().blurSearchByName("zyb"));
+    }
 }

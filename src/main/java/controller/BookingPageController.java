@@ -256,7 +256,7 @@ public class BookingPageController {
         BigDecimal money = BigDecimal.valueOf(lessonPrice);  // 暂时定价为30一节课
         Order order = new Order(user.getName(), 1, createTime, premiumType, null, money, 0, createTime);
         ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);
-        System.out.println("create order code " + returnEntity.getCode());
+
         switch (returnEntity.getCode()){
             case 200: // successful
                 order = (Order) returnEntity.getObject();
@@ -269,16 +269,16 @@ public class BookingPageController {
                 alert.show();
                 break;
             case 4043: // live lesson table not found
-
+                System.out.println("order error 4043");
                 break;
             case 4044: // coach not found
-
+                System.out.println("order error 4044");
                 break;
             case 4042: // account not exist
-
+                System.out.println("order error 4042");
                 break;
             case 5000: // database error
-
+                System.out.println("order error 5000");
                 break;
         }
     }
@@ -323,10 +323,10 @@ public class BookingPageController {
                     alert.show();
                     break;
                 case 4042: // account not exist
-
+                    System.out.println("pay error 4042");
                     break;
                 case 4047: // order not found
-
+                    System.out.println("pay error 4047");
                     break;
                 case 5001: // not enough balance
                     alert = new Alert(Alert.AlertType.INFORMATION);
@@ -336,10 +336,10 @@ public class BookingPageController {
                     goToAccount();
                     break;
                 case 5002: // no enough free lesson
-
+                    System.out.println("pay error 5002");
                     break;
                 case 5000: // database error
-
+                    System.out.println("pay error 5000");
                     break;
             }
         }

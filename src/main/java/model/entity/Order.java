@@ -1,9 +1,6 @@
 package model.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import lombok.ToString;
+import lombok.*;
 import model.dao.base.DataItem;
 
 import java.math.BigDecimal;
@@ -18,6 +15,7 @@ import java.math.BigDecimal;
 @Data()
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class Order extends DataItem {
     private String username;
     private Integer type;

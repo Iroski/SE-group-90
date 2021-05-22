@@ -15,6 +15,7 @@ import java.util.List;
 @Data()
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class Tag extends DataItem {
     private String tagName;
     private List<Video> videoList;

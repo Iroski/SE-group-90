@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 public class SeasonPremium  extends BasePremium {
     public SeasonPremium() {
         super.type=2;
-        super.duration=75168000;
+        super.duration=7776000;
         super.freeLesson=1;
         super.bargain=new BigDecimal("0.8");
     }

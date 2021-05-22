@@ -2,6 +2,7 @@ package model.dao.base;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import lombok.Data;
 import lombok.Setter;
 import model.exception.database.DataItemNotExists;
 import model.exception.database.InvalidArgument;
@@ -29,6 +30,8 @@ class DataTable {
 
     private void queryArgsCheck(HashMap<String, String> arguments) throws InvalidArgument {
         for (Map.Entry<String, String> argument: arguments.entrySet()) {
+            if (argument.getKey() == "HAS")
+                continue;
             if (itemClassFieldMap.containsKey(argument.getKey()))
                 continue;
             throw new InvalidArgument(String.format("DataItem do not have %s field.", argument.getKey()));
@@ -91,6 +94,11 @@ class DataTable {
         for (Map.Entry<Long, DataItem> entry: items.entrySet()) {
             results.add(entry.getValue());
         }
+
+        if (arguments.containsKey("HAS")) {
+            results = blurSearch(arguments.get("HAS"), results);
+            arguments.remove("HAS");
+        }
         String get = "get";
         for (Map.Entry<String, String> argument : arguments.entrySet()) {
             ArrayList<DataItem> tmpResults = new ArrayList<>();
@@ -110,6 +118,32 @@ class DataTable {
         }
         return results;
     }
+
+    private ArrayList<DataItem> blurSearch(String args, ArrayList<DataItem> results) throws InvalidArgument{
+        try {
+            String []arg = args.split("`");
+            String argName = arg[0];
+            String value = arg[1];
+
+            String getMethodName = "get" + argName.substring(0,1).toUpperCase() + argName.substring(1);
+            Method getArgMethod = itemClassMethodMap.get(getMethodName);
+            ArrayList<DataItem> tmpResults = new ArrayList<>();
+            for (DataItem result : results) {
+                String argValue = String.valueOf(getArgMethod.invoke(result));
+                if (argValue.contains(value))
+                    tmpResults.add(result);
+            }
+            results = tmpResults;
+            return results;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            throw new InvalidArgument("Wrong \"HAS\" order's value:" + args);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     protected void update(DataItem item) throws DataItemNotExists, InvalidDataItem {
         if (item.getClass() != this.itemClass)
@@ -167,7 +201,6 @@ class DataTable {
             curPK = Long.valueOf(curPk);
             // Read file contents
             items.clear();
-            System.out.println(itemClass);
             while ((line = br.readLine()) != null) {
                 List<?> results = JSONObject.parseArray(line, itemClass);
                 for (Object result : results) {
