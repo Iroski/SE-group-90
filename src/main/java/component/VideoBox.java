@@ -18,14 +18,12 @@ import model.entity.Video;
  * @date 4/25/2021 20:41
  */
 public class VideoBox extends VBox {
-//    private String imagePath;
-//    private String videoPath;
-//    private String videoName;
+    ImageView imageView;
     public VideoBox(String imagePath, String videoName){
         Image image = new Image(imagePath);
         Label label = new Label(videoName);
         label.setStyle("-fx-font-size: 22 ; -fx-text-fill: white");
-        ImageView imageView = new ImageView(image);
+        imageView = new ImageView(image);
         imageView.setFitWidth(198);
         imageView.setPreserveRatio(true);
         this.getChildren().add(imageView);
@@ -33,5 +31,12 @@ public class VideoBox extends VBox {
         this.setStyle("-fx-border-color: #04b9f9 ; -fx-background-color: #04b9f9 ; -fx-border-radius: 5px ");
         this.setStyle("-fx-border-color: #98e6ff ; -fx-background-color: #04b9f9 ; -fx-border-radius: 5px ");
         this.setAlignment(Pos.CENTER);
+    }
+    public void setWidth(int width){
+        imageView.setFitWidth(width);
+    }
+
+    public void setHeight(int height){
+        imageView.setFitHeight(height);
     }
 }
