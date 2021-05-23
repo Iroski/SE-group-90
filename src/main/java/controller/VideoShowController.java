@@ -25,7 +25,10 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.entity.ReturnEntity;
 import model.entity.Video;
+import model.service.UserService;
+import model.service.VideoService;
 
 import java.io.IOException;
 import java.util.List;
@@ -45,7 +48,7 @@ public class VideoShowController {
     public VBox controlBar;
     public BorderPane mediaPane;
     public AnchorPane anchorPane;
-    public ImageView favouriteImage;
+    List<Video> list;
 
     //image of components
     private String playIcon  = getClass().getResource("/view/images/play.png").toString();
@@ -140,6 +143,9 @@ public class VideoShowController {
             }
         });
 
+        VideoService videoService = new VideoService();
+        ReturnEntity returnEntity = videoService.getAllVideos();
+        list = (List<Video>) returnEntity.getObject();
 
     }
 
@@ -243,8 +249,18 @@ public class VideoShowController {
     }
 
     @FXML
-    public void setFavourite(){
-
+    public void setFavourite(MouseEvent mouseEvent) throws IOException{
+        UserService service = new UserService();
+        VideoBox videoBox = (VideoBox) mouseEvent.getSource();
+        Label label = (Label) videoBox.getChildren().get(1);
+        for (Video value : list) {
+            if(value.getStaticVideo().getVideoName().equals(label.getText())) {
+                MainPageController.path = value.getStaticVideo().getFilePath();
+                Long id = value.getId();
+                service.setFavoriteByName(LoginController.userName,id);
+                break;
+            }
+        }
     }
 
     //Update video data (progress bar, time tag, volume bar data)
