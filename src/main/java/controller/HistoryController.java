@@ -58,7 +58,6 @@ public class HistoryController {
     public void initialize() {
         ArrayList<Video> historyList = null;
         UserService Service = new UserService();
-        //ReturnEntity returnEntity=Service.getHistoryByName("hly");
         ReturnEntity returnEntity = Service.getHistoryByName(LoginController.userName);
         if (returnEntity.getCode() == 5000) {
             System.out.println("Data base error!");
@@ -77,8 +76,9 @@ public class HistoryController {
             panes[0].setStyle("-fx-background-color: white");
         }
         try {
+            int flag=0;
             for (int i = 0; i < 6; i++) {
-                if (historyList.get(i) != null) {
+                if (i<historyList.size()) {
                     if (historyList.get(i).getStaticVideo().getCoverPath() == null) {
                         historys[i].setImage(image);
                     } else
@@ -87,14 +87,23 @@ public class HistoryController {
                     descriptions[i].setText(historyList.get(i).getStaticVideo().getVideoName());
                     panes[i].setUserData(historyList.get(i).getStaticVideo().getFilePath());
                     panes[i].setStyle("-fx-background-color: white; -fx-border-color: black");
-                    panes[i].setOnMouseExited(this::closeHistory);
+                    flag++;
                 } else {
                     break;
                 }
             }
+            for (int i=flag;i<6;i++) {
+                panes[i].setOnMouseEntered(this::close);
+            }
         } catch (Exception ignored) {
 
         }
+    }
+
+    private void close(MouseEvent mouseEvent) {
+        Stage stage = (Stage) historyPane.getScene().getWindow();
+        AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(this.historyPane);
     }
 
     public void closeHistory(MouseEvent mouseEvent) {
