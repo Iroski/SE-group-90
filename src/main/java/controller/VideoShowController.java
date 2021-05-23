@@ -36,6 +36,7 @@ public class VideoShowController {
     public Button stopBT;
     public Button maxBT;
     public Button volumeBT;
+    public Button favouriteBT;
     public Button backButton;
     public Label timeLB;
     public Slider processSD;
@@ -44,6 +45,7 @@ public class VideoShowController {
     public VBox controlBar;
     public BorderPane mediaPane;
     public AnchorPane anchorPane;
+    public ImageView favouriteImage;
 
     //image of components
     private String playIcon  = getClass().getResource("/view/images/play.png").toString();
@@ -52,7 +54,7 @@ public class VideoShowController {
     private String volOffIcon  = getClass().getResource("/view/images/volume_off.png").toString();
     private String volOnIcon  = getClass().getResource("/view/images/volume_On.png").toString();
     private String maxIcon  = getClass().getResource("/view/images/max.png").toString();
-
+    private String favouriteIcon = getClass().getResource("/view/images/favourite.png").toString();
     private MediaPlayer mediaPlayer;
     private Media media;
     private String url;     //the URL address of videos
@@ -74,7 +76,7 @@ public class VideoShowController {
         setIcon(stopBT,stopIcon,25);
         setIcon(volumeBT,volOnIcon,15);
         setIcon(maxBT,maxIcon,25);
-
+        setIcon(favouriteBT, favouriteIcon, 25);
         java.io.File file = new java.io.File("src/main/resources/"+MainPageController.path);
         url = file.toURI().toString();
         media = new Media(url);
@@ -238,6 +240,11 @@ public class VideoShowController {
                 mediaPlayer.setVolume(newValue.doubleValue()/100);
             }
         });
+    }
+
+    @FXML
+    public void setFavourite(){
+
     }
 
     //Update video data (progress bar, time tag, volume bar data)
