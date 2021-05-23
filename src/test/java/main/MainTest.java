@@ -25,6 +25,7 @@ public class MainTest extends Application {
         db= DataHouse.getInstance();
         db.init("src/test/resources/database");
         ResourceLoader.staticVideoLoader("src/test/resources/view/videos");
+        ResourceLoader.staticDefaultProfilePhotoLoader("src/test/resources/view/images/default/profilephoto");
         new AccountService().createAccountForDeletedInfo();
         new LiveLessonService().createInfoForDeleteInfo();
     }

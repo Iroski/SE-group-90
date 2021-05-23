@@ -61,6 +61,7 @@ public class ResourceLoader {
         List<Video> videos = (List<Video>)dataHouse.query("Video", new HashMap<>());
         HashSet<String> videoPaths = new HashSet<>();
         for (Video video: videos) {
+            System.out.println(video);
             String filePath = video.getStaticVideo().getFilePath();
             String coverPath = video.getStaticVideo().getCoverPath();
             video.getStaticVideo().setFilePath(filePathAdaptor(filePath));

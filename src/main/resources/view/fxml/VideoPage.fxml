@@ -11,11 +11,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: #04b9f9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VideoPageController">
+<AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VideoPageController">
    <children>
       <ScrollPane fx:id="scrollPane" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
          <content>
-            <FlowPane fx:id="flowPane" prefHeight="612.0" prefWidth="1000.0" style="-fx-background-color: #98e6ff;" />
+            <FlowPane fx:id="flowPane" prefHeight="612.0" prefWidth="1000.0" style="-fx-background-color: white;" />
          </content>
       </ScrollPane>
       <TextField fx:id="searchText" layoutX="573.0" layoutY="15.0" prefHeight="30.0" prefWidth="256.0" style="-fx-background-radius: 10;" />
