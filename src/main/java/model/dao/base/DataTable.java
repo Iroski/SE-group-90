@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.Setter;
+import model.entity.Video;
 import model.exception.database.DataItemNotExists;
 import model.exception.database.InvalidArgument;
 import model.exception.database.InvalidDataItem;
