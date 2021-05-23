@@ -99,6 +99,8 @@ public class MainPageController {
 
         video.setLayoutX(200);
         video.setLayoutY(75);
+
+        VideoPageController.currentVideoName = label.getText();
     }
 
     public void prevVideo(){
