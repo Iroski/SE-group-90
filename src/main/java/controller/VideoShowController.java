@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -29,8 +30,10 @@ import model.entity.ReturnEntity;
 import model.entity.Video;
 import model.service.UserService;
 import model.service.VideoService;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -48,7 +51,7 @@ public class VideoShowController {
     public VBox controlBar;
     public BorderPane mediaPane;
     public AnchorPane anchorPane;
-    List<Video> list;
+
 
     //image of components
     private String playIcon  = getClass().getResource("/view/images/play.png").toString();
@@ -142,10 +145,6 @@ public class VideoShowController {
                 updateValues();
             }
         });
-
-        VideoService videoService = new VideoService();
-        ReturnEntity returnEntity = videoService.getAllVideos();
-        list = (List<Video>) returnEntity.getObject();
 
     }
 
@@ -250,14 +249,32 @@ public class VideoShowController {
 
     @FXML
     public void setFavourite(MouseEvent mouseEvent) throws IOException{
+        VideoService videoService = new VideoService();
+        ReturnEntity returnEntity = videoService.getAllVideos();
+        ArrayList<Video> list = (ArrayList<Video>) returnEntity.getObject();
         UserService service = new UserService();
-        VideoBox videoBox = (VideoBox) mouseEvent.getSource();
-        Label label = (Label) videoBox.getChildren().get(1);
         for (Video value : list) {
-            if(value.getStaticVideo().getVideoName().equals(label.getText())) {
-                MainPageController.path = value.getStaticVideo().getFilePath();
+            if(value.getStaticVideo().getVideoName().equals(VideoPageController.currentVideoName)){
+                //MainPageController.path = value.getStaticVideo().getFilePath();
                 Long id = value.getId();
-                service.setFavoriteByName(LoginController.userName,id);
+                System.out.println(id);
+                int code = service.setFavoriteByName(LoginController.userName,id);
+                if(code == 200){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.titleProperty().set("Success");
+                    alert.headerTextProperty().set("Good Good!");
+                    alert.showAndWait();
+                }else if(code == 4041){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.titleProperty().set("Error");
+                    alert.headerTextProperty().set("Bad Bad!");
+                    alert.showAndWait();
+                }else if(code == 5000){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.titleProperty().set("Error");
+                    alert.headerTextProperty().set("Database error!");
+                    alert.showAndWait();
+                }
                 break;
             }
         }

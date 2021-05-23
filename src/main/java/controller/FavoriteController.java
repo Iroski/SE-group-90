@@ -105,6 +105,8 @@ public class FavoriteController {
 
         video.setLayoutX(200);
         video.setLayoutY(75);
+
+        VideoPageController.currentVideoName = label.getText();
     }
 
     public void filterVideosByTag(String tag) throws IOException {

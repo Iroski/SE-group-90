@@ -43,6 +43,7 @@ public class VideoPageController {
     public ComboBox category;
     List<Video> list;
     ArrayList<Video> searchList;
+    public static String currentVideoName;
 
     @FXML
     public void initialize() throws IOException {
@@ -110,6 +111,8 @@ public class VideoPageController {
 
         video.setLayoutX(200);
         video.setLayoutY(75);
+
+        currentVideoName = label.getText();
     }
 
     public void filterVideosByTag(String tag) throws IOException {
