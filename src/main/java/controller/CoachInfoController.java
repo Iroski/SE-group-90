@@ -1,8 +1,6 @@
 package controller;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -36,6 +34,11 @@ public class CoachInfoController {
     public TextFlow description;
     private Coach choosedCoach;
 
+    /**
+     * This function is used to jump back to the coach page which is uses to show all the coaches.
+     * @param: mouseEvent will be triggered after click the button "return"
+     * @throws: IOException
+     */
     public void backToCoach(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) photo.getScene().getWindow();
         stage.setTitle("Coaches");
@@ -51,6 +54,12 @@ public class CoachInfoController {
         coaches.setLayoutY(75);
     }
 
+    /**
+     * This function is used to jump to the booking page which is uses to show all the information
+     * of a coach's class schedule
+     * @param: mouseEvent will be triggered after click the button "reverse"
+     * @throws: IOException
+     */
     public void reserve(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) photo.getScene().getWindow();
         stage.setTitle("Reserve");
@@ -71,15 +80,11 @@ public class CoachInfoController {
         bookingPageController.init();
     }
 
-
-    @FXML
-    public void initialize() {
-        //description.setWrapText(true);
-
-    }
+    /**
+     * This function is used to init the coach information page.
+     */
     public void init() {
         choosedCoach=(Coach)photo.getUserData();
-        //System.out.println(choosedCoach);
         age.setText(String.valueOf(choosedCoach.getAge()));
         name.setText(choosedCoach.getName());
         height.setText(String.valueOf(choosedCoach.getHeight()));
@@ -88,8 +93,7 @@ public class CoachInfoController {
         course.setText(choosedCoach.getCourse());
         Image image=new Image(choosedCoach.getPhotoPath());
         photo.setImage(image);
-        Text text=new Text("This teacher is very handsome and clever, as the coach's name is hly and he is not Gokop, he is hly!"+
-                " oh!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        Text text=new Text(choosedCoach.getDescription());
         text.setStyle("-fx-font: 24 arial;");
         description.getChildren().add(text);
     }

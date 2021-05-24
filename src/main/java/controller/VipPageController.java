@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -47,18 +48,15 @@ public class VipPageController {
     private double quarterlyPay = 75;
     private double annuallyPay = 250;
 
-    @FXML
-    public void initialize(){
-
-    }
-
+    /**
+     * This function is used to init the vip page.
+     */
     public void init(){
         String name = LoginController.userName;
         userName.setText(name);
         this.userService=new UserService();
         User user = (User) userService.getUser(name).getObject();
         userImage.setFill(new ImagePattern(new Image("/view/images/coach.jpg")));
-
         AccountService accountService=new AccountService();
         ReturnEntity returnEntity=accountService.getAccount(name);
         Account account=null;
@@ -79,6 +77,12 @@ public class VipPageController {
         }
     }
 
+    /**
+     * This function is used to change the color of the chosen vip pane
+     * user is going to buy the vip for sure
+     * @param: mouseEvent will be triggered after the user click any of the vip pane
+     * @throws: IOException
+     */
     public void setChoosePay(MouseEvent mouseEvent){
         AnchorPane pane = (AnchorPane)mouseEvent.getSource();
         if(pane == annuallyPane){
@@ -101,7 +105,12 @@ public class VipPageController {
         }
     }
 
-
+    /**
+     * This function is used to check whether the user's money is enough for the chosen vip or whether the
+     * user is going to buy the vip for sure
+     * @param: mouseEvent will be triggered after the user click the button "purchase"
+     * @throws: IOException
+     */
     public void startPay(MouseEvent mouseEvent) throws IOException {
         String userName = LoginController.userName;
         AccountService accountService=new AccountService();
@@ -141,6 +150,10 @@ public class VipPageController {
         }
     }
 
+    /**
+     * This function is used to go to the account page if the user's money is not enough
+     * @throws: IOException
+     */
     public void goToAccount() throws IOException {
         Stage stage = (Stage) annually.getScene().getWindow();
         stage.setTitle("Profile");
@@ -155,14 +168,24 @@ public class VipPageController {
         account.setLayoutY(75);
     }
 
+    /**
+     * This function is used to show the information of the user's money is not enough
+     * @throws: IOException
+     */
     public void showMoneyNotEnoughPage () throws IOException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        ButtonType confirm=new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+        Alert alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);
         alert.setTitle("INFORMATION");
         alert.setContentText("Please charge first!");
         alert.setHeaderText("Your money is not enough!");
         alert.showAndWait();
     }
 
+    /**
+     * This function is used to show the information and the user can decide whether he or she is
+     * willing to pay.
+     * @throws: IOException
+     */
     public void showConfirmationPage (Double pay) throws IOException {
         String text="";
         if (pay.equals(monthlyPay)) {
@@ -174,12 +197,13 @@ public class VipPageController {
         else {
             text = new String("Are you sure to buy the yearly vip?");
         }
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        ButtonType yes=new ButtonType("Yes",ButtonBar.ButtonData.YES);
+        ButtonType no=new ButtonType("No",ButtonBar.ButtonData.NO);
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"",yes,no);
         alert.setTitle("confirmation");
-        //alert.setContentText(text);
         alert.setHeaderText(text);
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
+        if (result.get() == yes) {
             int type=1;
             if (pay.equals(quarterlyPay)) {
                 type=2;
@@ -199,14 +223,23 @@ public class VipPageController {
             showVip();
         }
     }
+
+    /**
+     * This function is used to show the information of buying the vip successfully
+     */
     public void showSuccess() {
-        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        ButtonType confirm=new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+        Alert alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);
         alert.setTitle("INFORMATION");
         alert.setContentText("");
         alert.setHeaderText("Successful!");
         alert.showAndWait();
     }
 
+    /**
+     * This function is used to fresh the page of vip page after the user buy the vip successfully
+     * @throws: IOException
+     */
     public void showVip() throws IOException {
         Stage stage = (Stage) vipInf.getScene().getWindow();
         stage.setTitle("VIP");

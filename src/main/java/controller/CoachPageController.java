@@ -30,6 +30,11 @@ public class CoachPageController {
     ArrayList<Coach> coachArrayList;
     CoachService coachService;
 
+    /**
+     * This function is used to search the coach
+     * @param: mouseEvent will be triggered after the user click the button "search"
+     * @throws: IOException
+     */
     public void search(MouseEvent mouseEvent) {
         if (searchText.getText()==null|| searchText.getText().equals("")) {
             getCoaches();
@@ -49,6 +54,9 @@ public class CoachPageController {
         setPage();
     }
 
+    /**
+     * This function is used to get all of the coaches.
+     */
     public void getCoaches() {
         coachService=new CoachService();
         ReturnEntity returnEntity=coachService.getAllCoaches();
@@ -63,6 +71,9 @@ public class CoachPageController {
         }
     }
 
+    /**
+     * This function is used to set the coach page and show the coaches.
+     */
     public void setPage() {
         if (coachArrayList==null) {
             noCoachLabel.setVisible(true);
@@ -118,6 +129,9 @@ public class CoachPageController {
         pages.setVisible(true);
     }
 
+    /**
+     * This function is used to init the coach page, get all the coaches and set them on the page.
+     */
     @FXML
     public void initialize() {
         noCoachLabel.setVisible(false);

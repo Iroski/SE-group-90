@@ -3,12 +3,10 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.entity.ReturnEntity;
@@ -54,6 +52,10 @@ public class HistoryController {
 
     private Image image=new Image("view/images/1.jpg");
 
+
+    /**
+     * This function is used to init the history page
+     */
     @FXML
     public void initialize() {
         ArrayList<Video> historyList = null;
@@ -61,11 +63,9 @@ public class HistoryController {
         ReturnEntity returnEntity = Service.getHistoryByName(LoginController.userName);
         if (returnEntity.getCode() == 5000) {
             System.out.println("Data base error!");
-        } else if (returnEntity.getObject() == null) {
-            historyList = null;
-        } else {
+        }
+        else {
             historyList = (ArrayList<Video>) returnEntity.getObject();
-            //System.out.println(historyList);
         }
         ImageView[] historys = {history1, history2, history3, history4, history5, history6};
         Label[] authors = {author1, author2, author3, author4, author5, author6};
@@ -93,26 +93,27 @@ public class HistoryController {
                 }
             }
             for (int i=flag;i<6;i++) {
-                panes[i].setOnMouseEntered(this::close);
+                panes[i].setOnMouseEntered(this::closeHistory);
             }
         } catch (Exception ignored) {
 
         }
     }
 
-    private void close(MouseEvent mouseEvent) {
-        Stage stage = (Stage) historyPane.getScene().getWindow();
-        AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
-        anchorPane.getChildren().remove(this.historyPane);
-    }
-
+    /**
+     * This function is used to close the history page if the mouse leave the zone.
+     * @param: mouseEvent will be triggered the mouse leave the zone of history page
+     * @throws: IOException
+     */
     public void closeHistory(MouseEvent mouseEvent) {
-//        Stage stage = (Stage) historyPane.getScene().getWindow();
-//        AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
-//        anchorPane.getChildren().remove(this.historyPane);
         closeTheHistory();
     }
 
+    /**
+     * This function is used to close the history page if the user choose to watch one of the videos.
+     * @param: mouseEvent will be triggered after the user clicked any of the videos
+     * @throws: IOException
+     */
     public void closeTheHistory () {
         try {
             Stage stage = (Stage) historyPane.getScene().getWindow();
@@ -123,6 +124,11 @@ public class HistoryController {
         }
     }
 
+    /**
+     * This function is used to go to the video which is chosen by the user.
+     * @param: mouseEvent will be triggered after the user clicked any of the videos
+     * @throws: IOException
+     */
     public void showVideo(MouseEvent mouseEvent) throws IOException {
         AnchorPane selectedHistory= (AnchorPane) mouseEvent.getSource();
         if (selectedHistory.getUserData()==null) {
