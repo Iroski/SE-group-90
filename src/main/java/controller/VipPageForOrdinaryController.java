@@ -1,12 +1,10 @@
 package controller;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import model.entity.User;
 import model.service.AccountService;
 import model.service.UserService;
 import java.io.IOException;
@@ -26,23 +24,26 @@ public class VipPageForOrdinaryController {
     private UserService userService = new UserService();
     private AccountService accountService = new AccountService();
 
+    /**
+     * This function is used to init the page of the vip page if the user is not a vip yet
+     */
     public void init(){
         this.name = LoginController.userName;
         userName.setText(name);
-        User user = (User) userService.getUser(name).getObject();
-        //Image image = new Image( );
     }
 
-    @FXML
-    public void initialize(){
-
-    }
-
+    /**
+     * This function is used to close the vip page if the user's mouse leave the vip page zone
+     * @param: mouseEvent will be triggered after the user's mouse leave the zone of vip page
+     * @throws: IOException
+     */
     public void closeVip(MouseEvent mouseEvent) {
-        Stage stage = (Stage) vipPane.getScene().getWindow();
-        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-        anchorPane.getChildren().remove(this.vipPane);
+        closeTheVip();
     }
+
+    /**
+     * This function is used to close the vip page if the user goes to the big vip page
+     */
     public void closeTheVip() {
         try {
             Stage stage = (Stage) vipPane.getScene().getWindow();
@@ -53,6 +54,11 @@ public class VipPageForOrdinaryController {
         }
     }
 
+    /**
+     * This function is used to go to the big vip page if the user want to buy a vip
+     * @param: mouseEvent will be triggered after the user click the button to buy the vip
+     * @throws: IOException
+     */
     public void showVip(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) vipPane.getScene().getWindow();
         stage.setTitle("VIP");
