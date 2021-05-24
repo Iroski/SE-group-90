@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -23,7 +24,7 @@ import static javafx.scene.paint.Color.*;
 public class BasePageController {
     public Label vipLabel;
     public Button history;
-    public ImageView user_image;
+    public static ImageView user_image;
     public Button b_log_out;
     public Button favorite;
     public Button b_account;
@@ -31,7 +32,7 @@ public class BasePageController {
     public Button b_coach;
     public Button b_lesson;
     public Button userName;
-
+    public AnchorPane pane;
     @FXML
     Button b_home;
 
@@ -41,12 +42,29 @@ public class BasePageController {
         this.userName.setText(userName);
         UserService userService=new UserService();
         ReturnEntity returnEntity=userService.getUser(userName);
-
         User user=null;
         if (returnEntity.getCode()==200) {
             user = (User) returnEntity.getObject();
         }
-        user_image.setUserData(user);
+        if(user.getProfilePhotoPath() == null){
+            user.setProfilePhotoPath("/view/images/default/profilephoto/11.jpg");
+        }
+        Image image = new Image(user.getProfilePhotoPath());
+        user_image = new ImageView(image);
+        user_image.setFitWidth(50);
+        user_image.setPreserveRatio(true);
+        user_image.setLayoutX(610);
+        user_image.setLayoutY(13);
+        user_image.setOnMouseClicked(mouseEvent1 -> {
+            try {
+                goToProfile(mouseEvent1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        pane.getChildren().add(user_image);
+
+        //user_image.setUserData(user);
     }
 
     public void showHistory(MouseEvent me) throws IOException{
@@ -249,4 +267,8 @@ public class BasePageController {
         stage.show();
     }
 
+    public static void changeImage(String path){
+        Image image = new Image(path);
+        user_image.setImage(image);
+    }
 }
