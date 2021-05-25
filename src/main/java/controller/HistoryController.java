@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import model.entity.ReturnEntity;
 import model.entity.Video;
 import model.service.UserService;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -50,7 +49,7 @@ public class HistoryController {
     public Label description6;
     public Label author6;
 
-    private Image image=new Image("view/images/1.jpg");
+    private Image image=new Image("view/images/1.jpg"); //default photo
 
 
     /**
