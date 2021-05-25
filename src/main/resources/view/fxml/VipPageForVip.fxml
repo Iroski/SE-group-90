@@ -13,7 +13,7 @@
    <children>
       <HBox layoutX="27.0" layoutY="22.0" spacing="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0">
          <children>
-            <Circle fill="DODGERBLUE" layoutX="57.0" layoutY="52.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="userImage" fill="DODGERBLUE" layoutX="57.0" layoutY="52.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <VBox alignment="CENTER_LEFT" layoutX="107.0" layoutY="22.0">
                <children>
                   <Label fx:id="userName" layoutX="107.0" layoutY="22.0" prefHeight="29.0" prefWidth="126.0" text="Ke ai Gou bo" textFill="#ffb200">

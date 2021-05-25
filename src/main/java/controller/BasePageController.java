@@ -46,7 +46,7 @@ public class BasePageController {
         if (returnEntity.getCode()==200) {
             user = (User) returnEntity.getObject();
         }
-        if(user.getProfilePhotoPath() == null){
+        if(user.getProfilePhotoPath() == null||user.getProfilePhotoPath().equals("")){
             user.setProfilePhotoPath("/view/images/default/profilephoto/11.jpg");
         }
         Image image = new Image(user.getProfilePhotoPath());

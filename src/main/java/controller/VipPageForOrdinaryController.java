@@ -1,10 +1,13 @@
 package controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import model.entity.User;
 import model.service.AccountService;
 import model.service.UserService;
 import java.io.IOException;
@@ -30,6 +33,8 @@ public class VipPageForOrdinaryController {
     public void init(){
         this.name = LoginController.userName;
         userName.setText(name);
+        User user = (User) userService.getUser(name).getObject();
+        this.userImage.setFill(new ImagePattern(new Image(user.getProfilePhotoPath())));
     }
 
     /**
@@ -65,6 +70,8 @@ public class VipPageForOrdinaryController {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/VipPage.fxml"));
         AnchorPane account = loader.load();
+        VipPageController controller=loader.getController();
+        controller.init();
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().remove(2);
         anchorPane.getChildren().add(2, account);

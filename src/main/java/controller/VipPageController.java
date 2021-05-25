@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
@@ -47,7 +46,6 @@ public class VipPageController {
     private double monthlyPay = 30;
     private double quarterlyPay = 75;
     private double annuallyPay = 250;
-
     /**
      * This function is used to init the vip page.
      */
@@ -56,7 +54,7 @@ public class VipPageController {
         userName.setText(name);
         this.userService=new UserService();
         User user = (User) userService.getUser(name).getObject();
-        userImage.setFill(new ImagePattern(new Image("/view/images/coach.jpg")));
+        userImage.setFill(new ImagePattern(new Image(user.getProfilePhotoPath())));
         AccountService accountService=new AccountService();
         ReturnEntity returnEntity=accountService.getAccount(name);
         Account account=null;
@@ -97,7 +95,7 @@ public class VipPageController {
             quarterly.setFill(Color.rgb(255,255,255));
             chosenPane = monthlyPane;
         }
-        else{
+        else if (pane==quarterlyPane){
             quarterly.setFill(Color.rgb(255,223,169));
             annually.setFill(Color.rgb(255,255,255));
             monthly.setFill(Color.rgb(255,255,255));
@@ -140,7 +138,7 @@ public class VipPageController {
                 showMoneyNotEnoughPage();
             }
         }
-        else {
+        else if (chosenPane==quarterlyPane){
             if (account.getBalance().compareTo(BigDecimal.valueOf(quarterlyPay)) >= 0.00) {
                 showConfirmationPage(quarterlyPay);
             } else {

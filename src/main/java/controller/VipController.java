@@ -3,8 +3,11 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.entity.Account;
 import model.entity.ReturnEntity;
@@ -23,6 +26,7 @@ public class VipController {
     public String name;
     public Label userName;
     public Label vipTime;
+    public Circle userImage;
 
     UserService userService = new UserService();
 
@@ -33,7 +37,7 @@ public class VipController {
         this.name = LoginController.userName;
         userName.setText(name);
         User user = (User) userService.getUser(name).getObject();
-        //Image image = new Image( );
+        this.userImage.setFill(new ImagePattern(new Image(user.getProfilePhotoPath())));
         AccountService accountService=new AccountService();
         ReturnEntity returnEntity=accountService.getAccount(name);
         Account account=null;
