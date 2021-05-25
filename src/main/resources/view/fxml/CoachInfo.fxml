@@ -15,7 +15,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ImageView fx:id="photo" fitHeight="300.0" fitWidth="233.0" layoutX="127.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="57.0" />
+                  <ImageView fx:id="photo" fitHeight="300.0" fitWidth="233.0" layoutX="98.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="85.0" />
                   <TextFlow fx:id="description" layoutX="108.0" layoutY="425.0" prefHeight="227.0" prefWidth="376.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                   <Label layoutX="20.0" layoutY="367.0" prefHeight="58.0" prefWidth="214.0" text="Introduction">
                      <font>
