@@ -4,11 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import model.dao.base.StaticResources;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * @author ：Yubo Wang
@@ -19,9 +16,9 @@ import java.nio.file.Paths;
  */
 @Data()
 @ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode()
 @NoArgsConstructor
-public class StaticVideo extends StaticResources {
+public class StaticVideo {
 
     private String videoName;
     private String type;
@@ -38,11 +35,7 @@ public class StaticVideo extends StaticResources {
     }
 
     public StaticVideo(String filePath) {
-        String separator = "/|\\\\";
-        String[] splitedFilePath = filePath.split(separator);
-        int len = splitedFilePath.length;
-        Path path = Paths.get(splitedFilePath[len-3], splitedFilePath[len-2], splitedFilePath[len-1]);
-        this.filePath = path.toString();
+        this.filePath = filePath;
         parseName();
     }
 

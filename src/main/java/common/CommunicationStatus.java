@@ -33,6 +33,7 @@ public enum CommunicationStatus {
         TAG_NOT_FOUND_IN_VIDEO(40461,"there is no this tag exist in the specific video"),
         TAG_OPERATION_NOT_FOUND(40462,"the operation for tag is not found"),
     ORDER_NOT_FOUND(4047,"this order is not exist"),
+    PROFILE_PHOTO_NOT_FOUND(4048, "No available profile photo"),
 
     INTERNAL_ERROR(5000,"database internal error"),
     NO_ENOUGH_BALANCE(5001,"your balance is not enough"),

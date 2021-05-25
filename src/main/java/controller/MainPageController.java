@@ -49,6 +49,7 @@ public class MainPageController {
         rightPane.setHgap(20);
         rightPane.setVgap(20);
         VideoBox videoBox;
+        System.out.println(list.get(0).getStaticVideo().getCoverPath());
         videoBox = new VideoBox(list.get(0).getStaticVideo().getCoverPath(),list.get(0).getStaticVideo().getVideoName());
         videoBox.setOnMouseClicked(mouseEvent -> {
             try {
@@ -99,6 +100,8 @@ public class MainPageController {
 
         video.setLayoutX(200);
         video.setLayoutY(75);
+
+        VideoPageController.currentVideoName = label.getText();
     }
 
     public void prevVideo(){

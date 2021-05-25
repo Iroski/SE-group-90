@@ -8,6 +8,7 @@ class User{
     private String password;
     private String phone;
     private String gender;
+    private String profilePhotoPath;
     private Double weight;
     private Integer height;
     private Integer age;

@@ -19,6 +19,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;
+import model.entity.Coach;
 import model.entity.ReturnEntity;
 import model.entity.Video;
 import model.service.UserService;
@@ -26,6 +27,7 @@ import model.service.VideoService;
 
 import javax.swing.event.ChangeEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 /**
  * @description: TODO
@@ -40,6 +42,8 @@ public class VideoPageController {
     public TextField searchText;
     public ComboBox category;
     List<Video> list;
+    ArrayList<Video> searchList;
+    public static String currentVideoName;
 
     @FXML
     public void initialize() throws IOException {
@@ -107,6 +111,8 @@ public class VideoPageController {
 
         video.setLayoutX(200);
         video.setLayoutY(75);
+
+        currentVideoName = label.getText();
     }
 
     public void filterVideosByTag(String tag) throws IOException {
@@ -160,11 +166,42 @@ public class VideoPageController {
         }
     }
 
+    public void showSearchedVideos(List<Video> list) {
+        MainPageController.previousPage = "Videos";
+        flowPane.getChildren().clear();
+        for(int i=0; i<list.size(); i++){
+            VideoBox videoBox = new VideoBox(list.get(i).getStaticVideo().getCoverPath(),list.get(i).getStaticVideo().getVideoName());
+            videoBox.setOnMouseClicked(mouseEvent -> {
+                try {
+                    showVideo(mouseEvent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            flowPane.getChildren().add(videoBox);
+        }
+    }
+
     public void SearchVideo(MouseEvent mouseEvent) throws IOException{
         String text = searchText.getText();
-        //Todo
-        if(text.equals("camel1")){
-            showAllVideos();
+        if(!text.equals("")){
+            VideoService videoService = new VideoService();
+            ReturnEntity returnEntity = videoService.blurSearchByName(text);
+            searchList = (ArrayList<Video>) returnEntity.getObject();
+            int code = returnEntity.getCode();
+            if(code == 200){
+                showSearchedVideos(searchList);
+            }else if(code == 4045){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.titleProperty().set("Error");
+                alert.headerTextProperty().set("Videos not found!");
+                alert.showAndWait();
+            }else if(code == 5000){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.titleProperty().set("Error");
+                alert.headerTextProperty().set("Database error!");
+                alert.showAndWait();
+            }
         }
     }
 
