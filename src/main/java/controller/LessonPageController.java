@@ -49,7 +49,7 @@ public class LessonPageController {
 
     public void init() {
         liveLessonService = new LiveLessonService();
-        ReturnEntity returnEntity = liveLessonService.getNotStartPayedLiveLessonByUsername(userName);
+        ReturnEntity returnEntity = liveLessonService.getNotStartNotCanceledLiveLessonByUsername(userName);
         if(returnEntity.getCode() == 4043){
             System.out.println("table not exist!");
         }
