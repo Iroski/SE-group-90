@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import main.Main;
 import model.entity.*;
 import model.enumPackage.TargetType;
@@ -44,6 +45,7 @@ public class BookingPageController {
     public CheckBox customization;
     public ChoiceBox<String> targets;
     public TextField otherInput;
+    public Tooltip customizationTip;
 
 
     LinkedList<LocalDate> day_list;
@@ -81,6 +83,10 @@ public class BookingPageController {
         time_box_list.add(thirdLesson);
         time_box_list.add(fourthLesson);
         time_box_list.add(fifthLesson);
+
+        for(TargetType type : TargetType.values()){
+            targets.getItems().add(type.getDescription());
+        }
     }
 
     public void init(){
@@ -156,9 +162,6 @@ public class BookingPageController {
         }
 
         targets.setVisible(false);
-        for(TargetType type : TargetType.values()){
-            targets.getItems().add(type.getDescription());
-        }
         customization.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
@@ -174,6 +177,10 @@ public class BookingPageController {
             }
         });
         customization.setSelected(false);
+        customization.setTooltip(customizationTip);
+        customizationTip.setShowDelay(new Duration(1));
+        customizationTip.setText("If you choose it, you will\nbe able to set your target.");
+
         for(int i = 0; i < 5; ++i){
             setCheckBox(reserved[0]);
         }
@@ -277,8 +284,8 @@ public class BookingPageController {
         Long createTime = DateUtils.dateToTimeStamp(new Date());
         LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, isCustomized, target,"", createTime);
         int premiumType = getPremiumType(user);
-        BigDecimal money = BigDecimal.valueOf(lessonPrice);  // 暂时定价为30一节课
-        Order order = new Order(user.getName(), 1, createTime, premiumType, null, money, 0, createTime);
+        BigDecimal money = BigDecimal.valueOf(lessonPrice);
+        Order order = new Order(user.getName(), 1, createTime, premiumType, 0, money, 0, createTime);
         ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);
 
         switch (returnEntity.getCode()){
@@ -334,8 +341,7 @@ public class BookingPageController {
         }
 
         AtomicBoolean paid;
-        paid = showIfPay(); // show and return
-
+        paid = showIfPay(isFreeByPremium.get()); // show and return
         OrderService orderService = new OrderService();
         if(paid.get()){
             int code = orderService.payLiveLessonOrder(user.getName(), liveLesson, isFreeByPremium);
@@ -398,15 +404,19 @@ public class BookingPageController {
         return res;
     }
 
-    public AtomicBoolean showIfPay() throws IOException {
+    public AtomicBoolean showIfPay(boolean isFree) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrder.fxml"));
+        loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrderPage.fxml"));
         AnchorPane page = loader.load();
         Stage payOrder = new Stage();
         payOrder.setTitle("Pay For the Order");
         Scene scene = new Scene(page);
         payOrder.setScene(scene);
         PayForOrderController controller = loader.getController();
+        //System.out.println(isFree);
+        if(isFree){
+            controller.setLabel();
+        }
         payOrder.showAndWait();
         return controller.getIfPay();
     }

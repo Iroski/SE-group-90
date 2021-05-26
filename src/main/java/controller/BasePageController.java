@@ -9,6 +9,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import model.entity.ReturnEntity;
 import model.entity.User;
@@ -33,8 +36,9 @@ public class BasePageController {
     public Button b_lesson;
     public Button userName;
     public AnchorPane pane;
-    @FXML
-    Button b_home;
+
+    public AtomicBoolean checkPremium;
+    public Button b_home;
 
     @FXML
     public void initialize() {
@@ -63,8 +67,25 @@ public class BasePageController {
             }
         });
         pane.getChildren().add(user_image);
+    }
 
-        //user_image.setUserData(user);
+    public void init(){
+        AccountService accountService = new AccountService();
+        ReturnEntity returnEntity=accountService.isPremium(LoginController.userName);
+        checkPremium = new AtomicBoolean(false);
+        if(returnEntity.getCode() == 200){
+            // successful
+            checkPremium = (AtomicBoolean)returnEntity.getObject();
+            if(checkPremium.get()){
+                vipLabel.setTextFill(Color.rgb(255,223,169));
+            }
+        }
+        else if(returnEntity.getCode() == 4042){
+            // account not exist
+        }
+        else if(returnEntity.getCode() == 5000){
+            // database error
+        }
     }
 
     public void showHistory(MouseEvent me) throws IOException{
@@ -85,23 +106,8 @@ public class BasePageController {
     }
 
     public void showVip(MouseEvent event) throws IOException{
-        AccountService accountService = new AccountService();
-        //ReturnEntity returnEntity = accountService.isPremium("Heluyao");
-        ReturnEntity returnEntity=accountService.isPremium(LoginController.userName);
-        AtomicBoolean check = new AtomicBoolean(false);
-        if(returnEntity.getCode() == 200){
-            // successful
-            check = (AtomicBoolean)returnEntity.getObject();
-        }
-        else if(returnEntity.getCode() == 4042){
-            // account not exist
-        }
-        else if(returnEntity.getCode() == 5000){
-            // database error
-        }
-
         Label l = (Label) event.getSource();
-        if(l.equals(vipLabel) && check.get()){ // is premium
+        if(l.equals(vipLabel) && checkPremium.get()){ // is premium
             Stage stage = (Stage) b_home.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/fxml/VipPageForVip.fxml"));
@@ -114,7 +120,7 @@ public class BasePageController {
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
             vip.setVisible(true);
         }
-        else if(l.equals(vipLabel) && !check.get()){ // is not premium
+        else if(l.equals(vipLabel) && !checkPremium.get()){ // is not premium
             Stage stage = (Stage) b_home.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/fxml/VipPageForOrdinary.fxml"));

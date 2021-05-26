@@ -44,7 +44,7 @@
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
-                  <HBox alignment="BASELINE_CENTER" layoutX="55.0" layoutY="83.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="83.0">
+                  <HBox alignment="BASELINE_CENTER" layoutX="46.0" layoutY="83.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="83.0">
                      <children>
                         <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
                            <padding>
@@ -54,7 +54,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="55.0" layoutY="68.0" prefHeight="45.0" prefWidth="81.0" text="99.8" textFill="#e4a634">
+                        <Label fx:id="monthlyPrice" layoutX="55.0" layoutY="68.0" text="30.0" textFill="#e4a634">
                            <font>
                               <Font name="System Bold Italic" size="35.0" />
                            </font>
@@ -74,7 +74,7 @@
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
-                  <HBox alignment="BASELINE_CENTER" layoutX="59.0" layoutY="83.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="83.0">
+                  <HBox alignment="BASELINE_CENTER" layoutX="8.0" layoutY="83.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="83.0">
                      <children>
                         <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
                            <font>
@@ -84,7 +84,7 @@
                               <Insets bottom="3.0" />
                            </padding>
                         </Label>
-                        <Label layoutX="55.0" layoutY="68.0" prefHeight="45.0" prefWidth="73.0" text="299" textFill="#e4a634">
+                        <Label fx:id="quarterlyPrice" layoutX="55.0" layoutY="68.0" text="70.0" textFill="#e4a634">
                            <font>
                               <Font name="System Bold Italic" size="35.0" />
                            </font>
@@ -109,7 +109,7 @@
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
-                  <HBox alignment="BASELINE_CENTER" layoutX="58.0" layoutY="83.0" prefHeight="45.0" prefWidth="99.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="83.0">
+                  <HBox alignment="BASELINE_CENTER" layoutX="8.0" layoutY="83.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="83.0">
                      <children>
                         <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
                            <padding>
@@ -119,7 +119,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="55.0" layoutY="68.0" text="998" textFill="#e4a634">
+                        <Label fx:id="annualPrice" layoutX="55.0" layoutY="68.0" text="250.0" textFill="#e4a634">
                            <font>
                               <Font name="System Bold Italic" size="35.0" />
                            </font>

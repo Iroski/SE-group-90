@@ -35,8 +35,12 @@ public class BasePlanGenerator {
     int lastIndex=-1;
 
 
-    public String generatePlan(int height,double weight,String target){
-        double BMI=(double)((weight/(height/100))/(height/100));
+    public String generatePlan(Integer height,Double weight,String target){
+        double BMI;
+        if(height==null||weight==null)
+            BMI=22;
+        else
+            BMI=(double)((weight/(height/100))/(height/100));
         System.out.println(BMI);
         return getPlans(BMI,target);
     }

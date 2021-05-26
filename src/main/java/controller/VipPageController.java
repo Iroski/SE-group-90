@@ -41,6 +41,9 @@ public class VipPageController {
     public Label userName;
     public Label vipInf;
     public Circle userImage;
+    public Label monthlyPrice;
+    public Label quarterlyPrice;
+    public Label annualPrice;
     UserService userService;
     private AnchorPane chosenPane;
     private double monthlyPay = 30;
@@ -52,9 +55,12 @@ public class VipPageController {
     public void init(){
         String name = LoginController.userName;
         userName.setText(name);
-        this.userService=new UserService();
+        this.userService = new UserService();
         User user = (User) userService.getUser(name).getObject();
         userImage.setFill(new ImagePattern(new Image(user.getProfilePhotoPath())));
+        monthlyPrice.setText(String.valueOf(monthlyPay));
+        quarterlyPrice.setText(String.valueOf(quarterlyPay));
+        annualPrice.setText(String.valueOf(annuallyPay));
         AccountService accountService=new AccountService();
         ReturnEntity returnEntity=accountService.getAccount(name);
         Account account=null;

@@ -6,6 +6,7 @@ import model.entity.*;
 import model.enumPackage.LiveLessonStatus;
 import model.enumPackage.TargetType;
 import model.exception.database.DataItemNotExists;
+import model.utils.targetPlan.BasePlanGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,7 +121,7 @@ public class LiveLessonService {
     }
 
     protected int insertLesson(String username,LiveLesson liveLesson){
-        try{
+//        try{
             Optional<User> sUser=userService.getUserByUsername(username);
             if(sUser.isEmpty())
                 return CommunicationStatus.USER_NOT_FOUND.getCode();
@@ -144,9 +145,11 @@ public class LiveLessonService {
             list.add(liveLesson);
             liveLessonTable.setLessonList(list);
             return this.updateLiveLessonTable(liveLessonTable);
-        }catch (RuntimeException e){
-            return CommunicationStatus.INTERNAL_ERROR.getCode();
-        }
+//        }catch (RuntimeException e){
+//            System.out.println(liveLesson);
+//            System.out.println(e.getMessage());
+//            return CommunicationStatus.INTERNAL_ERROR.getCode();
+//        }
     }
 
     protected int updateLessonStateByType(String username,LiveLesson liveLesson,String type){
