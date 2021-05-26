@@ -79,12 +79,12 @@ public class CoachTest {
 //        System.out.println(new CoachService().getReservedTimeById(2));
 //        System.out.println(new CoachService().getReservedTimeById(20));
 //    }
-    @Test
-    public void test07BlurSearch() {
-        System.out.println("-----------7");
-        System.out.println(new CoachService().blurSearchByName("hl"));
-        System.out.println(new CoachService().blurSearchByName("ly"));
-        System.out.println(new CoachService().blurSearchByName("hly"));
-        System.out.println(new CoachService().blurSearchByName("zyb"));
-    }
+//    @Test
+//    public void test07BlurSearch() {
+//        System.out.println("-----------7");
+//        System.out.println(new CoachService().blurSearchByName("hl"));
+//        System.out.println(new CoachService().blurSearchByName("ly"));
+//        System.out.println(new CoachService().blurSearchByName("hly"));
+//        System.out.println(new CoachService().blurSearchByName("zyb"));
+//    }
 }

@@ -22,6 +22,17 @@ public abstract class BasePremium {
     int freeLesson = 0;
     BigDecimal bargain = new BigDecimal("1.0");
 
+    /**
+     * create by: YanBo Zhang
+     * description: The method to set premium for a account
+     * Namely, you do not need to overwrite this if you wang to add a new premium level
+     * Instead, you should rewrite a new generator for the new premium.
+     * Only overwrite it when your new premium when you have some priority that the base not contain
+     * create time: 2021/5/7 17:18
+     * @Param: account
+     * @Param: num
+     * @return model.entity.Account
+     */
     public Account setPremium(Account account, int num) {
         long curTime = account.getPremiumEndTime();
         account.setFreeLiveLessonNum(account.getFreeLiveLessonNum() + freeLesson * num);
