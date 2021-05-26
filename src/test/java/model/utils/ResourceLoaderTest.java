@@ -22,9 +22,9 @@ public class ResourceLoaderTest {
         db = DataHouse.getInstance();
         db.init("src/test/resources/database");
     }
-    @Test
-    public void test01ResLoader() {
-        ResourceLoader.staticVideoLoader("src/main/resources/view/videos");
-        ResourceLoader.staticDefaultProfilePhotoLoader("src/main/resources/view/images/default/profilephoto");
-    }
+//    @Test
+//    public void test01ResLoader() {
+//        ResourceLoader.staticVideoLoader("src/main/resources/view/videos");
+//        ResourceLoader.staticDefaultProfilePhotoLoader("src/main/resources/view/images/default/profilephoto");
+//    }
 }

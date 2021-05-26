@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>model.service.premium.MonthPremium</OriginalElement>
+  <nodes>
+    <node x="5079.873590686274" y="4042.0">model.exception.BaseException</node>
+    <node x="3906.8345358865467" y="3228.0">model.entity.Order</node>
+    <node x="641.5" y="1872.5">model.enumPackage.TargetType</node>
+    <node x="5028.0" y="4215.0">model.service.LiveLessonService</node>
+    <node x="4522.834535886546" y="3193.5">model.entity.Coach</node>
+    <node x="5494.334535886546" y="4141.0">model.exception.database.DataItemNotExists</node>
+    <node x="5203.0" y="5346.0">model.dao.OrderDao</node>
+    <node x="2306.0" y="4215.0">javafx.application.Application</node>
+    <node x="4528.334535886546" y="4141.0">model.exception.database.TableNotExists</node>
+    <node x="4749.0" y="4215.0">controller.VipPageForOrdinaryController</node>
+    <node x="4857.334535886546" y="4141.0">model.exception.database.TableHaveExists</node>
+    <node x="3988.0" y="4215.0">controller.LessonPageController</node>
+    <node x="284.0" y="5346.0">controller.FavoriteController</node>
+    <node x="4244.0" y="5346.0">model.dao.LiveLessonDao</node>
+    <node x="0.0" y="5346.0">controller.CoachPageController</node>
+    <node x="2969.0" y="4215.0">model.service.AccountService</node>
+    <node x="2281.0" y="5346.0">controller.EditPageController</node>
+    <node x="5060.873590686274" y="1997.5">java.lang.Exception</node>
+    <node x="5050.873590686274" y="12.5">java.io.Serializable</node>
+    <node x="3361.0" y="5346.0">controller.ReserveLessonConfirmation</node>
+    <node x="1661.8553692198802" y="3561.0">model.utils.targetPlan.Pectoralis</node>
+    <node x="2244.3345358865467" y="3514.0">model.service.premium.MonthPremium</node>
+    <node x="2691.0" y="4215.0">controller.AccountController</node>
+    <node x="4823.373590686274" y="104.0">java.lang.Throwable</node>
+    <node x="3082.0" y="5346.0">controller.PayVipConfirmationController</node>
+    <node x="824.0" y="5346.0">controller.VipController</node>
+    <node x="1304.0" y="5346.0">model.service.CoachService</node>
+    <node x="1425.8553692198802" y="3561.0">model.utils.targetPlan.Leg</node>
+    <node x="3361.0" y="4215.0">model.service.UserService</node>
+    <node x="3115.3345358865467" y="3159.0">model.entity.User</node>
+    <node x="0.0" y="1884.0">model.enumPackage.LiveLessonStatus</node>
+    <node x="3621.3345358865467" y="3331.5">model.entity.Video</node>
+    <node x="2288.873590686274" y="1803.5">model.service.premium.BasePremium</node>
+    <node x="5899.0" y="5346.0">controller.CustomController</node>
+    <node x="2052.1678692198802" y="1872.5">model.entity.ReturnEntity</node>
+    <node x="405.5" y="1700.0">common.CommunicationStatus</node>
+    <node x="5700.334535886546" y="0.0">controller.CoachController</node>
+    <node x="5680.0" y="5346.0">model.dao.TagDao</node>
+    <node x="2545.0" y="5346.0">controller.MainPageController</node>
+    <node x="3709.0" y="4215.0">controller.SignUpController</node>
+    <node x="5060.873590686274" y="3548.5">java.lang.RuntimeException</node>
+    <node x="230.10536921988023" y="0.0">java.lang.constant.Constable</node>
+    <node x="5474.0" y="4215.0">model.service.OrderService</node>
+    <node x="620.1053692198802" y="0.0">java.lang.Comparable</node>
+    <node x="0.0" y="5695.0">model.utils.DateUtils</node>
+    <node x="3576.3345358865467" y="470.5">lombok.NoArgsConstructor</node>
+    <node x="1407.0" y="4215.0">controller.BasePageController</node>
+    <node x="537.0" y="5695.0">model.utils.Encryption</node>
+    <node x="689.0" y="4215.0">controller.HistoryController</node>
+    <node x="3347.3345358865467" y="3435.0">model.entity.LiveLessonTable</node>
+    <node x="1779.5" y="1677.0">model.entity.LiveLesson</node>
+    <node x="4933.0" y="5346.0">model.dao.AccountDao</node>
+    <node x="448.10536921988023" y="334.0">java.lang.Enum</node>
+    <node x="3762.673590686274" y="1940.0">lombok.ToString</node>
+    <node x="4180.834535886546" y="3228.0">model.entity.Account</node>
+    <node x="2829.9845358865464" y="1997.5">model.dao.base.StaticResources</node>
+    <node x="244.5" y="1953.0">model.enumPackage.TagOperateType</node>
+    <node x="958.0" y="4365.0">model.dao.base.DataTable</node>
+    <node x="4603.0" y="5346.0">model.service.TagService</node>
+    <node x="1727.0" y="4215.0">controller.VipPageController</node>
+    <node x="2892.3345358865467" y="3320.0">model.entity.StaticVideo</node>
+    <node x="2002.0" y="5346.0">controller.ProfileController</node>
+    <node x="2405.0" y="4638.0">main.Main</node>
+    <node x="3217.1690452317284" y="1940.0">lombok.EqualsAndHashCode</node>
+    <node x="4380.0" y="4215.0">model.dao.base.DataHouse</node>
+    <node x="774.0" y="5695.0">model.utils.ResourceLoader</node>
+    <node x="1516.5" y="1240.0">model.utils.targetPlan.BasePlanGenerator</node>
+    <node x="3933.0" y="5346.0">model.dao.VideoDao</node>
+    <node x="3620.0" y="5346.0">model.dao.CoachDao</node>
+    <node x="2460.3345358865467" y="3514.0">model.service.premium.YearPremium</node>
+    <node x="5920.0" y="4215.0">controller.LiveController</node>
+    <node x="554.0" y="5346.0">controller.VideoPageController</node>
+    <node x="5453.0" y="5346.0">model.dao.UserDao</node>
+    <node x="5212.334535886546" y="4141.0">model.exception.database.InvalidDataItem</node>
+    <node x="1240.0" y="5695.0">com.sun.javafx.beans.IDProperty</node>
+    <node x="4689.334535886546" y="4141.0">model.exception.database.InvalidArgument</node>
+    <node x="5025.334535886546" y="4141.0">model.exception.database.RedundancyDataItem</node>
+    <node x="317.0" y="4215.0">controller.BookingPageController</node>
+    <node x="1052.5" y="4215.0">lombok.Setter</node>
+    <node x="1513.8553692198802" y="3561.0">model.utils.targetPlan.FatReduction</node>
+    <node x="4178.766666666666" y="1918.5">model.dao.base.DataItem</node>
+    <node x="2802.0" y="5346.0">controller.PayForOrderController</node>
+    <node x="278.0" y="5695.0">model.utils.CheckUserInfoValidation</node>
+    <node x="2676.3345358865467" y="3514.0">model.service.premium.NoPremium</node>
+    <node x="1649.0" y="5346.0">model.service.VideoService</node>
+    <node x="1031.5" y="1918.5">model.enumPackage.OrderStatus</node>
+    <node x="1230.5" y="1872.5">model.enumPackage.PremiumType</node>
+    <node x="1818.6678692198802" y="3561.0">model.utils.targetPlan.AbdominalMuscles</node>
+    <node x="5380.334535886546" y="4141.0">model.exception.database.NotInit</node>
+    <node x="1040.0" y="5695.0">main.Launcher</node>
+    <node x="1992.6678692198802" y="3514.0">model.service.premium.SeasonPremium</node>
+    <node x="4779.834535886546" y="3435.0">model.entity.Tag</node>
+    <node x="2031.0" y="4215.0">controller.CoachInfoController</node>
+    <node x="2894.4845358865464" y="505.0">lombok.Data</node>
+    <node x="1071.0" y="5346.0">controller.LoginController</node>
+    <node x="1057.6053692198802" y="482.0">lombok.AllArgsConstructor</node>
+    <node x="0.0" y="4215.0">controller.VideoShowController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.dao.base.DataItem" target="lombok.Data">
+      <point x="0.0" y="-106.0" />
+      <point x="4276.766666666666" y="1060.0" />
+      <point x="3046.9551241218405" y="1060.0" />
+      <point x="56.470588235294144" y="27.0" />
+    </edge>
+    <edge source="model.dao.base.DataItem" target="lombok.NoArgsConstructor">
+      <point x="65.33333333333348" y="-106.0" />
+      <point x="4342.1" y="1050.0" />
+      <point x="3716.3799904320013" y="1050.0" />
+      <point x="21.545454545454504" y="61.5" />
+    </edge>
+    <edge source="model.entity.StaticVideo" target="lombok.EqualsAndHashCode">
+      <point x="40.599999999999454" y="-255.5" />
+      <point x="3034.434535886546" y="3039.0" />
+      <point x="3290.9872270499104" y="3039.0" />
+      <point x="-42.18181818181802" y="84.5" />
+    </edge>
+    <edge source="model.service.premium.YearPremium" target="model.service.premium.BasePremium">
+      <point x="-65.33333333333303" y="-61.5" />
+      <point x="2493.0012025532137" y="2999.0" />
+      <point x="2441.373590686274" y="2999.0" />
+      <point x="30.5" y="221.0" />
+    </edge>
+    <edge source="model.enumPackage.TagOperateType" target="lombok.AllArgsConstructor">
+      <point x="35.25" y="-71.5" />
+      <point x="350.25" y="1200.0" />
+      <point x="1097.1053692198802" y="1200.0" />
+      <point x="-79.0" y="50.0" />
+    </edge>
+    <edge source="model.entity.LiveLessonTable" target="model.dao.base.DataItem">
+      <point x="101.59999999999991" y="-140.5" />
+      <point x="3575.9345358865467" y="3109.0" />
+      <point x="4220.766666666666" y="3109.0" />
+      <point x="-56.0" y="106.0" />
+    </edge>
+    <edge source="model.entity.ReturnEntity" target="lombok.AllArgsConstructor">
+      <point x="-65.33333333333348" y="-152.0" />
+      <point x="2084.8345358865467" y="1080.0" />
+      <point x="1255.1053692198802" y="1080.0" />
+      <point x="79.0" y="50.0" />
+    </edge>
+    <edge source="model.entity.StaticVideo" target="model.dao.base.StaticResources">
+      <point x="-81.20000000000027" y="-255.5" />
+      <point x="2912.6345358865465" y="2999.0" />
+      <point x="2904.9845358865464" y="2999.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="model.dao.base.DataTable" target="lombok.Setter">
+      <point x="0.0" y="-278.5" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="model.enumPackage.LiveLessonStatus" target="java.lang.Enum">
+      <point x="-44.75" y="-140.5" />
+      <point x="44.75" y="1160.0" />
+      <point x="474.60536921988023" y="1160.0" />
+      <point x="-132.5" y="198.0" />
+    </edge>
+    <edge source="model.exception.database.TableHaveExists" target="model.exception.BaseException">
+      <point x="0.0" y="-14.5" />
+      <point x="4931.334535886546" y="4111.0" />
+      <point x="5127.730733543417" y="4111.0" />
+      <point x="-19.142857142857167" y="14.5" />
+    </edge>
+    <edge source="model.exception.database.RedundancyDataItem" target="model.exception.BaseException">
+      <point x="0.0" y="-14.5" />
+      <point x="5108.834535886546" y="4121.0" />
+      <point x="5146.873590686274" y="4121.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="model.entity.User" target="model.dao.base.DataItem">
+      <point x="84.80000000000041" y="-416.5" />
+      <point x="3306.1345358865474" y="3099.0" />
+      <point x="4192.766666666666" y="3099.0" />
+      <point x="-84.0" y="106.0" />
+    </edge>
+    <edge source="model.entity.Tag" target="lombok.EqualsAndHashCode">
+      <point x="-89.19999999999982" y="-140.5" />
+      <point x="4802.134535886547" y="2859.0" />
+      <point x="3438.623590686274" y="2859.0" />
+      <point x="105.4545454545455" y="84.5" />
+    </edge>
+    <edge source="model.enumPackage.LiveLessonStatus" target="lombok.AllArgsConstructor">
+      <point x="44.75" y="-140.5" />
+      <point x="134.25" y="1190.0" />
+      <point x="1070.7720358865467" y="1190.0" />
+      <point x="-105.33333333333326" y="50.0" />
+    </edge>
+    <edge source="model.entity.StaticVideo" target="lombok.Data">
+      <point x="-40.600000000000364" y="-255.5" />
+      <point x="2953.2345358865464" y="2989.0" />
+      <point x="2990.4845358865464" y="2989.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="model.service.premium.MonthPremium" target="lombok.Data">
+      <point x="-65.33333333333303" y="-61.5" />
+      <point x="2277.0012025532137" y="3129.0" />
+      <point x="2258.6678692198802" y="3129.0" />
+      <point x="2258.6678692198802" y="1140.0" />
+      <point x="2945.3080652983112" y="1140.0" />
+      <point x="-45.176470588235134" y="27.0" />
+    </edge>
+    <edge source="model.exception.database.TableNotExists" target="model.exception.BaseException">
+      <point x="0.0" y="-14.5" />
+      <point x="4598.834535886546" y="4091.0" />
+      <point x="5089.445019257702" y="4091.0" />
+      <point x="-57.428571428571445" y="14.5" />
+    </edge>
+    <edge source="model.entity.Coach" target="lombok.Data">
+      <point x="47.40000000000009" y="-382.0" />
+      <point x="4688.734535886547" y="3139.0" />
+      <point x="4706.934535886547" y="3139.0" />
+      <point x="4706.934535886547" y="1010.0" />
+      <point x="3069.543359415958" y="1010.0" />
+      <point x="79.05882352941171" y="27.0" />
+    </edge>
+    <edge source="model.entity.Account" target="lombok.ToString">
+      <point x="-64.40000000000009" y="-347.5" />
+      <point x="4277.434535886547" y="2899.0" />
+      <point x="3922.173590686274" y="2899.0" />
+      <point x="43.5" y="84.5" />
+    </edge>
+    <edge source="model.exception.database.NotInit" target="model.exception.BaseException">
+      <point x="0.0" y="-14.5" />
+      <point x="5427.334535886546" y="4111.0" />
+      <point x="5185.159304971989" y="4111.0" />
+      <point x="38.28571428571422" y="14.5" />
+    </edge>
+    <edge source="model.entity.Order" target="lombok.ToString">
+      <point x="-50.80000000000018" y="-347.5" />
+      <point x="3983.0345358865466" y="2919.0" />
+      <point x="3893.173590686274" y="2919.0" />
+      <point x="14.5" y="84.5" />
+    </edge>
+    <edge source="model.service.premium.BasePremium" target="lombok.Data">
+      <point x="0.0" y="-221.0" />
+      <point x="2410.873590686274" y="1150.0" />
+      <point x="2956.60218294537" y="1150.0" />
+      <point x="-33.88235294117658" y="27.0" />
+    </edge>
+    <edge source="model.entity.Coach" target="model.dao.base.DataItem">
+      <point x="0.0" y="-382.0" />
+      <point x="4641.334535886546" y="2869.0" />
+      <point x="4332.766666666666" y="2869.0" />
+      <point x="56.0" y="106.0" />
+    </edge>
+    <edge source="model.entity.LiveLessonTable" target="lombok.ToString">
+      <point x="50.80000000000018" y="-140.5" />
+      <point x="3525.134535886547" y="3079.0" />
+      <point x="3835.173590686274" y="3079.0" />
+      <point x="-43.5" y="84.5" />
+    </edge>
+    <edge source="model.dao.base.DataItem" target="lombok.AllArgsConstructor">
+      <point x="-65.33333333333348" y="-106.0" />
+      <point x="4211.4333333333325" y="1070.0" />
+      <point x="1281.4387025532135" y="1070.0" />
+      <point x="105.33333333333326" y="50.0" />
+    </edge>
+    <edge source="model.exception.database.InvalidDataItem" target="model.exception.BaseException">
+      <point x="0.0" y="-14.5" />
+      <point x="5286.334535886546" y="4121.0" />
+      <point x="5166.016447829131" y="4121.0" />
+      <point x="19.14285714285711" y="14.5" />
+    </edge>
+    <edge source="model.exception.BaseException" target="java.lang.RuntimeException">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="model.entity.Video" target="lombok.ToString">
+      <point x="49.59999999999991" y="-244.0" />
+      <point x="3794.9345358865467" y="3089.0" />
+      <point x="3864.173590686274" y="3089.0" />
+      <point x="-14.5" y="84.5" />
+    </edge>
+    <edge source="model.utils.targetPlan.Leg" target="model.utils.targetPlan.BasePlanGenerator">
+      <point x="0.0" y="-14.5" />
+      <point x="1459.8553692198802" y="3139.0" />
+      <point x="1546.875" y="3139.0" />
+      <point x="-91.125" y="784.5" />
+    </edge>
+    <edge source="model.entity.Account" target="lombok.NoArgsConstructor">
+      <point x="128.80000000000018" y="-347.5" />
+      <point x="4470.634535886547" y="3139.0" />
+      <point x="4495.5235906862745" y="3139.0" />
+      <point x="4495.5235906862745" y="1020.0" />
+      <point x="3759.4708995229103" y="1020.0" />
+      <point x="64.63636363636351" y="61.5" />
+    </edge>
+    <edge source="model.service.premium.NoPremium" target="lombok.EqualsAndHashCode">
+      <point x="65.33333333333303" y="-61.5" />
+      <point x="2839.66786921988" y="3029.0" />
+      <point x="3269.896317959001" y="3029.0" />
+      <point x="-63.27272727272748" y="84.5" />
+    </edge>
+    <edge source="model.entity.Video" target="lombok.Data">
+      <point x="-49.59999999999991" y="-244.0" />
+      <point x="3695.734535886547" y="2949.0" />
+      <point x="3639.3242653612233" y="2949.0" />
+      <point x="3639.3242653612233" y="1150.0" />
+      <point x="3024.366888827723" y="1150.0" />
+      <point x="33.88235294117658" y="27.0" />
+    </edge>
+    <edge source="model.entity.Video" target="lombok.NoArgsConstructor">
+      <point x="0.0" y="-244.0" />
+      <point x="3745.3345358865467" y="2939.0" />
+      <point x="3694.8345358865467" y="2939.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="main.Main" target="javafx.application.Application">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="186.5" />
+    </edge>
+    <edge source="model.entity.Account" target="lombok.Data">
+      <point x="64.40000000000009" y="-347.5" />
+      <point x="4406.234535886547" y="3129.0" />
+      <point x="4484.5235906862745" y="3129.0" />
+      <point x="4484.5235906862745" y="1030.0" />
+      <point x="3058.2492417688995" y="1030.0" />
+      <point x="67.76470588235316" y="27.0" />
+    </edge>
+    <edge source="model.enumPackage.TargetType" target="lombok.AllArgsConstructor">
+      <point x="92.5" y="-152.0" />
+      <point x="919.0" y="1220.0" />
+      <point x="1149.7720358865467" y="1220.0" />
+      <point x="-26.333333333333258" y="50.0" />
+    </edge>
+    <edge source="java.lang.Throwable" target="java.io.Serializable">
+      <point x="0.0" y="-428.0" />
+      <point x="32.0" y="14.5" />
+    </edge>
+    <edge source="model.entity.User" target="lombok.Data">
+      <point x="-84.79999999999973" y="-416.5" />
+      <point x="3136.534535886547" y="2999.0" />
+      <point x="3106.2666666666664" y="2999.0" />
+      <point x="3106.2666666666664" y="1170.0" />
+      <point x="3001.7786535336054" y="1170.0" />
+      <point x="11.29411764705901" y="27.0" />
+    </edge>
+    <edge source="model.entity.Order" target="lombok.Data">
+      <point x="0.0" y="-347.5" />
+      <point x="4033.8345358865467" y="3089.0" />
+      <point x="4006.734535886547" y="3089.0" />
+      <point x="4006.734535886547" y="1140.0" />
+      <point x="3035.6610064747815" y="1140.0" />
+      <point x="45.176470588235134" y="27.0" />
+    </edge>
+    <edge source="model.entity.User" target="lombok.NoArgsConstructor">
+      <point x="-42.399999999999864" y="-416.5" />
+      <point x="3178.9345358865467" y="2989.0" />
+      <point x="3117.2666666666664" y="2989.0" />
+      <point x="3117.2666666666664" y="1210.0" />
+      <point x="3651.7436267956377" y="1210.0" />
+      <point x="-43.09090909090901" y="61.5" />
+    </edge>
+    <edge source="model.entity.Coach" target="lombok.EqualsAndHashCode">
+      <point x="-94.80000000000018" y="-382.0" />
+      <point x="4546.534535886547" y="2889.0" />
+      <point x="3417.532681595365" y="2889.0" />
+      <point x="84.36363636363649" y="84.5" />
+    </edge>
+    <edge source="model.entity.Order" target="lombok.NoArgsConstructor">
+      <point x="101.59999999999991" y="-347.5" />
+      <point x="4135.434535886547" y="3139.0" />
+      <point x="4385.266666666666" y="3139.0" />
+      <point x="4385.266666666666" y="1040.0" />
+      <point x="3737.9254449774558" y="1040.0" />
+      <point x="43.09090909090901" y="61.5" />
+    </edge>
+    <edge source="model.entity.Tag" target="lombok.ToString">
+      <point x="-44.59999999999991" y="-140.5" />
+      <point x="4846.734535886547" y="2849.0" />
+      <point x="3980.173590686274" y="2849.0" />
+      <point x="101.5" y="84.5" />
+    </edge>
+    <edge source="model.utils.targetPlan.BasePlanGenerator" target="lombok.Data">
+      <point x="0.0" y="-784.5" />
+      <point x="1638.0" y="1100.0" />
+      <point x="2900.1315947100757" y="1100.0" />
+      <point x="-90.35294117647072" y="27.0" />
+    </edge>
+    <edge source="model.entity.LiveLessonTable" target="lombok.Data">
+      <point x="-101.59999999999991" y="-140.5" />
+      <point x="3372.734535886547" y="2979.0" />
+      <point x="3162.123590686274" y="2979.0" />
+      <point x="3162.123590686274" y="1160.0" />
+      <point x="3013.072771180664" y="1160.0" />
+      <point x="22.588235294117567" y="27.0" />
+    </edge>
+    <edge source="model.utils.targetPlan.FatReduction" target="model.utils.targetPlan.BasePlanGenerator">
+      <point x="0.0" y="-14.5" />
+      <point x="1577.8553692198802" y="3139.0" />
+      <point x="1607.625" y="3139.0" />
+      <point x="-30.375" y="784.5" />
+    </edge>
+    <edge source="java.lang.RuntimeException" target="java.lang.Exception">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="model.service.premium.MonthPremium" target="lombok.EqualsAndHashCode">
+      <point x="65.33333333333303" y="-61.5" />
+      <point x="2407.66786921988" y="3009.0" />
+      <point x="3227.714499777183" y="3009.0" />
+      <point x="-105.4545454545455" y="84.5" />
+    </edge>
+    <edge source="model.entity.LiveLessonTable" target="lombok.EqualsAndHashCode">
+      <point x="-50.80000000000018" y="-140.5" />
+      <point x="3423.5345358865466" y="2969.0" />
+      <point x="3333.1690452317284" y="2969.0" />
+      <point x="0.0" y="84.5" />
+    </edge>
+    <edge source="model.entity.Account" target="lombok.EqualsAndHashCode">
+      <point x="-128.80000000000018" y="-347.5" />
+      <point x="4213.034535886547" y="2909.0" />
+      <point x="3396.441772504456" y="2909.0" />
+      <point x="63.27272727272748" y="84.5" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.constant.Constable">
+      <point x="-106.0" y="-198.0" />
+      <point x="501.10536921988023" y="79.0" />
+      <point x="415.10536921988023" y="79.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="model.entity.LiveLesson" target="lombok.AllArgsConstructor">
+      <point x="-74.66666666666652" y="-347.5" />
+      <point x="1816.8333333333335" y="1090.0" />
+      <point x="1228.772035886547" y="1090.0" />
+      <point x="52.66666666666674" y="50.0" />
+    </edge>
+    <edge source="model.service.premium.NoPremium" target="lombok.Data">
+      <point x="0.0" y="-61.5" />
+      <point x="2774.3345358865467" y="1170.0" />
+      <point x="2979.1904182394874" y="1170.0" />
+      <point x="-11.29411764705901" y="27.0" />
+    </edge>
+    <edge source="model.entity.Video" target="lombok.EqualsAndHashCode">
+      <point x="-99.19999999999982" y="-244.0" />
+      <point x="3646.134535886547" y="2959.0" />
+      <point x="3354.2599543226374" y="2959.0" />
+      <point x="21.09090909090901" y="84.5" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.Comparable">
+      <point x="0.0" y="-198.0" />
+      <point x="607.1053692198802" y="79.0" />
+      <point x="693.1053692198802" y="79.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="model.entity.Tag" target="lombok.Data">
+      <point x="44.59999999999991" y="-140.5" />
+      <point x="4935.934535886547" y="2829.0" />
+      <point x="4869.617341341615" y="2829.0" />
+      <point x="4869.617341341615" y="990.0" />
+      <point x="3080.837477063017" y="990.0" />
+      <point x="90.35294117647072" y="27.0" />
+    </edge>
+    <edge source="model.entity.LiveLessonTable" target="lombok.NoArgsConstructor">
+      <point x="0.0" y="-140.5" />
+      <point x="3474.3345358865467" y="3049.0" />
+      <point x="3512.373590686274" y="3049.0" />
+      <point x="3512.373590686274" y="1220.0" />
+      <point x="3673.2890813410922" y="1220.0" />
+      <point x="-21.545454545454504" y="61.5" />
+    </edge>
+    <edge source="model.entity.User" target="lombok.ToString">
+      <point x="42.40000000000032" y="-416.5" />
+      <point x="3263.734535886547" y="3069.0" />
+      <point x="3806.173590686274" y="3069.0" />
+      <point x="-72.5" y="84.5" />
+    </edge>
+    <edge source="model.entity.ReturnEntity" target="lombok.Data">
+      <point x="0.0" y="-152.0" />
+      <point x="2150.1678692198802" y="1130.0" />
+      <point x="2934.0139476512522" y="1130.0" />
+      <point x="-56.470588235294144" y="27.0" />
+    </edge>
+    <edge source="model.entity.ReturnEntity" target="lombok.NoArgsConstructor">
+      <point x="65.33333333333348" y="-152.0" />
+      <point x="2215.5012025532137" y="1190.0" />
+      <point x="3608.6527177047287" y="1190.0" />
+      <point x="-86.18181818181802" y="61.5" />
+    </edge>
+    <edge source="model.entity.Tag" target="lombok.NoArgsConstructor">
+      <point x="89.19999999999982" y="-140.5" />
+      <point x="4980.534535886547" y="3139.0" />
+      <point x="4963.734535886547" y="3139.0" />
+      <point x="4963.734535886547" y="980.0" />
+      <point x="3802.5618086138197" y="980.0" />
+      <point x="107.72727272727298" y="61.5" />
+    </edge>
+    <edge source="model.service.premium.YearPremium" target="lombok.Data">
+      <point x="0.0" y="-61.5" />
+      <point x="2558.3345358865467" y="2999.0" />
+      <point x="2576.6678692198802" y="2999.0" />
+      <point x="2576.6678692198802" y="1160.0" />
+      <point x="2967.896300592429" y="1160.0" />
+      <point x="-22.588235294117567" y="27.0" />
+    </edge>
+    <edge source="model.service.premium.SeasonPremium" target="lombok.Data">
+      <point x="-49.0" y="-61.5" />
+      <point x="2041.6678692198802" y="1120.0" />
+      <point x="2922.719830004193" y="1120.0" />
+      <point x="-67.76470588235316" y="27.0" />
+    </edge>
+    <edge source="model.entity.StaticVideo" target="lombok.ToString">
+      <point x="81.19999999999936" y="-255.5" />
+      <point x="3075.034535886546" y="3059.0" />
+      <point x="3777.173590686274" y="3059.0" />
+      <point x="-101.5" y="84.5" />
+    </edge>
+    <edge source="model.entity.LiveLesson" target="lombok.NoArgsConstructor">
+      <point x="74.66666666666652" y="-347.5" />
+      <point x="1966.1666666666665" y="1180.0" />
+      <point x="3587.107263159274" y="1180.0" />
+      <point x="-107.72727272727252" y="61.5" />
+    </edge>
+    <edge source="model.entity.LiveLesson" target="lombok.Data">
+      <point x="0.0" y="-347.5" />
+      <point x="1891.5" y="1110.0" />
+      <point x="2911.4257123571347" y="1110.0" />
+      <point x="-79.05882352941171" y="27.0" />
+    </edge>
+    <edge source="model.entity.Order" target="lombok.EqualsAndHashCode">
+      <point x="-101.59999999999991" y="-347.5" />
+      <point x="3932.234535886547" y="2929.0" />
+      <point x="3375.3508634135464" y="2929.0" />
+      <point x="42.18181818181802" y="84.5" />
+    </edge>
+    <edge source="model.entity.Tag" target="model.dao.base.DataItem">
+      <point x="0.0" y="-140.5" />
+      <point x="4891.334535886546" y="2839.0" />
+      <point x="4360.766666666666" y="2839.0" />
+      <point x="84.0" y="106.0" />
+    </edge>
+    <edge source="model.entity.Coach" target="lombok.ToString">
+      <point x="-47.40000000000009" y="-382.0" />
+      <point x="4593.934535886547" y="2879.0" />
+      <point x="3951.173590686274" y="2879.0" />
+      <point x="72.5" y="84.5" />
+    </edge>
+    <edge source="model.entity.Video" target="model.dao.base.DataItem">
+      <point x="99.19999999999982" y="-244.0" />
+      <point x="3844.5345358865466" y="3119.0" />
+      <point x="4248.766666666666" y="3119.0" />
+      <point x="-28.0" y="106.0" />
+    </edge>
+    <edge source="model.utils.targetPlan.Pectoralis" target="model.utils.targetPlan.BasePlanGenerator">
+      <point x="0.0" y="-14.5" />
+      <point x="1718.8553692198802" y="3139.0" />
+      <point x="1668.375" y="3139.0" />
+      <point x="30.375" y="784.5" />
+    </edge>
+    <edge source="model.entity.Order" target="model.dao.base.DataItem">
+      <point x="50.80000000000018" y="-347.5" />
+      <point x="4084.634535886547" y="3129.0" />
+      <point x="4276.766666666666" y="3129.0" />
+      <point x="0.0" y="106.0" />
+    </edge>
+    <edge source="model.entity.Account" target="model.dao.base.DataItem">
+      <point x="0.0" y="-347.5" />
+      <point x="4341.834535886546" y="3129.0" />
+      <point x="4304.766666666666" y="3129.0" />
+      <point x="28.0" y="106.0" />
+    </edge>
+    <edge source="model.service.premium.YearPremium" target="lombok.EqualsAndHashCode">
+      <point x="65.33333333333303" y="-61.5" />
+      <point x="2623.66786921988" y="3019.0" />
+      <point x="3248.805408868092" y="3019.0" />
+      <point x="-84.36363636363649" y="84.5" />
+    </edge>
+    <edge source="java.lang.Exception" target="java.lang.Throwable">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="428.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.io.Serializable">
+      <point x="106.0" y="-198.0" />
+      <point x="713.1053692198802" y="79.0" />
+      <point x="5082.873590686274" y="79.0" />
+      <point x="-32.0" y="14.5" />
+    </edge>
+    <edge source="model.exception.database.InvalidArgument" target="model.exception.BaseException">
+      <point x="0.0" y="-14.5" />
+      <point x="4763.334535886546" y="4101.0" />
+      <point x="5108.587876400559" y="4101.0" />
+      <point x="-38.28571428571428" y="14.5" />
+    </edge>
+    <edge source="common.CommunicationStatus" target="java.lang.Enum">
+      <point x="-54.00000000000023" y="-324.5" />
+      <point x="459.49999999999955" y="1180.0" />
+      <point x="580.6053692198802" y="1180.0" />
+      <point x="-26.5" y="198.0" />
+    </edge>
+    <edge source="model.enumPackage.PremiumType" target="lombok.AllArgsConstructor">
+      <point x="66.5" y="-152.0" />
+      <point x="1430.0" y="1150.0" />
+      <point x="1202.4387025532135" y="1150.0" />
+      <point x="26.333333333333258" y="50.0" />
+    </edge>
+    <edge source="model.utils.targetPlan.AbdominalMuscles" target="model.utils.targetPlan.BasePlanGenerator">
+      <point x="0.0" y="-14.5" />
+      <point x="1895.6678692198802" y="3139.0" />
+      <point x="1729.125" y="3139.0" />
+      <point x="91.125" y="784.5" />
+    </edge>
+    <edge source="model.entity.StaticVideo" target="lombok.NoArgsConstructor">
+      <point x="-4.547473508864641E-13" y="-255.5" />
+      <point x="2993.8345358865463" y="2999.0" />
+      <point x="3001.4845358865464" y="2999.0" />
+      <point x="3001.4845358865464" y="1200.0" />
+      <point x="3630.1981722501832" y="1200.0" />
+      <point x="-64.63636363636351" y="61.5" />
+    </edge>
+    <edge source="common.CommunicationStatus" target="lombok.AllArgsConstructor">
+      <point x="53.99999999999977" y="-324.5" />
+      <point x="567.4999999999995" y="1210.0" />
+      <point x="1123.4387025532137" y="1210.0" />
+      <point x="-52.66666666666674" y="50.0" />
+    </edge>
+    <edge source="model.service.premium.SeasonPremium" target="model.service.premium.BasePremium">
+      <point x="49.0" y="-61.5" />
+      <point x="2139.6678692198802" y="3139.0" />
+      <point x="2319.373590686274" y="3139.0" />
+      <point x="-91.5" y="221.0" />
+    </edge>
+    <edge source="model.enumPackage.OrderStatus" target="lombok.AllArgsConstructor">
+      <point x="44.75" y="-106.0" />
+      <point x="1165.75" y="1220.0" />
+      <point x="1176.1053692198802" y="1220.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="model.service.premium.MonthPremium" target="model.service.premium.BasePremium">
+      <point x="0.0" y="-61.5" />
+      <point x="2342.3345358865467" y="3139.0" />
+      <point x="2380.373590686274" y="3139.0" />
+      <point x="-30.5" y="221.0" />
+    </edge>
+    <edge source="model.enumPackage.TargetType" target="java.lang.Enum">
+      <point x="-92.5" y="-152.0" />
+      <point x="734.0" y="1180.0" />
+      <point x="633.6053692198802" y="1180.0" />
+      <point x="26.5" y="198.0" />
+    </edge>
+    <edge source="model.enumPackage.PremiumType" target="java.lang.Enum">
+      <point x="-66.5" y="-152.0" />
+      <point x="1297.0" y="1160.0" />
+      <point x="739.6053692198802" y="1160.0" />
+      <point x="132.5" y="198.0" />
+    </edge>
+    <edge source="model.enumPackage.TagOperateType" target="java.lang.Enum">
+      <point x="-35.25" y="-71.5" />
+      <point x="279.75" y="1170.0" />
+      <point x="527.6053692198802" y="1170.0" />
+      <point x="-79.5" y="198.0" />
+    </edge>
+    <edge source="model.entity.User" target="lombok.EqualsAndHashCode">
+      <point x="2.2737367544323206E-13" y="-416.5" />
+      <point x="3221.334535886547" y="3049.0" />
+      <point x="3312.0781361408194" y="3049.0" />
+      <point x="-21.09090909090901" y="84.5" />
+    </edge>
+    <edge source="model.exception.database.DataItemNotExists" target="model.exception.BaseException">
+      <point x="0.0" y="-14.5" />
+      <point x="5574.834535886546" y="4101.0" />
+      <point x="5204.3021621148455" y="4101.0" />
+      <point x="57.428571428571445" y="14.5" />
+    </edge>
+    <edge source="model.enumPackage.OrderStatus" target="java.lang.Enum">
+      <point x="-44.75" y="-106.0" />
+      <point x="1076.25" y="1170.0" />
+      <point x="686.6053692198802" y="1170.0" />
+      <point x="79.5" y="198.0" />
+    </edge>
+    <edge source="model.service.premium.NoPremium" target="model.service.premium.BasePremium">
+      <point x="-65.33333333333303" y="-61.5" />
+      <point x="2709.0012025532137" y="2989.0" />
+      <point x="2502.373590686274" y="2989.0" />
+      <point x="91.5" y="221.0" />
+    </edge>
+    <edge source="model.entity.Coach" target="lombok.NoArgsConstructor">
+      <point x="94.80000000000018" y="-382.0" />
+      <point x="4736.134535886547" y="3139.0" />
+      <point x="4717.934535886547" y="3139.0" />
+      <point x="4717.934535886547" y="1000.0" />
+      <point x="3781.0163540683648" y="1000.0" />
+      <point x="86.18181818181802" y="61.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5000000000000001" x="4913.0" y="746.9999999999999" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

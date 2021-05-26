@@ -52,7 +52,7 @@ public class OrderService {
 
     public int payPremiumOrder(String username, Order order) {
         try {
-            if(!this.isOrderExist(order)||order.getType()==OrderStatus.IS_PAYED.getCode()) {
+            if (!this.isOrderExist(order) || order.getType() == OrderStatus.IS_PAYED.getCode()) {
 
                 System.out.println("111");
                 return CommunicationStatus.ORDER_NOT_FOUND.getCode();
@@ -74,7 +74,7 @@ public class OrderService {
 
     public int cancelPremiumOrder(Order order) {
         try {
-            if(!this.isOrderExist(order))
+            if (!this.isOrderExist(order))
                 return CommunicationStatus.ORDER_NOT_FOUND.getCode();
             order.setState(OrderStatus.IS_CANCELED.getCode());
             return this.updateOrder(order);
@@ -91,18 +91,15 @@ public class OrderService {
                 return new ReturnEntity(coachServiceCode, null);
 
             int liveLessonCode = new LiveLessonService().insertLesson(username, liveLesson);
-            if (liveLessonCode != 200){
+            if (liveLessonCode != 200) {
                 new CoachService().updateTimeList(liveLesson.getCoachName(), liveLesson.getLessonTime(), "REMOVE");
                 return new ReturnEntity(liveLessonCode, null);
             }
-
 
             order = (Order) orderDao.saveOrder(order); //get order id;
             int accountServiceCode = new AccountService().addOrderId(username, order.getId());
             if (accountServiceCode != 200)
                 return new ReturnEntity(accountServiceCode, null);
-
-
         } catch (RuntimeException e) {
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
         }
@@ -114,7 +111,7 @@ public class OrderService {
             Optional<Order> sOrderOption = this.getOrderByLiveLessonCreateTime(liveLesson.getCreateTime());
             if (sOrderOption.isEmpty())
                 return CommunicationStatus.ORDER_NOT_FOUND.getCode();
-            Order order=sOrderOption.get();
+            Order order = sOrderOption.get();
             AccountService accountService = new AccountService();
             int accountServiceCode = accountService.updateBalance(username, order.getMoney());
             if (accountServiceCode != 200)
@@ -203,7 +200,7 @@ public class OrderService {
     }
 
     protected Optional<Order> getOrderByLiveLessonCreateTime(Long createTime) {
-        List<Order> sOrder=orderDao.getAllOrder();
+        List<Order> sOrder = orderDao.getAllOrder();
         return sOrder.stream().filter(order -> order.getLiveLessonCreateTime().equals(createTime)).findAny();
     }
 }

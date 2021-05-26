@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <repositories>
     </repositories>
@@ -22,6 +23,7 @@
             <resource>
                 <filtering>true</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${project.basedir}/src/main/resources</targetPath>
                 <includes>
                     <include>**/*.properties</include>
                 </includes>
@@ -29,6 +31,7 @@
             <resource>
                 <filtering>false</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${project.basedir}/src/main/resources</targetPath>
                 <includes>
                     <include>**/*.fxml</include>
                 </includes>
@@ -36,6 +39,7 @@
             <resource>
                 <filtering>false</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${project.basedir}/src/main/resources</targetPath>
                 <includes>
                     <include>**/images/*.*</include>
                 </includes>
@@ -43,6 +47,7 @@
             <resource>
                 <filtering>false</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${project.basedir}/src/main/resources</targetPath>
                 <includes>
                     <include>**/videos/*.*</include>
                 </includes>
@@ -64,6 +69,29 @@
                     <source>11</source>
                     <target>11</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>main.Launcher</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -116,17 +144,17 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.75</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/eu.hansolo/tilesfx -->
-        <dependency>
-            <groupId>eu.hansolo</groupId>
-            <artifactId>tilesfx</artifactId>
-            <version>1.0.7</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.Gleidson28</groupId>
-            <artifactId>GNAvatarView</artifactId>
-            <version>1.0.5</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/eu.hansolo/tilesfx &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>eu.hansolo</groupId>-->
+<!--            <artifactId>tilesfx</artifactId>-->
+<!--            <version>1.0.7</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.Gleidson28</groupId>-->
+<!--            <artifactId>GNAvatarView</artifactId>-->
+<!--            <version>1.0.5</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
