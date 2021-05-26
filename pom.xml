@@ -34,14 +34,14 @@
                     <include>**/*.fxml</include>
                 </includes>
             </resource>
-            <resource>
-                <filtering>false</filtering>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <targetPath>/src/main/resources</targetPath>
-                <includes>
-                    <include>**/*.json</include>
-                </includes>
-            </resource>
+<!--            <resource>-->
+<!--                <filtering>false</filtering>-->
+<!--                <directory>${project.basedir}/src/main/resources</directory>-->
+<!--                <targetPath>/src/main/resources</targetPath>-->
+<!--                <includes>-->
+<!--                    <include>**/*.json</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
             <resource>
                 <filtering>false</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
