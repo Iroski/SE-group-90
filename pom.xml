@@ -144,17 +144,6 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.75</version>
         </dependency>
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/eu.hansolo/tilesfx &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>eu.hansolo</groupId>-->
-<!--            <artifactId>tilesfx</artifactId>-->
-<!--            <version>1.0.7</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.github.Gleidson28</groupId>-->
-<!--            <artifactId>GNAvatarView</artifactId>-->
-<!--            <version>1.0.5</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
