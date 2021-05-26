@@ -64,8 +64,8 @@ return: ReturnEntity(code, List<String>)
 method: finishLesson(String username,LiveLesson liveLesson)
 return: refer update live lesson table
 
-### 8. get live lessons which not start by username
-method: getNotStartPayedLiveLessonByUsername(String username)
+### 8. get live lessons which not start and not canceled by username
+method: getNotStartNotCanceledLiveLessonByUsername(String username)
 return: ReturnEntity(code,LiveLessonTable )
 | return type | meaning |
 |:--:|:--:|

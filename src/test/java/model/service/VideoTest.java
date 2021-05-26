@@ -33,10 +33,10 @@ public class VideoTest {
 //        System.out.println(new VideoService().getRandomVideosWithNum(2));
 //        System.out.println(new VideoService().getRandomVideosWithNum(3));
 //    }
-    @Test
-    public void test03BlurSearch() {
-        System.out.println("-----------3");
-        System.out.println(new VideoService().blurSearchByName("qaq"));
-        System.out.println(new VideoService().blurSearchByName("cam"));
-    }
+//    @Test
+//    public void test03BlurSearch() {
+//        System.out.println("-----------3");
+//        System.out.println(new VideoService().blurSearchByName("qaq"));
+//        System.out.println(new VideoService().blurSearchByName("cam"));
+//    }
 }

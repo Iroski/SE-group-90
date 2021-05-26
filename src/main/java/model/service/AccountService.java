@@ -27,13 +27,31 @@ public class AccountService {
         accountDao = new AccountDao();
     }
 
-    public void createAccountForSignUp(String username) {
+    /**
+     * create by: YanBo Zhang
+     * description: Automatically create a account for the new user.
+     * only should be used when call the "saveUser" method in UserService
+     * create time: 2021/4/13 20:46
+     *
+     * @return void
+     * @Param: username
+     */
+    protected void createAccountForSignUp(String username) {
         Optional<Account> sAccount = accountDao.getAllAccount().stream().filter(account -> account.getUsername().equals(username)).findAny();
         if (sAccount.isPresent())
             return;
         accountDao.saveAccount(new Account(username, new BigDecimal("0.0"), new ArrayList<>(), 0, 0, System.currentTimeMillis() / 1000, (long) 0));
     }
 
+    /**
+     * create by: YanBo Zhang
+     * description: test method
+     * Automatically create a account for the users whose account was delete in last test.
+     * create time: 2021/4/13 20:46
+     *
+     * @return void
+     * @Param: void
+     */
     public void createAccountForDeletedInfo() {
         UserService userService = new UserService();
         List<String> usernameList = userService.getAllUsers().stream().map(User::getName).collect(Collectors.toList());
@@ -55,7 +73,14 @@ public class AccountService {
         return CommunicationStatus.OK.getCode();
     }
 
-
+    /**
+     * create by: YanBo Zhang
+     * description: for both "save" and "withdraw"
+     * create time: 2021/5/26 17:26
+     * @Param: username
+     * @Param: orderMoney
+     * @return int
+     */
     public int updateBalance(String username, BigDecimal orderMoney) {
         try {
             Optional<Account> sAccountOption = this.getAccountByUsername(username);
@@ -85,7 +110,6 @@ public class AccountService {
             if (sAccountOption.isEmpty())
                 return new ReturnEntity(CommunicationStatus.ACCOUNT_NOT_FOUND.getCode(), null);
 
-            //check if still be premium when login
             Account sAccount = sAccountOption.get();
 
             int updateCode;
