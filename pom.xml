@@ -23,7 +23,6 @@
             <resource>
                 <filtering>true</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <targetPath>${project.basedir}/src/main/resources</targetPath>
                 <includes>
                     <include>**/*.properties</include>
                 </includes>
@@ -31,7 +30,6 @@
             <resource>
                 <filtering>false</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <targetPath>${project.basedir}/src/main/resources</targetPath>
                 <includes>
                     <include>**/*.fxml</include>
                 </includes>
@@ -39,7 +37,14 @@
             <resource>
                 <filtering>false</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <targetPath>${project.basedir}/src/main/resources</targetPath>
+                <targetPath>/src/main/resources</targetPath>
+                <includes>
+                    <include>**/*.json</include>
+                </includes>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>${project.basedir}/src/main/resources</directory>
                 <includes>
                     <include>**/images/*.*</include>
                 </includes>
@@ -47,7 +52,6 @@
             <resource>
                 <filtering>false</filtering>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <targetPath>${project.basedir}/src/main/resources</targetPath>
                 <includes>
                     <include>**/videos/*.*</include>
                 </includes>
@@ -65,10 +69,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
