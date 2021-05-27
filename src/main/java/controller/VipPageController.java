@@ -1,10 +1,7 @@
 package controller;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -41,6 +38,10 @@ public class VipPageController {
     public Label userName;
     public Label vipInf;
     public Circle userImage;
+    public Label monthlyPrice;
+    public Label quarterlyPrice;
+    public Label annualPrice;
+    public Button backButton;
     UserService userService;
     private AnchorPane chosenPane;
     private double monthlyPay = 30;
@@ -52,9 +53,12 @@ public class VipPageController {
     public void init(){
         String name = LoginController.userName;
         userName.setText(name);
-        this.userService=new UserService();
+        this.userService = new UserService();
         User user = (User) userService.getUser(name).getObject();
         userImage.setFill(new ImagePattern(new Image(user.getProfilePhotoPath())));
+        monthlyPrice.setText(String.valueOf(monthlyPay));
+        quarterlyPrice.setText(String.valueOf(quarterlyPay));
+        annualPrice.setText(String.valueOf(annuallyPay));
         AccountService accountService=new AccountService();
         ReturnEntity returnEntity=accountService.getAccount(name);
         Account account=null;
@@ -211,13 +215,15 @@ public class VipPageController {
             }
             String userName=LoginController.userName;
             AccountService accountService=new AccountService();
-            accountService.updateBalance(userName, BigDecimal.valueOf(pay));
+            //accountService.updateBalance(userName, BigDecimal.valueOf(pay));
             OrderService orderService=new OrderService();
 
             Order order=new Order(userName,0,(long)0,type,1,BigDecimal.valueOf(pay),0, DateUtils.dateToTimeStamp(new Date()));
             orderService.createPremiumOrder(userName,order);
             orderService.payPremiumOrder(userName,order);
             showSuccess();
+            BasePageController basePageController = (BasePageController) vipInf.getUserData();
+            basePageController.init();
             showVip();
         }
     }
@@ -241,6 +247,7 @@ public class VipPageController {
     public void showVip() throws IOException {
         Stage stage = (Stage) vipInf.getScene().getWindow();
         stage.setTitle("VIP");
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/VipPage.fxml"));
         AnchorPane account = loader.load();
@@ -251,5 +258,20 @@ public class VipPageController {
         anchorPane.getChildren().add(2, account);
         account.setLayoutX(200);
         account.setLayoutY(75);
+    }
+
+    public void goToHome() throws IOException {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.setTitle("Home");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/fxml/MainPage.fxml"));
+        AnchorPane home = (AnchorPane) loader.load();
+        // Set person overview into the center of root layout.
+        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+        anchorPane.getChildren().remove(2);
+        anchorPane.getChildren().add(2, home);
+
+        home.setLayoutX(200);
+        home.setLayoutY(75);
     }
 }

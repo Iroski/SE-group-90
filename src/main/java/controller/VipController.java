@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +28,7 @@ public class VipController {
     public Label userName;
     public Label vipTime;
     public Circle userImage;
+    public Button closeButton;
 
     UserService userService = new UserService();
 
@@ -85,6 +87,7 @@ public class VipController {
         loader.setLocation(getClass().getResource("/view/fxml/VipPage.fxml"));
         AnchorPane account = loader.load();
         VipPageController controller=loader.getController();
+        controller.vipInf.setUserData(this.vipCard.getUserData());
         controller.init();
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().remove(2);

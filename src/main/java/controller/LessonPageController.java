@@ -138,7 +138,13 @@ public class LessonPageController {
                                 AccountService accountService = new AccountService();
                                 if (result.get() == ButtonType.OK){
                                     int code = orderService.payLiveLessonOrder(userName, l, new AtomicBoolean((int)accountService.getFreeLessonNumByUsername(userName).getObject() > 0));
-                                    if(code == 5001){
+                                    if(code == 200){
+                                        alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.titleProperty().set("Successful");
+                                        alert.headerTextProperty().set("You have paid for the lesson successfully!");
+                                        alert.show();
+                                    }
+                                    else if(code == 5001){
                                         alert = new Alert(Alert.AlertType.INFORMATION);
                                         alert.titleProperty().set("Fail");
                                         alert.headerTextProperty().set("You don not have enough money, top up please!");

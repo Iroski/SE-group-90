@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import main.Main;
 import model.entity.*;
 import model.enumPackage.TargetType;
@@ -43,6 +44,8 @@ public class BookingPageController {
     public VBox lessonTime;
     public CheckBox customization;
     public ChoiceBox<String> targets;
+    public TextField otherInput;
+    public Tooltip customizationTip;
 
 
     LinkedList<LocalDate> day_list;
@@ -80,6 +83,10 @@ public class BookingPageController {
         time_box_list.add(thirdLesson);
         time_box_list.add(fourthLesson);
         time_box_list.add(fifthLesson);
+
+        for(TargetType type : TargetType.values()){
+            targets.getItems().add(type.getDescription());
+        }
     }
 
     public void init(){
@@ -155,9 +162,6 @@ public class BookingPageController {
         }
 
         targets.setVisible(false);
-        for(TargetType type : TargetType.values()){
-            targets.getItems().add(type.getDescription());
-        }
         customization.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
@@ -169,18 +173,37 @@ public class BookingPageController {
                 else{
                     targets.setVisible(false);
                     isCustomized = false;
-                    target = "";
                 }
             }
         });
+        customization.setSelected(false);
+        customization.setTooltip(customizationTip);
+        customizationTip.setShowDelay(new Duration(1));
+        customizationTip.setText("If you choose it, you will\nbe able to set your target.");
+
+        for(int i = 0; i < 5; ++i){
+            setCheckBox(reserved[0]);
+        }
 
         targets.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) { // old new
-                target = targets.getSelectionModel().getSelectedItem();
+                target = targets.getItems().get((Integer) t1);
+                if(target == "Other"){
+                    otherInput.setVisible(true);
+                }else{
+                    otherInput.setVisible(false);
+                }
             }
         });
         targets.getSelectionModel().selectFirst();
+
+        otherInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                target = otherInput.getText();
+            }
+        });
     }
 
     public void setCheckBox(boolean[] reserved){
@@ -188,6 +211,7 @@ public class BookingPageController {
             HBox box = (HBox) lessonTime.getChildren().get(i);
             Label label = (Label) box.getChildren().get(0);
             CheckBox c_box = (CheckBox) box.getChildren().get(1);
+            c_box.setSelected(false);
             if(reserved[i]){
                 label.setTextFill(Color.GRAY);
                 c_box.setVisible(false);  // has been reserved. can not be booked
@@ -226,6 +250,14 @@ public class BookingPageController {
             alert.show();
             return;
         }
+        String targetInput = otherInput.textProperty().getValue();
+        if(targets.getSelectionModel().getSelectedItem() == "Other" && (targetInput.equals("") || targetInput == null)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.titleProperty().set("Lesson customization is not chose");
+            alert.headerTextProperty().set("You have not chose the customization\nPlease choose before you click 'OK'");
+            alert.show();
+            return;
+        }
         Stage stage = new Stage();
         stage.setTitle("Confirmation");
         FXMLLoader loader = new FXMLLoader();
@@ -244,17 +276,16 @@ public class BookingPageController {
                 createOrder(coach, user, lessonTime);
                 this.init();
             }
-
         }
     }
 
     public void createOrder(Coach coach, User user, Long lessonTime) throws IOException {
         OrderService orderService = new OrderService();
         Long createTime = DateUtils.dateToTimeStamp(new Date());
-        LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, isCustomized,target,"", createTime);
+        LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, isCustomized, target,"", createTime);
         int premiumType = getPremiumType(user);
-        BigDecimal money = BigDecimal.valueOf(lessonPrice);  // 暂时定价为30一节课
-        Order order = new Order(user.getName(), 1, createTime, premiumType, null, money, 0, createTime);
+        BigDecimal money = BigDecimal.valueOf(lessonPrice);
+        Order order = new Order(user.getName(), 1, createTime, premiumType, 0, money, 0, createTime);
         ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);
 
         switch (returnEntity.getCode()){
@@ -310,8 +341,7 @@ public class BookingPageController {
         }
 
         AtomicBoolean paid;
-        paid = showIfPay(); // show and return
-
+        paid = showIfPay(isFreeByPremium.get()); // show and return
         OrderService orderService = new OrderService();
         if(paid.get()){
             int code = orderService.payLiveLessonOrder(user.getName(), liveLesson, isFreeByPremium);
@@ -374,15 +404,19 @@ public class BookingPageController {
         return res;
     }
 
-    public AtomicBoolean showIfPay() throws IOException {
+    public AtomicBoolean showIfPay(boolean isFree) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrder.fxml"));
+        loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrderPage.fxml"));
         AnchorPane page = loader.load();
         Stage payOrder = new Stage();
         payOrder.setTitle("Pay For the Order");
         Scene scene = new Scene(page);
         payOrder.setScene(scene);
         PayForOrderController controller = loader.getController();
+        //System.out.println(isFree);
+        if(isFree){
+            controller.setLabel();
+        }
         payOrder.showAndWait();
         return controller.getIfPay();
     }
