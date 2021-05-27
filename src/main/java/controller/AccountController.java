@@ -36,7 +36,7 @@ public class AccountController {
     AccountService accountService = new AccountService();
     @FXML
     public void initialize() {
-        topup.setStyle("-fx-border-color: #87ff34 ; -fx-background-color: #87ff34 ; -fx-border-radius: 5px ");
+        topup.setStyle("-fx-border-color: #000000 ; -fx-background-color: #000000 ; -fx-border-radius: 5px ");
         Account account;
         ReturnEntity returnEntity = accountService.getAccount(LoginController.userName);
         account = (Account) returnEntity.getObject();
