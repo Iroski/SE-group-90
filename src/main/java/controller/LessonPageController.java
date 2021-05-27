@@ -195,11 +195,23 @@ public class LessonPageController {
                                     return;
                                 }
                                 button.setOnMouseClicked((col) -> {
-                                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                                    alert.titleProperty().set("");
-                                    alert.setHeaderText(exercise);
-                                    alert.setGraphic(null);
-                                    alert.show();
+                                    Stage stage = (Stage) lessonsPane.getScene().getWindow();
+                                    FXMLLoader loader = new FXMLLoader();
+                                    loader.setLocation(getClass().getResource("/view/fxml/TargetDescriptionPage.fxml"));
+                                    AnchorPane desc = null;
+                                    try {
+                                        desc = (AnchorPane) loader.load();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    TargetDescriptionPageController targetDescriptionPageController = loader.getController();
+                                    targetDescriptionPageController.setText(exercise);
+                                    AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+                                    anchorPane.getChildren().add(desc);
+                                    desc.setLayoutY(100);
+                                    desc.setLayoutX(650);
+
+                                    desc.setVisible(true);
                                 });
                             }catch (Exception e){}
 

@@ -53,8 +53,13 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="922.0" layoutY="6.0" AnchorPane.rightAnchor="0.0">
+            <HBox alignment="CENTER" layoutX="1030.0" layoutY="17.0" AnchorPane.rightAnchor="44.0">
                <children>
+                  <Separator orientation="VERTICAL">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Separator>
                   <Button fx:id="b_log_out" blendMode="SRC_ATOP" layoutX="835.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToLogin" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Logout" AnchorPane.rightAnchor="278.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -65,32 +70,6 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
-                  </Button>
-                  <Separator orientation="VERTICAL">
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </Separator>
-                  <Button layoutX="947.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: white;" text="—">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button layoutX="1029.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: white;" text="□">
-                     <font>
-                        <Font size="29.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
-                  <Button layoutX="1106.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: white;" text="×">
-                     <font>
-                        <Font name="Corbel Light" size="34.0" />
-                     </font>
                   </Button>
                </children>
             </HBox>
@@ -106,6 +85,9 @@
                <font>
                   <Font size="21.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label fx:id="vipLabel" layoutX="817.0" layoutY="25.0" onMouseEntered="#showVip" prefHeight="34.0" prefWidth="44.0" text="VIP" textFill="#c9c0c0f5" AnchorPane.leftAnchor="817.0" AnchorPane.topAnchor="25.0">
                <font>

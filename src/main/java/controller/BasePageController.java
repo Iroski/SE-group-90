@@ -107,7 +107,6 @@ public class BasePageController {
     }
 
     public void showVip(MouseEvent event) throws IOException{
-        //this.init();
         Label l = (Label) event.getSource();
         if(l.equals(vipLabel) && checkPremium.get()){ // is premium
             Stage stage = (Stage) b_home.getScene().getWindow();
