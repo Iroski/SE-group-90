@@ -95,7 +95,6 @@ public class VideoPageController {
                 MainPageController.path = value.getStaticVideo().getFilePath();
                 Long id = value.getId();
                 service.setHistoryByName(LoginController.userName,id);
-                //System.out.println(id);
                 break;
             }
         }
@@ -104,7 +103,6 @@ public class VideoPageController {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
         AnchorPane video = (AnchorPane) loader.load();
-        // Set person overview into the center of root layout.
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().remove(2);
         anchorPane.getChildren().add(2, video);
@@ -119,8 +117,6 @@ public class VideoPageController {
         flowPane.getChildren().clear();
         int counter = 0;
         List<String> tagName;
-//        Stage stage = (Stage) all.getScene().getWindow();
-//        stage.setTitle(tag);
         for (Video value : list) {
             if(value.getTagsName()!=null) {
                 tagName = value.getTagsName();
@@ -149,8 +145,6 @@ public class VideoPageController {
     }
 
     public void showAllVideos() {
-//        Stage stage = (Stage) all.getScene().getWindow();
-//        stage.setTitle("Videos");
         MainPageController.previousPage = "Videos";
         flowPane.getChildren().clear();
         for(int i=0; i<list.size(); i++){

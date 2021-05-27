@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
     <children>
       <Button fx:id="test" layoutX="473.0" layoutY="634.0" mnemonicParsing="false" text="Button" />
-      <Label text="Recommended Videos" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0">
+      <Label text="Recommended Videos" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
          <font>
             <Font size="41.0" />
          </font>
