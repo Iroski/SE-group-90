@@ -4,10 +4,10 @@ __important__ : If your jdk version is 16, you can only run the program with met
 ### 1. Run with maven 3 (__recommend__)
 - Ensure you have a maven with version 3.x.x . You can check it by typing "mvn -version" to command line.
 If you donot have maven, you can try to install with:https://www.baeldung.com/install-maven-on-windows-linux-mac
-- Open a terminal and use cd command to switch to the project folder.
+- Open a terminal and use cd command to switch in the project folder.
 - type command "mvn clean javafx:run" then press enter to start the program. (hint: it may take few seconds to start the program as it will download jars from maven repository)
 ### 2. Run with javac (__Windows only__)
-- Open a terminal and switch to the project folder.
+- Open a terminal and switch in the project folder.
 - type command "startup.bat" then press enter to start the program.
 ### 3. Run with idea
 - Open the idea from the terminal by type "idea" and press enter.
