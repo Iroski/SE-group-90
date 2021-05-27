@@ -188,43 +188,44 @@ public class VipPageController {
      * willing to pay.
      * @throws: IOException
      */
-    public void showConfirmationPage (Double pay) throws IOException {
-        String text="";
-        if (pay.equals(monthlyPay)) {
-            text = new String("Are you sure to buy the monthly vip?");
-        }
-        else if (pay.equals(quarterlyPay)){
-            text = new String("Are you sure to buy the quarterly vip?");
-        }
-        else {
-            text = new String("Are you sure to buy the yearly vip?");
-        }
-        ButtonType yes=new ButtonType("Yes",ButtonBar.ButtonData.YES);
-        ButtonType no=new ButtonType("No",ButtonBar.ButtonData.NO);
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"",yes,no);
-        alert.setTitle("confirmation");
-        alert.setHeaderText(text);
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == yes) {
-            int type=1;
-            if (pay.equals(quarterlyPay)) {
-                type=2;
+    public void showConfirmationPage (Double pay)  {
+        try {
+            String text = "";
+            if (pay.equals(monthlyPay)) {
+                text = new String("Are you sure to buy the monthly vip?");
+            } else if (pay.equals(quarterlyPay)) {
+                text = new String("Are you sure to buy the quarterly vip?");
+            } else {
+                text = new String("Are you sure to buy the yearly vip?");
             }
-            else if (pay.equals(annuallyPay)) {
-                type=3;
-            }
-            String userName=LoginController.userName;
-            AccountService accountService=new AccountService();
-            //accountService.updateBalance(userName, BigDecimal.valueOf(pay));
-            OrderService orderService=new OrderService();
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yes, no);
+            alert.setTitle("confirmation");
+            alert.setHeaderText(text);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == yes) {
+                int type = 1;
+                if (pay.equals(quarterlyPay)) {
+                    type = 2;
+                } else if (pay.equals(annuallyPay)) {
+                    type = 3;
+                }
+                String userName = LoginController.userName;
+                AccountService accountService = new AccountService();
+                //accountService.updateBalance(userName, BigDecimal.valueOf(pay));
+                OrderService orderService = new OrderService();
 
-            Order order=new Order(userName,0,(long)0,type,1,BigDecimal.valueOf(pay),0, DateUtils.dateToTimeStamp(new Date()));
-            orderService.createPremiumOrder(userName,order);
-            orderService.payPremiumOrder(userName,order);
-            showSuccess();
-            BasePageController basePageController = (BasePageController) vipInf.getUserData();
-            basePageController.init();
-            showVip();
+                Order order = new Order(userName, 0, (long) 0, type, 1, BigDecimal.valueOf(pay), 0, DateUtils.dateToTimeStamp(new Date()));
+                orderService.createPremiumOrder(userName, order);
+                orderService.payPremiumOrder(userName, order);
+                showSuccess();
+                BasePageController basePageController = (BasePageController) vipInf.getUserData();
+                basePageController.init();
+                showVip();
+            }
+        } catch(Exception ignored) {
+
         }
     }
 

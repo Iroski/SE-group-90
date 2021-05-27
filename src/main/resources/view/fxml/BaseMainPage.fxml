@@ -16,11 +16,6 @@
    <children>
       <AnchorPane id="top_direct" fx:id="pane" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="35.0" prefHeight="75.0" prefWidth="100.0" text="FIT" textFill="#030303" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font name="Jokerman" size="44.0" />
-               </font>
-            </Label>
             <HBox alignment="CENTER" layoutX="232.0" layoutY="13.0" prefHeight="42.0" prefWidth="421.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="18.0">
                <children>
                   <Button fx:id="favorite" blendMode="SRC_ATOP" layoutX="444.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToFavorite" onMouseEntered="#buttonColorChange1" onMouseExited="#buttonColorChange1" style="-fx-background-color: white;" text="Favorite">
@@ -99,6 +94,7 @@
                   <Font name="Berlin Sans FB" size="26.0" />
                </font>
             </Label>
+            <ImageView fx:id="FIT" fitHeight="50.0" fitWidth="100.0" layoutX="41.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
          </children></AnchorPane>
       <AnchorPane id="left_direct" layoutX="74.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
