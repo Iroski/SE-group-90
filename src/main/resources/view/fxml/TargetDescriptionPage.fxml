@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="descPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: grey; -fx-background-radius: 15px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TargetDescriptionPageController">
+   <children>
+      <Separator layoutX="9.0" layoutY="66.0" prefHeight="8.0" prefWidth="433.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" />
+      <AnchorPane layoutY="80.0" prefHeight="442.0" prefWidth="450.0" AnchorPane.bottomAnchor="78.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <TextArea fx:id="textArea" editable="false" layoutX="33.0" prefHeight="442.0" prefWidth="405.0" style="-fx-border-color: white;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="0.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextArea>
+         </children>
+      </AnchorPane>
+      <Label layoutX="26.0" layoutY="30.0" text="Here is your exercise description">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="okButton" layoutX="344.0" layoutY="545.0" mnemonicParsing="false" onMouseClicked="#closeWindow" prefHeight="37.0" prefWidth="80.0" style="-fx-background-color: black; -fx-background-radius: 10px;" text="OK" textFill="WHITE" AnchorPane.bottomAnchor="18.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

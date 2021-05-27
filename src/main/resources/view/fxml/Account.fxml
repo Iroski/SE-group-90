@@ -19,6 +19,9 @@
          <font>
             <Font size="33.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Label fx:id="balance" layoutX="218.0" layoutY="59.0" prefHeight="66.0" prefWidth="478.0" textFill="#ff1c1c">
          <font>
@@ -43,41 +46,65 @@
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <Label fx:id="l7" alignment="CENTER" layoutX="528.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￥8848" textFill="#ffb64a">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <Label fx:id="l6" alignment="CENTER" layoutX="288.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￥998" textFill="#ffb64a">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <Label fx:id="l5" alignment="CENTER" layoutX="52.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￥648" textFill="#ffb64a">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <Label fx:id="l4" alignment="CENTER" layoutX="775.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￥233" textFill="#ffb64a">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <Label fx:id="l3" alignment="CENTER" layoutX="528.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￥68" textFill="#ffb64a">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <Label fx:id="l2" alignment="CENTER" layoutX="288.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￥18" textFill="#ffb64a">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <Label fx:id="l1" alignment="CENTER" layoutX="52.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￥6" textFill="#ffb64a">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
    </children>
 </AnchorPane>

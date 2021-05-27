@@ -90,6 +90,9 @@
                <font>
                   <Font size="21.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label fx:id="vipLabel" layoutX="817.0" layoutY="25.0" onMouseEntered="#showVip" prefHeight="34.0" prefWidth="44.0" text="VIP" textFill="#c9c0c0f5" AnchorPane.leftAnchor="817.0" AnchorPane.topAnchor="25.0">
                <font>

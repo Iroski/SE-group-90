@@ -294,7 +294,8 @@ public class BookingPageController {
                 payForLessonOrder(user, order, liveLesson);
                 break;
             case 400: // bad input time
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"",confirm);
                 alert.titleProperty().set("Failure");
                 alert.headerTextProperty().set("You have already booked a live lesson at this time");
                 alert.show();
@@ -347,7 +348,8 @@ public class BookingPageController {
             int code = orderService.payLiveLessonOrder(user.getName(), liveLesson, isFreeByPremium);
             switch (code){
                 case 200: // successful
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION,"",confirm);
                     alert.titleProperty().set("Success");
                     alert.headerTextProperty().set("You have booked the lesson successfully");
                     alert.show();
@@ -359,7 +361,7 @@ public class BookingPageController {
                     System.out.println("pay error 4047");
                     break;
                 case 5001: // not enough balance
-                    ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                    confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
                     alert = new Alert(Alert.AlertType.INFORMATION,"",confirm);
                     alert.titleProperty().set("Fail");
                     alert.headerTextProperty().set("You don not have enough money, top up please!");
