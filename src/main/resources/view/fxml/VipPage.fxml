@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -61,6 +62,11 @@
                         </Label>
                      </children>
                   </HBox>
+                  <Label fx:id="firstMonth" layoutX="42.0" layoutY="145.0" prefHeight="52.0" prefWidth="143.0" text="First time only 9.9!" textAlignment="CENTER" textFill="#ffb64a" wrapText="true">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />

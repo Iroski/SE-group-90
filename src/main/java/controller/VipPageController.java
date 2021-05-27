@@ -21,6 +21,7 @@ import model.utils.DateUtils;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
@@ -42,8 +43,10 @@ public class VipPageController {
     public Label quarterlyPrice;
     public Label annualPrice;
     public Button backButton;
+    public Label firstMonth;
     UserService userService;
     private AnchorPane chosenPane;
+    private boolean isFirst;
     private double monthlyPay = 30;
     private double quarterlyPay = 75;
     private double annuallyPay = 250;
@@ -77,6 +80,23 @@ public class VipPageController {
         else if (account.getPremiumLevel()==3) {
             vipInf.setText("You are annually VIP");
         }
+        OrderService orderService=new OrderService();
+        ReturnEntity returnEntity1=orderService.getOrdersByName(name);
+        if (returnEntity1.getCode()==200) {
+            ArrayList<Order> orders= (ArrayList<Order>) returnEntity1.getObject();
+            isFirst= (orders.size()==0);
+            System.out.println(isFirst);
+            if (isFirst) {
+                monthlyPay=9.9;
+                firstMonth.setVisible(true);
+            }
+            else {
+                monthlyPay=30;
+                firstMonth.setVisible(false);
+            }
+            monthlyPrice.setText(String.valueOf(monthlyPay));
+        }
+
     }
 
     /**
