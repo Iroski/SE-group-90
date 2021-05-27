@@ -85,11 +85,13 @@ public class LessonPageController {
                             button1.setStyle("-fx-background-color: #00bcff;-fx-text-fill: #ffffff;");
                             button1.setOnMouseClicked((col) -> {
                                 LiveLesson l = lessonData.get(getIndex());
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+                                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yes, no);
                                 alert.titleProperty().set("Confirm to cancel");
                                 alert.setHeaderText("Are you sure you want to cancel the lesson now?");
                                 Optional<ButtonType> result = alert.showAndWait();
-                                if (result.get() == ButtonType.OK){
+                                if (result.get() == yes){
                                     int status = l.getStatus();
                                     OrderService orderService = new OrderService();
                                     int code;
@@ -130,16 +132,19 @@ public class LessonPageController {
 
                             button3.setOnMouseClicked((col) -> {
                                 LiveLesson l = lessonData.get(getIndex());
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+                                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yes, no);
                                 alert.titleProperty().set("Confirm to pay");
                                 alert.setHeaderText("Are you sure you want to pay now?");
                                 Optional<ButtonType> result = alert.showAndWait();
                                 OrderService orderService = new OrderService();
                                 AccountService accountService = new AccountService();
-                                if (result.get() == ButtonType.OK){
+                                if (result.get() == yes){
                                     int code = orderService.payLiveLessonOrder(userName, l, new AtomicBoolean((int)accountService.getFreeLessonNumByUsername(userName).getObject() > 0));
                                     if(code == 200){
-                                        alert = new Alert(Alert.AlertType.INFORMATION);
+                                        ButtonType confirm=new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                                        alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);
                                         alert.titleProperty().set("Successful");
                                         alert.headerTextProperty().set("You have paid for the lesson successfully!");
                                         alert.show();
