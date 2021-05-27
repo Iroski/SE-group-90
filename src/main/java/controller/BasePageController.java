@@ -36,7 +36,7 @@ public class BasePageController {
     public Button b_lesson;
     public Button userName;
     public AnchorPane pane;
-
+    public ImageView FIT;
     public AtomicBoolean checkPremium;
     public Button b_home;
 
@@ -86,6 +86,7 @@ public class BasePageController {
         else if(returnEntity.getCode() == 5000){
             // database error
         }
+        FIT.setImage(new Image("/view/images/FIT.png"));
     }
 
     public void showHistory(MouseEvent me) throws IOException{
