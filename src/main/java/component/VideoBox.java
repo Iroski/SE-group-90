@@ -8,6 +8,8 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import model.entity.Video;
 
@@ -28,15 +30,10 @@ public class VideoBox extends VBox {
         imageView.setPreserveRatio(true);
         this.getChildren().add(imageView);
         this.getChildren().add(label);
-        this.setStyle("-fx-border-color: #04b9f9 ; -fx-background-color: #04b9f9 ; -fx-border-radius: 5px ");
-        this.setStyle("-fx-border-color: #98e6ff ; -fx-background-color: #04b9f9 ; -fx-border-radius: 5px ");
+        this.setStyle("-fx-border-color: #000000 ; -fx-background-color: #000000 ; -fx-border-radius: 5px ");
         this.setAlignment(Pos.CENTER);
     }
     public void setWidth(int width){
         imageView.setFitWidth(width);
-    }
-
-    public void setHeight(int height){
-        imageView.setFitHeight(height);
     }
 }

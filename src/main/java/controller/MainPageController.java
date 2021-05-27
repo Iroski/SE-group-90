@@ -84,7 +84,6 @@ public class MainPageController {
                 MainPageController.path = value.getStaticVideo().getFilePath();
                 Long id = value.getId();
                 service.setHistoryByName(LoginController.userName,id);
-                //System.out.println(id);
                 break;
             }
         }

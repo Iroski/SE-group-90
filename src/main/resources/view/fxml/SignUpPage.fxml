@@ -83,7 +83,7 @@
                   <Font name="System Italic" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" text="*Passward:">
+            <Label prefHeight="30.0" text="*Password:">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
