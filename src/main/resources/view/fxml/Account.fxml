@@ -15,7 +15,7 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <Button fx:id="topup" layoutX="331.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#TopUp" prefHeight="71.0" prefWidth="339.0" text="Top up now!" textFill="WHITE">
+      <Button fx:id="topup" layoutX="369.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#TopUp" prefHeight="71.0" prefWidth="261.0" text="Top up now!" textFill="WHITE">
          <font>
             <Font size="33.0" />
          </font>
