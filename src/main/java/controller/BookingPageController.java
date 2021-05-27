@@ -359,7 +359,8 @@ public class BookingPageController {
                     System.out.println("pay error 4047");
                     break;
                 case 5001: // not enough balance
-                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                    alert = new Alert(Alert.AlertType.INFORMATION,"",confirm);
                     alert.titleProperty().set("Fail");
                     alert.headerTextProperty().set("You don not have enough money, top up please!");
                     alert.show();
@@ -374,7 +375,8 @@ public class BookingPageController {
             }
         }
         else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+            Alert alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);
             alert.titleProperty().set("Success");
             alert.headerTextProperty().set("You have booked the lesson successfully\nPlease pay for it before your lesson begin!");
             alert.show();

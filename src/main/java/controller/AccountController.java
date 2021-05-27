@@ -40,7 +40,7 @@ public class AccountController {
         Account account;
         ReturnEntity returnEntity = accountService.getAccount(LoginController.userName);
         account = (Account) returnEntity.getObject();
-        showBalance = "$"+account.getBalance().toString();
+        showBalance = "￥"+account.getBalance().toString();
         balance.setText(showBalance);
         resetSelected();
     }
@@ -72,7 +72,7 @@ public class AccountController {
         resetSelected();
         Label label = (Label) mouseEvent.getSource();
         label.setStyle("-fx-border-color: #ffb64a ; -fx-border-width: 3 ; -fx-background-color: #ffdfa9 ");
-        if(label.getText().startsWith("$")){
+        if(label.getText().startsWith("￥")){
             amount = Integer.parseInt(label.getText().substring(1));
         }
         else {
