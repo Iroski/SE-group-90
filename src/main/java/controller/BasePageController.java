@@ -106,6 +106,7 @@ public class BasePageController {
     }
 
     public void showVip(MouseEvent event) throws IOException{
+        //this.init();
         Label l = (Label) event.getSource();
         if(l.equals(vipLabel) && checkPremium.get()){ // is premium
             Stage stage = (Stage) b_home.getScene().getWindow();
@@ -115,6 +116,7 @@ public class BasePageController {
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
             anchorPane.getChildren().add(vip);
             VipController vipController = loader.getController();
+            vipController.vipCard.setUserData(this);
             vipController.init();
             vip.setLayoutY(75);
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
@@ -128,6 +130,7 @@ public class BasePageController {
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
             anchorPane.getChildren().add(vip);
             VipPageForOrdinaryController vipPageForOrdinaryController = loader.getController();
+            vipPageForOrdinaryController.vipCard.setUserData(this);
             vipPageForOrdinaryController.init();
             vip.setLayoutY(75);
             vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
@@ -203,6 +206,7 @@ public class BasePageController {
         Stage stage = (Stage) b_home.getScene().getWindow();
         stage.setTitle("Home");
         FXMLLoader loader = new FXMLLoader();
+        this.init();
         loader.setLocation(getClass().getResource("/view/fxml/MainPage.fxml"));
         AnchorPane home = (AnchorPane) loader.load();
         // Set person overview into the center of root layout.

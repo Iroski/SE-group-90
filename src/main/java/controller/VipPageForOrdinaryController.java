@@ -1,5 +1,6 @@
 package controller;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -22,15 +23,16 @@ public class VipPageForOrdinaryController {
     public Label userName;
     public Circle userImage;
     public Label vipInf;
+    public Button closeButton;
     private String name;
 
     private UserService userService = new UserService();
-    private AccountService accountService = new AccountService();
 
     /**
      * This function is used to init the page of the vip page if the user is not a vip yet
      */
     public void init(){
+        vipPane.setStyle("-fx-background-color: #fffab0");
         this.name = LoginController.userName;
         userName.setText(name);
         User user = (User) userService.getUser(name).getObject();
@@ -71,6 +73,7 @@ public class VipPageForOrdinaryController {
         loader.setLocation(getClass().getResource("/view/fxml/VipPage.fxml"));
         AnchorPane account = loader.load();
         VipPageController controller=loader.getController();
+        controller.vipInf.setUserData(this.vipCard.getUserData());
         controller.init();
         AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
         anchorPane.getChildren().remove(2);

@@ -31,9 +31,9 @@
       </HBox>
       <AnchorPane fx:id="vipCard" layoutX="30.0" layoutY="103.0" prefHeight="167.0" prefWidth="260.0" style="-fx-background-radius: 20px; -fx-background-color: linear-gradient(to right, black, #444444);" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Label layoutX="17.0" layoutY="100.0" prefHeight="20.0" prefWidth="168.0" text="GOUBO VIP" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0">
+            <Label layoutX="27.0" layoutY="71.0" prefHeight="20.0" prefWidth="168.0" text=" VIP" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="27.0">
                <font>
-                  <Font name="Segoe Script Bold" size="20.0" />
+                  <Font name="Segoe Script Bold" size="28.0" />
                </font>
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -46,10 +46,13 @@
             </Label>
             <AnchorPane layoutX="20.0" layoutY="159.0" prefHeight="29.0" prefWidth="91.0" style="-fx-border-radius: 15; -fx-background-radius: 15;" AnchorPane.bottomAnchor="10.0">
                <children>
-                  <Button layoutX="-23.0" layoutY="-14.0" mnemonicParsing="false" onMouseClicked="#showVip" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: #131313; -fx-border-color: grey; -fx-border-radius: 15; -fx-background-radius: 15;" text="Button" textFill="#fcfcfc" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Button layoutX="-8.0" layoutY="-4.0" mnemonicParsing="false" onMouseClicked="#showVip" prefHeight="37.0" prefWidth="116.0" style="-fx-background-color: #131313; -fx-border-color: grey; -fx-border-radius: 15; -fx-background-radius: 15;" text="Renew now" textFill="#fcfcfc" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-17.0" AnchorPane.topAnchor="-4.0">
                      <font>
-                        <Font name="Calibri" size="14.0" />
+                        <Font name="Calibri" size="18.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
                <cursor>
@@ -73,12 +76,31 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 8; -fx-background-color: #242424;" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.rowIndex="1" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 8; -fx-background-color: #242424;">
+               <children>
+                  <Label layoutX="-2.0" layoutY="12.0" prefHeight="40.0" prefWidth="129.0" text="All vedios are free" textFill="#f5f2f2" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="8.0" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1">
+               <children>
+                  <Label layoutX="-11.0" layoutY="10.0" prefHeight="40.0" prefWidth="129.0" text="Book live lessons" textFill="#f5f2f2" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="8.0" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutY="5.0" prefHeight="40.0" prefWidth="136.0" text="Quarterly comes with free lesson" textFill="#f5f2f2" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="8.0" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutX="11.0" layoutY="13.0" prefHeight="40.0" prefWidth="129.0" text="Annual comes with free lessons" textFill="#f5f2f2" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="8.0" />
+               </children></AnchorPane>
          </children>
       </GridPane>
-      <Label layoutX="251.0" layoutY="304.0" text="more &gt;" textFill="WHITE" AnchorPane.rightAnchor="30.0" />
+      <Button fx:id="closeButton" layoutX="270.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#closeVip" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="Close">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
