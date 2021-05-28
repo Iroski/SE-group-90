@@ -1,5 +1,7 @@
 # Readme
 __important__ : If your jdk version is 16, you can only run the program with method 1 or method 3 as jdk 16 add JEP 396 which will let lombok in our project inoperable.
+
+If you open this project with a ide such as idea and find that pom.xml has red wavy lines, this is ok. This is because we have adapted jdk16 and must add part of the configuration information to the pom, but this part of the configuration is regarded as an error due to the ide. The project can be run directly and you will not find errors
 ## Start program
 ### 1. Run with maven 3 (__recommend__)
 - Ensure you have a maven with version 3.x.x . You can check it by typing "mvn -version" to command line.
