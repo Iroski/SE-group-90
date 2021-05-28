@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="675.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VideoPageController">
+   <children>
+      <ScrollPane fx:id="scrollPane" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <content>
+            <FlowPane fx:id="flowPane" prefHeight="612.0" prefWidth="1000.0" style="-fx-background-color: white;" />
+         </content>
+      </ScrollPane>
+      <TextField fx:id="searchText" layoutX="573.0" layoutY="15.0" prefHeight="30.0" prefWidth="256.0" style="-fx-background-radius: 10;" />
+      <ImageView fx:id="searchImage" fitHeight="25.0" fitWidth="28.0" layoutX="795.0" layoutY="19.0" onMouseClicked="#SearchVideo" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="category" layoutX="137.0" layoutY="15.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.leftAnchor="50.0" />
+   </children>
+</AnchorPane>
