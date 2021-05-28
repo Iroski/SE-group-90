@@ -57,7 +57,7 @@ public class BasePageController {
         user_image = new ImageView(image);
         user_image.setFitWidth(50);
         user_image.setPreserveRatio(true);
-        user_image.setLayoutX(610);
+        user_image.setLayoutX(710);
         user_image.setLayoutY(13);
         user_image.setOnMouseClicked(mouseEvent1 -> {
             try {
