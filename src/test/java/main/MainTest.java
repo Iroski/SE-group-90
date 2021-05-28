@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.dao.base.DataHouse;
 import model.service.AccountService;
@@ -20,6 +21,7 @@ public class MainTest extends Application {
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image("/view/images/FIT.png"));
         primaryStage.show();
 
         db= DataHouse.getInstance();
