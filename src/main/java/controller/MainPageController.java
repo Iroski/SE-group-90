@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -17,11 +18,13 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import model.entity.ReturnEntity;
 import model.entity.Video;
+import model.service.AccountService;
 import model.service.UserService;
 import model.service.VideoService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainPageController {
     public Button test;
@@ -49,7 +52,6 @@ public class MainPageController {
         rightPane.setHgap(20);
         rightPane.setVgap(20);
         VideoBox videoBox;
-        System.out.println(list.get(0).getStaticVideo().getCoverPath());
         videoBox = new VideoBox(list.get(0).getStaticVideo().getCoverPath(),list.get(0).getStaticVideo().getVideoName());
         videoBox.setOnMouseClicked(mouseEvent -> {
             try {
@@ -76,31 +78,44 @@ public class MainPageController {
     }
 
     public void showVideo(MouseEvent mouseEvent) throws IOException {
+        VideoService videoService = new VideoService();
+        AccountService accountService = new AccountService();
+        ReturnEntity returnEntity = accountService.isPremium(LoginController.userName);
         UserService service = new UserService();
         VideoBox videoBox = (VideoBox) mouseEvent.getSource();
         Label label = (Label) videoBox.getChildren().get(1);
+        Long videoId = null;
         for (Video value : list) {
             if(value.getStaticVideo().getVideoName().equals(label.getText())) {
                 MainPageController.path = value.getStaticVideo().getFilePath();
-                Long id = value.getId();
-                service.setHistoryByName(LoginController.userName,id);
+                videoId = value.getId();
                 break;
             }
         }
-        Stage stage = (Stage) test.getScene().getWindow();
-        stage.setTitle("Video Show");
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
-        AnchorPane video = (AnchorPane) loader.load();
-        // Set person overview into the center of root layout.
-        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-        anchorPane.getChildren().remove(2);
-        anchorPane.getChildren().add(2, video);
+        AtomicBoolean tmp= (AtomicBoolean) returnEntity.getObject();
+        if(videoService.isVideoPremium(videoId).get() && !tmp.get()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("This video is only for VIP! Please become a VIP");
+            alert.showAndWait();
+            return;
+        }else{
+            service.setHistoryByName(LoginController.userName,videoId);
+            Stage stage = (Stage) test.getScene().getWindow();
+            stage.setTitle("Video Show");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
+            AnchorPane video = (AnchorPane) loader.load();
+            // Set person overview into the center of root layout.
+            AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+            anchorPane.getChildren().remove(2);
+            anchorPane.getChildren().add(2, video);
 
-        video.setLayoutX(200);
-        video.setLayoutY(75);
+            video.setLayoutX(200);
+            video.setLayoutY(75);
 
-        VideoPageController.currentVideoName = label.getText();
+            VideoPageController.currentVideoName = label.getText();
+        }
     }
 
     public void prevVideo(){
