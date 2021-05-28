@@ -286,7 +286,6 @@ public class BookingPageController {
         LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, isCustomized, target,"", createTime);
         int premiumType = getPremiumType(user);
         double price = lessonPrice * PremiumType.getPremiumByType(premiumType).getBargain().doubleValue();
-        System.out.println(price);      //////////////////////
         BigDecimal money = BigDecimal.valueOf(price);
         Order order = new Order(user.getName(), 1, createTime, premiumType, 0, money, 0, createTime);
         ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);

@@ -78,22 +78,22 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 8; -fx-background-color: #242424;">
                <children>
-                  <Label layoutX="7.0" layoutY="17.0" prefHeight="40.0" prefWidth="129.0" text="All vedios are free" textFill="#f5f2f2" wrapText="true" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="17.0" />
+                  <Label layoutX="7.0" layoutY="8.0" prefHeight="60.0" prefWidth="135.0" text="All vedios are free" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="8.0" />
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1">
                <children>
-                  <Label layoutX="7.0" layoutY="17.0" prefHeight="40.0" prefWidth="129.0" text="Choose coach to book live lessons" textFill="#f5f2f2" wrapText="true" />
+                  <Label layoutX="7.0" layoutY="6.0" prefHeight="60.0" prefWidth="129.0" text="Choose coach to book live lessons" textFill="WHITE" wrapText="true" />
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.rowIndex="1">
                <children>
-                  <Label layoutX="6.0" layoutY="7.0" prefHeight="60.0" prefWidth="135.0" text="Quarterly&amp;Annual comes with free live lessons" textFill="#f5f2f2" wrapText="true">
+                  <Label layoutX="6.0" layoutY="7.0" prefHeight="60.0" prefWidth="135.0" text="Quarterly&amp;Annual comes with free live lessons" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label layoutX="8.0" layoutY="6.0" prefHeight="60.0" prefWidth="126.0" text="Quarterly&amp;Annual have discounts on live lessons" textFill="#f5f2f2" wrapText="true">
+                  <Label layoutX="8.0" layoutY="6.0" prefHeight="60.0" prefWidth="126.0" text="Quarterly&amp;Annual have discounts on live lessons" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="14.0" />
                      </font>
