@@ -76,9 +76,6 @@
             <HBox alignment="CENTER" layoutX="739.0" layoutY="13.0" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="13.0">
                <children>
                   <ImageView fx:id="user_image" fitHeight="50.0" fitWidth="50.0" layoutX="610.0" layoutY="13.0" onMouseClicked="#goToProfile" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="610.0" AnchorPane.topAnchor="13.0">
-                     <image>
-                        <Image url="/view/images/coach.jpg" />
-                     </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
