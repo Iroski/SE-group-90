@@ -10,13 +10,25 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PayForOrderController {
     private AtomicBoolean ifPay  = new AtomicBoolean(false);
-
+    public double lessonPrice = 30;
     public Button pay;
     public Button notPay;
     public VBox infoBox;
 
     @FXML
     public void initialize() {
+    }
+
+    public void init(){
+        Label label = (Label) infoBox.getChildren().get(0);
+        String info = "";
+        if(lessonPrice == BookingPageController.lessonPrice){
+            info = "You should pay ￥" + String.format("%.2f", lessonPrice) + " for the live lesson";
+        }else{
+            info = "You should pay ￥" + String.format("%.2f", lessonPrice) + " for the live lesson "
+                    + "(Original price: ￥" + String.format("%.2f", BookingPageController.lessonPrice) + ")";
+        }
+        label.setText(info);
     }
 
     public AtomicBoolean getIfPay(){
@@ -42,5 +54,9 @@ public class PayForOrderController {
     public void setLabel(){
         Label label = (Label) infoBox.getChildren().get(0);
         label.setText("The order is free this time as you have free lesson");
+    }
+
+    public void setPrice(double price) {
+        this.lessonPrice = price;
     }
 }

@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.Main;
 import model.entity.*;
+import model.enumPackage.PremiumType;
 import model.enumPackage.TargetType;
 import model.service.*;
 import model.utils.DateUtils;
@@ -56,7 +57,7 @@ public class BookingPageController {
     Coach coach;
     User user;
     String userName;
-    private int lessonPrice = 30;
+    public static double lessonPrice = 30.0;
     private boolean isCustomized = false;
     private String target = "";
 
@@ -284,14 +285,16 @@ public class BookingPageController {
         Long createTime = DateUtils.dateToTimeStamp(new Date());
         LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, isCustomized, target,"", createTime);
         int premiumType = getPremiumType(user);
-        BigDecimal money = BigDecimal.valueOf(lessonPrice);
+        double price = lessonPrice * PremiumType.getPremiumByType(premiumType).getBargain().doubleValue();
+        System.out.println(price);      //////////////////////
+        BigDecimal money = BigDecimal.valueOf(price);
         Order order = new Order(user.getName(), 1, createTime, premiumType, 0, money, 0, createTime);
         ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);
 
         switch (returnEntity.getCode()){
             case 200: // successful
                 order = (Order) returnEntity.getObject();
-                payForLessonOrder(user, order, liveLesson);
+                payForLessonOrder(user, order, liveLesson, price);
                 break;
             case 400: // bad input time
                 ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
@@ -335,14 +338,14 @@ public class BookingPageController {
         return premiumType;
     }
 
-    public void payForLessonOrder(User user, Order order, LiveLesson liveLesson) throws IOException {
+    public void payForLessonOrder(User user, Order order, LiveLesson liveLesson, Double price) throws IOException {
         AtomicBoolean isFreeByPremium = isFreeByPremium(user);
         if(isFreeByPremium.get()){
             order.setMoney(BigDecimal.valueOf(0));
         }
 
         AtomicBoolean paid;
-        paid = showIfPay(isFreeByPremium.get()); // show and return
+        paid = showIfPay(isFreeByPremium.get(), price); // show and return
         OrderService orderService = new OrderService();
         if(paid.get()){
             int code = orderService.payLiveLessonOrder(user.getName(), liveLesson, isFreeByPremium);
@@ -399,16 +402,14 @@ public class BookingPageController {
                 }
                 break;
             case 4042: // account not exist
-
                 break;
             case 5000: // database error
-
                 break;
         }
         return res;
     }
 
-    public AtomicBoolean showIfPay(boolean isFree) throws IOException {
+    public AtomicBoolean showIfPay(boolean isFree, double price) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrderPage.fxml"));
         AnchorPane page = loader.load();
@@ -417,10 +418,12 @@ public class BookingPageController {
         Scene scene = new Scene(page);
         payOrder.setScene(scene);
         PayForOrderController controller = loader.getController();
-        //System.out.println(isFree);
+        controller.setPrice(price);
+        controller.init();
         if(isFree){
             controller.setLabel();
         }
+
         payOrder.showAndWait();
         return controller.getIfPay();
     }
