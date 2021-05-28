@@ -97,11 +97,12 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="140.0" prefHeight="65.0" prefWidth="166.0" text="Get 1 free live lesson" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="140.0" prefHeight="32.0" prefWidth="166.0" text="1 free live lesson" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="172.0" prefHeight="32.0" prefWidth="207.0" text="15% off on lesson purchases" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -132,11 +133,12 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="139.0" prefHeight="65.0" prefWidth="178.0" text="Get 12 free live lessons" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="139.0" prefHeight="65.0" prefWidth="178.0" text="12 free live lessons" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="172.0" prefHeight="32.0" prefWidth="207.0" text="25% off on lesson purchases" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -176,17 +178,17 @@
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="premium2" layoutX="37.0" layoutY="26.0" prefHeight="42.0" prefWidth="450.0" text="Quarterly VIP comes with 1 free live lesson" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="premium2" layoutX="37.0" layoutY="26.0" prefHeight="42.0" prefWidth="450.0" text="Quarterly&amp;Annual comes with free live lessons" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="premium3" layoutX="-140.0" layoutY="18.0" prefHeight="42.0" prefWidth="450.0" text="Annual VIP comes with 12 free live lessons" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="premium3" layoutX="-140.0" layoutY="18.0" prefHeight="42.0" prefWidth="450.0" text="Quarterly&amp;Annual have discounts on live lessons" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children></AnchorPane>

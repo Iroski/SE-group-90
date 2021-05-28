@@ -119,7 +119,8 @@ public class BasePageController {
             vipController.vipCard.setUserData(this);
             vipController.init();
             vip.setLayoutY(75);
-            vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
+            vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+ 0.5 * l.getPrefWidth());
+            System.out.println(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+ 0.5 * l.getPrefWidth());
             vip.setVisible(true);
         }
         else if(l.equals(vipLabel) && !checkPremium.get()){ // is not premium
@@ -133,7 +134,7 @@ public class BasePageController {
             vipPageForOrdinaryController.vipCard.setUserData(this);
             vipPageForOrdinaryController.init();
             vip.setLayoutY(75);
-            vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
+            vip.setLayoutX(vipLabel.getLayoutX()-0.5 * vip.getPrefWidth() + 0.5 * l.getPrefWidth());
             vip.setVisible(true);
         }
     }
