@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
    <children>
-      <Label layoutX="496.0" layoutY="150.0" prefHeight="45.0" prefWidth="141.0" text="UserName">
+      <Label layoutX="496.0" layoutY="150.0" prefHeight="45.0" prefWidth="141.0" text="Username">
          <font>
             <Font size="21.0" />
          </font>
@@ -30,7 +30,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="editProfile" layoutX="415.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#goToEditPage" prefHeight="27.0" prefWidth="141.0" text="Edit">
+      <Button fx:id="editProfile" layoutX="415.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#goToEditPage" prefHeight="20.0" prefWidth="141.0" text="Edit" textFill="WHITE">
          <font>
             <Font size="30.0" />
          </font>

@@ -19,9 +19,12 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;
+import main.Main;
+import model.entity.Account;
 import model.entity.Coach;
 import model.entity.ReturnEntity;
 import model.entity.Video;
+import model.service.AccountService;
 import model.service.UserService;
 import model.service.VideoService;
 
@@ -29,6 +32,8 @@ import javax.swing.event.ChangeEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 /**
  * @description: TODO
  * @author Yuhang Lu
@@ -87,31 +92,45 @@ public class VideoPageController {
     }
 
     public void showVideo(MouseEvent mouseEvent) throws IOException {
+        VideoService videoService = new VideoService();
+        AccountService accountService = new AccountService();
+        ReturnEntity returnEntity = accountService.isPremium(LoginController.userName);
         UserService service = new UserService();
         VideoBox videoBox = (VideoBox) mouseEvent.getSource();
         Label label = (Label) videoBox.getChildren().get(1);
+        Long videoId = null;
         for (Video value : list) {
             if(value.getStaticVideo().getVideoName().equals(label.getText())) {
                 MainPageController.path = value.getStaticVideo().getFilePath();
-                Long id = value.getId();
-                service.setHistoryByName(LoginController.userName,id);
+                videoId = value.getId();
                 break;
             }
         }
-        Stage stage = (Stage) category.getScene().getWindow();
-        stage.setTitle("Video Show");
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
-        AnchorPane video = (AnchorPane) loader.load();
-        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-        anchorPane.getChildren().remove(2);
-        anchorPane.getChildren().add(2, video);
+        AtomicBoolean tmp= (AtomicBoolean) returnEntity.getObject();
+        if(videoService.isVideoPremium(videoId).get() && !tmp.get()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("This video is only for VIP! Please become a VIP");
+            alert.showAndWait();
+            return;
+        }else{
+            service.setHistoryByName(LoginController.userName,videoId);
+            Stage stage = (Stage) category.getScene().getWindow();
+            stage.setTitle("Video Show");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
+            AnchorPane video = (AnchorPane) loader.load();
+            AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+            anchorPane.getChildren().remove(2);
+            anchorPane.getChildren().add(2, video);
 
-        video.setLayoutX(200);
-        video.setLayoutY(75);
+            video.setLayoutX(200);
+            video.setLayoutY(75);
 
-        currentVideoName = label.getText();
+            currentVideoName = label.getText();
+        }
     }
+
 
     public void filterVideosByTag(String tag) throws IOException {
         flowPane.getChildren().clear();

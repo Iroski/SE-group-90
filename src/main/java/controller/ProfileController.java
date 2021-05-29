@@ -30,6 +30,7 @@ public class ProfileController {
     public User user;
     @FXML
     public void initialize() throws NullPointerException {
+        editProfile.setStyle("-fx-border-color: #000000 ; -fx-background-color: #000000 ; -fx-border-radius: 5px ");
         UserService service = new UserService();
         ReturnEntity returnEntity = service.getUser(LoginController.userName);
         User user = (User) returnEntity.getObject();
