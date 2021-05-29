@@ -30,7 +30,7 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Label layoutX="97.0" layoutY="168.0" text="Account:" textFill="#04b9f9" AnchorPane.bottomAnchor="146.0" AnchorPane.rightAnchor="315.0">
+        <Label layoutX="97.0" layoutY="168.0" text="Username:" textFill="#04b9f9" AnchorPane.bottomAnchor="146.0" AnchorPane.rightAnchor="315.0">
          <font>
             <Font name="System Italic" size="22.0" />
          </font></Label>
@@ -70,5 +70,10 @@
       </Rectangle>
       <Line endX="100.0" layoutX="190.0" layoutY="98.0" startX="-100.0" stroke="#a8a8a8" AnchorPane.bottomAnchor="145.0" AnchorPane.rightAnchor="110.0" />
       <Line endX="100.0" layoutX="250.0" layoutY="79.0" startX="-100.0" stroke="#a8a8a8" AnchorPane.bottomAnchor="95.0" AnchorPane.rightAnchor="110.0" />
+      <Label layoutX="130.0" layoutY="10.0" text="- F I T -" textFill="#c4e1ff">
+         <font>
+            <Font name="System Bold Italic" size="72.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
