@@ -61,7 +61,7 @@ return: int
 
 ### 5. create livelesson order
 __NOTICE:__ this will book time for user and coach
-method: createLiveLessonOrder(String username, Order order, LiveLesson liveLesson)
+method: createLiveLessonOrder(String username, Order order, LiveLesson liveLesson, Boolean isFreeByPremium)
 return: ReturnEntity(code, Order)
 __the return order contains id, you need to use this to do the following procedure(pay, cancel)__
 | return type | meaning |
@@ -75,7 +75,7 @@ __the return order contains id, you need to use this to do the following procedu
 
 ### 6. pay live lesson order
 __NOTICE:__ this will change livelesson state
-method: payLiveLessonOrder(String username, Order order, LiveLesson liveLesson, AtomicBoolean isFreeByPremium)
+method: payLiveLessonOrder(String username, LiveLesson liveLesson)
 | return type | meaning |
 |:--:|:--:|
 | 200| successful|

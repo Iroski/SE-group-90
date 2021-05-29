@@ -8,7 +8,6 @@ import model.enumPackage.OrderStatus;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 /**
@@ -84,7 +83,7 @@ public class OrderService {
     }
 
 
-    public ReturnEntity createLiveLessonOrder(String username, Order order, LiveLesson liveLesson) {
+    public ReturnEntity createLiveLessonOrder(String username, Order order, LiveLesson liveLesson, Boolean isFreeByPremium) {
         try {
             int coachServiceCode = new CoachService().updateTimeList(liveLesson.getCoachName(), liveLesson.getLessonTime(), "ADD");
             if (coachServiceCode != 200)
@@ -101,7 +100,11 @@ public class OrderService {
             int accountServiceCode = new AccountService().addOrderId(username, order.getId());
             if (accountServiceCode != 200)
                 return new ReturnEntity(accountServiceCode, null);
-
+            if (isFreeByPremium) {
+                accountServiceCode = new AccountService().updateFreeTimeOfPremium(username,true);
+                if (accountServiceCode != 200)
+                    return new ReturnEntity(accountServiceCode,null);
+            }
 
         } catch (RuntimeException e) {
             return new ReturnEntity(CommunicationStatus.INTERNAL_ERROR.getCode(), null);
@@ -109,7 +112,7 @@ public class OrderService {
         return new ReturnEntity(CommunicationStatus.OK.getCode(), order);
     }
 
-    public int payLiveLessonOrder(String username, LiveLesson liveLesson, AtomicBoolean isFreeByPremium) {
+    public int payLiveLessonOrder(String username, LiveLesson liveLesson) {
         try {
             Optional<Order> sOrderOption = this.getOrderByLiveLessonCreateTime(liveLesson.getCreateTime());
             if (sOrderOption.isEmpty())
@@ -119,11 +122,7 @@ public class OrderService {
             int accountServiceCode = accountService.updateBalance(username, order.getMoney());
             if (accountServiceCode != 200)
                 return accountServiceCode;
-            if (isFreeByPremium.get()) {
-                accountServiceCode = accountService.minusFreeTimeOfPremium(username);
-                if (accountServiceCode != 200)
-                    return accountServiceCode;
-            }
+
             int liveLessonCode = new LiveLessonService().updateLessonStateByType(username, liveLesson, "PAYED");
             if (liveLessonCode != 200)
                 return liveLessonCode;
@@ -145,8 +144,11 @@ public class OrderService {
             int liveLessonCode = new LiveLessonService().updateLessonStateByType(username, liveLesson, "CANCELED");
             if (liveLessonCode != 200)
                 return liveLessonCode;
-
-            int accountCode = new AccountService().updateBalance(username, balance.multiply(new BigDecimal("-1")));
+            int accountCode;
+            if(!balance.equals(BigDecimal.ZERO))
+                accountCode = new AccountService().updateBalance(username, balance.multiply(new BigDecimal("-1")));
+            else
+                accountCode=new AccountService().updateFreeTimeOfPremium(username,false);
             if (accountCode != 200)
                 return accountCode;
             return this.cancelLiveLessonOrderBeforePay(username, liveLesson);
@@ -168,6 +170,11 @@ public class OrderService {
             if (coachServiceCode != 200)
                 return coachServiceCode;
             order = sOrderOption.get();
+            if(order.getMoney().equals(BigDecimal.ZERO)){
+                int accountCode=new AccountService().updateFreeTimeOfPremium(username,false);
+                if (accountCode != 200)
+                    return accountCode;
+            }
             order.setState(OrderStatus.IS_CANCELED.getCode());
             orderDao.updateOrder(order);
         } catch (RuntimeException e) {
