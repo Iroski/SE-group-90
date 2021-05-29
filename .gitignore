@@ -6,3 +6,4 @@ lib
 *.rar
 out
 *.jar
+.DS_Store

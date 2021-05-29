@@ -172,7 +172,7 @@ public class AccountService {
         }
     }
 
-    protected int minusFreeTimeOfPremium(String username){
+    protected int updateFreeTimeOfPremium(String username,Boolean minus){
         try {
             Optional<Account> sAccountOption = this.getAccountByUsername(username);
             if (sAccountOption.isEmpty())
@@ -180,10 +180,15 @@ public class AccountService {
 
             Account sAccount = sAccountOption.get();
             int freeTime = sAccount.getFreeLiveLessonNum();
-            if (freeTime < 1)
-                return CommunicationStatus.NO_ENOUGH_FREE_LESSON.getCode();
-            sAccount.setFreeLiveLessonNum(freeTime - 1);
-            return CommunicationStatus.OK.getCode();
+            if(minus){
+                if (freeTime < 1)
+                    return CommunicationStatus.NO_ENOUGH_FREE_LESSON.getCode();
+                sAccount.setFreeLiveLessonNum(freeTime - 1);
+            }
+            else{
+                sAccount.setFreeLiveLessonNum(freeTime + 1);
+            }
+            return this.updateAccount(sAccount);
         } catch (RuntimeException e) {
             return CommunicationStatus.INTERNAL_ERROR.getCode();
         }
