@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -86,6 +87,7 @@ public class HistoryController {
                     descriptions[i].setText(historyList.get(i).getStaticVideo().getVideoName());
                     panes[i].setUserData(historyList.get(i).getStaticVideo().getFilePath());
                     panes[i].setStyle("-fx-background-color: white; -fx-border-color: black");
+                    panes[i].setCursor(Cursor.HAND);
                     flag++;
                 } else {
                     break;

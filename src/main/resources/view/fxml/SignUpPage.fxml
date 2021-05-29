@@ -18,11 +18,17 @@
       <Button fx:id="submit" layoutX="108.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="35.0" prefWidth="120.0" text="Submit" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="90.0">
          <font>
             <Font size="20.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Button fx:id="cancel" layoutX="346.0" layoutY="517.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="35.0" prefWidth="120.0" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="90.0">
          <font>
             <Font size="20.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label layoutX="396.0" layoutY="315.0" prefHeight="30.0" text="cm" AnchorPane.rightAnchor="76.0">
          <font>
             <Font name="System Bold Italic" size="18.0" />
@@ -37,38 +43,62 @@
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
             <TextField fx:id="email" prefHeight="30.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
             <TextField fx:id="password" prefHeight="30.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
             <TextField fx:id="phoneNumber" prefHeight="30.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
             <ComboBox fx:id="gender" prefHeight="30.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ComboBox>
             <TextField fx:id="height" prefHeight="30.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
             <TextField fx:id="weight" prefHeight="30.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
-            <TextField fx:id="age" prefHeight="30.0" prefWidth="150.0" />
+            <TextField fx:id="age" prefHeight="30.0" prefWidth="150.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
          </children>
       </VBox>
       <VBox alignment="TOP_RIGHT" layoutX="78.0" layoutY="100.0" prefHeight="402.0" prefWidth="174.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="78.0">

@@ -23,10 +23,10 @@ public class PayForOrderController {
         Label label = (Label) infoBox.getChildren().get(0);
         String info = "";
         if(lessonPrice == BookingPageController.lessonPrice){
-            info = "You should pay ￥" + String.format("%.2f", lessonPrice) + " for the live lesson";
+            info = "You should pay ￡" + String.format("%.2f", lessonPrice) + " for the live lesson";
         }else{
-            info = "You should pay ￥" + String.format("%.2f", lessonPrice) + " for the live lesson "
-                    + "(Original price: ￥" + String.format("%.2f", BookingPageController.lessonPrice) + ")";
+            info = "You should pay ￡" + String.format("%.2f", lessonPrice) + " for the live lesson "
+                    + "(Original price: ￡" + String.format("%.2f", BookingPageController.lessonPrice) + ")";
         }
         label.setText(info);
     }
@@ -49,11 +49,6 @@ public class PayForOrderController {
          }
          Stage stage = (Stage) pay.getScene().getWindow();
          stage.close();
-    }
-
-    public void setLabel(){
-        Label label = (Label) infoBox.getChildren().get(0);
-        label.setText("The order is free this time as you have free lesson");
     }
 
     public void setPrice(double price) {
