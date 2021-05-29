@@ -23,11 +23,17 @@
          <image>
             <Image url="/view/images/prev.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="50.0" onMouseClicked="#nextVideo" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="330.0">
          <image>
             <Image url="/view/images/next.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
     </children>
 </AnchorPane>

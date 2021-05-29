@@ -47,7 +47,8 @@ public class BookingPageController {
     public ChoiceBox<String> targets;
     public TextField otherInput;
     public Tooltip customizationTip;
-
+    public Label priceLabel;
+    public Label freeLabel;
 
     LinkedList<LocalDate> day_list;
     LinkedList<LocalTime> time_list;
@@ -60,6 +61,8 @@ public class BookingPageController {
     public static double lessonPrice = 30.0;
     private boolean isCustomized = false;
     private String target = "";
+    private int premiumType;
+    private double price;
 
     @FXML
     public void initialize(){
@@ -88,6 +91,13 @@ public class BookingPageController {
         for(TargetType type : TargetType.values()){
             targets.getItems().add(type.getDescription());
         }
+
+        otherInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                target = otherInput.getText();
+            }
+        });
     }
 
     public void init(){
@@ -199,12 +209,15 @@ public class BookingPageController {
         });
         targets.getSelectionModel().selectFirst();
 
-        otherInput.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                target = otherInput.getText();
-            }
-        });
+        premiumType = getPremiumType(user);
+        double bargain = PremiumType.getPremiumByType(premiumType).getBargain().doubleValue();
+        price = lessonPrice * bargain;
+        priceLabel.setText(String.format("%.2f", price) + "(" + String.format("%.0f", (1 - bargain) * 100) + "% off)");
+
+        AccountService accountService = new AccountService();
+        ReturnEntity returnEntity2 = accountService.getFreeLessonNumByUsername(userName);
+        int freeNum = (int) returnEntity2.getObject();
+        freeLabel.setText("Your remaining free lesson number: " + freeNum);
     }
 
     public void setCheckBox(boolean[] reserved){
@@ -284,16 +297,19 @@ public class BookingPageController {
         OrderService orderService = new OrderService();
         Long createTime = DateUtils.dateToTimeStamp(new Date());
         LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, isCustomized, target,"", createTime);
-        int premiumType = getPremiumType(user);
-        double price = lessonPrice * PremiumType.getPremiumByType(premiumType).getBargain().doubleValue();
         BigDecimal money = BigDecimal.valueOf(price);
+        boolean ifFree = false;
+        if(isFreeByPremium(user).get()){
+            money = BigDecimal.valueOf(0);
+            ifFree = true;
+        }
         Order order = new Order(user.getName(), 1, createTime, premiumType, 0, money, 0, createTime);
-        ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);
+        ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson, isFreeByPremium(user).get());
 
         switch (returnEntity.getCode()){
             case 200: // successful
                 order = (Order) returnEntity.getObject();
-                payForLessonOrder(user, order, liveLesson, price);
+                payForLessonOrder(user, order, liveLesson, price, ifFree);
                 break;
             case 400: // bad input time
                 ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
@@ -315,6 +331,7 @@ public class BookingPageController {
                 System.out.println("order error 5000");
                 break;
         }
+        this.init();
     }
 
     public int getPremiumType(User user){
@@ -337,17 +354,22 @@ public class BookingPageController {
         return premiumType;
     }
 
-    public void payForLessonOrder(User user, Order order, LiveLesson liveLesson, Double price) throws IOException {
-        AtomicBoolean isFreeByPremium = isFreeByPremium(user);
-        if(isFreeByPremium.get()){
-            order.setMoney(BigDecimal.valueOf(0));
-        }
-
-        AtomicBoolean paid;
-        paid = showIfPay(isFreeByPremium.get(), price); // show and return
+    public void payForLessonOrder(User user, Order order, LiveLesson liveLesson, Double price, boolean ifFree) throws IOException {
         OrderService orderService = new OrderService();
+        if(ifFree){
+            int code = orderService.payLiveLessonOrder(user.getName(), liveLesson);
+            if(code != 200) System.out.println("free pay error");
+            ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+            Alert alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);
+            alert.titleProperty().set("Success");
+            alert.headerTextProperty().set("You have used 1 free lesson opportunity\nto book the lesson successfully");
+            alert.show();
+            return;
+        }
+        AtomicBoolean paid;
+        paid = showIfPay(price); // show and return
         if(paid.get()){
-            int code = orderService.payLiveLessonOrder(user.getName(), liveLesson, isFreeByPremium);
+            int code = orderService.payLiveLessonOrder(user.getName(), liveLesson);
             switch (code){
                 case 200: // successful
                     ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
@@ -408,7 +430,7 @@ public class BookingPageController {
         return res;
     }
 
-    public AtomicBoolean showIfPay(boolean isFree, double price) throws IOException {
+    public AtomicBoolean showIfPay(double price) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrderPage.fxml"));
         AnchorPane page = loader.load();
@@ -419,9 +441,6 @@ public class BookingPageController {
         PayForOrderController controller = loader.getController();
         controller.setPrice(price);
         controller.init();
-        if(isFree){
-            controller.setLabel();
-        }
 
         payOrder.showAndWait();
         return controller.getIfPay();

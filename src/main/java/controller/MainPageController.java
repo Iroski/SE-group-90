@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -61,6 +62,7 @@ public class MainPageController {
             }
         });
         videoBox.setWidth(413);
+        videoBox.setCursor(Cursor.HAND);
         leftPane.getChildren().add(videoBox);
         for(int i=slideNum;i<num;i++){
             videoBox = new VideoBox(list.get(i).getStaticVideo().getCoverPath(),list.get(i).getStaticVideo().getVideoName());
@@ -72,6 +74,7 @@ public class MainPageController {
                 }
             });
             videoBox.setWidth(180);
+            videoBox.setCursor(Cursor.HAND);
             rightPane.getChildren().add(videoBox);
         }
         test.setVisible(false);
@@ -129,6 +132,7 @@ public class MainPageController {
             }
         });
         videoBox.setWidth(413);
+        videoBox.setCursor(Cursor.HAND);
         leftPane.getChildren().clear();
         leftPane.getChildren().add(videoBox);
     }
@@ -144,6 +148,7 @@ public class MainPageController {
             }
         });
         videoBox.setWidth(413);
+        videoBox.setCursor(Cursor.HAND);
         leftPane.getChildren().clear();
         leftPane.getChildren().add(videoBox);
     }

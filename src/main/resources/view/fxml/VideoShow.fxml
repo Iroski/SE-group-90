@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
@@ -52,6 +53,9 @@
             </BorderPane>
          </children>
       </VBox>
-      <Button fx:id="backButton" mnemonicParsing="false" onMouseClicked="#backToPreviousPage" text="Back" />
+      <Button fx:id="backButton" mnemonicParsing="false" onMouseClicked="#backToPreviousPage" text="Back">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

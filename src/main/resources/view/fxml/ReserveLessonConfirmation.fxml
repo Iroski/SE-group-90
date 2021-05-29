@@ -9,9 +9,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: DDDDDD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReserveLessonConfirmation">
    <children>
-      <Button fx:id="yesButton" layoutX="216.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#chooseYes" prefHeight="30.0" prefWidth="62.0" text="Yes" />
-      <Button fx:id="noButton" layoutX="308.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#chooseNo" prefHeight="30.0" prefWidth="62.0" text="No" />
-      <Label fx:id="quesLabel" layoutX="59.0" layoutY="39.0" prefHeight="60.0" prefWidth="300.0" text="Are you sure to choose these lessons?" textOverrun="CLIP" wrapText="true">
+      <Button fx:id="yesButton" layoutX="207.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#chooseYes" prefHeight="36.0" prefWidth="71.0" style="-fx-background-color: black;" text="Yes" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="noButton" layoutX="299.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#chooseNo" prefHeight="36.0" prefWidth="71.0" style="-fx-background-color: black;" text="No" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label fx:id="quesLabel" layoutX="27.0" layoutY="40.0" prefHeight="60.0" prefWidth="346.0" text="Are you sure to reserve this lesson?" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>

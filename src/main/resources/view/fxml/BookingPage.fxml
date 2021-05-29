@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -21,10 +22,25 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button layoutX="428.0" layoutY="571.0" mnemonicParsing="false" onMouseClicked="#chooseFinished" prefHeight="51.0" prefWidth="144.0" text="OK" />
-      <Button layoutX="872.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#closeThePage" prefHeight="38.0" prefWidth="66.0" text="Back" />
+      <Button layoutX="428.0" layoutY="571.0" mnemonicParsing="false" onMouseClicked="#chooseFinished" prefHeight="51.0" prefWidth="144.0" style="-fx-background-color: black; -fx-background-radius: 10px;" text="OK" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="872.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#closeThePage" prefHeight="44.0" prefWidth="86.0" style="-fx-background-color: black; -fx-background-radius: 8px;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Separator layoutX="31.0" layoutY="135.0" prefHeight="20.0" prefWidth="639.0" />
-      <ChoiceBox fx:id="dateChoose" layoutX="54.0" layoutY="272.0" prefHeight="58.0" prefWidth="258.0" />
+      <ChoiceBox fx:id="dateChoose" layoutX="54.0" layoutY="272.0" prefHeight="58.0" prefWidth="258.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ChoiceBox>
       <VBox fx:id="lessonTime" layoutX="362.0" layoutY="272.0" spacing="10.0">
          <children>
             <HBox alignment="CENTER" layoutX="308.0" layoutY="214.0" spacing="20.0">
@@ -87,11 +103,43 @@
             <Tooltip fx:id="customizationTip" text="Empty Tooltip" />
          </tooltip>
       </CheckBox>
-      <ChoiceBox fx:id="targets" layoutX="696.0" layoutY="338.0" prefHeight="44.0" prefWidth="218.0" />
+      <ChoiceBox fx:id="targets" layoutX="696.0" layoutY="338.0" prefHeight="44.0" prefWidth="218.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ChoiceBox>
       <TextField fx:id="otherInput" layoutX="696.0" layoutY="409.0" prefHeight="44.0" prefWidth="218.0">
          <font>
             <Font size="20.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </TextField>
+      <VBox layoutX="599.0" layoutY="185.0" spacing="3.0">
+         <children>
+            <HBox layoutX="642.0" layoutY="189.0">
+               <children>
+                  <Label layoutX="696.0" layoutY="200.0" text="Price: ￡">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceLabel" layoutX="820.0" layoutY="200.0" text="30.00">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label fx:id="freeLabel" layoutX="642.0" layoutY="226.0" text="Your remaining free lesson number: 0 ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

@@ -34,6 +34,9 @@
          <font>
             <Font size="30.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <ImageView fx:id="imageView" fitHeight="300.0" fitWidth="300.0" layoutX="105.0" layoutY="133.0" onMouseClicked="#changeImage" pickOnBounds="true" preserveRatio="true">
          <image>

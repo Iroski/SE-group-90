@@ -47,7 +47,7 @@
                   </Label>
                   <HBox alignment="BASELINE_CENTER" layoutX="46.0" layoutY="83.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="83.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￡" textFill="#e4a634">
                            <padding>
                               <Insets bottom="3.0" />
                            </padding>
@@ -82,7 +82,7 @@
                   </Label>
                   <HBox alignment="BASELINE_CENTER" layoutX="8.0" layoutY="83.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="83.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￡" textFill="#e4a634">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -118,7 +118,7 @@
                   </Label>
                   <HBox alignment="BASELINE_CENTER" layoutX="8.0" layoutY="83.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="83.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￡" textFill="#e4a634">
                            <padding>
                               <Insets bottom="3.0" />
                            </padding>

@@ -3,10 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -40,7 +37,7 @@ public class AccountController {
         Account account;
         ReturnEntity returnEntity = accountService.getAccount(LoginController.userName);
         account = (Account) returnEntity.getObject();
-        showBalance = "￥"+account.getBalance().toString();
+        showBalance = "￡"+account.getBalance().toString();
         balance.setText(showBalance);
         resetSelected();
     }
@@ -52,12 +49,14 @@ public class AccountController {
         initialize();
         Alert alert;
         if(code == 200){
-            alert = new Alert(Alert.AlertType.INFORMATION);
+            ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+            alert = new Alert(Alert.AlertType.INFORMATION,"",confirm);
             alert.titleProperty().set("Thanks for topping up!");
             alert.headerTextProperty().set("You have topped up successfully!");
         }
         else {
-            alert = new Alert(Alert.AlertType.ERROR);
+            ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+            alert = new Alert(Alert.AlertType.ERROR,"",confirm);
             alert.titleProperty().set("Error!");
             alert.headerTextProperty().set("Sorry! Please try again later!");
         }
@@ -72,7 +71,7 @@ public class AccountController {
         resetSelected();
         Label label = (Label) mouseEvent.getSource();
         label.setStyle("-fx-border-color: #ffb64a ; -fx-border-width: 3 ; -fx-background-color: #ffdfa9 ");
-        if(label.getText().startsWith("￥")){
+        if(label.getText().startsWith("￡")){
             amount = Integer.parseInt(label.getText().substring(1));
         }
         else {

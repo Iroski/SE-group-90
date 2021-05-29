@@ -44,7 +44,7 @@ public class LessonPageController {
 
     @FXML
     private void initialize(){
-        lessonName.setStyle("");
+        lessonTableView.setPlaceholder(new Label(""));
     }
 
     public void init() {
@@ -141,7 +141,7 @@ public class LessonPageController {
                                 OrderService orderService = new OrderService();
                                 AccountService accountService = new AccountService();
                                 if (result.get() == yes){
-                                    int code = orderService.payLiveLessonOrder(userName, l, new AtomicBoolean((int)accountService.getFreeLessonNumByUsername(userName).getObject() > 0));
+                                    int code = orderService.payLiveLessonOrder(userName, l);
                                     if(code == 200){
                                         ButtonType confirm=new ButtonType("OK", ButtonBar.ButtonData.FINISH);
                                         alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);

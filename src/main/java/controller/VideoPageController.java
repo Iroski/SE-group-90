@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -54,9 +55,9 @@ public class VideoPageController {
     public void initialize() throws IOException {
         category.getItems().addAll(
                 "All videos",
-                "running",
-                "yoga",
-                "biking"
+                "Running",
+                "Yoga",
+                "Biking"
         );
         category.getSelectionModel().selectFirst();
         category.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
@@ -89,6 +90,7 @@ public class VideoPageController {
         }
 
         searchImage.setImage(new Image("view/images/searchImage.png"));
+        searchImage.setCursor(Cursor.HAND);
     }
 
     public void showVideo(MouseEvent mouseEvent) throws IOException {

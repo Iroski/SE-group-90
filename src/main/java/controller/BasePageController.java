@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -59,6 +60,7 @@ public class BasePageController {
         user_image.setPreserveRatio(true);
         user_image.setLayoutX(710);
         user_image.setLayoutY(13);
+        user_image.setCursor(Cursor.HAND);
         user_image.setOnMouseClicked(mouseEvent1 -> {
             try {
                 goToProfile(mouseEvent1);

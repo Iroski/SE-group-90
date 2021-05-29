@@ -22,7 +22,7 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Label layoutX="169.0" layoutY="128.0" text="\$">
+      <Label layoutX="169.0" layoutY="128.0" text="￡">
          <font>
             <Font size="22.0" />
          </font>
