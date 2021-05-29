@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -23,10 +24,12 @@ public class EditPageController {
     public TextField userName;
     public TextField height;
     public TextField weight;
+    public Button save;
     @FXML
     public void initialize(){
+        save.setStyle("-fx-border-color: #000000 ; -fx-background-color: #000000 ; -fx-border-radius: 5px ");
         gender.getItems().addAll(
-                "null",
+                "secret",
                 "female",
                 "male"
         );

@@ -3,12 +3,14 @@ package controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.Main;
 import model.entity.Account;
+import model.entity.ReturnEntity;
 import model.service.UserService;
 import model.utils.CheckUserInfoValidation;
 
@@ -23,6 +25,10 @@ import java.io.IOException;
 public class CustomController {
     private Stage CustomStage;
     public TextField amountTextField;
+    public Button confirm;
+    public void initialize() {
+        confirm.setStyle("-fx-border-color: #000000 ; -fx-background-color: #000000 ; -fx-border-radius: 5px ");
+    }
     public void setCustomStage(Stage CustomStage) {
         this.CustomStage = CustomStage;
     }
