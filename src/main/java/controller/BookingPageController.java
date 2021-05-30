@@ -116,7 +116,6 @@ public class BookingPageController {
         CoachService coachService = new CoachService();
         ReturnEntity returnEntity = coachService.getReservedTimeById(coach_id);
         if(returnEntity.getCode() == 4044){
-            // 教练不存在
             System.out.println("coach not exist");
         }
         else if(returnEntity.getCode() == 5000){

@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author ：Yubo Wang
- * @date ：2021-05-21 19:16
- * @description：
- * @modified By：
+ * @author :Yubo Wang
+ * @date :2021-05-21 19:16
+ * @description:
+ * @modified By:
  * @version:
  */
 public class StaticImageDao {

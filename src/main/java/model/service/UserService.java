@@ -26,14 +26,10 @@ import java.util.stream.Collectors;
  * @modifiedBy By:
  */
 public class UserService {
-    String tableName;
-    DataHouse db;
     UserDao userDao;
     int HISTORY_NUM=6;
 
     public UserService() {
-        tableName = "User";
-        db = DataHouse.getInstance();
         userDao = new UserDao();
     }
 
