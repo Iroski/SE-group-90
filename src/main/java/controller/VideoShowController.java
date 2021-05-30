@@ -260,14 +260,14 @@ public class VideoShowController {
                 System.out.println(id);
                 int code = service.setFavoriteByName(LoginController.userName,id);
                 if(code == 200){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.titleProperty().set("Success");
-                    alert.headerTextProperty().set("Good Good!");
+                    alert.headerTextProperty().set("Add to Favourites successfully!");
                     alert.showAndWait();
                 }else if(code == 4041){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.titleProperty().set("Error");
-                    alert.headerTextProperty().set("Bad Bad!");
+                    alert.headerTextProperty().set("Add to Favorites failed!");
                     alert.showAndWait();
                 }else if(code == 5000){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
