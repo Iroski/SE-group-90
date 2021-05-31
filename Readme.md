@@ -21,4 +21,5 @@ If you do not have maven, you can try to install with:https://www.baeldung.com/i
 - Open the idea from the terminal by type "idea" and press enter.
 - Click File-Open and choose the project folder.
 - Click Run-Run 'Launcher' to start the program (hint: if you can't find the Run 'Launcher', please click the "project" button and find Launcher at "se/src/main/java/main". open the Launcher class and click the green triangle to start the program)
-
+## Test Files
+Test files are located at src/test/java
