@@ -53,7 +53,7 @@ public class BookingPageController {
     LinkedList<LocalDate> day_list;
     LinkedList<LocalTime> time_list;
     LinkedList<CheckBox> time_box_list;
-    LocalDate selectedDate = null;
+    LocalDate selectedDate;
     LocalTime selectedTime = null;
     Coach coach;
     User user;
@@ -73,6 +73,7 @@ public class BookingPageController {
         day_list.add(LocalDate.now().plusDays(4));
         day_list.add(LocalDate.now().plusDays(5));
         dateChoose.getItems().addAll(day_list);
+        selectedDate = day_list.get(0);
 
         time_list = new LinkedList<>();
         time_list.add(LocalTime.of(9,0,0));
@@ -98,6 +99,10 @@ public class BookingPageController {
                 target = otherInput.getText();
             }
         });
+
+        dateChoose.getSelectionModel().selectFirst();
+        dateChoose.setStyle("-fx-font-size: 22px");
+        targets.setStyle("-fx-font-size: 22px");
     }
 
     public void init(){
@@ -150,9 +155,7 @@ public class BookingPageController {
                 selectedDate = day_list.get(index);
             }
         });
-        dateChoose.getSelectionModel().selectFirst();
-        dateChoose.setStyle("-fx-font-size: 22px");
-        targets.setStyle("-fx-font-size: 22px");
+
 
         for(CheckBox cb : time_box_list){
             cb.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -217,6 +220,9 @@ public class BookingPageController {
         ReturnEntity returnEntity2 = accountService.getFreeLessonNumByUsername(userName);
         int freeNum = (int) returnEntity2.getObject();
         freeLabel.setText("Your remaining free lesson number: " + freeNum);
+        dateChoose.getSelectionModel().select(selectedDate);
+        int index = day_list.indexOf(selectedDate);
+        setCheckBox(reserved[index]);
     }
 
     public void setCheckBox(boolean[] reserved){
