@@ -2,8 +2,6 @@
 **/*.iml
 **/target
 **/src/test/resources/**
-lib
 *.rar
 out
-*.jar
 .DS_Store

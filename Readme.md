@@ -2,9 +2,7 @@
 ## Important : 
 - Make sure your jdk version >= 11. You can check it by typing "java -version" on command line. 
 If not, you can download newer jdk and configure it path with:https://www.liquidweb.com/kb/how-to-install-java-on-ubuntu-windows-and-macos/
-- If your jdk version is 16, you can only run the program with method 2 or method 3 as jdk 16 add JEP 396 which will let lombok in our project inoperable.
-- If you open this project with a ide such as idea and find that pom.xml has red wavy lines, this is ok. This is because we have adapted jdk16 and must add part of the configuration information to the pom, but this part of the configuration is regarded as an error due to the ide. The project can be run correctly and you will not find errors
-
+- Recommend environment: Windows 10. If your OS is linux or mac, you can try to run the program with method 2 or 3
 ## Start program
 PS: You can use the account with username "Jerry" and password "123456" to login in. You can also sign up a new account.
 ### 1. Run with javac (__Windows only__, no need for network to download jars)
