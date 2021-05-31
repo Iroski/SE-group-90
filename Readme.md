@@ -5,7 +5,7 @@ If not, you can download newer jdk and configure it path with:https://www.liquid
 - Recommend environment: Windows 10. If your OS is linux or mac, you can try to run the program with method 2 or 3
 ## Start program
 PS: You can use the account with username "Jerry" and password "123456" to login in. You can also sign up a new account.
-### 1. Run with javac (__Windows only__, no need for network to download jars)
+### 1. Run with javac compile (__Recommend, Windows only__, no need for network to download jars)
 - Open a terminal and switch in the project folder.
 - type command "startup.bat" then press enter to start the program.
 
