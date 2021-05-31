@@ -85,7 +85,6 @@ public class SignUpController {
             return;
         }
         String email = this.email.getText();
-        System.out.println(email);
         if(!CheckUserInfoValidation.checkEmail(email)){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.titleProperty().set("Error");
