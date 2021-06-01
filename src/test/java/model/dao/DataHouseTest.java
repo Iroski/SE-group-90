@@ -15,10 +15,10 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author ：Yubo Wang
- * @date ：2021-04-04 16:34
- * @description：
- * @modified By：
+ * @author :Yubo Wang
+ * @date :2021-04-04 16:34
+ * @description:
+ * @modified By:
  * @version:
  */
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)

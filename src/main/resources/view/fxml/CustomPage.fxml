@@ -17,12 +17,12 @@
             <Font size="22.0" />
          </font>
       </TextField>
-      <Button layoutX="196.0" layoutY="208.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" text="Confirm">
+      <Button fx:id="confirm" layoutX="196.0" layoutY="208.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" text="Confirm" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Label layoutX="169.0" layoutY="128.0" text="\$">
+      <Label layoutX="169.0" layoutY="128.0" text="￡">
          <font>
             <Font size="22.0" />
          </font>

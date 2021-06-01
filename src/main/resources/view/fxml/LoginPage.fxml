@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
@@ -18,19 +19,28 @@
          </font>
          <padding>
             <Insets top="1.0" />
-         </padding></Button>
+         </padding>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
         <TextField fx:id="account" alignment="BOTTOM_LEFT" layoutX="186.0" layoutY="195.0" maxWidth="200.0" style="-fx-text-box-border: transparent; -fx-background-color: -fx-control-inner-background;" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="110.0">
          <font>
             <Font size="22.0" />
          </font>
          <padding>
             <Insets top="1.0" />
-         </padding></TextField>
+         </padding>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
         <Button layoutX="13.0" layoutY="347.0" mnemonicParsing="false" onAction="#showSignUpPage" style="-fx-background-color: transparent;" text="Sign Up" textFill="#b5b0b0" textOverrun="CLIP" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
          <font>
             <Font size="20.0" />
-         </font></Button>
-        <Label layoutX="97.0" layoutY="168.0" text="Account:" textFill="#04b9f9" AnchorPane.bottomAnchor="146.0" AnchorPane.rightAnchor="315.0">
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <Label layoutX="97.0" layoutY="168.0" text="Username:" textFill="#04b9f9" AnchorPane.bottomAnchor="146.0" AnchorPane.rightAnchor="315.0">
          <font>
             <Font name="System Italic" size="22.0" />
          </font></Label>
@@ -44,7 +54,10 @@
          </font>
          <padding>
             <Insets top="1.0" />
-         </padding></PasswordField>
+         </padding>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></PasswordField>
       <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="30.0" layoutY="14.0" strokeType="INSIDE" width="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <stroke>
             <LinearGradient endX="1.0" endY="1.0">
@@ -70,5 +83,10 @@
       </Rectangle>
       <Line endX="100.0" layoutX="190.0" layoutY="98.0" startX="-100.0" stroke="#a8a8a8" AnchorPane.bottomAnchor="145.0" AnchorPane.rightAnchor="110.0" />
       <Line endX="100.0" layoutX="250.0" layoutY="79.0" startX="-100.0" stroke="#a8a8a8" AnchorPane.bottomAnchor="95.0" AnchorPane.rightAnchor="110.0" />
+      <Label layoutX="130.0" layoutY="10.0" text="- F I T -" textFill="#c4e1ff">
+         <font>
+            <Font name="System Bold Italic" size="72.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

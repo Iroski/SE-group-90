@@ -14,13 +14,13 @@ public class ReserveLessonConfirmation {
     public Label quesLabel;
     public boolean choose;
 
-    public void chooseYes(MouseEvent mouseEvent) {  //到时候再写
+    public void chooseYes(MouseEvent mouseEvent) {
         Stage stage= (Stage) yesButton.getScene().getWindow();
         choose = true;
         stage.close();
     }
 
-    public void chooseNo(MouseEvent mouseEvent) {  //到时候再写
+    public void chooseNo(MouseEvent mouseEvent) {
         Stage stage= (Stage) yesButton.getScene().getWindow();
         choose = false;
         stage.close();

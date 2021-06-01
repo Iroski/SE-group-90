@@ -8,10 +8,10 @@ import java.util.List;
 
 
 /**
- * @author ：Yubo Wang
- * @date ：2021-05-21 19:20
- * @description：
- * @modified By：
+ * @author :Yubo Wang
+ * @date :2021-05-21 19:20
+ * @description:
+ * @modified By:
  * @version:
  */
 public class StaticImageService {

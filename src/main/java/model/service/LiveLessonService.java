@@ -6,6 +6,7 @@ import model.entity.*;
 import model.enumPackage.LiveLessonStatus;
 import model.enumPackage.TargetType;
 import model.exception.database.DataItemNotExists;
+import model.utils.targetPlan.BasePlanGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +29,31 @@ public class LiveLessonService {
         userService=new UserService();
     }
 
-
-    public void createLiveLessonTableForSignUp(String username){
+    /**
+     * create by: YanBo Zhang
+     * description: Automatically create a live lesson table for the new user.
+     * only should be used when call the "saveUser" method in UserService
+     * create time: 2021/5/26 17:28
+     * * @Param: username
+     *
+     * @return void
+     */
+    protected void createLiveLessonTableForSignUp(String username) {
         Optional<LiveLessonTable> tableWithSameName=liveLessonDao.getAllLiveLessonTable().stream().filter(table -> table.getUsername().equals(username)).findAny();
         if(tableWithSameName.isPresent())
             return;
         liveLessonDao.saveLiveLessonTable(new LiveLessonTable(username, new ArrayList<LiveLesson>()));
     }
 
+    /**
+     * create by: YanBo Zhang
+     * description: test method
+     * Automatically create a live lesson table for the users whose account was delete in last test.
+     * create time: 2021/5/26 17:29
+     * * @Param:
+     *
+     * @return void
+     */
     public void createInfoForDeleteInfo(){
         List<String> usernameList=userService.getAllUsers().stream().map(User::getName).collect(Collectors.toList());
         List<String> liveNameList=liveLessonDao.getAllLiveLessonTable().stream().map(LiveLessonTable::getUsername).collect(Collectors.toList());
@@ -68,7 +86,7 @@ public class LiveLessonService {
         return new ReturnEntity(CommunicationStatus.OK.getCode(),resultTable.get());
     }
 
-    public ReturnEntity getNotStartPayedLiveLessonByUsername(String username){
+    public ReturnEntity getNotStartNotCanceledLiveLessonByUsername(String username){
         List<LiveLesson> lessons;
         Optional<LiveLessonTable> resultTable;
         try {
@@ -120,7 +138,7 @@ public class LiveLessonService {
     }
 
     protected int insertLesson(String username,LiveLesson liveLesson){
-        try{
+//        try{
             Optional<User> sUser=userService.getUserByUsername(username);
             if(sUser.isEmpty())
                 return CommunicationStatus.USER_NOT_FOUND.getCode();
@@ -137,16 +155,18 @@ public class LiveLessonService {
                 return CommunicationStatus.BAD_REQUEST.getCode();
 
             if(liveLesson.getIsCustomized()){
-                String plan=TargetType.getBasePlanGeneratorByDesc(liveLesson.getTarget()).generatePlan(user.getHeight(),user.getWeight());
+                String plan=TargetType.getBasePlanGeneratorByDesc(liveLesson.getTarget()).generatePlan(user.getHeight(),user.getWeight(),liveLesson.getTarget());
                 liveLesson.setSpecificExercise(plan);
             }
 
             list.add(liveLesson);
             liveLessonTable.setLessonList(list);
             return this.updateLiveLessonTable(liveLessonTable);
-        }catch (RuntimeException e){
-            return CommunicationStatus.INTERNAL_ERROR.getCode();
-        }
+//        }catch (RuntimeException e){
+//            System.out.println(liveLesson);
+//            System.out.println(e.getMessage());
+//            return CommunicationStatus.INTERNAL_ERROR.getCode();
+//        }
     }
 
     protected int updateLessonStateByType(String username,LiveLesson liveLesson,String type){

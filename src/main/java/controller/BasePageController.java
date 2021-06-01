@@ -2,12 +2,17 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import model.entity.ReturnEntity;
 import model.entity.User;
@@ -23,7 +28,7 @@ import static javafx.scene.paint.Color.*;
 public class BasePageController {
     public Label vipLabel;
     public Button history;
-    public ImageView user_image;
+    public static ImageView user_image;
     public Button b_log_out;
     public Button favorite;
     public Button b_account;
@@ -31,9 +36,10 @@ public class BasePageController {
     public Button b_coach;
     public Button b_lesson;
     public Button userName;
-
-    @FXML
-    Button b_home;
+    public AnchorPane pane;
+    public ImageView FIT;
+    public AtomicBoolean checkPremium;
+    public Button b_home;
 
     @FXML
     public void initialize() {
@@ -41,12 +47,48 @@ public class BasePageController {
         this.userName.setText(userName);
         UserService userService=new UserService();
         ReturnEntity returnEntity=userService.getUser(userName);
-
         User user=null;
         if (returnEntity.getCode()==200) {
             user = (User) returnEntity.getObject();
         }
-        user_image.setUserData(user);
+        if(user.getProfilePhotoPath() == null||user.getProfilePhotoPath().equals("")){
+            user.setProfilePhotoPath("/view/images/default/profilephoto/11.jpg");
+        }
+        Image image = new Image(user.getProfilePhotoPath());
+        user_image = new ImageView(image);
+        user_image.setFitWidth(50);
+        user_image.setPreserveRatio(true);
+        user_image.setLayoutX(710);
+        user_image.setLayoutY(13);
+        user_image.setCursor(Cursor.HAND);
+        user_image.setOnMouseClicked(mouseEvent1 -> {
+            try {
+                goToProfile(mouseEvent1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        pane.getChildren().add(user_image);
+    }
+
+    public void init(){
+        AccountService accountService = new AccountService();
+        ReturnEntity returnEntity=accountService.isPremium(LoginController.userName);
+        checkPremium = new AtomicBoolean(false);
+        if(returnEntity.getCode() == 200){
+            // successful
+            checkPremium = (AtomicBoolean)returnEntity.getObject();
+            if(checkPremium.get()){
+                vipLabel.setTextFill(Color.rgb(255,223,169));
+            }
+        }
+        else if(returnEntity.getCode() == 4042){
+            // account not exist
+        }
+        else if(returnEntity.getCode() == 5000){
+            // database error
+        }
+        FIT.setImage(new Image("/view/images/FIT.png"));
     }
 
     public void showHistory(MouseEvent me) throws IOException{
@@ -67,23 +109,8 @@ public class BasePageController {
     }
 
     public void showVip(MouseEvent event) throws IOException{
-        AccountService accountService = new AccountService();
-        //ReturnEntity returnEntity = accountService.isPremium("Heluyao");
-        ReturnEntity returnEntity=accountService.isPremium(LoginController.userName);
-        AtomicBoolean check = new AtomicBoolean(false);
-        if(returnEntity.getCode() == 200){
-            // successful
-            check = (AtomicBoolean)returnEntity.getObject();
-        }
-        else if(returnEntity.getCode() == 4042){
-            // account not exist
-        }
-        else if(returnEntity.getCode() == 5000){
-            // database error
-        }
-
         Label l = (Label) event.getSource();
-        if(l.equals(vipLabel) && check.get()){ // is premium
+        if(l.equals(vipLabel) && checkPremium.get()){ // is premium
             Stage stage = (Stage) b_home.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/fxml/VipPageForVip.fxml"));
@@ -91,12 +118,13 @@ public class BasePageController {
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
             anchorPane.getChildren().add(vip);
             VipController vipController = loader.getController();
+            vipController.vipCard.setUserData(this);
             vipController.init();
             vip.setLayoutY(75);
-            vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
+            vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+ 0.5 * l.getPrefWidth());
             vip.setVisible(true);
         }
-        else if(l.equals(vipLabel) && !check.get()){ // is not premium
+        else if(l.equals(vipLabel) && !checkPremium.get()){ // is not premium
             Stage stage = (Stage) b_home.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/fxml/VipPageForOrdinary.fxml"));
@@ -104,9 +132,10 @@ public class BasePageController {
             AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
             anchorPane.getChildren().add(vip);
             VipPageForOrdinaryController vipPageForOrdinaryController = loader.getController();
+            vipPageForOrdinaryController.vipCard.setUserData(this);
             vipPageForOrdinaryController.init();
             vip.setLayoutY(75);
-            vip.setLayoutX(vipLabel.getLayoutX()-0.5*vip.getPrefWidth()+0.5*l.getPrefWidth());
+            vip.setLayoutX(vipLabel.getLayoutX()-0.5 * vip.getPrefWidth() + 0.5 * l.getPrefWidth());
             vip.setVisible(true);
         }
     }
@@ -179,6 +208,7 @@ public class BasePageController {
         Stage stage = (Stage) b_home.getScene().getWindow();
         stage.setTitle("Home");
         FXMLLoader loader = new FXMLLoader();
+        this.init();
         loader.setLocation(getClass().getResource("/view/fxml/MainPage.fxml"));
         AnchorPane home = (AnchorPane) loader.load();
         // Set person overview into the center of root layout.
@@ -249,4 +279,8 @@ public class BasePageController {
         stage.show();
     }
 
+    public static void changeImage(String path){
+        Image image = new Image(path);
+        user_image.setImage(image);
+    }
 }

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -21,6 +24,7 @@
                      <children>
                         <Button fx:id="playBT" mnemonicParsing="false" onMouseClicked="#setPlayButton" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
                         <Button fx:id="stopBT" mnemonicParsing="false" onMouseClicked="#setStopButton" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="favouriteBT" mnemonicParsing="false" onMouseClicked="#setFavourite" />
                      </children>
                   </HBox>
                </center>
@@ -49,6 +53,9 @@
             </BorderPane>
          </children>
       </VBox>
-      <Button fx:id="backButton" mnemonicParsing="false" onMouseClicked="#backToPreviousPage" text="Back" />
+      <Button fx:id="backButton" mnemonicParsing="false" onMouseClicked="#backToPreviousPage" text="Back">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

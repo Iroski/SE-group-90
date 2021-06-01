@@ -19,7 +19,7 @@ public class SeasonPremium  extends BasePremium {
         super.type=2;
         super.duration=7776000;
         super.freeLesson=1;
-        super.bargain=new BigDecimal("0.8");
+        super.bargain=new BigDecimal("0.85");
     }
 
 }

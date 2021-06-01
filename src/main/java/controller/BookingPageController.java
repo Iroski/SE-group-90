@@ -15,8 +15,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import main.Main;
 import model.entity.*;
+import model.enumPackage.PremiumType;
 import model.enumPackage.TargetType;
 import model.service.*;
 import model.utils.DateUtils;
@@ -43,19 +45,24 @@ public class BookingPageController {
     public VBox lessonTime;
     public CheckBox customization;
     public ChoiceBox<String> targets;
-
+    public TextField otherInput;
+    public Tooltip customizationTip;
+    public Label priceLabel;
+    public Label freeLabel;
 
     LinkedList<LocalDate> day_list;
     LinkedList<LocalTime> time_list;
     LinkedList<CheckBox> time_box_list;
-    LocalDate selectedDate = null;
+    LocalDate selectedDate;
     LocalTime selectedTime = null;
     Coach coach;
     User user;
     String userName;
-    private int lessonPrice = 30;
+    public static double lessonPrice = 30.0;
     private boolean isCustomized = false;
     private String target = "";
+    private int premiumType;
+    private double price;
 
     @FXML
     public void initialize(){
@@ -66,6 +73,7 @@ public class BookingPageController {
         day_list.add(LocalDate.now().plusDays(4));
         day_list.add(LocalDate.now().plusDays(5));
         dateChoose.getItems().addAll(day_list);
+        selectedDate = day_list.get(0);
 
         time_list = new LinkedList<>();
         time_list.add(LocalTime.of(9,0,0));
@@ -80,6 +88,21 @@ public class BookingPageController {
         time_box_list.add(thirdLesson);
         time_box_list.add(fourthLesson);
         time_box_list.add(fifthLesson);
+
+        for(TargetType type : TargetType.values()){
+            targets.getItems().add(type.getDescription());
+        }
+
+        otherInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                target = otherInput.getText();
+            }
+        });
+
+        dateChoose.getSelectionModel().selectFirst();
+        dateChoose.setStyle("-fx-font-size: 22px");
+        targets.setStyle("-fx-font-size: 22px");
     }
 
     public void init(){
@@ -98,7 +121,6 @@ public class BookingPageController {
         CoachService coachService = new CoachService();
         ReturnEntity returnEntity = coachService.getReservedTimeById(coach_id);
         if(returnEntity.getCode() == 4044){
-            // 教练不存在
             System.out.println("coach not exist");
         }
         else if(returnEntity.getCode() == 5000){
@@ -133,9 +155,7 @@ public class BookingPageController {
                 selectedDate = day_list.get(index);
             }
         });
-        dateChoose.getSelectionModel().selectFirst();
-        dateChoose.setStyle("-fx-font-size: 22px");
-        targets.setStyle("-fx-font-size: 22px");
+
 
         for(CheckBox cb : time_box_list){
             cb.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -155,9 +175,6 @@ public class BookingPageController {
         }
 
         targets.setVisible(false);
-        for(TargetType type : TargetType.values()){
-            targets.getItems().add(type.getDescription());
-        }
         customization.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
@@ -169,18 +186,43 @@ public class BookingPageController {
                 else{
                     targets.setVisible(false);
                     isCustomized = false;
-                    target = "";
                 }
             }
         });
+        customization.setSelected(false);
+        customization.setTooltip(customizationTip);
+        customizationTip.setShowDelay(new Duration(1));
+        customizationTip.setText("If you choose it, you will\nbe able to set your target.");
+
+        for(int i = 0; i < 5; ++i){
+            setCheckBox(reserved[0]);
+        }
 
         targets.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) { // old new
-                target = targets.getSelectionModel().getSelectedItem();
+                target = targets.getItems().get((Integer) t1);
+                if(target == "Other"){
+                    otherInput.setVisible(true);
+                }else{
+                    otherInput.setVisible(false);
+                }
             }
         });
         targets.getSelectionModel().selectFirst();
+
+        premiumType = getPremiumType(user);
+        double bargain = PremiumType.getPremiumByType(premiumType).getBargain().doubleValue();
+        price = lessonPrice * bargain;
+        priceLabel.setText(String.format("%.2f", price) + "(" + String.format("%.0f", (1 - bargain) * 100) + "% off)");
+
+        AccountService accountService = new AccountService();
+        ReturnEntity returnEntity2 = accountService.getFreeLessonNumByUsername(userName);
+        int freeNum = (int) returnEntity2.getObject();
+        freeLabel.setText("Your remaining free lesson number: " + freeNum);
+        dateChoose.getSelectionModel().select(selectedDate);
+        int index = day_list.indexOf(selectedDate);
+        setCheckBox(reserved[index]);
     }
 
     public void setCheckBox(boolean[] reserved){
@@ -188,6 +230,7 @@ public class BookingPageController {
             HBox box = (HBox) lessonTime.getChildren().get(i);
             Label label = (Label) box.getChildren().get(0);
             CheckBox c_box = (CheckBox) box.getChildren().get(1);
+            c_box.setSelected(false);
             if(reserved[i]){
                 label.setTextFill(Color.GRAY);
                 c_box.setVisible(false);  // has been reserved. can not be booked
@@ -226,6 +269,14 @@ public class BookingPageController {
             alert.show();
             return;
         }
+        String targetInput = otherInput.textProperty().getValue();
+        if(targets.getSelectionModel().getSelectedItem() == "Other" && (targetInput.equals("") || targetInput == null)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.titleProperty().set("Lesson customization is not chose");
+            alert.headerTextProperty().set("You have not chose the customization\nPlease choose before you click 'OK'");
+            alert.show();
+            return;
+        }
         Stage stage = new Stage();
         stage.setTitle("Confirmation");
         FXMLLoader loader = new FXMLLoader();
@@ -244,26 +295,30 @@ public class BookingPageController {
                 createOrder(coach, user, lessonTime);
                 this.init();
             }
-
         }
     }
 
     public void createOrder(Coach coach, User user, Long lessonTime) throws IOException {
         OrderService orderService = new OrderService();
         Long createTime = DateUtils.dateToTimeStamp(new Date());
-        LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, isCustomized,target,"", createTime);
-        int premiumType = getPremiumType(user);
-        BigDecimal money = BigDecimal.valueOf(lessonPrice);  // 暂时定价为30一节课
-        Order order = new Order(user.getName(), 1, createTime, premiumType, null, money, 0, createTime);
-        ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson);
+        LiveLesson liveLesson = new LiveLesson(user.getName(), coach.getName(), lessonTime, 0, isCustomized, target,"", createTime);
+        BigDecimal money = BigDecimal.valueOf(price);
+        boolean ifFree = false;
+        if(isFreeByPremium(user).get()){
+            money = BigDecimal.valueOf(0);
+            ifFree = true;
+        }
+        Order order = new Order(user.getName(), 1, createTime, premiumType, 0, money, 0, createTime);
+        ReturnEntity returnEntity = orderService.createLiveLessonOrder(user.getName(), order, liveLesson, isFreeByPremium(user).get());
 
         switch (returnEntity.getCode()){
             case 200: // successful
                 order = (Order) returnEntity.getObject();
-                payForLessonOrder(user, order, liveLesson);
+                payForLessonOrder(user, order, liveLesson, price, ifFree);
                 break;
             case 400: // bad input time
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"",confirm);
                 alert.titleProperty().set("Failure");
                 alert.headerTextProperty().set("You have already booked a live lesson at this time");
                 alert.show();
@@ -281,6 +336,7 @@ public class BookingPageController {
                 System.out.println("order error 5000");
                 break;
         }
+        this.init();
     }
 
     public int getPremiumType(User user){
@@ -303,21 +359,26 @@ public class BookingPageController {
         return premiumType;
     }
 
-    public void payForLessonOrder(User user, Order order, LiveLesson liveLesson) throws IOException {
-        AtomicBoolean isFreeByPremium = isFreeByPremium(user);
-        if(isFreeByPremium.get()){
-            order.setMoney(BigDecimal.valueOf(0));
-        }
-
-        AtomicBoolean paid;
-        paid = showIfPay(); // show and return
-
+    public void payForLessonOrder(User user, Order order, LiveLesson liveLesson, Double price, boolean ifFree) throws IOException {
         OrderService orderService = new OrderService();
+        if(ifFree){
+            int code = orderService.payLiveLessonOrder(user.getName(), liveLesson);
+            if(code != 200) System.out.println("free pay error");
+            ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+            Alert alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);
+            alert.titleProperty().set("Success");
+            alert.headerTextProperty().set("You have used 1 free lesson opportunity\nto book the lesson successfully");
+            alert.show();
+            return;
+        }
+        AtomicBoolean paid;
+        paid = showIfPay(price); // show and return
         if(paid.get()){
-            int code = orderService.payLiveLessonOrder(user.getName(), liveLesson, isFreeByPremium);
+            int code = orderService.payLiveLessonOrder(user.getName(), liveLesson);
             switch (code){
                 case 200: // successful
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION,"",confirm);
                     alert.titleProperty().set("Success");
                     alert.headerTextProperty().set("You have booked the lesson successfully");
                     alert.show();
@@ -329,7 +390,8 @@ public class BookingPageController {
                     System.out.println("pay error 4047");
                     break;
                 case 5001: // not enough balance
-                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                    alert = new Alert(Alert.AlertType.INFORMATION,"",confirm);
                     alert.titleProperty().set("Fail");
                     alert.headerTextProperty().set("You don not have enough money, top up please!");
                     alert.show();
@@ -344,7 +406,8 @@ public class BookingPageController {
             }
         }
         else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            ButtonType confirm = new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+            Alert alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);
             alert.titleProperty().set("Success");
             alert.headerTextProperty().set("You have booked the lesson successfully\nPlease pay for it before your lesson begin!");
             alert.show();
@@ -365,24 +428,25 @@ public class BookingPageController {
                 }
                 break;
             case 4042: // account not exist
-
                 break;
             case 5000: // database error
-
                 break;
         }
         return res;
     }
 
-    public AtomicBoolean showIfPay() throws IOException {
+    public AtomicBoolean showIfPay(double price) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrder.fxml"));
+        loader.setLocation(Main.class.getResource("/view/fxml/" + "PayForOrderPage.fxml"));
         AnchorPane page = loader.load();
         Stage payOrder = new Stage();
         payOrder.setTitle("Pay For the Order");
         Scene scene = new Scene(page);
         payOrder.setScene(scene);
         PayForOrderController controller = loader.getController();
+        controller.setPrice(price);
+        controller.init();
+
         payOrder.showAndWait();
         return controller.getIfPay();
     }

@@ -44,12 +44,12 @@ public class LessonPageController {
 
     @FXML
     private void initialize(){
-        lessonName.setStyle("");
+        lessonTableView.setPlaceholder(new Label(""));
     }
 
     public void init() {
         liveLessonService = new LiveLessonService();
-        ReturnEntity returnEntity = liveLessonService.getNotStartPayedLiveLessonByUsername(userName);
+        ReturnEntity returnEntity = liveLessonService.getNotStartNotCanceledLiveLessonByUsername(userName);
         if(returnEntity.getCode() == 4043){
             System.out.println("table not exist!");
         }
@@ -85,11 +85,13 @@ public class LessonPageController {
                             button1.setStyle("-fx-background-color: #00bcff;-fx-text-fill: #ffffff;");
                             button1.setOnMouseClicked((col) -> {
                                 LiveLesson l = lessonData.get(getIndex());
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+                                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yes, no);
                                 alert.titleProperty().set("Confirm to cancel");
                                 alert.setHeaderText("Are you sure you want to cancel the lesson now?");
                                 Optional<ButtonType> result = alert.showAndWait();
-                                if (result.get() == ButtonType.OK){
+                                if (result.get() == yes){
                                     int status = l.getStatus();
                                     OrderService orderService = new OrderService();
                                     int code;
@@ -130,15 +132,24 @@ public class LessonPageController {
 
                             button3.setOnMouseClicked((col) -> {
                                 LiveLesson l = lessonData.get(getIndex());
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+                                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yes, no);
                                 alert.titleProperty().set("Confirm to pay");
                                 alert.setHeaderText("Are you sure you want to pay now?");
                                 Optional<ButtonType> result = alert.showAndWait();
                                 OrderService orderService = new OrderService();
                                 AccountService accountService = new AccountService();
-                                if (result.get() == ButtonType.OK){
-                                    int code = orderService.payLiveLessonOrder(userName, l, new AtomicBoolean((int)accountService.getFreeLessonNumByUsername(userName).getObject() > 0));
-                                    if(code == 5001){
+                                if (result.get() == yes){
+                                    int code = orderService.payLiveLessonOrder(userName, l);
+                                    if(code == 200){
+                                        ButtonType confirm=new ButtonType("OK", ButtonBar.ButtonData.FINISH);
+                                        alert=new Alert(Alert.AlertType.INFORMATION,"",confirm);
+                                        alert.titleProperty().set("Successful");
+                                        alert.headerTextProperty().set("You have paid for the lesson successfully!");
+                                        alert.show();
+                                    }
+                                    else if(code == 5001){
                                         alert = new Alert(Alert.AlertType.INFORMATION);
                                         alert.titleProperty().set("Fail");
                                         alert.headerTextProperty().set("You don not have enough money, top up please!");
@@ -189,11 +200,23 @@ public class LessonPageController {
                                     return;
                                 }
                                 button.setOnMouseClicked((col) -> {
-                                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                                    alert.titleProperty().set("");
-                                    alert.setHeaderText(exercise);
-                                    alert.setGraphic(null);
-                                    alert.show();
+                                    Stage stage = (Stage) lessonsPane.getScene().getWindow();
+                                    FXMLLoader loader = new FXMLLoader();
+                                    loader.setLocation(getClass().getResource("/view/fxml/TargetDescriptionPage.fxml"));
+                                    AnchorPane desc = null;
+                                    try {
+                                        desc = (AnchorPane) loader.load();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    TargetDescriptionPageController targetDescriptionPageController = loader.getController();
+                                    targetDescriptionPageController.setText(exercise);
+                                    AnchorPane anchorPane = (AnchorPane) stage.getScene().getRoot();
+                                    anchorPane.getChildren().add(desc);
+                                    desc.setLayoutY(100);
+                                    desc.setLayoutX(650);
+
+                                    desc.setVisible(true);
                                 });
                             }catch (Exception e){}
 

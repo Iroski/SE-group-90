@@ -15,10 +15,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 /**
- * @author ：Yubo Wang
- * @date ：2021-04-08 11:39
- * @description：Load the resources from specific dir
- * @modified By：
+ * @author :Yubo Wang
+ * @date :2021-04-08 11:39
+ * @description:Load the resources from specific dir
+ * @modified By:
  * @version:
  */
 public class ResourceLoader {
@@ -63,16 +63,16 @@ public class ResourceLoader {
         List<Video> videos = (List<Video>)dataHouse.query("Video", new HashMap<>());
         HashSet<String> videoPaths = new HashSet<>();
         for (Video video: videos) {
-            String filePath = video.getStaticVideo().getFilePath();
-            String coverPath = video.getStaticVideo().getCoverPath();
-            video.getStaticVideo().setFilePath(filePathAdaptor(filePath));
-            video.getStaticVideo().setCoverPath(filePathAdaptor(coverPath));
+            String filePath = filePathAdaptor(video.getStaticVideo().getFilePath());
+            String coverPath = filePathAdaptor(video.getStaticVideo().getCoverPath());
+            video.getStaticVideo().setFilePath(filePath);
+            video.getStaticVideo().setCoverPath(coverPath);
             videoPaths.add(filePath);
             dataHouse.update("Video", video);
         }
         for (File videoFile : videoFiles) {
             if (videoFile.isFile()) {
-                String videoPath = cutFilePath(videoFile.getPath());
+                String videoPath = filePathAdaptor(cutFilePath(videoFile.getPath()));
                 if (videoPaths.contains(videoPath)) {
                     continue;
                 }

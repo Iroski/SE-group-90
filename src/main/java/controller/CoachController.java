@@ -2,15 +2,11 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.entity.Coach;
 
@@ -74,7 +70,12 @@ public class CoachController {
 
     }
 
-
+    /**
+     * This function is used to jump to the coach information page which is uses to show the details of the
+     * coach.
+     * @param: mouseEvent will be triggered after click the coach
+     * @throws: IOException
+     */
     public void chooseTheCoach(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) circle1.getScene().getWindow();
         stage.setTitle("Coach information");

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -16,7 +17,7 @@
             <Circle fx:id="userImage" fill="DODGERBLUE" layoutX="57.0" layoutY="52.0" radius="44.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <VBox alignment="CENTER_LEFT" layoutX="107.0" layoutY="22.0" prefHeight="79.0" prefWidth="695.0">
                <children>
-                  <Label fx:id="userName" layoutX="107.0" layoutY="22.0" prefHeight="32.0" prefWidth="254.0" text="Ke ai Gou bo" textFill="#72706c">
+                  <Label fx:id="userName" layoutX="107.0" layoutY="22.0" prefHeight="32.0" prefWidth="254.0" text="Username" textFill="#72706c">
                      <font>
                         <Font name="Arial Bold" size="28.0" />
                      </font>
@@ -44,9 +45,9 @@
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
-                  <HBox alignment="BASELINE_CENTER" layoutX="55.0" layoutY="83.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="83.0">
+                  <HBox alignment="BASELINE_CENTER" layoutX="46.0" layoutY="83.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="83.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￡" textFill="#e4a634">
                            <padding>
                               <Insets bottom="3.0" />
                            </padding>
@@ -54,13 +55,18 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="55.0" layoutY="68.0" prefHeight="45.0" prefWidth="81.0" text="99.8" textFill="#e4a634">
+                        <Label fx:id="monthlyPrice" layoutX="55.0" layoutY="68.0" text="30.0" textFill="#e4a634">
                            <font>
                               <Font name="System Bold Italic" size="35.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
+                  <Label fx:id="firstMonth" layoutX="42.0" layoutY="145.0" prefHeight="52.0" prefWidth="143.0" text="First time only 9.9!" textAlignment="CENTER" textFill="#ffb64a" wrapText="true">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -74,9 +80,9 @@
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
-                  <HBox alignment="BASELINE_CENTER" layoutX="59.0" layoutY="83.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="83.0">
+                  <HBox alignment="BASELINE_CENTER" layoutX="8.0" layoutY="83.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="83.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￡" textFill="#e4a634">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -84,18 +90,19 @@
                               <Insets bottom="3.0" />
                            </padding>
                         </Label>
-                        <Label layoutX="55.0" layoutY="68.0" prefHeight="45.0" prefWidth="73.0" text="299" textFill="#e4a634">
+                        <Label fx:id="quarterlyPrice" layoutX="55.0" layoutY="68.0" text="70.0" textFill="#e4a634">
                            <font>
                               <Font name="System Bold Italic" size="35.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="140.0" prefHeight="65.0" prefWidth="166.0" text="Get 1 free live lessons" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="140.0" prefHeight="32.0" prefWidth="166.0" text="1 free live lesson" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="172.0" prefHeight="32.0" prefWidth="207.0" text="15% off on lesson purchases" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -109,9 +116,9 @@
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
-                  <HBox alignment="BASELINE_CENTER" layoutX="58.0" layoutY="83.0" prefHeight="45.0" prefWidth="99.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="83.0">
+                  <HBox alignment="BASELINE_CENTER" layoutX="8.0" layoutY="83.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="83.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￥" textFill="#e4a634">
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" text="￡" textFill="#e4a634">
                            <padding>
                               <Insets bottom="3.0" />
                            </padding>
@@ -119,18 +126,19 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="55.0" layoutY="68.0" text="998" textFill="#e4a634">
+                        <Label fx:id="annualPrice" layoutX="55.0" layoutY="68.0" text="250.0" textFill="#e4a634">
                            <font>
                               <Font name="System Bold Italic" size="35.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="139.0" prefHeight="65.0" prefWidth="178.0" text="Get 12 free live lessons" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="139.0" prefHeight="65.0" prefWidth="178.0" text="12 free live lessons" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="172.0" prefHeight="32.0" prefWidth="207.0" text="25% off on lesson purchases" textAlignment="CENTER" textFill="#ffb64a" textOverrun="CLIP" wrapText="true" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -154,7 +162,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 8; -fx-background-color: #242424;">
                <children>
-                  <Label fx:id="premium0" layoutX="27.0" layoutY="16.0" prefHeight="42.0" prefWidth="450.0" text="Label" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="premium0" layoutX="27.0" layoutY="16.0" prefHeight="42.0" prefWidth="450.0" text="Free to watch all videos" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -162,7 +170,7 @@
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1">
                <children>
-                  <Label fx:id="premium1" layoutX="-83.0" layoutY="20.0" prefHeight="42.0" prefWidth="450.0" text="Label" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="premium1" layoutX="-83.0" layoutY="20.0" prefWidth="450.0" text="Can choose coaches to book live lessons" textFill="#fffbfb" wrapText="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -170,17 +178,17 @@
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="premium2" layoutX="37.0" layoutY="26.0" prefHeight="42.0" prefWidth="450.0" text="Label" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="premium2" layoutX="37.0" layoutY="26.0" prefHeight="42.0" prefWidth="450.0" text="Quarterly&amp;Annual comes with free live lessons" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="premium3" layoutX="-140.0" layoutY="18.0" prefHeight="42.0" prefWidth="450.0" text="Label" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="premium3" layoutX="-140.0" layoutY="18.0" prefHeight="42.0" prefWidth="450.0" text="Quarterly&amp;Annual have discounts on live lessons" textFill="#fffbfb" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
@@ -194,5 +202,13 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
+      <Button fx:id="backButton" layoutX="898.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#goToHome" prefHeight="39.0" prefWidth="75.0" style="-fx-background-color: BLACK; -fx-text-fill: WHITE; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="Back">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

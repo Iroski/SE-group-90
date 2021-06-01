@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
@@ -66,15 +67,18 @@ public class LoginController {
     public void goToMainPage() throws IOException {
         Stage stage = (Stage) LoginButton.getScene().getWindow();
         stage.close();
-        stage=new Stage();
+        stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/fxml/BaseMainPage.fxml"));
         AnchorPane rootLayout=(AnchorPane) loader.load();
+        BasePageController basePageController = loader.getController();
+        basePageController.init();
         //BasePageController basePageController=loader.getController();
         //basePageController.userName.setUserData();
         Scene scene=new Scene(rootLayout);
         stage.setScene(scene);
         stage.setTitle("MainPage");
+        stage.getIcons().add(new Image("/view/images/FIT.png"));
         FXMLLoader loader2 = new FXMLLoader();
         loader2.setLocation(getClass().getResource("/view/fxml/MainPage.fxml"));
         AnchorPane mainPage = (AnchorPane) loader2.load();

@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -25,9 +26,14 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.entity.ReturnEntity;
 import model.entity.Video;
+import model.service.UserService;
+import model.service.VideoService;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,6 +42,7 @@ public class VideoShowController {
     public Button stopBT;
     public Button maxBT;
     public Button volumeBT;
+    public Button favouriteBT;
     public Button backButton;
     public Label timeLB;
     public Slider processSD;
@@ -45,6 +52,7 @@ public class VideoShowController {
     public BorderPane mediaPane;
     public AnchorPane anchorPane;
 
+
     //image of components
     private String playIcon  = getClass().getResource("/view/images/play.png").toString();
     private String pauseIcon  = getClass().getResource("/view/images/pause.png").toString();
@@ -52,7 +60,7 @@ public class VideoShowController {
     private String volOffIcon  = getClass().getResource("/view/images/volume_off.png").toString();
     private String volOnIcon  = getClass().getResource("/view/images/volume_On.png").toString();
     private String maxIcon  = getClass().getResource("/view/images/max.png").toString();
-
+    private String favouriteIcon = getClass().getResource("/view/images/favourite.png").toString();
     private MediaPlayer mediaPlayer;
     private Media media;
     private String url;     //the URL address of videos
@@ -74,7 +82,7 @@ public class VideoShowController {
         setIcon(stopBT,stopIcon,25);
         setIcon(volumeBT,volOnIcon,15);
         setIcon(maxBT,maxIcon,25);
-
+        setIcon(favouriteBT, favouriteIcon, 25);
         java.io.File file = new java.io.File("src/main/resources/"+MainPageController.path);
         url = file.toURI().toString();
         media = new Media(url);
@@ -137,7 +145,6 @@ public class VideoShowController {
                 updateValues();
             }
         });
-
 
     }
 
@@ -238,6 +245,39 @@ public class VideoShowController {
                 mediaPlayer.setVolume(newValue.doubleValue()/100);
             }
         });
+    }
+
+    @FXML
+    public void setFavourite(MouseEvent mouseEvent) throws IOException{
+        VideoService videoService = new VideoService();
+        ReturnEntity returnEntity = videoService.getAllVideos();
+        ArrayList<Video> list = (ArrayList<Video>) returnEntity.getObject();
+        UserService service = new UserService();
+        for (Video value : list) {
+            if(value.getStaticVideo().getVideoName().equals(VideoPageController.currentVideoName)){
+                //MainPageController.path = value.getStaticVideo().getFilePath();
+                Long id = value.getId();
+                System.out.println(id);
+                int code = service.setFavoriteByName(LoginController.userName,id);
+                if(code == 200){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.titleProperty().set("Success");
+                    alert.headerTextProperty().set("Add to Favourites successfully!");
+                    alert.showAndWait();
+                }else if(code == 4041){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.titleProperty().set("Error");
+                    alert.headerTextProperty().set("Add to Favorites failed!");
+                    alert.showAndWait();
+                }else if(code == 5000){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.titleProperty().set("Error");
+                    alert.headerTextProperty().set("Database error!");
+                    alert.showAndWait();
+                }
+                break;
+            }
+        }
     }
 
     //Update video data (progress bar, time tag, volume bar data)

@@ -35,13 +35,17 @@ public class BasePlanGenerator {
     int lastIndex=-1;
 
 
-    public String generatePlan(int height,double weight){
-        double BMI=(double)((weight/(height/100))/(height/100));
+    public String generatePlan(Integer height,Double weight,String target){
+        double BMI;
+        if(height==null||weight==null)
+            BMI=22;
+        else
+            BMI=(double)((weight/(height/100))/(height/100));
         System.out.println(BMI);
-        return getPlans(BMI);
+        return getPlans(BMI,target);
     }
 
-    protected String getPlans(Double BMI){
+    protected String getPlans(Double BMI,String target){
         int times=3;
         if(BMI>25){
             times=5;
@@ -49,11 +53,12 @@ public class BasePlanGenerator {
             times=4;
         }
         StringBuilder stringBuilder=new StringBuilder();
-        stringBuilder.append("this lecture's plan: \n");
+        stringBuilder.append("target: ").append(target).append(System.lineSeparator());
+        stringBuilder.append("this lecture's plan: ").append(System.lineSeparator());
 
         for(int i=0;i<times;++i){
             stringBuilder.append(i+1);
-            stringBuilder.append(" round: \n");
+            stringBuilder.append(" round: ").append(System.lineSeparator());
             int randNum=new Random().nextInt(5)+3;
             for(int j=0;j<randNum;++j){
                 int randAct= new Random().nextInt(actNum);
@@ -116,15 +121,15 @@ public class BasePlanGenerator {
                 }else{
                     actTimes=new Random().nextInt(actTimes)+1;
                     stringBuilder.append(act);
-                    stringBuilder.append(" * ");
+                    stringBuilder.append(" *");
                     stringBuilder.append(actNum);
                     stringBuilder.append("0 , ");
                     stringBuilder.append(actTimes);
-                    stringBuilder.append(" times\n");
+                    stringBuilder.append(" times").append(System.lineSeparator());
                 }
             }
-            stringBuilder.append("rest for 30 sec\n");
-            stringBuilder.append("\n");
+            stringBuilder.append("rest for 30 sec").append(System.lineSeparator());
+            stringBuilder.append(System.lineSeparator());
         }
 
         return stringBuilder.toString();

@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
@@ -21,20 +22,50 @@ import java.util.ArrayList;
 
 
 public class CoachPageController {
+    private static final String ENTER = "Enter";
     public Pagination pages;
     public TextField searchText;
     public Button searchButton;
+    public Label noCoachLabel;
     int number;
     int pageNumber;
     ArrayList<Coach> coachArrayList;
     CoachService coachService;
 
-    public void search(MouseEvent mouseEvent) {
-        getCoaches();
-        coachArrayList.remove(0);
+    public void listTheSearchesCoaches() {
+        if (searchText.getText()==null|| searchText.getText().equals("")) {
+            getCoaches();
+            setPage();
+            return ;
+        }
+        ReturnEntity returnEntity=coachService.blurSearchByName(searchText.getText());
+        if (returnEntity.getCode()==500) {
+            System.out.println("Data base error!");
+        }
+        else if (returnEntity.getObject()==null) {
+            coachArrayList=null;
+        }
+        else if (returnEntity.getCode()==200) {
+            coachArrayList=(ArrayList<Coach>) returnEntity.getObject();
+        }
         setPage();
     }
+    /**
+     * This function is used to search the coach
+     * @param: mouseEvent will be triggered after the user click the button "search"
+     * @throws: IOException
+     */
+    public void search(MouseEvent mouseEvent) {
+        listTheSearchesCoaches();
+    }
 
+    public void send(KeyEvent keyEvent) {
+        if (keyEvent.getCode().getName().equals(ENTER))
+            listTheSearchesCoaches();
+    }
+    /**
+     * This function is used to get all of the coaches.
+     */
     public void getCoaches() {
         coachService=new CoachService();
         ReturnEntity returnEntity=coachService.getAllCoaches();
@@ -49,8 +80,18 @@ public class CoachPageController {
         }
     }
 
+    /**
+     * This function is used to set the coach page and show the coaches.
+     */
     public void setPage() {
-        number=coachArrayList.size();
+        if (coachArrayList==null) {
+            noCoachLabel.setVisible(true);
+            number=0;
+        }
+        else {
+            noCoachLabel.setVisible(false);
+            number = coachArrayList.size();
+        }
         if (number % 12 == 0) {
             pageNumber = number / 12;
         } else {
@@ -97,8 +138,12 @@ public class CoachPageController {
         pages.setVisible(true);
     }
 
+    /**
+     * This function is used to init the coach page, get all the coaches and set them on the page.
+     */
     @FXML
     public void initialize() {
+        noCoachLabel.setVisible(false);
         getCoaches();
         setPage();
     }

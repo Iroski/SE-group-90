@@ -28,6 +28,10 @@ public class LiveController {
     public ImageView chatImage;
     public TextArea test;
     private String chats="";
+
+    /**
+     * This function is used to init the live page
+     */
     @FXML
     public void initialize() {
         chatImage.setImage(new Image("view/images/liveChat.png"));
@@ -35,6 +39,12 @@ public class LiveController {
         String style = "BORDER-BOTTOM-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none";
         test.setStyle(style);
     }
+
+    /**
+     * This function is used to go to the lesson page if the user want to go back
+     * @param: mouseEvent will be triggered after the user click button "return"
+     * @throws: IOException
+     */
     public void goToMyLesson(MouseEvent mouseEvent) throws IOException {
 
         Stage stage =(Stage) backButton.getScene().getWindow();
@@ -53,6 +63,11 @@ public class LiveController {
         lessonPageController.init();
     }
 
+    /**
+     * This function is used to send a message to the chat area
+     * @param: mouseEvent will be triggered after the user click the button "send"
+     * @throws: IOException
+     */
     public void sendText(MouseEvent mouseEvent) {
         String text=chat.getText();
         String temp="hly: " +text + "\n";
@@ -62,7 +77,11 @@ public class LiveController {
         test.setWrapText(true);
         chat.setText("");
     }
-
+    /**
+     * This function is used to send a message to the chat area by keyboard
+     * @param: mouseEvent will be triggered after the user pressed "Enter" on the keyboard
+     * @throws: IOException
+     */
     public void send(KeyEvent keyEvent) {
         if (keyEvent.getCode().getName().equals(ENTER)) {
             String temp="hly: " +chat.getText() + "\n";

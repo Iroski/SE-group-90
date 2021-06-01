@@ -10,15 +10,18 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
    <children>
-      <Label layoutX="80.0" layoutY="59.0" prefHeight="66.0" prefWidth="130.0" text="Balance:">
+      <Label layoutX="80.0" layoutY="59.0" prefHeight="66.0" prefWidth="130.0" text="Balance:" AnchorPane.leftAnchor="52.0">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <Button fx:id="topup" layoutX="384.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#TopUp" prefHeight="71.0" prefWidth="233.0" text="Top up now!" textFill="WHITE">
+      <Button fx:id="topup" layoutX="369.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#TopUp" prefHeight="71.0" prefWidth="261.0" text="Top up now!" textFill="WHITE">
          <font>
             <Font size="33.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Label fx:id="balance" layoutX="218.0" layoutY="59.0" prefHeight="66.0" prefWidth="478.0" textFill="#ff1c1c">
          <font>
@@ -32,52 +35,76 @@
          <textFill>
             <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0">
                <stops>
-                  <Stop color="#ff0900d5" />
-                  <Stop color="#ff670f" offset="0.5375" />
-                  <Stop color="#ff0f0fc7" offset="1.0" />
+                  <Stop color="#000000d6" />
+                  <Stop color="BLACK" offset="0.659375" />
+                  <Stop color="#000000c7" offset="1.0" />
                </stops>
             </LinearGradient>
          </textFill>
       </Label>
       <Label fx:id="l8" alignment="CENTER" layoutX="775.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="Custom" textFill="#ffb64a">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="l7" alignment="CENTER" layoutX="528.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="\$8848" textFill="#ffb64a">
+      <Label fx:id="l7" alignment="CENTER" layoutX="528.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￡8848" textFill="#ffb64a">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="l6" alignment="CENTER" layoutX="288.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="\$998" textFill="#ffb64a">
+      <Label fx:id="l6" alignment="CENTER" layoutX="288.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￡998" textFill="#ffb64a">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="l5" alignment="CENTER" layoutX="52.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="\$648" textFill="#ffb64a">
+      <Label fx:id="l5" alignment="CENTER" layoutX="52.0" layoutY="416.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￡648" textFill="#ffb64a">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="l4" alignment="CENTER" layoutX="775.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="\$233" textFill="#ffb64a">
+      <Label fx:id="l4" alignment="CENTER" layoutX="775.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￡233" textFill="#ffb64a">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="l3" alignment="CENTER" layoutX="528.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="\$68" textFill="#ffb64a">
+      <Label fx:id="l3" alignment="CENTER" layoutX="528.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￡68" textFill="#ffb64a">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="l2" alignment="CENTER" layoutX="288.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="\$18" textFill="#ffb64a">
+      <Label fx:id="l2" alignment="CENTER" layoutX="288.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￡18" textFill="#ffb64a">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="l1" alignment="CENTER" layoutX="52.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="\$6" textFill="#ffb64a">
+      <Label fx:id="l1" alignment="CENTER" layoutX="52.0" layoutY="271.0" onMouseClicked="#selectAmount" prefHeight="84.0" prefWidth="174.0" text="￡6" textFill="#ffb64a">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
    </children>
 </AnchorPane>

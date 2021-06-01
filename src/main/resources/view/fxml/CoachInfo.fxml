@@ -15,7 +15,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ImageView fx:id="photo" fitHeight="300.0" fitWidth="233.0" layoutX="127.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="57.0" />
+                  <ImageView fx:id="photo" fitHeight="300.0" fitWidth="233.0" layoutX="98.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="85.0" />
                   <TextFlow fx:id="description" layoutX="108.0" layoutY="425.0" prefHeight="227.0" prefWidth="376.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                   <Label layoutX="20.0" layoutY="367.0" prefHeight="58.0" prefWidth="214.0" text="Introduction">
                      <font>
@@ -26,72 +26,72 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <HBox layoutX="122.0" layoutY="72.0" spacing="35.0">
+                  <HBox layoutX="122.0" layoutY="72.0" prefHeight="415.0" prefWidth="343.0" spacing="35.0">
                      <children>
                         <VBox layoutX="112.0" layoutY="50.0" spacing="45.0">
                            <children>
                               <Label fx:id="nameLabel" layoutX="129.0" layoutY="92.0" text="name:">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="sexLabel" layoutX="129.0" layoutY="147.0" text="sex:">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="heightLabel" layoutX="129.0" layoutY="214.0" text="height:">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="weightLabel" layoutX="129.0" layoutY="291.0" text="weight:">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="ageLabel" layoutX="129.0" layoutY="384.0" text="age:">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Label>
                               <Label fx:id="courseLabel" layoutX="129.0" layoutY="454.0" text="course:">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Label>
                            </children>
                         </VBox>
-                        <VBox layoutX="246.0" layoutY="56.0" spacing="45.0">
+                        <VBox layoutX="246.0" layoutY="56.0" prefHeight="415.0" prefWidth="195.0" spacing="47.0">
                            <children>
-                              <Text fx:id="name" layoutX="215.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="name" layoutX="215.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="186.5654296875">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="sex" layoutX="215.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="sex" fontSmoothingType="LCD" layoutX="215.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="184.5654296875">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="height" layoutX="215.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="height" fontSmoothingType="LCD" layoutX="215.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="189.5654296875">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="weight" layoutX="215.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="weight" fontSmoothingType="LCD" layoutX="215.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="187.5654296875">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="age" layoutX="215.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="age" fontSmoothingType="LCD" layoutX="215.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="184.5654296875">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="course" layoutX="215.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="course" fontSmoothingType="LCD" layoutX="215.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="206.5654296875">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Arial" size="26.0" />
                                  </font>
                               </Text>
                            </children>
@@ -101,11 +101,17 @@
                   <Button id="1" fx:id="reserve" layoutX="174.0" layoutY="577.0" mnemonicParsing="false" onMouseClicked="#reserve" prefHeight="67.0" prefWidth="199.0" style="-fx-background-color: BLACK; -fx-text-fill: white; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="reserve">
                      <font>
                         <Font name="Arial" size="36.0" />
-                     </font></Button>
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <Button fx:id="back" layoutX="439.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#backToCoach" prefHeight="58.0" prefWidth="105.0" style="-fx-background-color: BLACK; -fx-text-fill: WHITE; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="back">
                      <font>
                         <Font name="Arial Bold" size="23.0" />
-                     </font></Button>
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </AnchorPane>
         </items>

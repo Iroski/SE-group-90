@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,14 +20,21 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;
+import main.Main;
+import model.entity.Account;
+import model.entity.Coach;
 import model.entity.ReturnEntity;
 import model.entity.Video;
+import model.service.AccountService;
 import model.service.UserService;
 import model.service.VideoService;
 
 import javax.swing.event.ChangeEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 /**
  * @description: TODO
  * @author Yuhang Lu
@@ -40,14 +48,16 @@ public class VideoPageController {
     public TextField searchText;
     public ComboBox category;
     List<Video> list;
+    ArrayList<Video> searchList;
+    public static String currentVideoName;
 
     @FXML
     public void initialize() throws IOException {
         category.getItems().addAll(
                 "All videos",
-                "running",
-                "yoga",
-                "biking"
+                "Running",
+                "Yoga",
+                "Biking"
         );
         category.getSelectionModel().selectFirst();
         category.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
@@ -80,41 +90,54 @@ public class VideoPageController {
         }
 
         searchImage.setImage(new Image("view/images/searchImage.png"));
+        searchImage.setCursor(Cursor.HAND);
     }
 
     public void showVideo(MouseEvent mouseEvent) throws IOException {
+        VideoService videoService = new VideoService();
+        AccountService accountService = new AccountService();
+        ReturnEntity returnEntity = accountService.isPremium(LoginController.userName);
         UserService service = new UserService();
         VideoBox videoBox = (VideoBox) mouseEvent.getSource();
         Label label = (Label) videoBox.getChildren().get(1);
+        Long videoId = null;
         for (Video value : list) {
             if(value.getStaticVideo().getVideoName().equals(label.getText())) {
                 MainPageController.path = value.getStaticVideo().getFilePath();
-                Long id = value.getId();
-                service.setHistoryByName(LoginController.userName,id);
-                //System.out.println(id);
+                videoId = value.getId();
                 break;
             }
         }
-        Stage stage = (Stage) category.getScene().getWindow();
-        stage.setTitle("Video Show");
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
-        AnchorPane video = (AnchorPane) loader.load();
-        // Set person overview into the center of root layout.
-        AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
-        anchorPane.getChildren().remove(2);
-        anchorPane.getChildren().add(2, video);
+        AtomicBoolean tmp= (AtomicBoolean) returnEntity.getObject();
+        if(videoService.isVideoPremium(videoId).get() && !tmp.get()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.titleProperty().set("Error");
+            alert.headerTextProperty().set("This video is only for VIP! Please become a VIP");
+            alert.showAndWait();
+            return;
+        }else{
+            service.setHistoryByName(LoginController.userName,videoId);
+            Stage stage = (Stage) category.getScene().getWindow();
+            stage.setTitle("Video Show");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/fxml/VideoShow.fxml"));
+            AnchorPane video = (AnchorPane) loader.load();
+            AnchorPane anchorPane= (AnchorPane) stage.getScene().getRoot();
+            anchorPane.getChildren().remove(2);
+            anchorPane.getChildren().add(2, video);
 
-        video.setLayoutX(200);
-        video.setLayoutY(75);
+            video.setLayoutX(200);
+            video.setLayoutY(75);
+
+            currentVideoName = label.getText();
+        }
     }
+
 
     public void filterVideosByTag(String tag) throws IOException {
         flowPane.getChildren().clear();
         int counter = 0;
         List<String> tagName;
-//        Stage stage = (Stage) all.getScene().getWindow();
-//        stage.setTitle(tag);
         for (Video value : list) {
             if(value.getTagsName()!=null) {
                 tagName = value.getTagsName();
@@ -143,8 +166,22 @@ public class VideoPageController {
     }
 
     public void showAllVideos() {
-//        Stage stage = (Stage) all.getScene().getWindow();
-//        stage.setTitle("Videos");
+        MainPageController.previousPage = "Videos";
+        flowPane.getChildren().clear();
+        for(int i=0; i<list.size(); i++){
+            VideoBox videoBox = new VideoBox(list.get(i).getStaticVideo().getCoverPath(),list.get(i).getStaticVideo().getVideoName());
+            videoBox.setOnMouseClicked(mouseEvent -> {
+                try {
+                    showVideo(mouseEvent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            flowPane.getChildren().add(videoBox);
+        }
+    }
+
+    public void showSearchedVideos(List<Video> list) {
         MainPageController.previousPage = "Videos";
         flowPane.getChildren().clear();
         for(int i=0; i<list.size(); i++){
@@ -162,9 +199,24 @@ public class VideoPageController {
 
     public void SearchVideo(MouseEvent mouseEvent) throws IOException{
         String text = searchText.getText();
-        //Todo
-        if(text.equals("camel1")){
-            showAllVideos();
+        if(!text.equals("")){
+            VideoService videoService = new VideoService();
+            ReturnEntity returnEntity = videoService.blurSearchByName(text);
+            searchList = (ArrayList<Video>) returnEntity.getObject();
+            int code = returnEntity.getCode();
+            if(code == 200){
+                showSearchedVideos(searchList);
+            }else if(code == 4045){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.titleProperty().set("Error");
+                alert.headerTextProperty().set("Videos not found!");
+                alert.showAndWait();
+            }else if(code == 5000){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.titleProperty().set("Error");
+                alert.headerTextProperty().set("Database error!");
+                alert.showAndWait();
+            }
         }
     }
 

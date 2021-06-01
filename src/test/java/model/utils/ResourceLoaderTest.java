@@ -7,10 +7,10 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 /**
- * @author ：Yubo Wang
- * @date ：2021-04-10 16:35
- * @description：
- * @modified By：
+ * @author :Yubo Wang
+ * @date :2021-04-10 16:35
+ * @description:
+ * @modified By:
  * @version:
  */
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)

@@ -27,37 +27,31 @@ import java.util.ArrayList;
  */
 public class SignUpController {
     private Stage singUpStage;
-    @FXML
     public Button submit;
-    @FXML
     public TextField userName;
-    @FXML
     public TextField email;
-    @FXML
     public TextField password;
-    @FXML
     public TextField phoneNumber;
-    @FXML
     public ComboBox gender;
-    @FXML
     public TextField height;
-    @FXML
     public TextField weight;
-    @FXML
     public TextField age;
+    public Button cancel;
 
     User user;
 
     @FXML
     public void initialize() {
+        cancel.setStyle("-fx-border-color: #000000 ; -fx-background-color: #000000 ; -fx-border-radius: 5px ");
+        submit.setStyle("-fx-border-color: #000000 ; -fx-background-color: #000000 ; -fx-border-radius: 5px ");
         gender.getItems().addAll(
-                "null",
+                "secret",
                 "female",
                 "male"
         );
         gender.getSelectionModel().selectFirst();
 
-        user = new User("","","","","", "", null,null,null,new ArrayList<Long>(),new ArrayList<Long>());
+        user = new User("","","","","secret", "", null,null,null,new ArrayList<Long>(),new ArrayList<Long>());
     }
 
     /**
@@ -91,7 +85,6 @@ public class SignUpController {
             return;
         }
         String email = this.email.getText();
-        System.out.println(email);
         if(!CheckUserInfoValidation.checkEmail(email)){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.titleProperty().set("Error");
