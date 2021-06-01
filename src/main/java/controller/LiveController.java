@@ -70,7 +70,7 @@ public class LiveController {
      */
     public void sendText(MouseEvent mouseEvent) {
         String text=chat.getText();
-        String temp="hly: " +text + "\n";
+        String temp=LoginController.userName+": " +chat.getText() + "\n";
         this.chats=this.chats+temp;
         test.setText(this.chats);
         test.setScrollTop(Double.MAX_VALUE);
