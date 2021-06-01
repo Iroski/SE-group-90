@@ -24,7 +24,7 @@ public class ResourceLoaderTest {
     }
     @Test
     public void test01ResLoader() {
-        ResourceLoader.staticVideoLoader("src/main/resources/view/videos");
-        ResourceLoader.staticDefaultProfilePhotoLoader("src/main/resources/view/images/default/profilephoto");
+        ResourceLoader.staticVideoLoader("src/test/resources/view/videos");
+        ResourceLoader.staticDefaultProfilePhotoLoader("src/test/resources/view/images/default/profilephoto");
     }
 }
