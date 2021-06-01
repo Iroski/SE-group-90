@@ -85,7 +85,6 @@ public class VipPageController {
         if (returnEntity1.getCode()==200) {
             ArrayList<Order> orders= (ArrayList<Order>) returnEntity1.getObject();
             isFirst= (orders.size()==0);
-            System.out.println(isFirst);
             if (isFirst) {
                 monthlyPay=9.9;
                 firstMonth.setVisible(true);
