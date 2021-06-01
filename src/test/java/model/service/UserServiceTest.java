@@ -47,13 +47,13 @@ public class UserServiceTest {
     @Test
     public void test04updateUser() {
         User user = new User( 1402L, "927986413@qq.com","userTest3","111111","1","1", null, 1.0,1,1,new ArrayList<Long>(),new ArrayList<Long>());
-        Assert.assertEquals(4041, new UserService().updateUser(user));
-        Assert.assertEquals(4041, new UserService().getUser(user.getName()).getCode());
+        Assert.assertEquals(200, new UserService().updateUser(user));
+        Assert.assertEquals(200, new UserService().getUser(user.getName()).getCode());
     }
 
     @Test
     public void test05updateUser() {
-        Assert.assertEquals(false, new UserService().isUserExist("userTest3"));
+        Assert.assertEquals(true, new UserService().isUserExist("userTest3"));
         Assert.assertEquals(false, new UserService().isUserExist("userTest4"));
     }
     @Test
