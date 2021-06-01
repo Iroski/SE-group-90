@@ -141,9 +141,7 @@ public class OrderService {
                 return CommunicationStatus.ORDER_NOT_FOUND.getCode();
             BigDecimal balance = sOrderOption.get().getMoney();
 
-            int liveLessonCode = new LiveLessonService().updateLessonStateByType(username, liveLesson, "CANCELED");
-            if (liveLessonCode != 200)
-                return liveLessonCode;
+
             int accountCode;
             if(!balance.equals(BigDecimal.ZERO))
                 accountCode = new AccountService().updateBalance(username, balance.multiply(new BigDecimal("-1")));
@@ -170,11 +168,6 @@ public class OrderService {
             if (coachServiceCode != 200)
                 return coachServiceCode;
             order = sOrderOption.get();
-            if(order.getMoney().equals(BigDecimal.ZERO)){
-                int accountCode=new AccountService().updateFreeTimeOfPremium(username,false);
-                if (accountCode != 200)
-                    return accountCode;
-            }
             order.setState(OrderStatus.IS_CANCELED.getCode());
             orderDao.updateOrder(order);
         } catch (RuntimeException e) {
