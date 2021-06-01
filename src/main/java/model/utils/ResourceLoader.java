@@ -25,6 +25,8 @@ public class ResourceLoader {
 
     private static String filePathAdaptor(String filePath) {
         String separator = "/|\\\\";
+        if (filePath == null)
+            return "";
         String[] splitedFilePath = filePath.split(separator);
         StringBuilder newPath = new StringBuilder();
         for (int i = 0; i < splitedFilePath.length; ++i) {

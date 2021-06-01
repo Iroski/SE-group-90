@@ -11,7 +11,7 @@ class Video{
     private String videoPath;
     private String coverPath;
     private AtomicBoolean isPremium;
-}
+} 
 ```
 ## interface
 ### 1. get all videos
@@ -78,7 +78,7 @@ return: ReturnEntity(code,Video)
 method: isVideoPremium(Long id)
 return: AtomicBoolean
 
-### 8. blur search by coach name
+### 8. blur search by video name
 
 method: blurSearchByName(String blurName)
 

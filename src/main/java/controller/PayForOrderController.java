@@ -23,7 +23,7 @@ public class PayForOrderController {
         Label label = (Label) infoBox.getChildren().get(0);
         String info = "";
         if(lessonPrice == BookingPageController.lessonPrice){
-            info = "You should pay ￡" + String.format("%.2f", lessonPrice) + " for the live lesson";
+            info = "You should pay ￡" + String.format("%.2f", lessonPrice) + " for the lesson";
         }else{
             info = "You should pay ￡" + String.format("%.2f", lessonPrice) + " for the live lesson "
                     + "(Original price: ￡" + String.format("%.2f", BookingPageController.lessonPrice) + ")";
