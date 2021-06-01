@@ -70,7 +70,6 @@ public class EditPageController {
         User user = (User) returnEntity.getObject();
         user.setName(userName.getText());
         user.setGender(gender.getValue().toString());
-        System.out.println("height:"+height.getText());
         if(height.getText() != null &&!CheckUserInfoValidation.isNumeric(height.getText())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.titleProperty().set("Error");
