@@ -84,7 +84,7 @@ public class LiveController {
      */
     public void send(KeyEvent keyEvent) {
         if (keyEvent.getCode().getName().equals(ENTER)) {
-            String temp="hly: " +chat.getText() + "\n";
+            String temp=LoginController.userName+": " +chat.getText() + "\n";
             this.chats=this.chats+temp;
             test.setText(this.chats);
             test.setScrollTop(Double.MAX_VALUE);
