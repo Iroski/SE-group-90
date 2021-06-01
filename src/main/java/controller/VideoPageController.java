@@ -55,9 +55,9 @@ public class VideoPageController {
     public void initialize() throws IOException {
         category.getItems().addAll(
                 "All videos",
-                "Running",
-                "Yoga",
-                "Biking"
+                "running",
+                "yoga",
+                "biking"
         );
         category.getSelectionModel().selectFirst();
         category.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
